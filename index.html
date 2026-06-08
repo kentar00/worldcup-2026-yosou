@@ -88,6 +88,20 @@
   .gcard td.l{text-align:left;font-weight:700}
   .ochip{display:inline-block;font-size:10px;font-weight:900;color:#1a160f;border-radius:5px;padding:1px 6px;margin-left:5px}
   .flag{width:22px;height:16px;border-radius:2px;object-fit:cover;vertical-align:-3px;box-shadow:0 0 0 1px rgba(0,0,0,.25);flex:none;background:rgba(255,255,255,.06)}
+  /* knockout bracket */
+  .bk-row{display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:11px;background:var(--row);border:1px solid var(--line);margin:7px 0}
+  .bk-mno{font-family:"Anton",sans-serif;font-size:13px;color:var(--gold);min-width:36px;flex:none;text-align:center}
+  .bk-sides{flex:1;min-width:0;display:flex;flex-direction:column;gap:4px}
+  .bk-side{display:flex;align-items:center;gap:7px;font-size:13.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .bk-slot{color:var(--gold);font-size:10px;font-weight:700;border:1px solid var(--line);border-radius:5px;padding:1px 6px;flex:none;background:rgba(214,184,120,.08)}
+  .bk-when{font-size:10px;color:var(--muted);width:74px;flex:none;text-align:right;line-height:1.3}
+  .bk-tbd{color:var(--muted);font-size:12px}
+  .bk-flow{display:flex;align-items:center;gap:10px;padding:6px 2px;border-bottom:1px solid var(--line)}
+  .bk-flow:last-child{border-bottom:0}
+  .bk-feed{font-size:13.5px;font-weight:700}
+  .bk-feed em{color:var(--muted);font-weight:400;font-style:normal;margin:0 5px}
+  /* fifa ranking */
+  .rk{font-family:"Anton",sans-serif;font-size:16px;color:var(--gold);width:56px}
   .tchip{display:inline-block;font-family:"Anton",sans-serif;font-size:10px;width:16px;height:16px;line-height:16px;text-align:center;border-radius:4px;margin-left:6px;vertical-align:middle}
   .tchip.tA{background:linear-gradient(180deg,#ead7a6,#cdac68);color:#241c0c}
   .tchip.tB{background:#5ea0ec;color:#08152b}
@@ -155,6 +169,8 @@
     <button data-v="lb" class="on">順位表</button>
     <button data-v="groups">グループ</button>
     <button data-v="scores">日程・結果</button>
+    <button data-v="bracket">決勝T表</button>
+    <button data-v="rank">FIFAランク</button>
     <button data-v="roulette">ルーレット</button>
     <button data-v="settings">設定</button>
     <button data-v="rules">ルール</button>
@@ -164,6 +180,8 @@
   <section class="view on" id="v-lb"></section>
   <section class="view" id="v-groups"></section>
   <section class="view" id="v-scores"></section>
+  <section class="view" id="v-bracket"></section>
+  <section class="view" id="v-rank"></section>
   <section class="view" id="v-roulette"></section>
   <section class="view" id="v-settings"></section>
   <section class="view" id="v-rules"></section>
@@ -177,6 +195,34 @@ const KO_ROUNDS=[["R32","ラウンド32",3],["R16","ベスト16",6],["QF","ベ�
 const KO_PTS=Object.fromEntries(KO_ROUNDS.map(r=>[r[0],r[2]]));
 const KO_LABEL=Object.fromEntries(KO_ROUNDS.map(r=>[r[0],r[1]]));
 const WD=["日","月","火","水","木","金","土"];
+// 決勝トーナメント（R32）公式ブラケット・テンプレート。a/b はグループ順位スロット（現地日付）。
+const R32=[
+  {no:73,d:"6/28",city:"イングルウッド",a:"2A",b:"2B"},
+  {no:74,d:"6/29",city:"フォックスボロ",a:"1E",b:"3:A/B/C/D/F"},
+  {no:75,d:"6/29",city:"グアダラハラ",a:"1F",b:"2C"},
+  {no:76,d:"6/29",city:"ヒューストン",a:"1C",b:"2F"},
+  {no:77,d:"6/30",city:"イーストラザフォード",a:"1I",b:"3:C/D/F/G/H"},
+  {no:78,d:"6/30",city:"アーリントン",a:"2E",b:"2I"},
+  {no:79,d:"6/30",city:"メキシコシティ",a:"1A",b:"3:C/E/F/H/I"},
+  {no:80,d:"7/1",city:"アトランタ",a:"1L",b:"3:E/H/I/J/K"},
+  {no:81,d:"7/1",city:"サンタクララ",a:"1D",b:"3:B/E/F/I/J"},
+  {no:82,d:"7/1",city:"シアトル",a:"1G",b:"3:A/E/H/I/J"},
+  {no:83,d:"7/2",city:"トロント",a:"2K",b:"2L"},
+  {no:84,d:"7/2",city:"イングルウッド",a:"1H",b:"2J"},
+  {no:85,d:"7/2",city:"バンクーバー",a:"1B",b:"3:E/F/G/I/J"},
+  {no:86,d:"7/3",city:"マイアミ",a:"1J",b:"2H"},
+  {no:87,d:"7/3",city:"カンザスシティ",a:"1K",b:"3:D/E/I/J/L"},
+  {no:88,d:"7/3",city:"アーリントン",a:"2D",b:"2G"},
+];
+// R16以降の勝ち上がり接続: [試合番号, 上側の供給試合, 下側の供給試合]
+const FLOW=[
+  {label:"ベスト16",en:"ROUND OF 16",ms:[[90,73,75],[89,74,77],[91,76,78],[92,79,80],[93,83,84],[94,81,82],[95,86,88],[96,85,87]]},
+  {label:"ベスト8（準々決勝）",en:"QUARTER-FINALS",ms:[[97,89,90],[98,93,94],[99,91,92],[100,95,96]]},
+  {label:"ベスト4（準決勝）",en:"SEMI-FINALS",ms:[[101,97,98],[102,99,100]]},
+  {label:"決勝",en:"FINAL",ms:[[104,101,102]]},
+];
+// FIFAランキング(2026/4/1) ＝ 各国の世界順位。本ゲームのティア配分の根拠。
+const FIFA_RANK={"フランス":1,"スペイン":2,"アルゼンチン":3,"イングランド":4,"ポルトガル":5,"ブラジル":6,"オランダ":7,"モロッコ":8,"ベルギー":9,"ドイツ":10,"クロアチア":11,"コロンビア":13,"セネガル":14,"メキシコ":15,"アメリカ":16,"ウルグアイ":17,"日本":18,"スイス":19,"イラン":21,"トルコ":22,"エクアドル":23,"オーストリア":24,"韓国":25,"オーストラリア":27,"アルジェリア":28,"エジプト":29,"カナダ":30,"ノルウェー":31,"パナマ":33,"コートジボワール":34,"スウェーデン":38,"パラグアイ":40,"チェコ":41,"スコットランド":43,"チュニジア":44,"コンゴ民主共和国":46,"ウズベキスタン":50,"カタール":55,"イラク":57,"南アフリカ":60,"サウジアラビア":61,"ヨルダン":63,"ボスニア・ヘルツェゴビナ":65,"カーボベルデ":69,"ガーナ":74,"キュラソー":82,"ハイチ":83,"ニュージーランド":85};
 let G=JSON.parse(document.getElementById('gamedata').textContent);
 if(!G.colors)G.colors={};
 let rlState={order:[],remaining:null,spinning:false,timer:null};
@@ -240,6 +286,57 @@ function renderRules(){
   </div>
 
   <div class="note">運（ルーレット）× 戦略（ドラフト）× 大逆転（後半配点）。最後まで全員に優勝のチャンスが残ります。</div>`;
+}
+
+function renderBracket(){
+  const {standings}=compute();
+  const slotLabel=s=>{
+    if(s[0]==='3')return `3位 (${s.slice(2)}組)`;
+    return `${s[1]}組 ${s[0]==='1'?'1位':'2位'}`;
+  };
+  const slotTeam=s=>{
+    if(s[0]==='3')return null;
+    const st=standings[s[1]];
+    if(!st||!st.complete)return null;
+    const r=st.rows[s[0]==='1'?0:1];
+    return r?r.team:null;
+  };
+  const side=s=>{const t=slotTeam(s);
+    return `<div class="bk-side"><span class="bk-slot">${esc(slotLabel(s))}</span>${t?`${flag(t)} <b>${esc(t)}</b>`:'<span class="bk-tbd">未定</span>'}</div>`;};
+  const r32=R32.map(m=>`<div class="bk-row">
+      <span class="bk-mno">#${m.no}</span>
+      <div class="bk-sides">${side(m.a)}${side(m.b)}</div>
+      <span class="bk-when">${m.d}<br>${esc(m.city)}</span>
+    </div>`).join('');
+  const flow=FLOW.map(r=>`<div class="card" style="margin:10px 0">
+      <h2 class="sec">${r.label} <span style="color:var(--muted);font-weight:700;font-size:10px;letter-spacing:.14em">${r.en}</span></h2>
+      ${r.ms.map(x=>`<div class="bk-flow"><span class="bk-mno">#${x[0]}</span><span class="bk-feed">勝者 #${x[1]}<em>×</em>勝者 #${x[2]}</span></div>`).join('')}
+    </div>`).join('');
+  document.getElementById('v-bracket').innerHTML=`
+    <div class="barh">決勝トーナメント表 <span class="en">KNOCKOUT BRACKET</span></div>
+    <p class="hint">2026年大会の公式フォーマット。各組1位は3位通過チームと、2位同士が対戦（同じ組は準々決勝まで当たりません）。グループ全6試合のスコアが揃うと、1位・2位の通過国が自動でここに入ります。日付は現地。</p>
+    <div class="barh" style="margin-top:6px">ラウンド32 <span class="en">ROUND OF 32</span></div>
+    ${r32}
+    <div class="barh">勝ち上がり <span class="en">BRACKET FLOW</span></div>
+    ${flow}
+    <div class="note">3位通過の8枠は、12組のうちどの組の3位が突破したかで割り当てが決まります（FIFA規定の組合せ表）。実際のR32対戦カードは「日程・結果」タブで管理します。</div>`;
+}
+
+function renderRank(){
+  const arr=Object.keys(G.teams).map(n=>({n,r:FIFA_RANK[n]??999})).sort((a,b)=>a.r-b.r);
+  const rows=arr.map(x=>{const o=owner(x.n);
+    return `<tr><td class="rk">${x.r<999?x.r:'－'}</td>
+      <td class="l">${flag(x.n)} ${esc(x.n)}</td>
+      <td>${tchip(x.n)}</td>
+      <td>${esc(G.teams[x.n].group)}</td>
+      <td class="l">${o?`<span class="ochip" style="background:${pcol(o)}">${esc(o)}</span>`:'<span class="bk-tbd">―</span>'}</td></tr>`;}).join('');
+  document.getElementById('v-rank').innerHTML=`
+    <div class="barh">FIFAランキング <span class="en">FIFA RANKING · 2026/4</span></div>
+    <p class="hint">2026年4月1日付のFIFA世界ランキング（出場48カ国）。この順位を基準に、上位からティア A/B/C/D に振り分けてドラフトします。最下位3カ国（<span class="tchip tX">－</span>）はドラフト対象外。</p>
+    <div class="card" style="padding:8px 10px"><div class="tbw"><table>
+      <thead><tr><th>世界順位</th><th class="l">国</th><th>ティア</th><th>組</th><th class="l">保有者</th></tr></thead>
+      <tbody>${rows}</tbody></table></div></div>
+    <div class="note">出場国のみ抜粋のため世界順位は飛び番です（例: 12位イタリア・20位デンマーク等は本大会不参加）。</div>`;
 }
 
 function renderRoulette(){
@@ -334,7 +431,7 @@ function compute(){
 }
 
 function syncData(){document.getElementById('gamedata').textContent=JSON.stringify(G);}
-function renderAll(){syncData();renderLB();renderGroups();renderScores();renderRoulette();renderSettings();renderRules();renderData();}
+function renderAll(){syncData();renderLB();renderGroups();renderScores();renderBracket();renderRank();renderRoulette();renderSettings();renderRules();renderData();}
 
 function renderLB(){
   const {P}=compute();
