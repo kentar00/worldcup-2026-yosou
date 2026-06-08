@@ -1,0 +1,725 @@
+{
+ "gsMatches": [
+  {
+   "id": "GS1",
+   "group": "A",
+   "home": "メキシコ",
+   "away": "南アフリカ",
+   "date": "2026-06-12",
+   "time": "04:00",
+   "hs": null,
+   "as": null
+  },
+  {
+   "id": "GS2",
+   "group": "A",
+   "home": "韓国",
+   "away": "チェコ",
+   "date": "2026-06-12",
+   "time": "11:00",
+   "hs": null,
+   "as": null
+  },
+  {
+   "id": "GS3",
+   "group": "A",
+   "home": "チェコ",
+   "away": "南アフリカ",
+   "date": "2026-06-19",
+   "time": "01:00",
+   "hs": null,
+   "as": null
+  },
+  {
+   "id": "GS4",
+   "group": "A",
+   "home": "メキシコ",
+   "away": "韓国",
+   "date": "2026-06-19",
+   "time": "10:00",
+   "hs": null,
+   "as": null
+  },
+  {
+   "id": "GS5",
+   "group": "A",
+   "home": "南アフリカ",
+   "away": "韓国",
+   "date": "2026-06-25",
+   "time": "10:00",
+   "hs": null,
+   "as": null
+  },
+  {
+   "id": "GS6",
+   "group": "A",
+   "home": "チェコ",
+   "away": "メキシコ",
+   "date": "2026-06-25",
+   "time": "10:00",
+   "hs": null,
+   "as": null
+  },
+  {
+   "id": "GS7",
+   "group": "B",
+   "home": "カナダ",
+   "away": "ボスニア・ヘルツェゴビナ",
+   "date": "2026-06-13",
+   "time": "04:00",
+   "hs": null,
+   "as": null
+  },
+  {
+   "id": "GS8",
+   "group": "B",
+   "home": "カタール",
+   "away": "スイス",
+   "date": "2026-06-14",
+   "time": "04:00",
+   "hs": null,
+   "as": null
+  },
+  {
+   "id": "GS9",
+   "group": "B",
+   "home": "スイス",
+   "away": "ボスニア・ヘルツェゴビナ",
+   "date": "2026-06-19",
+   "time": "04:00",
+   "hs": null,
+   "as": null
+  },
+  {
+   "id": "GS10",
+   "group": "B",
+   "home": "カナダ",
+   "away": "カタール",
+   "date": "2026-06-19",
+   "time": "07:00",
+   "hs": null,
+   "as": null
+  },
+  {
+   "id": "GS11",
+   "group": "B",
+   "home": "スイス",
+   "away": "カナダ",
+   "date": "2026-06-25",
+   "time": "04:00",
+   "hs": null,
+   "as": null
+  },
+  {
+   "id": "GS12",
+   "group": "B",
+   "home": "ボスニア・ヘルツェゴビナ",
+   "away": "カタール",
+   "date": "2026-06-25",
+   "time": "04:00",
+   "hs": null,
+   "as": null
+  },
+  {
+   "id": "GS13",
+   "group": "C",
+   "home": "ブラジル",
+   "away": "モロッコ",
+   "date": "2026-06-14",
+   "time": "07:00",
+   "hs": null,
+   "as": null
+  },
+  {
+   "id": "GS14",
+   "group": "C",
+   "home": "ハイチ",
+   "away": "スコットランド",
+   "date": "2026-06-14",
+   "time": "10:00",
+   "hs": null,
+   "as": null
+  },
+  {
+   "id": "GS15",
+   "group": "C",
+   "home": "スコットランド",
+   "away": "モロッコ",
+   "date": "2026-06-20",
+   "time": "07:00",
+   "hs": null,
+   "as": null
+  },
+  {
+   "id": "GS16",
+   "group": "C",
+   "home": "ブラジル",
+   "away": "ハイチ",
+   "date": "2026-06-20",
+   "time": "09:30",
+   "hs": null,
+   "as": null
+  },
+  {
+   "id": "GS17",
+   "group": "C",
+   "home": "モロッコ",
+   "away": "ハイチ",
+   "date": "2026-06-25",
+   "time": "07:00",
+   "hs": null,
+   "as": null
+  },
+  {
+   "id": "GS18",
+   "group": "C",
+   "home": "スコットランド",
+   "away": "ブラジル",
+   "date": "2026-06-25",
+   "time": "07:00",
+   "hs": null,
+   "as": null
+  },
+  {
+   "id": "GS19",
+   "group": "D",
+   "home": "アメリカ",
+   "away": "パラグアイ",
+   "date": "2026-06-13",
+   "time": "10:00",
+   "hs": null,
+   "as": null
+  },
+  {
+   "id": "GS20",
+   "group": "D",
+   "home": "オーストラリア",
+   "away": "トルコ",
+   "date": "2026-06-14",
+   "time": "13:00",
+   "hs": null,
+   "as": null
+  },
+  {
+   "id": "GS21",
+   "group": "D",
+   "home": "アメリカ",
+   "away": "オーストラリア",
+   "date": "2026-06-20",
+   "time": "04:00",
+   "hs": null,
+   "as": null
+  },
+  {
+   "id": "GS22",
+   "group": "D",
+   "home": "トルコ",
+   "away": "パラグアイ",
+   "date": "2026-06-20",
+   "time": "12:00",
+   "hs": null,
+   "as": null
+  },
+  {
+   "id": "GS23",
+   "group": "D",
+   "home": "トルコ",
+   "away": "アメリカ",
+   "date": "2026-06-26",
+   "time": "11:00",
+   "hs": null,
+   "as": null
+  },
+  {
+   "id": "GS24",
+   "group": "D",
+   "home": "パラグアイ",
+   "away": "オーストラリア",
+   "date": "2026-06-26",
+   "time": "11:00",
+   "hs": null,
+   "as": null
+  },
+  {
+   "id": "GS25",
+   "group": "E",
+   "home": "ドイツ",
+   "away": "キュラソー",
+   "date": "2026-06-15",
+   "time": "02:00",
+   "hs": null,
+   "as": null
+  },
+  {
+   "id": "GS26",
+   "group": "E",
+   "home": "コートジボワール",
+   "away": "エクアドル",
+   "date": "2026-06-15",
+   "time": "08:00",
+   "hs": null,
+   "as": null
+  },
+  {
+   "id": "GS27",
+   "group": "E",
+   "home": "ドイツ",
+   "away": "コートジボワール",
+   "date": "2026-06-21",
+   "time": "05:00",
+   "hs": null,
+   "as": null
+  },
+  {
+   "id": "GS28",
+   "group": "E",
+   "home": "エクアドル",
+   "away": "キュラソー",
+   "date": "2026-06-21",
+   "time": "09:00",
+   "hs": null,
+   "as": null
+  },
+  {
+   "id": "GS29",
+   "group": "E",
+   "home": "キュラソー",
+   "away": "コートジボワール",
+   "date": "2026-06-26",
+   "time": "05:00",
+   "hs": null,
+   "as": null
+  },
+  {
+   "id": "GS30",
+   "group": "E",
+   "home": "エクアドル",
+   "away": "ドイツ",
+   "date": "2026-06-26",
+   "time": "05:00",
+   "hs": null,
+   "as": null
+  },
+  {
+   "id": "GS31",
+   "group": "F",
+   "home": "オランダ",
+   "away": "日本",
+   "date": "2026-06-15",
+   "time": "05:00",
+   "hs": null,
+   "as": null
+  },
+  {
+   "id": "GS32",
+   "group": "F",
+   "home": "スウェーデン",
+   "away": "チュニジア",
+   "date": "2026-06-15",
+   "time": "11:00",
+   "hs": null,
+   "as": null
+  },
+  {
+   "id": "GS33",
+   "group": "F",
+   "home": "オランダ",
+   "away": "スウェーデン",
+   "date": "2026-06-21",
+   "time": "02:00",
+   "hs": null,
+   "as": null
+  },
+  {
+   "id": "GS34",
+   "group": "F",
+   "home": "チュニジア",
+   "away": "日本",
+   "date": "2026-06-21",
+   "time": "13:00",
+   "hs": null,
+   "as": null
+  },
+  {
+   "id": "GS35",
+   "group": "F",
+   "home": "チュニジア",
+   "away": "オランダ",
+   "date": "2026-06-26",
+   "time": "08:00",
+   "hs": null,
+   "as": null
+  },
+  {
+   "id": "GS36",
+   "group": "F",
+   "home": "日本",
+   "away": "スウェーデン",
+   "date": "2026-06-26",
+   "time": "08:00",
+   "hs": null,
+   "as": null
+  },
+  {
+   "id": "GS37",
+   "group": "G",
+   "home": "ベルギー",
+   "away": "エジプト",
+   "date": "2026-06-16",
+   "time": "04:00",
+   "hs": null,
+   "as": null
+  },
+  {
+   "id": "GS38",
+   "group": "G",
+   "home": "イラン",
+   "away": "ニュージーランド",
+   "date": "2026-06-16",
+   "time": "10:00",
+   "hs": null,
+   "as": null
+  },
+  {
+   "id": "GS39",
+   "group": "G",
+   "home": "ベルギー",
+   "away": "イラン",
+   "date": "2026-06-22",
+   "time": "04:00",
+   "hs": null,
+   "as": null
+  },
+  {
+   "id": "GS40",
+   "group": "G",
+   "home": "ニュージーランド",
+   "away": "エジプト",
+   "date": "2026-06-22",
+   "time": "10:00",
+   "hs": null,
+   "as": null
+  },
+  {
+   "id": "GS41",
+   "group": "G",
+   "home": "ニュージーランド",
+   "away": "ベルギー",
+   "date": "2026-06-27",
+   "time": "12:00",
+   "hs": null,
+   "as": null
+  },
+  {
+   "id": "GS42",
+   "group": "G",
+   "home": "エジプト",
+   "away": "イラン",
+   "date": "2026-06-27",
+   "time": "12:00",
+   "hs": null,
+   "as": null
+  },
+  {
+   "id": "GS43",
+   "group": "H",
+   "home": "スペイン",
+   "away": "カーボベルデ",
+   "date": "2026-06-16",
+   "time": "01:00",
+   "hs": null,
+   "as": null
+  },
+  {
+   "id": "GS44",
+   "group": "H",
+   "home": "サウジアラビア",
+   "away": "ウルグアイ",
+   "date": "2026-06-16",
+   "time": "07:00",
+   "hs": null,
+   "as": null
+  },
+  {
+   "id": "GS45",
+   "group": "H",
+   "home": "スペイン",
+   "away": "サウジアラビア",
+   "date": "2026-06-22",
+   "time": "01:00",
+   "hs": null,
+   "as": null
+  },
+  {
+   "id": "GS46",
+   "group": "H",
+   "home": "ウルグアイ",
+   "away": "カーボベルデ",
+   "date": "2026-06-22",
+   "time": "07:00",
+   "hs": null,
+   "as": null
+  },
+  {
+   "id": "GS47",
+   "group": "H",
+   "home": "カーボベルデ",
+   "away": "サウジアラビア",
+   "date": "2026-06-27",
+   "time": "09:00",
+   "hs": null,
+   "as": null
+  },
+  {
+   "id": "GS48",
+   "group": "H",
+   "home": "ウルグアイ",
+   "away": "スペイン",
+   "date": "2026-06-27",
+   "time": "09:00",
+   "hs": null,
+   "as": null
+  },
+  {
+   "id": "GS49",
+   "group": "I",
+   "home": "フランス",
+   "away": "セネガル",
+   "date": "2026-06-17",
+   "time": "04:00",
+   "hs": null,
+   "as": null
+  },
+  {
+   "id": "GS50",
+   "group": "I",
+   "home": "イラク",
+   "away": "ノルウェー",
+   "date": "2026-06-17",
+   "time": "07:00",
+   "hs": null,
+   "as": null
+  },
+  {
+   "id": "GS51",
+   "group": "I",
+   "home": "フランス",
+   "away": "イラク",
+   "date": "2026-06-23",
+   "time": "06:00",
+   "hs": null,
+   "as": null
+  },
+  {
+   "id": "GS52",
+   "group": "I",
+   "home": "ノルウェー",
+   "away": "セネガル",
+   "date": "2026-06-23",
+   "time": "09:00",
+   "hs": null,
+   "as": null
+  },
+  {
+   "id": "GS53",
+   "group": "I",
+   "home": "ノルウェー",
+   "away": "フランス",
+   "date": "2026-06-27",
+   "time": "04:00",
+   "hs": null,
+   "as": null
+  },
+  {
+   "id": "GS54",
+   "group": "I",
+   "home": "セネガル",
+   "away": "イラク",
+   "date": "2026-06-27",
+   "time": "04:00",
+   "hs": null,
+   "as": null
+  },
+  {
+   "id": "GS55",
+   "group": "J",
+   "home": "アルゼンチン",
+   "away": "アルジェリア",
+   "date": "2026-06-17",
+   "time": "10:00",
+   "hs": null,
+   "as": null
+  },
+  {
+   "id": "GS56",
+   "group": "J",
+   "home": "オーストリア",
+   "away": "ヨルダン",
+   "date": "2026-06-17",
+   "time": "13:00",
+   "hs": null,
+   "as": null
+  },
+  {
+   "id": "GS57",
+   "group": "J",
+   "home": "アルゼンチン",
+   "away": "オーストリア",
+   "date": "2026-06-23",
+   "time": "02:00",
+   "hs": null,
+   "as": null
+  },
+  {
+   "id": "GS58",
+   "group": "J",
+   "home": "ヨルダン",
+   "away": "アルジェリア",
+   "date": "2026-06-23",
+   "time": "12:00",
+   "hs": null,
+   "as": null
+  },
+  {
+   "id": "GS59",
+   "group": "J",
+   "home": "アルジェリア",
+   "away": "オーストリア",
+   "date": "2026-06-28",
+   "time": "11:00",
+   "hs": null,
+   "as": null
+  },
+  {
+   "id": "GS60",
+   "group": "J",
+   "home": "ヨルダン",
+   "away": "アルゼンチン",
+   "date": "2026-06-28",
+   "time": "11:00",
+   "hs": null,
+   "as": null
+  },
+  {
+   "id": "GS61",
+   "group": "K",
+   "home": "ポルトガル",
+   "away": "コンゴ民主共和国",
+   "date": "2026-06-18",
+   "time": "02:00",
+   "hs": null,
+   "as": null
+  },
+  {
+   "id": "GS62",
+   "group": "K",
+   "home": "ウズベキスタン",
+   "away": "コロンビア",
+   "date": "2026-06-18",
+   "time": "11:00",
+   "hs": null,
+   "as": null
+  },
+  {
+   "id": "GS63",
+   "group": "K",
+   "home": "ポルトガル",
+   "away": "ウズベキスタン",
+   "date": "2026-06-24",
+   "time": "02:00",
+   "hs": null,
+   "as": null
+  },
+  {
+   "id": "GS64",
+   "group": "K",
+   "home": "コロンビア",
+   "away": "コンゴ民主共和国",
+   "date": "2026-06-24",
+   "time": "11:00",
+   "hs": null,
+   "as": null
+  },
+  {
+   "id": "GS65",
+   "group": "K",
+   "home": "コロンビア",
+   "away": "ポルトガル",
+   "date": "2026-06-28",
+   "time": "08:30",
+   "hs": null,
+   "as": null
+  },
+  {
+   "id": "GS66",
+   "group": "K",
+   "home": "コンゴ民主共和国",
+   "away": "ウズベキスタン",
+   "date": "2026-06-28",
+   "time": "08:30",
+   "hs": null,
+   "as": null
+  },
+  {
+   "id": "GS67",
+   "group": "L",
+   "home": "イングランド",
+   "away": "クロアチア",
+   "date": "2026-06-18",
+   "time": "05:00",
+   "hs": null,
+   "as": null
+  },
+  {
+   "id": "GS68",
+   "group": "L",
+   "home": "ガーナ",
+   "away": "パナマ",
+   "date": "2026-06-18",
+   "time": "08:00",
+   "hs": null,
+   "as": null
+  },
+  {
+   "id": "GS69",
+   "group": "L",
+   "home": "イングランド",
+   "away": "ガーナ",
+   "date": "2026-06-24",
+   "time": "05:00",
+   "hs": null,
+   "as": null
+  },
+  {
+   "id": "GS70",
+   "group": "L",
+   "home": "パナマ",
+   "away": "クロアチア",
+   "date": "2026-06-24",
+   "time": "08:00",
+   "hs": null,
+   "as": null
+  },
+  {
+   "id": "GS71",
+   "group": "L",
+   "home": "パナマ",
+   "away": "イングランド",
+   "date": "2026-06-28",
+   "time": "06:00",
+   "hs": null,
+   "as": null
+  },
+  {
+   "id": "GS72",
+   "group": "L",
+   "home": "クロアチア",
+   "away": "ガーナ",
+   "date": "2026-06-28",
+   "time": "06:00",
+   "hs": null,
+   "as": null
+  }
+ ],
+ "koMatches": []
+}

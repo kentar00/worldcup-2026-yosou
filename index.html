@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>W杯2026 予想ゲーム ダッシュボード</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --tx:#f6f2e9;--muted:#b3a890;
+    --g-hi:#ead7a6;--g-mid:#cdac68;--g-lo:#9a7a3e;
+    --gold:#d9bd7e;--gold-soft:#caa86a;
+    --card:rgba(28,24,18,.80);--line:rgba(214,184,120,.18);--row:rgba(255,255,255,.035);
+    --c1:#e8402c;--c2:#f2922b;--c3:#ffd23e;--c4:#36b04c;--c5:#1fb6a8;--c6:#2f6fe0;--c7:#8b46d6;--c8:#e0479e;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:"Noto Sans JP",sans-serif;color:var(--tx);line-height:1.7;-webkit-font-smoothing:antialiased;
+    background:radial-gradient(120% 90% at 50% 10%,#3b332a 0%,#241f18 42%,#120f0b 100%) fixed;min-height:100vh}
+  ::selection{background:var(--gold);color:#1a160f}
+  .gold-text{background:linear-gradient(180deg,var(--g-hi),var(--g-mid) 55%,var(--g-lo));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .wrap{max-width:1000px;margin:0 auto;padding:0 16px 90px}
+
+  header{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;padding:22px 0 6px}
+  .htitle{font-weight:900;font-size:clamp(18px,4.8vw,26px);letter-spacing:.02em}
+  .htitle small{display:block;font-weight:700;font-size:11px;letter-spacing:.26em;color:var(--gold);margin-bottom:2px}
+  .lock{display:flex;align-items:center;gap:9px}
+  .lock .tr{font-size:32px;filter:drop-shadow(0 3px 12px rgba(231,210,160,.35))}
+  .lock .yr{font-family:"Anton",sans-serif;font-size:32px;line-height:.8}
+  /* multicolor diversity stripe (from artwork) */
+  .stripe{display:flex;height:6px;border-radius:4px;overflow:hidden;margin:10px 0 4px}
+  .stripe i{flex:1}
+  .stripe i:nth-child(1){background:var(--c1)}.stripe i:nth-child(2){background:var(--c2)}
+  .stripe i:nth-child(3){background:var(--c3)}.stripe i:nth-child(4){background:var(--c4)}
+  .stripe i:nth-child(5){background:var(--c5)}.stripe i:nth-child(6){background:var(--c6)}
+  .stripe i:nth-child(7){background:var(--c7)}.stripe i:nth-child(8){background:var(--c8)}
+
+  nav{display:flex;gap:6px;flex-wrap:wrap;position:sticky;top:0;z-index:20;padding:10px 0;
+    background:linear-gradient(180deg,#1a1610 62%,rgba(26,22,16,0));margin-bottom:6px}
+  nav button{font-family:inherit;font-weight:700;font-size:13px;color:var(--muted);background:var(--card);
+    border:1px solid var(--line);border-radius:10px;padding:9px 13px;cursor:pointer}
+  nav button.on{color:#241c0c;background:linear-gradient(180deg,var(--g-hi),var(--g-lo));border-color:transparent}
+
+  .view{display:none;animation:fade .25s both}.view.on{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1}}
+
+  .barh{display:flex;align-items:center;gap:12px;background:linear-gradient(180deg,var(--g-hi),var(--g-mid) 50%,var(--g-lo));
+    color:#241c0c;border-radius:11px;padding:11px 16px;font-weight:900;margin:18px 0 10px;box-shadow:inset 0 1px 0 rgba(255,255,255,.5)}
+  .barh .en{margin-left:auto;font-weight:700;letter-spacing:.16em;font-size:11px;opacity:.6}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;margin:12px 0}
+  .hint{color:var(--muted);font-size:12.5px;margin:4px 0 10px}
+  h2.sec{font-weight:900;font-size:15px;margin:4px 0}
+
+  table{width:100%;border-collapse:collapse;font-size:14px}
+  th,td{padding:9px 7px;text-align:center;border-bottom:1px solid var(--line)}
+  th{color:var(--gold);font-weight:700;font-size:12px}
+  td.l,th.l{text-align:left}
+  tr:last-child td{border-bottom:0}
+
+  /* leaderboard */
+  .lb .pl{display:flex;align-items:center;gap:12px;padding:12px;border-radius:12px;margin:8px 0;background:var(--row);
+    border:1px solid var(--line);border-left:5px solid var(--pc,#d9bd7e)}
+  .lb .pl.r1{background:rgba(214,184,120,.10)}
+  .ranknum{font-family:"Anton",sans-serif;font-size:24px;width:30px;text-align:center;color:var(--muted)}
+  .r1 .ranknum{color:transparent;background:linear-gradient(180deg,var(--g-hi),var(--g-lo));-webkit-background-clip:text;background-clip:text}
+  .pmid{flex:1;min-width:0}
+  .pname{font-weight:900;font-size:16px}
+  .pbar{height:7px;border-radius:5px;background:var(--pc,#d9bd7e);margin-top:5px;min-width:3px;transition:width .4s}
+  .bd{font-size:11px;color:var(--muted);margin-top:3px}
+  .ptotal{font-family:"Anton",sans-serif;font-size:26px;flex:none}
+
+  /* draft under leaderboard */
+  .draftgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px}
+  .dg{background:var(--card);border:1px solid var(--line);border-radius:11px;overflow:hidden}
+  .dg .gh{background:linear-gradient(180deg,var(--g-hi),var(--g-lo));color:#241c0c;font-weight:900;padding:7px 11px;font-size:13px}
+  .drow{display:flex;align-items:center;gap:8px;padding:6px 10px;border-bottom:1px solid var(--line);font-size:13px}
+  .drow:last-child{border-bottom:0}
+  .drow .fn{flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .drow select{font-size:12px;padding:4px 6px;max-width:96px}
+
+  /* group standings */
+  .groups{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px}
+  .gcard{background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+  .gcard .tbw{overflow-x:auto}
+  .gcard .gh{background:linear-gradient(180deg,var(--g-hi),var(--g-lo));color:#241c0c;font-weight:900;padding:8px 12px;display:flex;justify-content:space-between;font-size:14px}
+  .gcard table{font-size:12.5px}.gcard th,.gcard td{padding:7px 5px}
+  .gcard td.l{text-align:left;font-weight:700}
+  .ochip{display:inline-block;font-size:10px;font-weight:900;color:#1a160f;border-radius:5px;padding:1px 6px;margin-left:5px}
+  .flag{width:22px;height:16px;border-radius:2px;object-fit:cover;vertical-align:-3px;box-shadow:0 0 0 1px rgba(0,0,0,.25);flex:none;background:rgba(255,255,255,.06)}
+  .tchip{display:inline-block;font-family:"Anton",sans-serif;font-size:10px;width:16px;height:16px;line-height:16px;text-align:center;border-radius:4px;margin-left:6px;vertical-align:middle}
+  .tchip.tA{background:linear-gradient(180deg,#ead7a6,#cdac68);color:#241c0c}
+  .tchip.tB{background:#5ea0ec;color:#08152b}
+  .tchip.tC{background:#3fc06a;color:#08240f}
+  .tchip.tD{background:#f0a24a;color:#241404}
+  .tchip.tX{background:rgba(255,255,255,.12);color:var(--muted)}
+  .gcard tr.adv td{background:rgba(214,184,120,.10)}
+  .gcard tr.adv .pos{color:transparent;background:linear-gradient(180deg,var(--g-hi),var(--g-lo));-webkit-background-clip:text;background-clip:text;font-weight:900}
+
+  /* schedule / scores */
+  .day{font-weight:900;font-size:13px;color:var(--gold);margin:16px 0 6px;display:flex;align-items:center;gap:8px}
+  .day::before{content:"";width:10px;height:10px;border-radius:3px;background:linear-gradient(180deg,var(--g-hi),var(--g-lo))}
+  .m{display:flex;align-items:center;gap:8px;padding:9px 10px;border-radius:10px;background:var(--row);border:1px solid var(--line);margin:6px 0}
+  .m .tm{font-size:11px;color:var(--muted);width:42px;flex:none;text-align:center;line-height:1.2}
+  .m .gg{font-size:10px;font-weight:900;color:#241c0c;background:linear-gradient(180deg,var(--g-hi),var(--g-lo));border-radius:5px;padding:1px 5px;flex:none}
+  .m .tn{flex:1;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .m .tn.aw{text-align:right}
+  .m input{width:42px;text-align:center;font-size:15px;padding:6px 2px}
+  .m .x{color:var(--muted);font-size:11px}
+
+  input,select{font-family:inherit;color:var(--tx);background:#15120d;border:1px solid var(--line);border-radius:8px;padding:7px 9px;font-size:14px}
+  input[type=number]{-moz-appearance:textfield}
+  input::-webkit-outer-spin-button,input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+  input[type=color]{padding:2px;width:42px;height:32px;cursor:pointer}
+  .btn{font-family:inherit;font-weight:700;cursor:pointer;border:0;border-radius:9px;padding:9px 15px;font-size:13px;color:#241c0c;background:linear-gradient(180deg,var(--g-hi),var(--g-lo));box-shadow:inset 0 1px 0 rgba(255,255,255,.5)}
+  .btn.ghost{background:transparent;color:var(--gold);border:1px solid var(--gold-soft);box-shadow:none}
+  .btn.sm{padding:6px 11px;font-size:12px}
+  .del{color:#e08a6a;background:transparent;border:1px solid rgba(224,138,106,.4);border-radius:8px;cursor:pointer;padding:4px 9px;font-size:12px}
+  .row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:7px 0}
+  .lbl{font-size:12px;color:var(--gold);font-weight:700;min-width:84px}
+  textarea{width:100%;min-height:150px;font-family:ui-monospace,monospace;font-size:11px;color:var(--tx);background:#15120d;border:1px solid var(--line);border-radius:10px;padding:12px}
+  .note{font-size:12.5px;color:var(--muted);background:var(--row);border:1px solid var(--line);border-radius:9px;padding:11px 13px;margin:10px 0}
+  .badge{width:26px;height:20px;border-radius:5px;display:inline-grid;place-items:center;font-family:"Anton",sans-serif;font-size:13px;color:#241c0c;background:linear-gradient(180deg,var(--g-hi),var(--g-lo))}
+  .rl-stage{background:linear-gradient(180deg,#15120d,#241f18);border:2px solid var(--gold-soft);border-radius:16px;height:160px;display:grid;place-items:center;margin:12px 0;overflow:hidden;box-shadow:inset 0 0 40px rgba(0,0,0,.6)}
+  .rl-name{font-family:"Anton",sans-serif;font-size:clamp(40px,13vw,74px);letter-spacing:.04em}
+  .rl-name.pop{animation:rlpop .45s}
+  @keyframes rlpop{0%{transform:scale(1)}40%{transform:scale(1.32)}100%{transform:scale(1)}}
+  .rl-btns{display:flex;gap:10px;flex-wrap:wrap;margin:8px 0 4px}
+  .rl-btns .btn{font-size:15px;padding:12px 20px}
+  .rl-btns button:disabled{opacity:.4;cursor:default}
+  .rl-pill{display:inline-block;border:1px solid;border-radius:999px;padding:2px 11px;font-size:12px;font-weight:700;margin:2px}
+  .rl-item{display:flex;align-items:center;gap:12px;padding:10px 8px;border-bottom:1px solid var(--line)}
+  .rl-item:last-child{border-bottom:0}
+  .rl-rank{font-family:"Anton",sans-serif;font-size:22px;width:30px;text-align:center;color:var(--gold)}
+  .rl-dot{width:14px;height:14px;border-radius:50%;flex:none}
+  .rl-nm{font-weight:900;font-size:17px}
+  @media(max-width:560px){
+    .bd{font-size:10px}
+    .wrap{padding:0 12px 80px}
+    .draftgrid,.groups{grid-template-columns:1fr}
+    .drow select{max-width:40vw}
+    nav button{font-size:12px;padding:8px 11px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="htitle"><small>FIFA WORLD CUP 2026</small>5人対抗 予想ゲーム</div>
+    <div class="lock"><span class="tr">🏆</span><span class="yr gold-text">2026</span></div>
+  </header>
+  <div class="stripe"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+
+  <nav id="nav">
+    <button data-v="lb" class="on">順位表</button>
+    <button data-v="groups">グループ</button>
+    <button data-v="scores">日程・結果</button>
+    <button data-v="roulette">ルーレット</button>
+    <button data-v="settings">設定</button>
+    <button data-v="rules">ルール</button>
+    <button data-v="data">保存</button>
+  </nav>
+
+  <section class="view on" id="v-lb"></section>
+  <section class="view" id="v-groups"></section>
+  <section class="view" id="v-scores"></section>
+  <section class="view" id="v-roulette"></section>
+  <section class="view" id="v-settings"></section>
+  <section class="view" id="v-rules"></section>
+  <section class="view" id="v-data"></section>
+</div>
+
+<script id="gamedata" type="application/json">{"players": ["KT", "KO", "AI", "MM", "NK"], "colors": {"KT": "#e8402c", "KO": "#f2922b", "AI": "#2faa57", "MM": "#2f6fe0", "NK": "#8b46d6"}, "config": {"gk": true}, "lucky": {}, "bets": [], "koMatches": [], "teams": {"メキシコ": {"group": "A", "tier": "B", "owner": null, "flag": "🇲🇽"}, "南アフリカ": {"group": "A", "tier": "D", "owner": null, "flag": "🇿🇦"}, "韓国": {"group": "A", "tier": "C", "owner": null, "flag": "🇰🇷"}, "チェコ": {"group": "A", "tier": "D", "owner": null, "flag": "🇨🇿"}, "カナダ": {"group": "B", "tier": "C", "owner": null, "flag": "🇨🇦"}, "ボスニア・ヘルツェゴビナ": {"group": "B", "tier": "D", "owner": null, "flag": "🇧🇦"}, "カタール": {"group": "B", "tier": "D", "owner": null, "flag": "🇶🇦"}, "スイス": {"group": "B", "tier": "C", "owner": null, "flag": "🇨🇭"}, "ブラジル": {"group": "C", "tier": "B", "owner": null, "flag": "🇧🇷"}, "モロッコ": {"group": "C", "tier": "B", "owner": null, "flag": "🇲🇦"}, "ハイチ": {"group": "C", "tier": "", "owner": null, "flag": "🇭🇹"}, "スコットランド": {"group": "C", "tier": "D", "owner": null, "flag": "🏴󠁧󠁢󠁳󠁣󠁴󠁿"}, "アメリカ": {"group": "D", "tier": "B", "owner": null, "flag": "🇺🇸"}, "パラグアイ": {"group": "D", "tier": "D", "owner": null, "flag": "🇵🇾"}, "オーストラリア": {"group": "D", "tier": "C", "owner": null, "flag": "🇦🇺"}, "トルコ": {"group": "D", "tier": "C", "owner": null, "flag": "🇹🇷"}, "ドイツ": {"group": "E", "tier": "B", "owner": null, "flag": "🇩🇪"}, "キュラソー": {"group": "E", "tier": "", "owner": null, "flag": "🇨🇼"}, "コートジボワール": {"group": "E", "tier": "C", "owner": null, "flag": "🇨🇮"}, "エクアドル": {"group": "E", "tier": "C", "owner": null, "flag": "🇪🇨"}, "オランダ": {"group": "F", "tier": "B", "owner": null, "flag": "🇳🇱"}, "日本": {"group": "F", "tier": "C", "owner": null, "flag": "🇯🇵"}, "スウェーデン": {"group": "F", "tier": "D", "owner": null, "flag": "🇸🇪"}, "チュニジア": {"group": "F", "tier": "D", "owner": null, "flag": "🇹🇳"}, "ベルギー": {"group": "G", "tier": "B", "owner": null, "flag": "🇧🇪"}, "エジプト": {"group": "G", "tier": "C", "owner": null, "flag": "🇪🇬"}, "イラン": {"group": "G", "tier": "C", "owner": null, "flag": "🇮🇷"}, "ニュージーランド": {"group": "G", "tier": "", "owner": null, "flag": "🇳🇿"}, "スペイン": {"group": "H", "tier": "A", "owner": null, "flag": "🇪🇸"}, "カーボベルデ": {"group": "H", "tier": "D", "owner": null, "flag": "🇨🇻"}, "サウジアラビア": {"group": "H", "tier": "D", "owner": null, "flag": "🇸🇦"}, "ウルグアイ": {"group": "H", "tier": "C", "owner": null, "flag": "🇺🇾"}, "フランス": {"group": "I", "tier": "A", "owner": null, "flag": "🇫🇷"}, "セネガル": {"group": "I", "tier": "B", "owner": null, "flag": "🇸🇳"}, "イラク": {"group": "I", "tier": "D", "owner": null, "flag": "🇮🇶"}, "ノルウェー": {"group": "I", "tier": "C", "owner": null, "flag": "🇳🇴"}, "アルゼンチン": {"group": "J", "tier": "A", "owner": null, "flag": "🇦🇷"}, "アルジェリア": {"group": "J", "tier": "C", "owner": null, "flag": "🇩🇿"}, "オーストリア": {"group": "J", "tier": "C", "owner": null, "flag": "🇦🇹"}, "ヨルダン": {"group": "J", "tier": "D", "owner": null, "flag": "🇯🇴"}, "ポルトガル": {"group": "K", "tier": "A", "owner": null, "flag": "🇵🇹"}, "コンゴ民主共和国": {"group": "K", "tier": "D", "owner": null, "flag": "🇨🇩"}, "ウズベキスタン": {"group": "K", "tier": "D", "owner": null, "flag": "🇺🇿"}, "コロンビア": {"group": "K", "tier": "B", "owner": null, "flag": "🇨🇴"}, "イングランド": {"group": "L", "tier": "A", "owner": null, "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿"}, "クロアチア": {"group": "L", "tier": "B", "owner": null, "flag": "🇭🇷"}, "ガーナ": {"group": "L", "tier": "D", "owner": null, "flag": "🇬🇭"}, "パナマ": {"group": "L", "tier": "C", "owner": null, "flag": "🇵🇦"}}, "gsMatches": [{"id": "GS1", "group": "A", "home": "メキシコ", "away": "南アフリカ", "date": "2026-06-12", "time": "04:00", "hs": null, "as": null}, {"id": "GS2", "group": "A", "home": "韓国", "away": "チェコ", "date": "2026-06-12", "time": "11:00", "hs": null, "as": null}, {"id": "GS3", "group": "A", "home": "チェコ", "away": "南アフリカ", "date": "2026-06-19", "time": "01:00", "hs": null, "as": null}, {"id": "GS4", "group": "A", "home": "メキシコ", "away": "韓国", "date": "2026-06-19", "time": "10:00", "hs": null, "as": null}, {"id": "GS5", "group": "A", "home": "南アフリカ", "away": "韓国", "date": "2026-06-25", "time": "10:00", "hs": null, "as": null}, {"id": "GS6", "group": "A", "home": "チェコ", "away": "メキシコ", "date": "2026-06-25", "time": "10:00", "hs": null, "as": null}, {"id": "GS7", "group": "B", "home": "カナダ", "away": "ボスニア・ヘルツェゴビナ", "date": "2026-06-13", "time": "04:00", "hs": null, "as": null}, {"id": "GS8", "group": "B", "home": "カタール", "away": "スイス", "date": "2026-06-14", "time": "04:00", "hs": null, "as": null}, {"id": "GS9", "group": "B", "home": "スイス", "away": "ボスニア・ヘルツェゴビナ", "date": "2026-06-19", "time": "04:00", "hs": null, "as": null}, {"id": "GS10", "group": "B", "home": "カナダ", "away": "カタール", "date": "2026-06-19", "time": "07:00", "hs": null, "as": null}, {"id": "GS11", "group": "B", "home": "スイス", "away": "カナダ", "date": "2026-06-25", "time": "04:00", "hs": null, "as": null}, {"id": "GS12", "group": "B", "home": "ボスニア・ヘルツェゴビナ", "away": "カタール", "date": "2026-06-25", "time": "04:00", "hs": null, "as": null}, {"id": "GS13", "group": "C", "home": "ブラジル", "away": "モロッコ", "date": "2026-06-14", "time": "07:00", "hs": null, "as": null}, {"id": "GS14", "group": "C", "home": "ハイチ", "away": "スコットランド", "date": "2026-06-14", "time": "10:00", "hs": null, "as": null}, {"id": "GS15", "group": "C", "home": "スコットランド", "away": "モロッコ", "date": "2026-06-20", "time": "07:00", "hs": null, "as": null}, {"id": "GS16", "group": "C", "home": "ブラジル", "away": "ハイチ", "date": "2026-06-20", "time": "09:30", "hs": null, "as": null}, {"id": "GS17", "group": "C", "home": "モロッコ", "away": "ハイチ", "date": "2026-06-25", "time": "07:00", "hs": null, "as": null}, {"id": "GS18", "group": "C", "home": "スコットランド", "away": "ブラジル", "date": "2026-06-25", "time": "07:00", "hs": null, "as": null}, {"id": "GS19", "group": "D", "home": "アメリカ", "away": "パラグアイ", "date": "2026-06-13", "time": "10:00", "hs": null, "as": null}, {"id": "GS20", "group": "D", "home": "オーストラリア", "away": "トルコ", "date": "2026-06-14", "time": "13:00", "hs": null, "as": null}, {"id": "GS21", "group": "D", "home": "アメリカ", "away": "オーストラリア", "date": "2026-06-20", "time": "04:00", "hs": null, "as": null}, {"id": "GS22", "group": "D", "home": "トルコ", "away": "パラグアイ", "date": "2026-06-20", "time": "12:00", "hs": null, "as": null}, {"id": "GS23", "group": "D", "home": "トルコ", "away": "アメリカ", "date": "2026-06-26", "time": "11:00", "hs": null, "as": null}, {"id": "GS24", "group": "D", "home": "パラグアイ", "away": "オーストラリア", "date": "2026-06-26", "time": "11:00", "hs": null, "as": null}, {"id": "GS25", "group": "E", "home": "ドイツ", "away": "キュラソー", "date": "2026-06-15", "time": "02:00", "hs": null, "as": null}, {"id": "GS26", "group": "E", "home": "コートジボワール", "away": "エクアドル", "date": "2026-06-15", "time": "08:00", "hs": null, "as": null}, {"id": "GS27", "group": "E", "home": "ドイツ", "away": "コートジボワール", "date": "2026-06-21", "time": "05:00", "hs": null, "as": null}, {"id": "GS28", "group": "E", "home": "エクアドル", "away": "キュラソー", "date": "2026-06-21", "time": "09:00", "hs": null, "as": null}, {"id": "GS29", "group": "E", "home": "キュラソー", "away": "コートジボワール", "date": "2026-06-26", "time": "05:00", "hs": null, "as": null}, {"id": "GS30", "group": "E", "home": "エクアドル", "away": "ドイツ", "date": "2026-06-26", "time": "05:00", "hs": null, "as": null}, {"id": "GS31", "group": "F", "home": "オランダ", "away": "日本", "date": "2026-06-15", "time": "05:00", "hs": null, "as": null}, {"id": "GS32", "group": "F", "home": "スウェーデン", "away": "チュニジア", "date": "2026-06-15", "time": "11:00", "hs": null, "as": null}, {"id": "GS33", "group": "F", "home": "オランダ", "away": "スウェーデン", "date": "2026-06-21", "time": "02:00", "hs": null, "as": null}, {"id": "GS34", "group": "F", "home": "チュニジア", "away": "日本", "date": "2026-06-21", "time": "13:00", "hs": null, "as": null}, {"id": "GS35", "group": "F", "home": "チュニジア", "away": "オランダ", "date": "2026-06-26", "time": "08:00", "hs": null, "as": null}, {"id": "GS36", "group": "F", "home": "日本", "away": "スウェーデン", "date": "2026-06-26", "time": "08:00", "hs": null, "as": null}, {"id": "GS37", "group": "G", "home": "ベルギー", "away": "エジプト", "date": "2026-06-16", "time": "04:00", "hs": null, "as": null}, {"id": "GS38", "group": "G", "home": "イラン", "away": "ニュージーランド", "date": "2026-06-16", "time": "10:00", "hs": null, "as": null}, {"id": "GS39", "group": "G", "home": "ベルギー", "away": "イラン", "date": "2026-06-22", "time": "04:00", "hs": null, "as": null}, {"id": "GS40", "group": "G", "home": "ニュージーランド", "away": "エジプト", "date": "2026-06-22", "time": "10:00", "hs": null, "as": null}, {"id": "GS41", "group": "G", "home": "ニュージーランド", "away": "ベルギー", "date": "2026-06-27", "time": "12:00", "hs": null, "as": null}, {"id": "GS42", "group": "G", "home": "エジプト", "away": "イラン", "date": "2026-06-27", "time": "12:00", "hs": null, "as": null}, {"id": "GS43", "group": "H", "home": "スペイン", "away": "カーボベルデ", "date": "2026-06-16", "time": "01:00", "hs": null, "as": null}, {"id": "GS44", "group": "H", "home": "サウジアラビア", "away": "ウルグアイ", "date": "2026-06-16", "time": "07:00", "hs": null, "as": null}, {"id": "GS45", "group": "H", "home": "スペイン", "away": "サウジアラビア", "date": "2026-06-22", "time": "01:00", "hs": null, "as": null}, {"id": "GS46", "group": "H", "home": "ウルグアイ", "away": "カーボベルデ", "date": "2026-06-22", "time": "07:00", "hs": null, "as": null}, {"id": "GS47", "group": "H", "home": "カーボベルデ", "away": "サウジアラビア", "date": "2026-06-27", "time": "09:00", "hs": null, "as": null}, {"id": "GS48", "group": "H", "home": "ウルグアイ", "away": "スペイン", "date": "2026-06-27", "time": "09:00", "hs": null, "as": null}, {"id": "GS49", "group": "I", "home": "フランス", "away": "セネガル", "date": "2026-06-17", "time": "04:00", "hs": null, "as": null}, {"id": "GS50", "group": "I", "home": "イラク", "away": "ノルウェー", "date": "2026-06-17", "time": "07:00", "hs": null, "as": null}, {"id": "GS51", "group": "I", "home": "フランス", "away": "イラク", "date": "2026-06-23", "time": "06:00", "hs": null, "as": null}, {"id": "GS52", "group": "I", "home": "ノルウェー", "away": "セネガル", "date": "2026-06-23", "time": "09:00", "hs": null, "as": null}, {"id": "GS53", "group": "I", "home": "ノルウェー", "away": "フランス", "date": "2026-06-27", "time": "04:00", "hs": null, "as": null}, {"id": "GS54", "group": "I", "home": "セネガル", "away": "イラク", "date": "2026-06-27", "time": "04:00", "hs": null, "as": null}, {"id": "GS55", "group": "J", "home": "アルゼンチン", "away": "アルジェリア", "date": "2026-06-17", "time": "10:00", "hs": null, "as": null}, {"id": "GS56", "group": "J", "home": "オーストリア", "away": "ヨルダン", "date": "2026-06-17", "time": "13:00", "hs": null, "as": null}, {"id": "GS57", "group": "J", "home": "アルゼンチン", "away": "オーストリア", "date": "2026-06-23", "time": "02:00", "hs": null, "as": null}, {"id": "GS58", "group": "J", "home": "ヨルダン", "away": "アルジェリア", "date": "2026-06-23", "time": "12:00", "hs": null, "as": null}, {"id": "GS59", "group": "J", "home": "アルジェリア", "away": "オーストリア", "date": "2026-06-28", "time": "11:00", "hs": null, "as": null}, {"id": "GS60", "group": "J", "home": "ヨルダン", "away": "アルゼンチン", "date": "2026-06-28", "time": "11:00", "hs": null, "as": null}, {"id": "GS61", "group": "K", "home": "ポルトガル", "away": "コンゴ民主共和国", "date": "2026-06-18", "time": "02:00", "hs": null, "as": null}, {"id": "GS62", "group": "K", "home": "ウズベキスタン", "away": "コロンビア", "date": "2026-06-18", "time": "11:00", "hs": null, "as": null}, {"id": "GS63", "group": "K", "home": "ポルトガル", "away": "ウズベキスタン", "date": "2026-06-24", "time": "02:00", "hs": null, "as": null}, {"id": "GS64", "group": "K", "home": "コロンビア", "away": "コンゴ民主共和国", "date": "2026-06-24", "time": "11:00", "hs": null, "as": null}, {"id": "GS65", "group": "K", "home": "コロンビア", "away": "ポルトガル", "date": "2026-06-28", "time": "08:30", "hs": null, "as": null}, {"id": "GS66", "group": "K", "home": "コンゴ民主共和国", "away": "ウズベキスタン", "date": "2026-06-28", "time": "08:30", "hs": null, "as": null}, {"id": "GS67", "group": "L", "home": "イングランド", "away": "クロアチア", "date": "2026-06-18", "time": "05:00", "hs": null, "as": null}, {"id": "GS68", "group": "L", "home": "ガーナ", "away": "パナマ", "date": "2026-06-18", "time": "08:00", "hs": null, "as": null}, {"id": "GS69", "group": "L", "home": "イングランド", "away": "ガーナ", "date": "2026-06-24", "time": "05:00", "hs": null, "as": null}, {"id": "GS70", "group": "L", "home": "パナマ", "away": "クロアチア", "date": "2026-06-24", "time": "08:00", "hs": null, "as": null}, {"id": "GS71", "group": "L", "home": "パナマ", "away": "イングランド", "date": "2026-06-28", "time": "06:00", "hs": null, "as": null}, {"id": "GS72", "group": "L", "home": "クロアチア", "away": "ガーナ", "date": "2026-06-28", "time": "06:00", "hs": null, "as": null}]}</script>
+
+<script>
+const KO_ROUNDS=[["R32","ラウンド32",3],["R16","ベスト16",6],["QF","ベスト8",12],["SF","ベスト4",20],["F","決勝(優勝)",30]];
+const KO_PTS=Object.fromEntries(KO_ROUNDS.map(r=>[r[0],r[2]]));
+const KO_LABEL=Object.fromEntries(KO_ROUNDS.map(r=>[r[0],r[1]]));
+const WD=["日","月","火","水","木","金","土"];
+let G=JSON.parse(document.getElementById('gamedata').textContent);
+if(!G.colors)G.colors={};
+let rlState={order:[],remaining:null,spinning:false,timer:null};
+
+const tier=n=>G.teams[n]?.tier||"";
+const owner=n=>G.teams[n]?.owner||null;
+// 国名(日本語)→ISO 3166-1 alpha-2（flagcdn 用）。スコットランド/イングランドはサブディビジョンコード。
+const ISO={"メキシコ":"mx","南アフリカ":"za","韓国":"kr","チェコ":"cz","カナダ":"ca","ボスニア・ヘルツェゴビナ":"ba","カタール":"qa","スイス":"ch","ブラジル":"br","モロッコ":"ma","ハイチ":"ht","スコットランド":"gb-sct","アメリカ":"us","パラグアイ":"py","オーストラリア":"au","トルコ":"tr","ドイツ":"de","キュラソー":"cw","コートジボワール":"ci","エクアドル":"ec","オランダ":"nl","日本":"jp","スウェーデン":"se","チュニジア":"tn","ベルギー":"be","エジプト":"eg","イラン":"ir","ニュージーランド":"nz","スペイン":"es","カーボベルデ":"cv","サウジアラビア":"sa","ウルグアイ":"uy","フランス":"fr","セネガル":"sn","イラク":"iq","ノルウェー":"no","アルゼンチン":"ar","アルジェリア":"dz","オーストリア":"at","ヨルダン":"jo","ポルトガル":"pt","コンゴ民主共和国":"cd","ウズベキスタン":"uz","コロンビア":"co","イングランド":"gb-eng","クロアチア":"hr","ガーナ":"gh","パナマ":"pa"};
+// 国旗は flagcdn の SVG 画像で描画（絵文字は Windows でグリフが無く文字化けするため）。
+const flag=n=>{const c=ISO[n];if(!c)return"";const e=G.teams[n]?.flag||"";return `<img class="flag" src="https://flagcdn.com/${c}.svg" width="22" height="16" alt="${esc(e)}" loading="lazy" onerror="this.style.display='none'">`;};
+const pcol=p=>G.colors[p]||"#d9bd7e";
+const isLow=t=>t==="C"||t==="D";
+const isHigh=t=>t==="A"||t==="B";
+const groupsOf=()=>{const g={};for(const[n,t]of Object.entries(G.teams))(g[t.group]=g[t.group]||[]).push(n);return g;};
+const fmt=n=>Number.isInteger(n)?n:n.toFixed(1);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function dstr(d){const[y,m,da]=d.split('-').map(Number);const wd=WD[new Date(y,m-1,da).getDay()];return `${m}/${da}(${wd})`;}
+
+function tchip(n){const t=tier(n);return t?`<span class="tchip t${t}">${t}</span>`:`<span class="tchip tX">－</span>`;}
+
+function renderRules(){
+  document.getElementById('v-rules').innerHTML=`
+  <div class="barh">① チーム分配・ルーレットドラフト <span class="en">DRAFT</span></div>
+  <div class="card">
+    <p class="hint">48カ国中、FIFAランキング(2026/4/1)上位45カ国を5人で分配（1人9カ国）。出場国を強さで4ティアに分け、ティアごとにルーレットで指名順を決めて好きな国を取っていきます。全員に上位指名のチャンスあり。</p>
+    <table><thead><tr><th class="l">ティア</th><th>カ国数</th><th>1人あたり</th></tr></thead><tbody>
+      <tr><td class="l"><span class="tchip tA">A</span> 超強豪</td><td>5</td><td>1カ国</td></tr>
+      <tr><td class="l"><span class="tchip tB">B</span> 実力国</td><td>10</td><td>2カ国</td></tr>
+      <tr><td class="l"><span class="tchip tC">C</span> 中堅国</td><td>15</td><td>3カ国</td></tr>
+      <tr><td class="l"><span class="tchip tD">D</span> 伏兵国</td><td>15</td><td>3カ国</td></tr>
+    </tbody></table>
+    <p class="hint" style="margin-top:10px">※ ティアはFIFAランキング順。最下位3カ国（ハイチ・キュラソー・ニュージーランド <span class="tchip tX">－</span>）はドラフト対象外。</p>
+  </div>
+
+  <div class="barh">② 基本ポイント・後半爆上がり <span class="en">SCORING</span></div>
+  <div class="card">
+    <h2 class="sec">グループステージ</h2>
+    <table><tbody>
+      <tr><td class="l">1勝（引き分けは0.5pt）</td><td><b>1pt</b></td></tr>
+      <tr><td class="l">グループ1位通過ボーナス</td><td><b>2pt</b></td></tr>
+    </tbody></table>
+    <h2 class="sec" style="margin-top:14px">決勝トーナメント（突破で加算）</h2>
+    <table><tbody>
+      <tr><td class="l">ラウンド32 突破</td><td><b>3pt</b></td></tr>
+      <tr><td class="l">ベスト16 突破</td><td><b>6pt</b></td></tr>
+      <tr><td class="l">ベスト8 突破</td><td><b>12pt</b></td></tr>
+      <tr><td class="l">ベスト4 突破</td><td><b>20pt</b></td></tr>
+      <tr><td class="l">優勝</td><td class="gold-text" style="font-family:Anton;font-size:20px">30pt</td></tr>
+    </tbody></table>
+    <p class="hint" style="margin-top:8px">序盤に出遅れても、決勝トーナメントで一気に逆転できる配点。</p>
+  </div>
+
+  <div class="barh">③ 逆転のスパイス・特別ルール <span class="en">WILD CARDS</span></div>
+  <div class="card">
+    <h2 class="sec">① ジャイキリ・ボーナス</h2>
+    <p class="hint">自分の <span class="tchip tC">C</span><span class="tchip tD">D</span> の国が <span class="tchip tA">A</span><span class="tchip tB">B</span> の国に勝つ大金星を挙げたら、その試合の獲得ポイントが【×2】。</p>
+    <h2 class="sec" style="margin-top:14px">② 救済ルーレット（GS終了時）</h2>
+    <p class="hint">グループステージ終了時、暫定下位の人から順にルーレットを回し、自分が持っていない生き残り国を1つ「ラッキー国」として獲得。その国の決勝トーナメント獲得ポイントが自分にも加算（元の保有者にも通常どおり入る“相乗り”方式。誰のチームも奪いません）。下位ほど先に強い国を狙える救済措置。</p>
+    <h2 class="sec" style="margin-top:14px">③ ファイナル・ベット（ベスト4決定時）</h2>
+    <p class="hint">準決勝の4カ国が出揃った時点で、自分の持ちポイントから最大10ptを優勝予想国に賭けられます（他人の国でもOK）。的中で【×2】返還、外れは没収。持ち国が全滅しても最後まで逆転優勝が狙えます。</p>
+  </div>
+
+  <div class="note">運（ルーレット）× 戦略（ドラフト）× 大逆転（後半配点）。最後まで全員に優勝のチャンスが残ります。</div>`;
+}
+
+function renderRoulette(){
+  if(rlState.remaining===null){rlState.order=[];rlState.remaining=[...G.players];}
+  const done=rlState.remaining.length===0;
+  const last=rlState.order[rlState.order.length-1];
+  const pos=rlState.order.length;
+  const nameTxt=done?'🏆 完了':(last?last:'READY');
+  const nameCol=last?pcol(last):'#d9bd7e';
+  const ol=rlState.order.map((p,i)=>`<div class="rl-item"><span class="rl-rank">${i+1}</span><span class="rl-dot" style="background:${pcol(p)}"></span><span class="rl-nm">${esc(p)}</span></div>`).join('');
+  const rem=rlState.remaining.map(p=>`<span class="rl-pill" style="border-color:${pcol(p)};color:${pcol(p)}">${esc(p)}</span>`).join('');
+  document.getElementById('v-roulette').innerHTML=`
+    <div class="barh">ドラフト順ルーレット <span class="en">DRAFT ORDER</span></div>
+    <div class="stripe"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    <div class="rl-stage"><div class="rl-name" id="rl-name" style="color:${nameCol}">${esc(nameTxt)}</div></div>
+    <div class="rl-btns">
+      <button id="rl-start" class="btn" onclick="rlStart()" ${done?'disabled':''}>${pos===0?'🎲 スタート':(done?'完了':'🎲 次を回す（'+(pos+1)+'人目）')}</button>
+      <button id="rl-stop" class="btn ghost" onclick="rlStop()" disabled>■ ストップ</button>
+      <button id="rl-reset" class="del" onclick="rlReset()">リセット</button>
+    </div>
+    <div class="hint">スタート→ストップで1人ずつ確定（${pos}/${G.players.length}人）。${done?'全員の順番が決定しました！':'残り：'+(rem||'なし')}</div>
+    <div class="barh">確定した順番 <span class="en">RESULT</span></div>
+    <div class="card">${ol||'<div class="hint">まだ確定していません。</div>'}</div>`;
+}
+function rlStart(){
+  if(rlState.spinning||rlState.remaining.length===0)return;
+  rlState.spinning=true;
+  document.getElementById('rl-start').disabled=true;
+  document.getElementById('rl-stop').disabled=false;
+  document.getElementById('rl-reset').disabled=true;
+  const el=document.getElementById('rl-name');let i=Math.floor(Math.random()*rlState.remaining.length);
+  rlState.timer=setInterval(()=>{const r=rlState.remaining;const n=r[i%r.length];i++;el.textContent=n;el.style.color=pcol(n);},75);
+}
+function rlStop(){
+  if(!rlState.spinning)return;
+  clearInterval(rlState.timer);
+  document.getElementById('rl-stop').disabled=true;
+  const r=rlState.remaining;const winner=r[Math.floor(Math.random()*r.length)];
+  const el=document.getElementById('rl-name');
+  let k=0;const steps=16;let delay=70;
+  const seq=()=>{
+    const n=(k>=steps-1)?winner:r[Math.floor(Math.random()*r.length)];
+    el.textContent=n;el.style.color=pcol(n);k++;
+    if(k>=steps){rlFinalize(winner);return;}
+    delay*=1.14;setTimeout(seq,delay);
+  };
+  seq();
+}
+function rlFinalize(w){
+  rlState.order.push(w);
+  rlState.remaining=rlState.remaining.filter(x=>x!==w);
+  rlState.spinning=false;
+  if(rlState.remaining.length===0){G.draftOrder=[...rlState.order];syncData();}
+  renderRoulette();
+  const el=document.getElementById('rl-name');if(el){el.classList.add('pop');setTimeout(()=>el.classList.remove('pop'),450);}
+}
+function rlReset(){
+  if(rlState.spinning){clearInterval(rlState.timer);rlState.spinning=false;}
+  rlState.order=[];rlState.remaining=[...G.players];G.draftOrder=null;syncData();renderRoulette();
+}
+
+function compute(){
+  const P={};G.players.forEach(p=>P[p]={gs:0,bonus:0,ko:0,lucky:0,bet:0,total:0});
+  const add=(p,k,v)=>{if(p&&P[p])P[p][k]+=v;};
+  const gr=groupsOf();const standings={};
+  for(const grp of Object.keys(gr).sort()){
+    const st={};gr[grp].forEach(t=>st[t]={team:t,P:0,W:0,D:0,L:0,GF:0,GA:0,GD:0,Pts:0});
+    const ms=G.gsMatches.filter(m=>m.group===grp);let played=0;
+    ms.forEach(m=>{if(m.hs==null||m.as==null)return;played++;const h=st[m.home],a=st[m.away];
+      h.P++;a.P++;h.GF+=m.hs;h.GA+=m.as;a.GF+=m.as;a.GA+=m.hs;
+      if(m.hs===m.as){h.D++;a.D++;h.Pts++;a.Pts++;}
+      else if(m.hs>m.as){h.W++;a.L++;h.Pts+=3;}else{a.W++;h.L++;a.Pts+=3;}});
+    Object.values(st).forEach(s=>s.GD=s.GF-s.GA);
+    const arr=Object.values(st).sort((x,y)=>y.Pts-x.Pts||y.GD-x.GD||y.GF-x.GF);
+    standings[grp]={rows:arr,complete:played===ms.length&&played>0};
+  }
+  G.gsMatches.forEach(m=>{if(m.hs==null||m.as==null)return;
+    if(m.hs===m.as){add(owner(m.home),'gs',0.5);add(owner(m.away),'gs',0.5);}
+    else{const win=m.hs>m.as?m.home:m.away,los=m.hs>m.as?m.away:m.home;
+      let pts=1;if(G.config.gk&&isLow(tier(win))&&isHigh(tier(los)))pts=2;add(owner(win),'gs',pts);}});
+  for(const grp of Object.keys(standings)){const s=standings[grp];if(s.complete)add(owner(s.rows[0].team),'bonus',2);}
+  let champion=null;
+  (G.koMatches||[]).forEach(m=>{if(!m.winner)return;const los=m.winner===m.home?m.away:m.home;
+    let p=KO_PTS[m.round]||0;if(G.config.gk&&isLow(tier(m.winner))&&isHigh(tier(los)))p*=2;
+    add(owner(m.winner),'ko',p);
+    for(const[pl,c]of Object.entries(G.lucky||{}))if(c===m.winner)add(pl,'lucky',p);
+    if(m.round==="F")champion=m.winner;});
+  (G.bets||[]).forEach(b=>{if(!b.player||!b.amount)return;const amt=Math.abs(b.amount);
+    if(champion==null)add(b.player,'bet',-amt);else if(b.team===champion)add(b.player,'bet',amt);else add(b.player,'bet',-amt);});
+  G.players.forEach(p=>{const x=P[p];x.total=x.gs+x.bonus+x.ko+x.lucky+x.bet;});
+  return {P,standings,champion};
+}
+
+function syncData(){document.getElementById('gamedata').textContent=JSON.stringify(G);}
+function renderAll(){syncData();renderLB();renderGroups();renderScores();renderRoulette();renderSettings();renderRules();renderData();}
+
+function renderLB(){
+  const {P}=compute();
+  const arr=G.players.map(p=>({p,...P[p]})).sort((a,b)=>b.total-a.total);
+  const max=Math.max(1,...arr.map(x=>x.total));
+  let rows=arr.map((x,i)=>`<div class="pl ${i===0?'r1':''}" style="--pc:${pcol(x.p)}">
+    <div class="ranknum">${i+1}</div>
+    <div class="pmid"><div class="pname">${esc(x.p)}</div>
+      <div class="pbar" style="width:${Math.max(3,x.total/max*100)}%"></div>
+      <div class="bd">GS ${fmt(x.gs)}・1位 ${fmt(x.bonus)}・決勝T ${fmt(x.ko)}・ラッキー ${fmt(x.lucky)}・ベット ${x.bet>0?'+':''}${fmt(x.bet)}</div></div>
+    <div class="ptotal" style="color:${i===0?'#ead7a6':'var(--tx)'}">${fmt(x.total)}</div></div>`).join('');
+  // draft under leaderboard
+  const gr=groupsOf();let draft='';
+  for(const grp of Object.keys(gr).sort()){
+    let r=gr[grp].map(t=>`<div class="drow"><span class="fn">${flag(t)} ${esc(t)}${tchip(t)}</span>
+      <select onchange="setOwner('${esc(t)}',this.value)">
+        <option value="">―</option>${G.players.map(p=>`<option ${owner(t)===p?'selected':''}>${esc(p)}</option>`).join('')}
+      </select></div>`).join('');
+    draft+=`<div class="dg"><div class="gh">Group ${grp}</div>${r}</div>`;
+  }
+  document.getElementById('v-lb').innerHTML=`
+    <div class="barh">🏆 総合順位 <span class="en">LEADERBOARD</span></div>
+    <div class="lb">${rows}</div>
+    <div class="note">GS 勝1/分0.5、グループ1位+2、決勝T 3→6→12→20→優勝30。ジャイキリ(C・D→A・B撃破)×2、救済ルーレット相乗り・ファイナルベットも自動加算。</div>
+    <div class="barh">ドラフト割り当て <span class="en">DRAFT</span></div>
+    <div class="hint">ドラフトで決まり次第、各国の保有者をここで選択（順位表に即反映）。ティア・色などは「設定」タブ。</div>
+    <div class="draftgrid">${draft}</div>`;
+}
+
+function renderGroups(){
+  const {standings}=compute();
+  let html=`<div class="barh">グループ順位 <span class="en">GROUP STAGE</span></div><div class="groups">`;
+  for(const grp of Object.keys(standings)){const s=standings[grp];
+    let rows=s.rows.map((r,i)=>{const o=owner(r.team);
+      return `<tr class="${i<2?'adv':''}"><td class="pos">${i+1}</td>
+        <td class="l">${flag(r.team)} ${esc(r.team)}${tchip(r.team)}${o?`<span class="ochip" style="background:${pcol(o)}">${esc(o)}</span>`:''}</td>
+        <td>${r.P}</td><td>${r.W}-${r.D}-${r.L}</td><td>${r.GD>0?'+':''}${r.GD}</td><td><b>${r.Pts}</b></td></tr>`;}).join('');
+    html+=`<div class="gcard"><div class="gh"><span>Group ${grp}</span><span>${s.complete?'確定':'途中'}</span></div>
+      <div class="tbw"><table><thead><tr><th>#</th><th class="l">国 / 保有者</th><th>試</th><th>勝分敗</th><th>差</th><th>点</th></tr></thead><tbody>${rows}</tbody></table></div></div>`;}
+  html+=`</div><div class="note">上位2をハイライト（実際は各組上位2＋3位上位8チームが決勝T進出）。1位通過＝+2pt。</div>`;
+  document.getElementById('v-groups').innerHTML=html;
+}
+
+function renderScores(){
+  // group by date
+  const byDate={};G.gsMatches.forEach(m=>{(byDate[m.date]=byDate[m.date]||[]).push(m);});
+  const dates=Object.keys(byDate).sort();
+  let gs=`<div class="barh">グループステージ 日程・結果（日本時間）<span class="en">GROUP</span></div>`;
+  dates.forEach(d=>{
+    const ms=byDate[d].sort((a,b)=>a.time.localeCompare(b.time));
+    let rows=ms.map(m=>`<div class="m">
+      <span class="tm">${m.time}</span><span class="gg">${m.group}</span>
+      <span class="tn">${flag(m.home)} ${esc(m.home)}</span>
+      <input type="number" min="0" value="${m.hs==null?'':m.hs}" onchange="setScore('${m.id}','h',this.value)">
+      <span class="x">-</span>
+      <input type="number" min="0" value="${m.as==null?'':m.as}" onchange="setScore('${m.id}','a',this.value)">
+      <span class="tn aw">${esc(m.away)} ${flag(m.away)}</span></div>`).join('');
+    gs+=`<div class="day">${dstr(d)}</div>${rows}`;
+  });
+  const teamOpts=Object.keys(G.teams).sort().map(t=>`<option>${esc(t)}</option>`).join('');
+  const roundOpts=KO_ROUNDS.map(r=>`<option value="${r[0]}">${r[1]}（${r[2]}pt）</option>`).join('');
+  let kolist=(G.koMatches||[]).map((m,i)=>`<div class="m"><span class="gg">${KO_LABEL[m.round]||m.round}</span>
+    <span class="tn">${flag(m.home)} ${esc(m.home)} vs ${esc(m.away)} ${flag(m.away)}</span>
+    <span style="color:#9fe0b0;font-size:12px">勝:${esc(m.winner||'未定')}</span>
+    <button class="del" onclick="delKO(${i})">削除</button></div>`).join('')||'<div class="hint">トーナメント開始後に追加します。</div>';
+  const ko=`<div class="barh">決勝トーナメント <span class="en">KNOCKOUT</span></div>
+    <div class="card">
+      <div class="row"><span class="lbl">ラウンド</span><select id="ko-round">${roundOpts}</select></div>
+      <div class="row"><span class="lbl">対戦</span><select id="ko-home"><option value="">―</option>${teamOpts}</select><span class="x">vs</span><select id="ko-away"><option value="">―</option>${teamOpts}</select></div>
+      <div class="row"><span class="lbl">勝者</span><select id="ko-win"><option value="">―</option>${teamOpts}</select><button class="btn sm" onclick="addKO()">＋追加</button></div>
+      <div style="margin-top:10px">${kolist}</div></div>`;
+  document.getElementById('v-scores').innerHTML=gs+ko;
+}
+
+function renderSettings(){
+  let pl=G.players.map((p,i)=>`<div class="row"><span class="lbl">P${i+1}</span>
+    <input value="${esc(p)}" style="flex:1;min-width:120px" onchange="setPlayer(${i},this.value)">
+    <input type="color" value="${pcol(p)}" onchange="setColor('${esc(p)}',this.value)"></div>`).join('');
+  const gr=groupsOf();let draft='';
+  for(const grp of Object.keys(gr).sort()){
+    let rows=gr[grp].map(t=>`<tr><td class="l">${flag(t)} ${esc(t)}</td>
+      <td><select onchange="setTier('${esc(t)}',this.value)">${['A','B','C','D','-'].map(x=>`<option value="${x==='-'?'':x}" ${tier(t)===(x==='-'?'':x)?'selected':''}>${x}</option>`).join('')}</select></td>
+      <td><select onchange="setOwner('${esc(t)}',this.value)"><option value="">―</option>${G.players.map(p=>`<option ${owner(t)===p?'selected':''}>${esc(p)}</option>`).join('')}</select></td></tr>`).join('');
+    draft+=`<div class="gcard" style="margin-bottom:10px"><div class="gh">Group ${grp}</div>
+      <table><thead><tr><th class="l">国</th><th>ティア</th><th>保有者</th></tr></thead><tbody>${rows}</tbody></table></div>`;}
+  let lucky=G.players.map(p=>`<div class="row"><span class="lbl">${esc(p)}</span>
+    <select onchange="setLucky('${esc(p)}',this.value)"><option value="">―</option>${Object.keys(G.teams).sort().map(t=>`<option ${G.lucky[p]===t?'selected':''}>${esc(t)}</option>`).join('')}</select></div>`).join('');
+  let bets=(G.bets||[]).map((b,i)=>`<div class="m"><span class="tn">${esc(b.player)} → ${flag(b.team)}${esc(b.team)} に ${b.amount}pt</span><button class="del" onclick="delBet(${i})">削除</button></div>`).join('')||'<div class="hint">ベスト4決定後に登録。</div>';
+  const teamOpts=`<option value="">国</option>`+Object.keys(G.teams).sort().map(t=>`<option>${esc(t)}</option>`).join('');
+  const popt=`<option value="">誰</option>`+G.players.map(p=>`<option>${esc(p)}</option>`).join('');
+  document.getElementById('v-settings').innerHTML=`
+    <div class="barh">メンバーと色 <span class="en">MEMBERS</span></div>
+    <div class="hint">公式アートの配色から各メンバーのテーマ色を設定（順位表バー・保有者バッジに反映）。</div>
+    <div class="card">${pl}</div>
+    <div class="barh">ティア・ドラフト <span class="en">TIERS / DRAFT</span></div>
+    <div class="hint">ティアはジャイキリ判定用（暫定値・編集可）。保有者は順位表タブからでも入力できます。</div>
+    <div class="groups">${draft}</div>
+    <div class="barh">救済ルーレット（ラッキー国）<span class="en">BONUS</span></div>
+    <div class="card">${lucky}</div>
+    <div class="barh">ファイナル・ベット <span class="en">FINAL BET</span></div>
+    <div class="card"><div class="row"><select id="bet-p">${popt}</select><select id="bet-t">${teamOpts}</select>
+      <input type="number" id="bet-a" min="1" max="10" placeholder="pt" style="width:60px"><button class="btn sm" onclick="addBet()">＋追加</button></div>
+      <div style="margin-top:10px">${bets}</div></div>`;
+}
+
+function renderData(){
+  document.getElementById('v-data').innerHTML=`
+    <div class="barh">保存・書き出し <span class="en">SAVE</span></div>
+    <div class="note"><b>毎日の流れ：</b>① 結果入力 → ② 下の「最新データでHTMLをダウンロード」 → ③ 共有 / 再アップロード。全員が同じ最新版を見られます。</div>
+    <div class="card"><div class="row">
+      <button class="btn" onclick="exportHTML()">⬇ 最新データでHTMLをダウンロード</button>
+      <button class="btn ghost" onclick="copyJSON()">JSONをコピー</button></div><div class="row" style="margin-top:8px"><button class="btn ghost sm" onclick="saveConfig()">config.json を保存</button><button class="btn ghost sm" onclick="saveResults()">results.json を保存</button></div><p class="hint">自動更新セットでは、ドラフト後に <b>config.json</b>（保有者・色・ティア）をコミット。<b>results.json</b>（スコア）はGitHub Actionsが自動更新します。手動入力も引き続き可能です。</p>
+      <p class="hint" style="margin-top:12px">手動編集する場合は下を書き換えて「読み込む」：</p>
+      <textarea id="jsonbox">${esc(JSON.stringify(G,null,1))}</textarea>
+      <div class="row"><button class="btn ghost sm" onclick="loadJSON()">JSONを読み込む</button><span id="loadmsg" class="hint"></span></div></div>
+    <div class="note"><b>ウェブアプリ化：</b>このHTMLを <b>Netlify Drop</b>(netlify.com/drop にドラッグ) か <b>GitHub Pages</b> に置けば、全員が同じURLで閲覧可能。</div>`;
+}
+
+function setScore(id,s,v){const m=G.gsMatches.find(x=>x.id===id);if(!m)return;const val=v===''?null:Math.max(0,parseInt(v));if(s==='h')m.hs=val;else m.as=val;renderLB();renderGroups();syncData();}
+function addKO(){const r=ko_round.value,h=ko_home.value,a=ko_away.value,w=ko_win.value;if(!h||!a||h===a){alert('対戦カードを正しく選択してください');return;}G.koMatches.push({round:r,home:h,away:a,winner:w});renderAll();}
+function delKO(i){G.koMatches.splice(i,1);renderAll();}
+function setPlayer(i,v){const old=G.players[i];const nu=v.trim()||old;G.players[i]=nu;
+  for(const t in G.teams)if(G.teams[t].owner===old)G.teams[t].owner=nu;
+  if(G.colors[old]!==undefined){G.colors[nu]=G.colors[old];if(nu!==old)delete G.colors[old];}
+  if(G.lucky[old]!==undefined){G.lucky[nu]=G.lucky[old];if(nu!==old)delete G.lucky[old];}
+  (G.bets||[]).forEach(b=>{if(b.player===old)b.player=nu;});rlState.remaining=null;renderAll();}
+function setColor(p,v){G.colors[p]=v;renderLB();renderGroups();syncData();}
+function setTier(t,v){G.teams[t].tier=v;renderLB();renderGroups();syncData();}
+function setOwner(t,v){G.teams[t].owner=v||null;renderLB();renderGroups();syncData();}
+function setLucky(p,v){if(v)G.lucky[p]=v;else delete G.lucky[p];renderLB();syncData();}
+function addBet(){const p=bet_p.value,t=bet_t.value,a=parseInt(bet_a.value);if(!p||!t||!a){alert('プレイヤー・国・pt を入力');return;}if(a>10){alert('最大10pt');return;}G.bets.push({player:p,team:t,amount:a});renderAll();}
+function delBet(i){G.bets.splice(i,1);renderAll();}
+function copyJSON(){navigator.clipboard.writeText(JSON.stringify(G)).then(()=>alert('コピーしました'));}
+function loadJSON(){try{G=JSON.parse(jsonbox.value);if(!G.colors)G.colors={};renderAll();loadmsg.textContent='✓ 読み込み完了';}catch(e){loadmsg.textContent='× JSONエラー';}}
+function exportHTML(){syncData();const html='<!DOCTYPE html>\n'+document.documentElement.outerHTML;
+  const blob=new Blob([html],{type:'text/html'});const url=URL.createObjectURL(blob);const a=document.createElement('a');
+  const d=new Date();a.href=url;a.download=`wc2026_dashboard_${d.getMonth()+1}${('0'+d.getDate()).slice(-2)}.html`;a.click();URL.revokeObjectURL(url);}
+
+document.getElementById('nav').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;
+  document.querySelectorAll('#nav button').forEach(x=>x.classList.remove('on'));b.classList.add('on');
+  document.querySelectorAll('.view').forEach(v=>v.classList.remove('on'));document.getElementById('v-'+b.dataset.v).classList.add('on');});
+
+async function boot(){
+  try{
+    const [c,r]=await Promise.all([fetch('config.json',{cache:'no-store'}),fetch('results.json',{cache:'no-store'})]);
+    if(c.ok){const cfg=await c.json();if(cfg.players)G.players=cfg.players;if(cfg.colors)G.colors=cfg.colors;if(cfg.config)G.config=cfg.config;if(cfg.lucky)G.lucky=cfg.lucky;if(cfg.bets)G.bets=cfg.bets;if('draftOrder' in cfg)G.draftOrder=cfg.draftOrder;if(cfg.teams)G.teams=cfg.teams;}
+    if(r.ok){const res=await r.json();if(res.gsMatches)G.gsMatches=res.gsMatches;if(res.koMatches)G.koMatches=res.koMatches;}
+  }catch(e){/* file:// やオフライン時は埋め込みデータで動作 */}
+  if(!G.colors)G.colors={};
+  rlState.remaining=null;
+  renderAll();
+}
+function dlJSON(name,obj){const b=new Blob([JSON.stringify(obj,null,1)],{type:'application/json'});const u=URL.createObjectURL(b);const a=document.createElement('a');a.href=u;a.download=name;a.click();URL.revokeObjectURL(u);}
+function saveConfig(){dlJSON('config.json',{players:G.players,colors:G.colors,config:G.config,lucky:G.lucky,bets:G.bets,draftOrder:G.draftOrder||null,teams:G.teams});}
+function saveResults(){dlJSON('results.json',{gsMatches:G.gsMatches,koMatches:G.koMatches});}
+boot();
+</script>
+</body>
+</html>

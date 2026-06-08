@@ -1,0 +1,10 @@
+# OS / editor cruft
+Thumbs.db
+.DS_Store
+*.log
+
+# local syntax-check / scratch
+.__chk.js
+
+# local preview config (machine-specific)
+.claude/
