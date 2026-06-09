@@ -135,6 +135,28 @@
   .od i{font-style:normal;font-size:9px;color:var(--muted);letter-spacing:.1em;margin-top:1px}
   .od.win b{color:#9fe0b0}.od.lose b{color:#e0a06a}
   .odds .olabel{font-size:9px;color:var(--muted);letter-spacing:.1em;margin-left:auto}
+  /* portfolio */
+  .pf-summary{display:flex;align-items:center;gap:14px;background:var(--row);border:1px solid var(--line);border-left:5px solid var(--pc,#d9bd7e);border-radius:12px;padding:12px 16px;margin:10px 0}
+  .pf-total{font-family:"Anton",sans-serif;font-size:30px;line-height:1}
+  .pf-total i{font-size:13px;font-style:normal;color:var(--muted);margin-left:3px}
+  .pf-bd{font-size:11.5px;color:var(--muted);flex:1;min-width:0}
+  .pf-item{background:var(--card);border:1px solid var(--line);border-radius:12px;margin:8px 0;overflow:hidden}
+  .pf-row{display:flex;align-items:center;gap:9px;width:100%;background:transparent;border:0;color:var(--tx);font-family:inherit;cursor:pointer;padding:11px 13px;text-align:left}
+  .pf-nm{font-weight:900;font-size:15px;flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .pf-pts{font-family:"Anton",sans-serif;font-size:20px;flex:none}
+  .pf-pts i{font-size:11px;font-style:normal;color:var(--muted);margin-left:2px}
+  .pf-caret{flex:none;color:var(--gold);font-size:13px;width:16px;text-align:center}
+  .pf-sub{font-size:11.5px;color:var(--muted);padding:0 13px 4px 13px}
+  .pf-next{font-size:12px;color:var(--tx);padding:0 13px 11px 13px;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+  .pf-when{color:var(--gold);font-size:11px}
+  .pf-squad{padding:0 10px 10px}
+  table.sqt{width:100%;border-collapse:collapse;font-size:12px}
+  table.sqt th{color:var(--gold);font-size:10.5px;font-weight:700;padding:6px 5px;border-bottom:1px solid var(--line)}
+  table.sqt td{padding:5px 5px;border-bottom:1px solid var(--line)}
+  table.sqt td.l,table.sqt th.l{text-align:left}
+  table.sqt td:not(.l){text-align:center}
+  .sqn{font-family:"Anton",sans-serif;color:var(--gold);font-size:13px;width:26px}
+  .sqgrp{font-size:10px;font-weight:900;color:var(--gold);letter-spacing:.1em;padding:8px 5px 2px}
   .tchip{display:inline-block;font-family:"Anton",sans-serif;font-size:10px;width:16px;height:16px;line-height:16px;text-align:center;border-radius:4px;margin-left:6px;vertical-align:middle}
   .tchip.tA{background:linear-gradient(180deg,#ead7a6,#cdac68);color:#241c0c}
   .tchip.tB{background:#5ea0ec;color:#08152b}
@@ -200,6 +222,7 @@
 
   <nav id="nav">
     <button data-v="lb" class="on">順位表</button>
+    <button data-v="portfolio">ポートフォリオ</button>
     <button data-v="groups">グループ</button>
     <button data-v="teams">各国チーム</button>
     <button data-v="scores">日程・結果</button>
@@ -212,6 +235,7 @@
   </nav>
 
   <section class="view on" id="v-lb"></section>
+  <section class="view" id="v-portfolio"></section>
   <section class="view" id="v-groups"></section>
   <section class="view" id="v-teams"></section>
   <section class="view" id="v-scores"></section>
@@ -435,6 +459,83 @@ function renderRank(){
     <div class="note">出場国のみ抜粋のため世界順位は飛び番です（例: 12位イタリア・20位デンマーク等は本大会不参加）。</div>`;
 }
 
+let pfPlayer=null;
+function setPf(p){pfPlayer=p;renderPortfolio();}
+// 本予想における国別ポイント（保有者に入る分＝GS＋1位ボーナス＋決勝T突破、ジャイキリ×2込み。lucky/betは選手単位なので除外）
+function teamPoints(n,standings){
+  let gs=0,bonus=0,ko=0;
+  G.gsMatches.forEach(m=>{
+    if(m.hs==null||m.as==null||(m.home!==n&&m.away!==n))return;
+    const isHome=m.home===n,my=isHome?m.hs:m.as,op=isHome?m.as:m.hs;
+    if(my===op)gs+=0.5;
+    else if(my>op){const los=isHome?m.away:m.home;gs+=(G.config.gk&&isLow(tier(n))&&isHigh(tier(los)))?2:1;}
+  });
+  for(const grp of Object.keys(standings)){const s=standings[grp];if(s.complete&&s.rows[0]&&s.rows[0].team===n)bonus+=2;}
+  (G.koMatches||[]).forEach(m=>{if(m.winner!==n)return;const los=m.home===n?m.away:m.home;let p=KO_PTS[m.round]||0;if(G.config.gk&&isLow(tier(n))&&isHigh(tier(los)))p*=2;ko+=p;});
+  return {gs,bonus,ko,total:gs+bonus+ko};
+}
+// 直近（次戦 or 最後の試合）のGSカード
+function nextMatch(n){
+  const ms=G.gsMatches.filter(m=>m.home===n||m.away===n).map(m=>({
+    ...m,t:new Date(`${m.date}T${m.time}:00+09:00`).getTime(),
+    opp:m.home===n?m.away:m.home,isHome:m.home===n,played:m.hs!=null&&m.as!=null
+  })).sort((a,b)=>a.t-b.t);
+  if(!ms.length)return null;
+  const now=Date.now();
+  return ms.find(x=>x.t>=now)||ms[ms.length-1];
+}
+function squadHTML(n){
+  const sq=(G.squads&&G.squads[n])||null;
+  if(!sq||!sq.length)return '<div class="hint" style="margin:6px 4px">招集選手データは準備中です（後日反映）。</div>';
+  const byPos={GK:[],DF:[],MF:[],FW:[]};const POSJ={GK:'GK',DF:'DF',MF:'MF',FW:'FW'};
+  sq.forEach(p=>{(byPos[p.pos]?byPos[p.pos]:(byPos.OTHER=byPos.OTHER||[])).push(p);});
+  let body='';
+  ['GK','DF','MF','FW','OTHER'].forEach(pos=>{const arr=byPos[pos];if(!arr||!arr.length)return;
+    arr.sort((a,b)=>(a.no||99)-(b.no||99)).forEach(p=>{
+      body+=`<tr><td class="sqn">${p.no??'–'}</td><td class="l">${esc(p.name)}</td><td>${esc(POSJ[p.pos]||p.pos||'')}</td><td>${p.age??'–'}</td><td class="l">${esc(p.club||'')}</td></tr>`;});});
+  return `<table class="sqt"><thead><tr><th>#</th><th class="l">選手</th><th>位置</th><th>年齢</th><th class="l">所属クラブ</th></tr></thead><tbody>${body}</tbody></table>`;
+}
+function togSquad(n){
+  const el=document.getElementById('sq-'+n),cz=document.getElementById('cz-'+n);
+  if(!el)return;
+  if(el.style.display!=='none'){el.style.display='none';if(cz)cz.textContent='▾';return;}
+  if(!el.dataset.loaded){el.innerHTML=squadHTML(n);el.dataset.loaded='1';}
+  el.style.display='block';if(cz)cz.textContent='▴';
+}
+function renderPortfolio(){
+  const {P,standings}=compute();
+  const sel=(pfPlayer&&G.players.includes(pfPlayer))?pfPlayer:G.players[0];
+  const opts=G.players.map(p=>`<option ${p===sel?'selected':''}>${esc(p)}</option>`).join('');
+  const owned=Object.keys(G.teams).filter(t=>owner(t)===sel);
+  const rows=owned.map(n=>({n,...teamPoints(n,standings)})).sort((a,b)=>b.total-a.total);
+  const pb=P[sel]||{gs:0,bonus:0,ko:0,lucky:0,bet:0,total:0};
+  const cards=rows.map(r=>{
+    const nm=nextMatch(r.n);
+    const nmHtml=nm
+      ? `<div class="pf-next">${nm.played?'直近結果':'次戦'}: ${flag(nm.opp)} ${esc(nm.opp)}<span class="pf-when">${dstr(nm.date)} ${nm.time}${nm.played?` ／ ${nm.isHome?nm.hs:nm.as}-${nm.isHome?nm.as:nm.hs}`:''}</span></div>`
+      : '<div class="pf-next" style="color:var(--muted)">日程データなし</div>';
+    const sub=[r.gs?`GS ${fmt(r.gs)}`:'',r.bonus?`1位+${fmt(r.bonus)}`:'',r.ko?`決勝T ${fmt(r.ko)}`:''].filter(Boolean).join(' ・ ')||'まだ 0pt';
+    return `<div class="pf-item">
+      <button class="pf-row" onclick="togSquad('${esc(r.n)}')">
+        ${flag(r.n)}<span class="pf-nm">${esc(r.n)}</span>${tchip(r.n)}
+        <span class="pf-pts">${fmt(r.total)}<i>pt</i></span><span class="pf-caret" id="cz-${esc(r.n)}">▾</span>
+      </button>
+      <div class="pf-sub">${sub}</div>
+      ${nmHtml}
+      <div class="pf-squad" id="sq-${esc(r.n)}" style="display:none"></div>
+    </div>`;}).join('')||'<div class="hint">保有国がありません。「設定」タブで保有者を割り当ててください。</div>';
+  document.getElementById('v-portfolio').innerHTML=`
+    <div class="barh">ポートフォリオ <span class="en">PORTFOLIO</span></div>
+    <div class="row"><span class="lbl">メンバー</span>
+      <select id="pf-player" onchange="setPf(this.value)" style="flex:1;min-width:140px;font-weight:700;font-size:15px">${opts}</select></div>
+    <div class="pf-summary" style="--pc:${pcol(sel)}">
+      <div class="pf-total">${fmt(pb.total)}<i>pt</i></div>
+      <div class="pf-bd"><b style="color:${pcol(sel)}">${esc(sel)}</b>／保有 ${owned.length}カ国<br>GS ${fmt(pb.gs)}・1位 ${fmt(pb.bonus)}・決勝T ${fmt(pb.ko)}・ラッキー ${fmt(pb.lucky)}・ベット ${pb.bet>0?'+':''}${fmt(pb.bet)}</div>
+    </div>
+    <div class="pf-list">${cards}</div>
+    <div class="note">国名をタップすると招集選手（背番号・ポジション・年齢・所属クラブ）を表示します。ポイントは本予想の保有者加算分（GS＋1位ボーナス＋決勝T突破、ジャイキリ×2込み）。</div>`;
+}
+
 function renderRoulette(){
   if(rlState.remaining===null){rlState.order=[];rlState.remaining=[...G.players];}
   const done=rlState.remaining.length===0;
@@ -527,7 +628,7 @@ function compute(){
 }
 
 function syncData(){document.getElementById('gamedata').textContent=JSON.stringify(G);}
-function renderAll(){syncData();renderLB();renderGroups();renderTeams();renderScores();renderBracket();renderRank();renderRoulette();renderSettings();renderRules();renderData();}
+function renderAll(){syncData();renderLB();renderPortfolio();renderGroups();renderTeams();renderScores();renderBracket();renderRank();renderRoulette();renderSettings();renderRules();renderData();}
 
 function renderLB(){
   const {P}=compute();
@@ -687,13 +788,15 @@ document.getElementById('nav').addEventListener('click',e=>{const b=e.target.clo
 
 async function boot(){
   try{
-    const [c,r,od]=await Promise.all([fetch('config.json',{cache:'no-store'}),fetch('results.json',{cache:'no-store'}),fetch('odds.json',{cache:'no-store'}).catch(()=>null)]);
+    const [c,r,od,sq]=await Promise.all([fetch('config.json',{cache:'no-store'}),fetch('results.json',{cache:'no-store'}),fetch('odds.json',{cache:'no-store'}).catch(()=>null),fetch('squads.json',{cache:'no-store'}).catch(()=>null)]);
     if(c.ok){const cfg=await c.json();if(cfg.players)G.players=cfg.players;if(cfg.colors)G.colors=cfg.colors;if(cfg.config)G.config=cfg.config;if(cfg.lucky)G.lucky=cfg.lucky;if(cfg.bets)G.bets=cfg.bets;if('draftOrder' in cfg)G.draftOrder=cfg.draftOrder;if(cfg.teams)G.teams=cfg.teams;}
     if(r.ok){const res=await r.json();if(res.gsMatches)G.gsMatches=res.gsMatches;if(res.koMatches)G.koMatches=res.koMatches;}
     if(od&&od.ok){const o=await od.json();G.odds=o.odds||{};G.oddsUpdated=o.updated||null;}
+    if(sq&&sq.ok){const s=await sq.json();G.squads=s.squads||{};G.squadsUpdated=s.updated||null;}
   }catch(e){/* file:// やオフライン時は埋め込みデータで動作 */}
   if(!G.colors)G.colors={};
   if(!G.odds)G.odds={};
+  if(!G.squads)G.squads={};
   rlState.remaining=null;
   renderAll();
 }
