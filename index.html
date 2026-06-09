@@ -102,6 +102,30 @@
   .bk-feed em{color:var(--muted);font-weight:400;font-style:normal;margin:0 5px}
   /* fifa ranking */
   .rk{font-family:"Anton",sans-serif;font-size:16px;color:var(--gold);width:56px}
+  /* team profiles (magazine style) */
+  .tmcard{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin:12px 0}
+  .tmhead{display:flex;align-items:center;gap:10px;padding:11px 14px;background:linear-gradient(180deg,rgba(214,184,120,.13),transparent);border-bottom:1px solid var(--line);flex-wrap:wrap}
+  .tmhead .nm{font-weight:900;font-size:17px}
+  .tmhead .meta{margin-left:auto;display:flex;gap:5px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
+  .tmbody{display:grid;grid-template-columns:144px 1fr;gap:16px;padding:14px}
+  .tmform{font-family:"Anton",sans-serif;font-size:19px;color:var(--gold);text-align:center;margin-top:7px;letter-spacing:.04em}
+  .tmsub{font-size:10px;font-weight:700;letter-spacing:.16em;color:var(--muted);text-align:center}
+  .mgr{font-size:12.5px;color:var(--gold);font-weight:700}
+  .tac{font-size:12.5px;color:var(--muted);margin-top:7px;line-height:1.65}
+  .starl{display:flex;flex-direction:column;gap:7px;margin-top:5px}
+  .star{display:flex;align-items:center;gap:9px}
+  .star .pos{font-size:10px;font-weight:900;color:#241c0c;background:linear-gradient(180deg,var(--g-hi),var(--g-lo));border-radius:5px;padding:2px 0;width:34px;text-align:center;flex:none}
+  .star .sn{font-weight:700;font-size:14.5px}
+  /* pitch */
+  .pitch{position:relative;width:100%;aspect-ratio:7/10;border:1px solid rgba(255,255,255,.22);border-radius:9px;overflow:hidden;
+    background:repeating-linear-gradient(0deg,#2c7a3c 0 11%,#27713a 11% 22%);box-shadow:inset 0 0 26px rgba(0,0,0,.4)}
+  .pitch::before{content:"";position:absolute;inset:5px;border:1px solid rgba(255,255,255,.22);border-radius:3px}
+  .pmid-line{position:absolute;left:5px;right:5px;top:50%;height:1px;background:rgba(255,255,255,.22)}
+  .pcircle{position:absolute;left:50%;top:50%;width:30%;aspect-ratio:1;transform:translate(-50%,-50%);border:1px solid rgba(255,255,255,.22);border-radius:50%}
+  .pdot{position:absolute;width:13px;height:13px;border-radius:50%;transform:translate(-50%,-50%);box-shadow:0 0 0 2px rgba(0,0,0,.35),0 1px 3px rgba(0,0,0,.5)}
+  .tmini{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+  .tmini .c{background:var(--card);border:1px solid var(--line);border-radius:11px;padding:10px;font-size:13px}
+  @media(max-width:560px){.tmbody{grid-template-columns:104px 1fr;gap:11px;padding:11px}.tmini{grid-template-columns:1fr 1fr}}
   .tchip{display:inline-block;font-family:"Anton",sans-serif;font-size:10px;width:16px;height:16px;line-height:16px;text-align:center;border-radius:4px;margin-left:6px;vertical-align:middle}
   .tchip.tA{background:linear-gradient(180deg,#ead7a6,#cdac68);color:#241c0c}
   .tchip.tB{background:#5ea0ec;color:#08152b}
@@ -168,6 +192,7 @@
   <nav id="nav">
     <button data-v="lb" class="on">順位表</button>
     <button data-v="groups">グループ</button>
+    <button data-v="teams">各国チーム</button>
     <button data-v="scores">日程・結果</button>
     <button data-v="bracket">決勝T表</button>
     <button data-v="rank">FIFAランク</button>
@@ -179,6 +204,7 @@
 
   <section class="view on" id="v-lb"></section>
   <section class="view" id="v-groups"></section>
+  <section class="view" id="v-teams"></section>
   <section class="view" id="v-scores"></section>
   <section class="view" id="v-bracket"></section>
   <section class="view" id="v-rank"></section>
@@ -223,6 +249,36 @@ const FLOW=[
 ];
 // FIFAランキング(2026/4/1) ＝ 各国の世界順位。本ゲームのティア配分の根拠。
 const FIFA_RANK={"フランス":1,"スペイン":2,"アルゼンチン":3,"イングランド":4,"ポルトガル":5,"ブラジル":6,"オランダ":7,"モロッコ":8,"ベルギー":9,"ドイツ":10,"クロアチア":11,"コロンビア":13,"セネガル":14,"メキシコ":15,"アメリカ":16,"ウルグアイ":17,"日本":18,"スイス":19,"イラン":21,"トルコ":22,"エクアドル":23,"オーストリア":24,"韓国":25,"オーストラリア":27,"アルジェリア":28,"エジプト":29,"カナダ":30,"ノルウェー":31,"パナマ":33,"コートジボワール":34,"スウェーデン":38,"パラグアイ":40,"チェコ":41,"スコットランド":43,"チュニジア":44,"コンゴ民主共和国":46,"ウズベキスタン":50,"カタール":55,"イラク":57,"南アフリカ":60,"サウジアラビア":61,"ヨルダン":63,"ボスニア・ヘルツェゴビナ":65,"カーボベルデ":69,"ガーナ":74,"キュラソー":82,"ハイチ":83,"ニュージーランド":85};
+// 各国チームのプロフィール（主要国先行）。f=基本布陣, mgr=監督, tac=戦術, stars=注目選手[{n,p}]。代表的な想定で編集可。
+const SQUADS={
+  "フランス":{f:"4-2-3-1",mgr:"デシャン",tac:"前線のスピードを生かした堅守速攻。個の質はトップクラスで、一瞬で試合を決める破壊力。",stars:[{n:"エムバペ",p:"FW"},{n:"デンベレ",p:"FW"},{n:"チュアメニ",p:"MF"}]},
+  "スペイン":{f:"4-3-3",mgr:"デ・ラ・フエンテ",tac:"高速ポゼッションと若い才能で中盤を支配。連動した崩しで相手を消耗させる。",stars:[{n:"ヤマル",p:"FW"},{n:"ペドリ",p:"MF"},{n:"ロドリ",p:"MF"}]},
+  "アルゼンチン":{f:"4-3-3",mgr:"スカローニ",tac:"王者の試合巧者。勝負所での決定力と中盤の強度で主導権を握る。",stars:[{n:"メッシ",p:"FW"},{n:"J.アルバレス",p:"FW"},{n:"マック・アリスター",p:"MF"}]},
+  "イングランド":{f:"4-2-3-1",mgr:"トゥヘル",tac:"タレント豊富な前線で個の破壊力を最大化。堅い守備ブロックも武器。",stars:[{n:"ベリンガム",p:"MF"},{n:"ケイン",p:"FW"},{n:"サカ",p:"FW"}]},
+  "ポルトガル":{f:"4-3-3",mgr:"R.マルティネス",tac:"両翼の推進力と分厚い中盤。攻撃的に主導権を握るスタイル。",stars:[{n:"B.フェルナンデス",p:"MF"},{n:"ヴィティーニャ",p:"MF"},{n:"レオン",p:"FW"}]},
+  "ブラジル":{f:"4-2-3-1",mgr:"アンチェロッティ",tac:"個の創造性で崩す攻撃サッカー。前線の即興性は世界随一。",stars:[{n:"ヴィニシウス",p:"FW"},{n:"ロドリゴ",p:"FW"},{n:"ラフィーニャ",p:"FW"}]},
+  "オランダ":{f:"4-3-3",mgr:"クーマン",tac:"堅守と縦の速さ。高さを生かしたセットプレーも強力。",stars:[{n:"ファン・ダイク",p:"DF"},{n:"F.デ・ヨング",p:"MF"},{n:"ガクポ",p:"FW"}]},
+  "ドイツ":{f:"4-2-3-1",mgr:"ナーゲルスマン",tac:"技巧派の中盤とポジショナルプレー。ボール保持から崩す。",stars:[{n:"ムシアラ",p:"MF"},{n:"ヴィルツ",p:"MF"},{n:"キミッヒ",p:"MF"}]},
+  "ベルギー":{f:"4-3-3",mgr:"R.ガルシア",tac:"経験と個の質。中盤の創造性から鋭いカウンター。",stars:[{n:"デ・ブライネ",p:"MF"},{n:"ルカク",p:"FW"},{n:"ドク",p:"FW"}]},
+  "クロアチア":{f:"4-3-3",mgr:"ダリッチ",tac:"中盤の制圧と試合運びの巧さ。経験豊富なタクト。",stars:[{n:"モドリッチ",p:"MF"},{n:"コヴァチッチ",p:"MF"},{n:"グヴァルディオル",p:"DF"}]},
+  "モロッコ":{f:"4-3-3",mgr:"レグラギ",tac:"組織的な堅守と鋭い速攻。サイドの推進力が生命線。",stars:[{n:"ハキミ",p:"DF"},{n:"ブラヒム・ディアス",p:"MF"},{n:"エン=ネシリ",p:"FW"}]},
+  "日本":{f:"4-2-3-1",mgr:"森保一",tac:"組織的な守備と連動した攻撃。サイド攻撃と運動量で勝負。",stars:[{n:"三笘薫",p:"FW"},{n:"久保建英",p:"MF"},{n:"遠藤航",p:"MF"}]},
+  "アメリカ":{f:"4-3-3",mgr:"ポチェッティーノ",tac:"豊富な運動量と素早いトランジション。前線からの圧力。",stars:[{n:"プリシッチ",p:"FW"},{n:"マッケニー",p:"MF"},{n:"A.アダムス",p:"MF"}]},
+  "ウルグアイ":{f:"4-3-1-2",mgr:"ビエルサ",tac:"前進志向のハイプレス。縦に速く、強度の高い攻守。",stars:[{n:"N.ヌニェス",p:"FW"},{n:"バルベルデ",p:"MF"},{n:"アラウホ",p:"DF"}]},
+  "コロンビア":{f:"4-2-3-1",mgr:"ロレンソ",tac:"ハメスの創造性を軸に、両翼の個で打開する攻撃。",stars:[{n:"J.ロドリゲス",p:"MF"},{n:"L.ディアス",p:"FW"},{n:"ドゥラン",p:"FW"}]},
+  "メキシコ":{f:"4-3-3",mgr:"アギーレ",tac:"テクニカルな中盤と運動量。開催国として勢いに乗る。",stars:[{n:"H.ロサノ",p:"FW"},{n:"E.アルバレス",p:"MF"},{n:"R.ヒメネス",p:"FW"}]},
+};
+function pitchHTML(f){
+  const lines=String(f).split('-').map(Number).filter(x=>x>0);
+  const bands=[1,...lines];const n=bands.length;let dots='';
+  bands.forEach((cnt,bi)=>{
+    const y=n>1?90-bi*(80/(n-1)):50;
+    const color=bi===0?'var(--g-mid)':bi===1?'var(--c6)':bi===n-1?'var(--c1)':'var(--c4)';
+    for(let j=0;j<cnt;j++){const x=(j+1)/(cnt+1)*100;
+      dots+=`<span class="pdot" style="left:${x}%;top:${y}%;background:${color}"></span>`;}
+  });
+  return `<div class="pitch"><span class="pmid-line"></span><span class="pcircle"></span>${dots}</div>`;
+}
 let G=JSON.parse(document.getElementById('gamedata').textContent);
 if(!G.colors)G.colors={};
 let rlState={order:[],remaining:null,spinning:false,timer:null};
@@ -286,6 +342,37 @@ function renderRules(){
   </div>
 
   <div class="note">運（ルーレット）× 戦略（ドラフト）× 大逆転（後半配点）。最後まで全員に優勝のチャンスが残ります。</div>`;
+}
+
+function renderTeams(){
+  const metaChips=n=>`<span class="tchip t${tier(n)||'X'}">${tier(n)||'－'}</span>`
+    +`<span class="bk-slot">${esc(G.teams[n].group)}組</span>`
+    +(FIFA_RANK[n]?`<span class="bk-slot">世界${FIFA_RANK[n]}位</span>`:'')
+    +(owner(n)?`<span class="ochip" style="background:${pcol(owner(n))}">${esc(owner(n))}</span>`:'');
+  const feat=Object.keys(SQUADS).filter(n=>G.teams[n]).sort((a,b)=>(FIFA_RANK[a]??999)-(FIFA_RANK[b]??999));
+  const others=Object.keys(G.teams).filter(n=>!SQUADS[n]).sort((a,b)=>(FIFA_RANK[a]??999)-(FIFA_RANK[b]??999));
+  const cards=feat.map(n=>{const s=SQUADS[n];
+    return `<div class="tmcard">
+      <div class="tmhead">${flag(n)}<span class="nm">${esc(n)}</span><span class="meta">${metaChips(n)}</span></div>
+      <div class="tmbody">
+        <div><div class="tmsub">FORMATION</div>${pitchHTML(s.f)}<div class="tmform">${esc(s.f)}</div></div>
+        <div>
+          <div class="mgr">監督: ${esc(s.mgr)}</div>
+          <div class="tac">${esc(s.tac)}</div>
+          <div class="tmsub" style="text-align:left;margin:11px 0 2px">注目選手</div>
+          <div class="starl">${s.stars.map(p=>`<div class="star"><span class="pos">${esc(p.p)}</span><span class="sn">${esc(p.n)}</span></div>`).join('')}</div>
+        </div>
+      </div></div>`;}).join('');
+  const mini=others.map(n=>`<div class="c">${flag(n)} <b>${esc(n)}</b>
+    <div style="margin-top:7px;display:flex;gap:5px;flex-wrap:wrap;align-items:center">${metaChips(n)}</div>
+    <div class="tac" style="margin-top:6px">プロフィール準備中</div></div>`).join('');
+  document.getElementById('v-teams').innerHTML=`
+    <div class="barh">各国チーム <span class="en">TEAM PROFILES</span></div>
+    <p class="hint">基本フォーメーション・監督・注目選手・戦術スタイルを雑誌風に紹介。まず主要国から掲載し、順次追加します。</p>
+    ${cards}
+    <div class="barh">その他の出場国 <span class="en">OTHER TEAMS</span></div>
+    <div class="tmini">${mini}</div>
+    <div class="note">布陣・選手は2026年大会の代表的な想定です（最新の招集で変動します）。掲載を追加・修正したい国があれば指定ください。</div>`;
 }
 
 function renderBracket(){
@@ -431,7 +518,7 @@ function compute(){
 }
 
 function syncData(){document.getElementById('gamedata').textContent=JSON.stringify(G);}
-function renderAll(){syncData();renderLB();renderGroups();renderScores();renderBracket();renderRank();renderRoulette();renderSettings();renderRules();renderData();}
+function renderAll(){syncData();renderLB();renderGroups();renderTeams();renderScores();renderBracket();renderRank();renderRoulette();renderSettings();renderRules();renderData();}
 
 function renderLB(){
   const {P}=compute();
