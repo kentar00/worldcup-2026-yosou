@@ -123,15 +123,17 @@
   .pmid-line{position:absolute;left:5px;right:5px;top:50%;height:1px;background:rgba(255,255,255,.22)}
   .pcircle{position:absolute;left:50%;top:50%;width:30%;aspect-ratio:1;transform:translate(-50%,-50%);border:1px solid rgba(255,255,255,.22);border-radius:50%}
   .pdot{position:absolute;width:13px;height:13px;border-radius:50%;transform:translate(-50%,-50%);box-shadow:0 0 0 2px rgba(0,0,0,.35),0 1px 3px rgba(0,0,0,.5)}
-  /* named XI pitch */
-  .pitch.xi{aspect-ratio:7/9}
-  .pp{position:absolute;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:2px;width:58px;pointer-events:none}
+  /* named XI pitch — landscape (GK left → FW right) */
+  .pitch.xi{width:100%;max-width:540px;margin:0 auto;aspect-ratio:16/10;
+    background:repeating-linear-gradient(90deg,#2c7a3c 0 11%,#27713a 11% 22%)}
+  .pmid-v{position:absolute;top:5px;bottom:5px;left:50%;width:1px;background:rgba(255,255,255,.22)}
+  .pp{position:absolute;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:2px;width:60px;pointer-events:none}
   .pp .dot{width:13px;height:13px;border-radius:50%;box-shadow:0 0 0 2px rgba(0,0,0,.4),0 1px 3px rgba(0,0,0,.6)}
-  .pp .nm{font-size:8.5px;line-height:1.05;text-align:center;color:#fff;text-shadow:0 1px 2px #000,0 0 3px #000;max-width:58px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .pp .nm{font-size:9px;line-height:1.05;text-align:center;color:#fff;text-shadow:0 1px 2px #000,0 0 4px #000;max-width:62px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   /* team detail (in portfolio) */
-  .td-top{display:grid;grid-template-columns:150px 1fr;gap:13px;margin:6px 0 10px}
+  .td-top{margin:6px 0 12px}
   .td-pitch{text-align:center}
-  .td-form{font-family:"Anton",sans-serif;font-size:17px;color:var(--gold);margin-top:5px}
+  .td-form{font-family:"Anton",sans-serif;font-size:17px;color:var(--gold);margin-top:6px}
   .td-sub2{font-size:10px;color:var(--muted);letter-spacing:.12em}
   .td-info{min-width:0}
   .td-mgr{font-size:13px;display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:8px}
@@ -147,7 +149,7 @@
   .rco{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .rcs{font-weight:900;flex:none}
   .rcd{color:var(--muted);font-size:10.5px;flex:none;width:62px;text-align:right}
-  @media(max-width:560px){.td-top{grid-template-columns:128px 1fr;gap:10px}}
+  @media(max-width:560px){.pp{width:54px}.pp .nm{font-size:8.5px;max-width:56px}}
   .tmini{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
   .tmini .c{background:var(--card);border:1px solid var(--line);border-radius:11px;padding:10px;font-size:13px}
   @media(max-width:560px){.tmbody{grid-template-columns:104px 1fr;gap:11px;padding:11px}.tmini{grid-template-columns:1fr 1fr}}
@@ -322,13 +324,14 @@ function xiPitch(formation,xi){
   else {bands.push(out.filter(p=>p.pos==='DF'),out.filter(p=>p.pos==='MF'),out.filter(p=>p.pos==='FW'));}
   bands=bands.filter(b=>b.length);
   const n=bands.length;let dots='';
-  bands.forEach((band,bi)=>{const y=n>1?91-bi*(82/(n-1)):50;
-    band.forEach((p,j)=>{const x=(j+1)/(band.length+1)*100;
+  // 横向き（GK=左 → FW=右）。各ライン内は縦に均等配置。
+  bands.forEach((band,bi)=>{const x=n>1?8+bi*(84/(n-1)):50;
+    band.forEach((p,j)=>{const y=(j+1)/(band.length+1)*100;
       const col=p.pos==='GK'?'var(--g-mid)':p.pos==='DF'?'var(--c6)':p.pos==='MF'?'var(--c4)':'var(--c1)';
       const sur=esc(String(p.name||'').split(' ').pop());
       dots+=`<span class="pp" style="left:${x}%;top:${y}%"><span class="dot" style="background:${col}"></span><span class="nm" title="${esc(p.name||'')}">${sur}</span></span>`;});
   });
-  return `<div class="pitch xi"><span class="pmid-line"></span><span class="pcircle"></span>${dots}</div>`;
+  return `<div class="pitch xi"><span class="pmid-v"></span><span class="pcircle"></span>${dots}</div>`;
 }
 let G=JSON.parse(document.getElementById('gamedata').textContent);
 if(!G.colors)G.colors={};
