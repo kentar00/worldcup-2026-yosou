@@ -123,6 +123,31 @@
   .pmid-line{position:absolute;left:5px;right:5px;top:50%;height:1px;background:rgba(255,255,255,.22)}
   .pcircle{position:absolute;left:50%;top:50%;width:30%;aspect-ratio:1;transform:translate(-50%,-50%);border:1px solid rgba(255,255,255,.22);border-radius:50%}
   .pdot{position:absolute;width:13px;height:13px;border-radius:50%;transform:translate(-50%,-50%);box-shadow:0 0 0 2px rgba(0,0,0,.35),0 1px 3px rgba(0,0,0,.5)}
+  /* named XI pitch */
+  .pitch.xi{aspect-ratio:7/9}
+  .pp{position:absolute;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:2px;width:58px;pointer-events:none}
+  .pp .dot{width:13px;height:13px;border-radius:50%;box-shadow:0 0 0 2px rgba(0,0,0,.4),0 1px 3px rgba(0,0,0,.6)}
+  .pp .nm{font-size:8.5px;line-height:1.05;text-align:center;color:#fff;text-shadow:0 1px 2px #000,0 0 3px #000;max-width:58px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  /* team detail (in portfolio) */
+  .td-top{display:grid;grid-template-columns:150px 1fr;gap:13px;margin:6px 0 10px}
+  .td-pitch{text-align:center}
+  .td-form{font-family:"Anton",sans-serif;font-size:17px;color:var(--gold);margin-top:5px}
+  .td-sub2{font-size:10px;color:var(--muted);letter-spacing:.12em}
+  .td-info{min-width:0}
+  .td-mgr{font-size:13px;display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:8px}
+  .td-lbl{font-size:10px;font-weight:900;color:#241c0c;background:linear-gradient(180deg,var(--g-hi),var(--g-lo));border-radius:5px;padding:1px 6px}
+  .td-nat{font-size:11px;color:var(--muted)}
+  .td-tac{font-size:12.5px;line-height:1.75;color:var(--tx)}
+  .td-src{font-size:10px;color:var(--muted);margin-top:6px}
+  .td-h{font-weight:900;font-size:12.5px;color:var(--gold);margin:12px 0 5px;border-bottom:1px solid var(--line);padding-bottom:3px}
+  .rec{display:flex;flex-direction:column;gap:4px}
+  .recm{display:flex;align-items:center;gap:8px;font-size:12px}
+  .rcb{font-family:"Anton",sans-serif;font-size:11px;width:18px;height:18px;line-height:18px;text-align:center;border-radius:4px;flex:none;color:#fff}
+  .rcb.rw{background:#2f9e54}.rcb.rd{background:#7d7568}.rcb.rl{background:#c0533f}
+  .rco{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .rcs{font-weight:900;flex:none}
+  .rcd{color:var(--muted);font-size:10.5px;flex:none;width:62px;text-align:right}
+  @media(max-width:560px){.td-top{grid-template-columns:128px 1fr;gap:10px}}
   .tmini{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
   .tmini .c{background:var(--card);border:1px solid var(--line);border-radius:11px;padding:10px;font-size:13px}
   @media(max-width:560px){.tmbody{grid-template-columns:104px 1fr;gap:11px;padding:11px}.tmini{grid-template-columns:1fr 1fr}}
@@ -224,7 +249,6 @@
     <button data-v="lb" class="on">順位表</button>
     <button data-v="portfolio">ポートフォリオ</button>
     <button data-v="groups">グループ</button>
-    <button data-v="teams">各国チーム</button>
     <button data-v="scores">日程・結果</button>
     <button data-v="bracket">決勝T表</button>
     <button data-v="rank">FIFAランク</button>
@@ -237,7 +261,6 @@
   <section class="view on" id="v-lb"></section>
   <section class="view" id="v-portfolio"></section>
   <section class="view" id="v-groups"></section>
-  <section class="view" id="v-teams"></section>
   <section class="view" id="v-scores"></section>
   <section class="view" id="v-bracket"></section>
   <section class="view" id="v-rank"></section>
@@ -282,35 +305,30 @@ const FLOW=[
 ];
 // FIFAランキング(2026/4/1) ＝ 各国の世界順位。本ゲームのティア配分の根拠。
 const FIFA_RANK={"フランス":1,"スペイン":2,"アルゼンチン":3,"イングランド":4,"ポルトガル":5,"ブラジル":6,"オランダ":7,"モロッコ":8,"ベルギー":9,"ドイツ":10,"クロアチア":11,"コロンビア":13,"セネガル":14,"メキシコ":15,"アメリカ":16,"ウルグアイ":17,"日本":18,"スイス":19,"イラン":21,"トルコ":22,"エクアドル":23,"オーストリア":24,"韓国":25,"オーストラリア":27,"アルジェリア":28,"エジプト":29,"カナダ":30,"ノルウェー":31,"パナマ":33,"コートジボワール":34,"スウェーデン":38,"パラグアイ":40,"チェコ":41,"スコットランド":43,"チュニジア":44,"コンゴ民主共和国":46,"ウズベキスタン":50,"カタール":55,"イラク":57,"南アフリカ":60,"サウジアラビア":61,"ヨルダン":63,"ボスニア・ヘルツェゴビナ":65,"カーボベルデ":69,"ガーナ":74,"キュラソー":82,"ハイチ":83,"ニュージーランド":85};
-// 各国チームのプロフィール（主要国先行）。f=基本布陣, mgr=監督, tac=戦術, stars=注目選手[{n,p}]。代表的な想定で編集可。
-const SQUADS={
-  "フランス":{f:"4-2-3-1",mgr:"デシャン",tac:"前線のスピードを生かした堅守速攻。個の質はトップクラスで、一瞬で試合を決める破壊力。",stars:[{n:"エムバペ",p:"FW"},{n:"デンベレ",p:"FW"},{n:"チュアメニ",p:"MF"}]},
-  "スペイン":{f:"4-3-3",mgr:"デ・ラ・フエンテ",tac:"高速ポゼッションと若い才能で中盤を支配。連動した崩しで相手を消耗させる。",stars:[{n:"ヤマル",p:"FW"},{n:"ペドリ",p:"MF"},{n:"ロドリ",p:"MF"}]},
-  "アルゼンチン":{f:"4-3-3",mgr:"スカローニ",tac:"王者の試合巧者。勝負所での決定力と中盤の強度で主導権を握る。",stars:[{n:"メッシ",p:"FW"},{n:"J.アルバレス",p:"FW"},{n:"マック・アリスター",p:"MF"}]},
-  "イングランド":{f:"4-2-3-1",mgr:"トゥヘル",tac:"タレント豊富な前線で個の破壊力を最大化。堅い守備ブロックも武器。",stars:[{n:"ベリンガム",p:"MF"},{n:"ケイン",p:"FW"},{n:"サカ",p:"FW"}]},
-  "ポルトガル":{f:"4-3-3",mgr:"R.マルティネス",tac:"両翼の推進力と分厚い中盤。攻撃的に主導権を握るスタイル。",stars:[{n:"B.フェルナンデス",p:"MF"},{n:"ヴィティーニャ",p:"MF"},{n:"レオン",p:"FW"}]},
-  "ブラジル":{f:"4-2-3-1",mgr:"アンチェロッティ",tac:"個の創造性で崩す攻撃サッカー。前線の即興性は世界随一。",stars:[{n:"ヴィニシウス",p:"FW"},{n:"ロドリゴ",p:"FW"},{n:"ラフィーニャ",p:"FW"}]},
-  "オランダ":{f:"4-3-3",mgr:"クーマン",tac:"堅守と縦の速さ。高さを生かしたセットプレーも強力。",stars:[{n:"ファン・ダイク",p:"DF"},{n:"F.デ・ヨング",p:"MF"},{n:"ガクポ",p:"FW"}]},
-  "ドイツ":{f:"4-2-3-1",mgr:"ナーゲルスマン",tac:"技巧派の中盤とポジショナルプレー。ボール保持から崩す。",stars:[{n:"ムシアラ",p:"MF"},{n:"ヴィルツ",p:"MF"},{n:"キミッヒ",p:"MF"}]},
-  "ベルギー":{f:"4-3-3",mgr:"R.ガルシア",tac:"経験と個の質。中盤の創造性から鋭いカウンター。",stars:[{n:"デ・ブライネ",p:"MF"},{n:"ルカク",p:"FW"},{n:"ドク",p:"FW"}]},
-  "クロアチア":{f:"4-3-3",mgr:"ダリッチ",tac:"中盤の制圧と試合運びの巧さ。経験豊富なタクト。",stars:[{n:"モドリッチ",p:"MF"},{n:"コヴァチッチ",p:"MF"},{n:"グヴァルディオル",p:"DF"}]},
-  "モロッコ":{f:"4-3-3",mgr:"レグラギ",tac:"組織的な堅守と鋭い速攻。サイドの推進力が生命線。",stars:[{n:"ハキミ",p:"DF"},{n:"ブラヒム・ディアス",p:"MF"},{n:"エン=ネシリ",p:"FW"}]},
-  "日本":{f:"4-2-3-1",mgr:"森保一",tac:"組織的な守備と連動した攻撃。サイド攻撃と運動量で勝負。",stars:[{n:"三笘薫",p:"FW"},{n:"久保建英",p:"MF"},{n:"遠藤航",p:"MF"}]},
-  "アメリカ":{f:"4-3-3",mgr:"ポチェッティーノ",tac:"豊富な運動量と素早いトランジション。前線からの圧力。",stars:[{n:"プリシッチ",p:"FW"},{n:"マッケニー",p:"MF"},{n:"A.アダムス",p:"MF"}]},
-  "ウルグアイ":{f:"4-3-1-2",mgr:"ビエルサ",tac:"前進志向のハイプレス。縦に速く、強度の高い攻守。",stars:[{n:"N.ヌニェス",p:"FW"},{n:"バルベルデ",p:"MF"},{n:"アラウホ",p:"DF"}]},
-  "コロンビア":{f:"4-2-3-1",mgr:"ロレンソ",tac:"ハメスの創造性を軸に、両翼の個で打開する攻撃。",stars:[{n:"J.ロドリゲス",p:"MF"},{n:"L.ディアス",p:"FW"},{n:"ドゥラン",p:"FW"}]},
-  "メキシコ":{f:"4-3-3",mgr:"アギーレ",tac:"テクニカルな中盤と運動量。開催国として勢いに乗る。",stars:[{n:"H.ロサノ",p:"FW"},{n:"E.アルバレス",p:"MF"},{n:"R.ヒメネス",p:"FW"}]},
-};
-function pitchHTML(f){
-  const lines=String(f).split('-').map(Number).filter(x=>x>0);
-  const bands=[1,...lines];const n=bands.length;let dots='';
-  bands.forEach((cnt,bi)=>{
-    const y=n>1?90-bi*(80/(n-1)):50;
-    const color=bi===0?'var(--g-mid)':bi===1?'var(--c6)':bi===n-1?'var(--c1)':'var(--c4)';
-    for(let j=0;j<cnt;j++){const x=(j+1)/(cnt+1)*100;
-      dots+=`<span class="pdot" style="left:${x}%;top:${y}%;background:${color}"></span>`;}
+// 監督国籍など、出場48カ国以外も含む 国名(日本語)→ISO の補助マップ。
+const NAT_ISO={"イタリア":"it","セルビア":"rs","ロシア":"ru","デンマーク":"dk","ウェールズ":"gb-wls","北アイルランド":"gb-nir","アイルランド":"ie","ナイジェリア":"ng","ポーランド":"pl","ウクライナ":"ua","ギリシャ":"gr","スロバキア":"sk","ハンガリー":"hu","ルーマニア":"ro","アイスランド":"is","フィンランド":"fi","スロベニア":"si","ベネズエラ":"ve","チリ":"cl","ペルー":"pe","コスタリカ":"cr","ホンジュラス":"hn","カメルーン":"cm","マリ":"ml","ブルガリア":"bg","北マケドニア":"mk","モンテネグロ":"me","アルバニア":"al","ジョージア":"ge","イスラエル":"il","中国":"cn"};
+const flagImg=(code,alt='')=>code?`<img class="flag" src="https://flagcdn.com/${code}.svg" width="22" height="16" alt="${esc(alt)}" loading="lazy" onerror="this.style.display='none'">`:'';
+const ccflag=cc=>flagImg(cc);
+const natFlag=name=>{const c=ISO[name]||NAT_ISO[name]||null;return flagImg(c,name);};
+// 想定スタメン（実名XI）をフォーメーション図に。formation の数列でラインを構成し、pos順(DF→MF→FW)に配置。
+function xiPitch(formation,xi){
+  if(!xi||!xi.length)return '';
+  const lines=String(formation||'').split('-').map(Number).filter(x=>x>0);
+  const gk=xi.find(p=>p.pos==='GK')||xi[0];
+  const rank={DF:0,MF:1,FW:2};
+  const out=xi.filter(p=>p!==gk).sort((a,b)=>(rank[a.pos]??1)-(rank[b.pos]??1));
+  let bands=[[gk]];
+  if(lines.length){let i=0;lines.forEach(c=>{bands.push(out.slice(i,i+c));i+=c;});if(i<out.length)bands[bands.length-1]=bands[bands.length-1].concat(out.slice(i));}
+  else {bands.push(out.filter(p=>p.pos==='DF'),out.filter(p=>p.pos==='MF'),out.filter(p=>p.pos==='FW'));}
+  bands=bands.filter(b=>b.length);
+  const n=bands.length;let dots='';
+  bands.forEach((band,bi)=>{const y=n>1?91-bi*(82/(n-1)):50;
+    band.forEach((p,j)=>{const x=(j+1)/(band.length+1)*100;
+      const col=p.pos==='GK'?'var(--g-mid)':p.pos==='DF'?'var(--c6)':p.pos==='MF'?'var(--c4)':'var(--c1)';
+      const sur=esc(String(p.name||'').split(' ').pop());
+      dots+=`<span class="pp" style="left:${x}%;top:${y}%"><span class="dot" style="background:${col}"></span><span class="nm" title="${esc(p.name||'')}">${sur}</span></span>`;});
   });
-  return `<div class="pitch"><span class="pmid-line"></span><span class="pcircle"></span>${dots}</div>`;
+  return `<div class="pitch xi"><span class="pmid-line"></span><span class="pcircle"></span>${dots}</div>`;
 }
 let G=JSON.parse(document.getElementById('gamedata').textContent);
 if(!G.colors)G.colors={};
@@ -484,56 +502,90 @@ function nextMatch(n){
   const now=Date.now();
   return ms.find(x=>x.t>=now)||ms[ms.length-1];
 }
-function squadHTML(n){
+function recentHTML(n){
+  const arr=(G.recent&&G.recent[n])||[];
+  if(!arr.length)return '<div class="hint" style="margin:4px 2px">直近の試合データは準備中です。</div>';
+  return '<div class="rec">'+arr.slice(0,5).map(m=>{
+    const rc=m.res==='W'?'rw':m.res==='L'?'rl':'rd';
+    const d=(m.date||'').slice(5).replace('-','/');
+    return `<div class="recm"><span class="rcb ${rc}">${esc(m.res||'')}</span><span class="rco">vs ${esc(m.opp||'')}</span><span class="rcs">${m.gf}-${m.ga}</span><span class="rcd">${d}${m.home===false?' (A)':''}</span></div>`;
+  }).join('')+'</div>';
+}
+function teamDetailHTML(n){
+  const pr=(G.profiles&&G.profiles[n])||null;
   const sq=(G.squads&&G.squads[n])||null;
-  if(!sq||!sq.length)return '<div class="hint" style="margin:6px 4px">招集選手データは準備中です（後日反映）。</div>';
-  const byPos={GK:[],DF:[],MF:[],FW:[]};const POSJ={GK:'GK',DF:'DF',MF:'MF',FW:'FW'};
-  sq.forEach(p=>{(byPos[p.pos]?byPos[p.pos]:(byPos.OTHER=byPos.OTHER||[])).push(p);});
-  let body='';
-  ['GK','DF','MF','FW','OTHER'].forEach(pos=>{const arr=byPos[pos];if(!arr||!arr.length)return;
-    arr.sort((a,b)=>(a.no||99)-(b.no||99)).forEach(p=>{
-      body+=`<tr><td class="sqn">${p.no??'–'}</td><td class="l">${esc(p.name)}</td><td>${esc(POSJ[p.pos]||p.pos||'')}</td><td>${p.age??'–'}</td><td class="l">${esc(p.club||'')}</td></tr>`;});});
-  return `<table class="sqt"><thead><tr><th>#</th><th class="l">選手</th><th>位置</th><th>年齢</th><th class="l">所属クラブ</th></tr></thead><tbody>${body}</tbody></table>`;
+  let html='';
+  if(pr){
+    html+=`<div class="td-top">
+      <div class="td-pitch">${xiPitch(pr.formation,pr.xi)}<div class="td-form">${esc(pr.formation||'')}</div><div class="td-sub2">想定スタメン</div></div>
+      <div class="td-info">
+        ${pr.manager?`<div class="td-mgr"><span class="td-lbl">監督</span>${natFlag(pr.manager.nat)} <b>${esc(pr.manager.name)}</b>${pr.manager.nat?`<span class="td-nat">${esc(pr.manager.nat)}</span>`:''}</div>`:''}
+        <div class="td-tac">${esc(pr.tactic||'')}</div>
+        <div class="td-src">${pr.src==='guardian'?'戦術: The Guardian 分析を参照':'戦術: 一般情報より'}</div>
+      </div></div>`;
+  }
+  html+=`<div class="td-h">直近の試合</div>${recentHTML(n)}`;
+  if(sq&&sq.length){
+    const POSJ={GK:'GK',DF:'DF',MF:'MF',FW:'FW'};const byPos={GK:[],DF:[],MF:[],FW:[]};
+    sq.forEach(p=>{(byPos[p.pos]?byPos[p.pos]:(byPos.OTHER=byPos.OTHER||[])).push(p);});
+    let body='';
+    ['GK','DF','MF','FW','OTHER'].forEach(pos=>{const arr=byPos[pos];if(!arr||!arr.length)return;
+      arr.sort((a,b)=>(a.no||99)-(b.no||99)).forEach(p=>{
+        body+=`<tr><td class="sqn">${p.no??'–'}</td><td class="l">${esc(p.name)}</td><td>${esc(POSJ[p.pos]||p.pos||'')}</td><td>${p.age??'–'}</td><td class="l">${ccflag(p.cc)} ${esc(p.club||'')}</td></tr>`;});});
+    html+=`<div class="td-h">招集選手（全${sq.length}名）</div><table class="sqt"><thead><tr><th>#</th><th class="l">選手</th><th>位置</th><th>年齢</th><th class="l">所属クラブ</th></tr></thead><tbody>${body}</tbody></table>`;
+  } else { html+='<div class="hint" style="margin:6px 2px">招集選手データは準備中です。</div>'; }
+  return html;
 }
 function togSquad(n){
   const el=document.getElementById('sq-'+n),cz=document.getElementById('cz-'+n);
   if(!el)return;
   if(el.style.display!=='none'){el.style.display='none';if(cz)cz.textContent='▾';return;}
-  if(!el.dataset.loaded){el.innerHTML=squadHTML(n);el.dataset.loaded='1';}
+  if(!el.dataset.loaded){el.innerHTML=teamDetailHTML(n);el.dataset.loaded='1';}
   el.style.display='block';if(cz)cz.textContent='▴';
 }
 function renderPortfolio(){
   const {P,standings}=compute();
-  const sel=(pfPlayer&&G.players.includes(pfPlayer))?pfPlayer:G.players[0];
-  const opts=G.players.map(p=>`<option ${p===sel?'selected':''}>${esc(p)}</option>`).join('');
-  const owned=Object.keys(G.teams).filter(t=>owner(t)===sel);
-  const rows=owned.map(n=>({n,...teamPoints(n,standings)})).sort((a,b)=>b.total-a.total);
-  const pb=P[sel]||{gs:0,bonus:0,ko:0,lucky:0,bet:0,total:0};
-  const cards=rows.map(r=>{
-    const nm=nextMatch(r.n);
+  const isRank=pfPlayer==='__rank__';
+  const sel=isRank?'__rank__':((pfPlayer&&G.players.includes(pfPlayer))?pfPlayer:G.players[0]);
+  const memberOpts=G.players.map(p=>`<option value="${esc(p)}" ${(!isRank&&p===sel)?'selected':''}>${esc(p)}</option>`).join('');
+  const rankOpt=`<option value="__rank__" ${isRank?'selected':''}>★ FIFAランク順（全チーム）</option>`;
+  const listTeams=isRank
+    ? Object.keys(G.teams).sort((a,b)=>(FIFA_RANK[a]??999)-(FIFA_RANK[b]??999))
+    : Object.keys(G.teams).filter(t=>owner(t)===sel).map(n=>({n,t:teamPoints(n,standings).total})).sort((a,b)=>b.t-a.t).map(x=>x.n);
+  const rowFor=n=>{
+    const tp=teamPoints(n,standings);const nm=nextMatch(n);const o=owner(n);
     const nmHtml=nm
       ? `<div class="pf-next">${nm.played?'直近結果':'次戦'}: ${flag(nm.opp)} ${esc(nm.opp)}<span class="pf-when">${dstr(nm.date)} ${nm.time}${nm.played?` ／ ${nm.isHome?nm.hs:nm.as}-${nm.isHome?nm.as:nm.hs}`:''}</span></div>`
       : '<div class="pf-next" style="color:var(--muted)">日程データなし</div>';
-    const sub=[r.gs?`GS ${fmt(r.gs)}`:'',r.bonus?`1位+${fmt(r.bonus)}`:'',r.ko?`決勝T ${fmt(r.ko)}`:''].filter(Boolean).join(' ・ ')||'まだ 0pt';
+    const sub=[tp.gs?`GS ${fmt(tp.gs)}`:'',tp.bonus?`1位+${fmt(tp.bonus)}`:'',tp.ko?`決勝T ${fmt(tp.ko)}`:''].filter(Boolean).join(' ・ ')||'まだ 0pt';
+    const meta=isRank?`<span class="bk-slot">${FIFA_RANK[n]?'世界'+FIFA_RANK[n]+'位':'圏外'}</span>${o?`<span class="ochip" style="background:${pcol(o)}">${esc(o)}</span>`:''}`:'';
     return `<div class="pf-item">
-      <button class="pf-row" onclick="togSquad('${esc(r.n)}')">
-        ${flag(r.n)}<span class="pf-nm">${esc(r.n)}</span>${tchip(r.n)}
-        <span class="pf-pts">${fmt(r.total)}<i>pt</i></span><span class="pf-caret" id="cz-${esc(r.n)}">▾</span>
+      <button class="pf-row" onclick="togSquad('${esc(n)}')">
+        ${flag(n)}<span class="pf-nm">${esc(n)}</span>${tchip(n)}${meta}
+        <span class="pf-pts">${fmt(tp.total)}<i>pt</i></span><span class="pf-caret" id="cz-${esc(n)}">▾</span>
       </button>
       <div class="pf-sub">${sub}</div>
       ${nmHtml}
-      <div class="pf-squad" id="sq-${esc(r.n)}" style="display:none"></div>
-    </div>`;}).join('')||'<div class="hint">保有国がありません。「設定」タブで保有者を割り当ててください。</div>';
+      <div class="pf-squad" id="sq-${esc(n)}" style="display:none"></div>
+    </div>`;};
+  const cards=listTeams.map(rowFor).join('')||'<div class="hint">保有国がありません。「設定」タブで保有者を割り当ててください。</div>';
+  let head;
+  if(isRank){
+    head=`<div class="pf-summary" style="--pc:#d9bd7e"><div class="pf-total">48<i>チーム</i></div>
+      <div class="pf-bd"><b class="gold-text">FIFAランク順・全出場国</b><br>各国の本予想ポイント・直近試合・詳細を一覧（2026/4 ランキング順）</div></div>`;
+  }else{
+    const pb=P[sel]||{gs:0,bonus:0,ko:0,lucky:0,bet:0,total:0};
+    const owned=listTeams.length;
+    head=`<div class="pf-summary" style="--pc:${pcol(sel)}"><div class="pf-total">${fmt(pb.total)}<i>pt</i></div>
+      <div class="pf-bd"><b style="color:${pcol(sel)}">${esc(sel)}</b>／保有 ${owned}カ国<br>GS ${fmt(pb.gs)}・1位 ${fmt(pb.bonus)}・決勝T ${fmt(pb.ko)}・ラッキー ${fmt(pb.lucky)}・ベット ${pb.bet>0?'+':''}${fmt(pb.bet)}</div></div>`;
+  }
   document.getElementById('v-portfolio').innerHTML=`
     <div class="barh">ポートフォリオ <span class="en">PORTFOLIO</span></div>
-    <div class="row"><span class="lbl">メンバー</span>
-      <select id="pf-player" onchange="setPf(this.value)" style="flex:1;min-width:140px;font-weight:700;font-size:15px">${opts}</select></div>
-    <div class="pf-summary" style="--pc:${pcol(sel)}">
-      <div class="pf-total">${fmt(pb.total)}<i>pt</i></div>
-      <div class="pf-bd"><b style="color:${pcol(sel)}">${esc(sel)}</b>／保有 ${owned.length}カ国<br>GS ${fmt(pb.gs)}・1位 ${fmt(pb.bonus)}・決勝T ${fmt(pb.ko)}・ラッキー ${fmt(pb.lucky)}・ベット ${pb.bet>0?'+':''}${fmt(pb.bet)}</div>
-    </div>
+    <div class="row"><span class="lbl">表示</span>
+      <select id="pf-player" onchange="setPf(this.value)" style="flex:1;min-width:160px;font-weight:700;font-size:15px"><optgroup label="メンバー">${memberOpts}</optgroup><optgroup label="全チーム">${rankOpt}</optgroup></select></div>
+    ${head}
     <div class="pf-list">${cards}</div>
-    <div class="note">国名をタップすると招集選手（背番号・ポジション・年齢・所属クラブ）を表示します。ポイントは本予想の保有者加算分（GS＋1位ボーナス＋決勝T突破、ジャイキリ×2込み）。</div>`;
+    <div class="note">国名をタップ → 想定スタメン（布陣図）・戦術サマリ・招集選手（背番号/位置/年齢/所属クラブ＋クラブ国旗）・監督（国籍）・直近の試合を表示。ポイントは本予想の保有者加算分（GS＋1位ボーナス＋決勝T突破、ジャイキリ×2込み）。</div>`;
 }
 
 function renderRoulette(){
@@ -628,7 +680,7 @@ function compute(){
 }
 
 function syncData(){document.getElementById('gamedata').textContent=JSON.stringify(G);}
-function renderAll(){syncData();renderLB();renderPortfolio();renderGroups();renderTeams();renderScores();renderBracket();renderRank();renderRoulette();renderSettings();renderRules();renderData();}
+function renderAll(){syncData();renderLB();renderPortfolio();renderGroups();renderScores();renderBracket();renderRank();renderRoulette();renderSettings();renderRules();renderData();}
 
 function renderLB(){
   const {P}=compute();
@@ -788,15 +840,19 @@ document.getElementById('nav').addEventListener('click',e=>{const b=e.target.clo
 
 async function boot(){
   try{
-    const [c,r,od,sq]=await Promise.all([fetch('config.json',{cache:'no-store'}),fetch('results.json',{cache:'no-store'}),fetch('odds.json',{cache:'no-store'}).catch(()=>null),fetch('squads.json',{cache:'no-store'}).catch(()=>null)]);
+    const [c,r,od,sq,pf,rc]=await Promise.all([fetch('config.json',{cache:'no-store'}),fetch('results.json',{cache:'no-store'}),fetch('odds.json',{cache:'no-store'}).catch(()=>null),fetch('squads.json',{cache:'no-store'}).catch(()=>null),fetch('teams_profiles.json',{cache:'no-store'}).catch(()=>null),fetch('recent.json',{cache:'no-store'}).catch(()=>null)]);
     if(c.ok){const cfg=await c.json();if(cfg.players)G.players=cfg.players;if(cfg.colors)G.colors=cfg.colors;if(cfg.config)G.config=cfg.config;if(cfg.lucky)G.lucky=cfg.lucky;if(cfg.bets)G.bets=cfg.bets;if('draftOrder' in cfg)G.draftOrder=cfg.draftOrder;if(cfg.teams)G.teams=cfg.teams;}
     if(r.ok){const res=await r.json();if(res.gsMatches)G.gsMatches=res.gsMatches;if(res.koMatches)G.koMatches=res.koMatches;}
     if(od&&od.ok){const o=await od.json();G.odds=o.odds||{};G.oddsUpdated=o.updated||null;}
     if(sq&&sq.ok){const s=await sq.json();G.squads=s.squads||{};G.squadsUpdated=s.updated||null;}
+    if(pf&&pf.ok){const s=await pf.json();G.profiles=s.profiles||{};}
+    if(rc&&rc.ok){const s=await rc.json();G.recent=s.recent||{};}
   }catch(e){/* file:// やオフライン時は埋め込みデータで動作 */}
   if(!G.colors)G.colors={};
   if(!G.odds)G.odds={};
   if(!G.squads)G.squads={};
+  if(!G.profiles)G.profiles={};
+  if(!G.recent)G.recent={};
   rlState.remaining=null;
   renderAll();
 }

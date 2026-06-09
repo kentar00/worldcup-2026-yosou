@@ -1,0 +1,2645 @@
+{
+ "updated": "2026-06-10",
+ "profiles": {
+  "チェコ": {
+   "formation": "3-4-2-1",
+   "xi": [
+    {
+     "name": "Jindřich Staněk",
+     "pos": "GK"
+    },
+    {
+     "name": "Tomáš Holeš",
+     "pos": "DF"
+    },
+    {
+     "name": "Robin Hranáč",
+     "pos": "DF"
+    },
+    {
+     "name": "Ladislav Krejčí",
+     "pos": "DF"
+    },
+    {
+     "name": "Vladimír Coufal",
+     "pos": "DF"
+    },
+    {
+     "name": "Tomáš Souček",
+     "pos": "MF"
+    },
+    {
+     "name": "Lukáš Červ",
+     "pos": "MF"
+    },
+    {
+     "name": "David Jurásek",
+     "pos": "DF"
+    },
+    {
+     "name": "Pavel Šulc",
+     "pos": "MF"
+    },
+    {
+     "name": "Adam Hložek",
+     "pos": "FW"
+    },
+    {
+     "name": "Patrik Schick",
+     "pos": "FW"
+    }
+   ],
+   "tactic": "3バックで守備を固め、両ウイングバックが幅を作る堅実なスタイル。中盤の要スーチェクが攻守をつなぎ、空中戦と切り替えに強い。シュリック、シュルツ、フロジェクの連携で前線に推進力を持たせ、セットプレーも得点源とする。",
+   "manager": {
+    "name": "Miroslav Koubek",
+    "nat": "チェコ"
+   },
+   "src": "knowledge"
+  },
+  "メキシコ": {
+   "formation": "4-3-3",
+   "xi": [
+    {
+     "name": "Raúl Rangel",
+     "pos": "GK"
+    },
+    {
+     "name": "Jorge Sánchez",
+     "pos": "DF"
+    },
+    {
+     "name": "César Montes",
+     "pos": "DF"
+    },
+    {
+     "name": "Johan Vásquez",
+     "pos": "DF"
+    },
+    {
+     "name": "Jesús Gallardo",
+     "pos": "DF"
+    },
+    {
+     "name": "Edson Álvarez",
+     "pos": "MF"
+    },
+    {
+     "name": "Gilberto Mora",
+     "pos": "MF"
+    },
+    {
+     "name": "Álvaro Fidalgo",
+     "pos": "MF"
+    },
+    {
+     "name": "Alexis Vega",
+     "pos": "FW"
+    },
+    {
+     "name": "Santiago Giménez",
+     "pos": "FW"
+    },
+    {
+     "name": "Raúl Jiménez",
+     "pos": "FW"
+    }
+   ],
+   "tactic": "アギーレ体制はエドソン・アルバレスを軸に中盤で球を奪い、素早く前線へ供給する縦志向の攻撃が持ち味。ヒメネスとサンティ・ヒメネスの二枚看板に加え、17歳モラの創造性が攻撃の鍵。サイドの推進力と高い守備強度で主導権を握る。",
+   "manager": {
+    "name": "Javier Aguirre",
+    "nat": "メキシコ"
+   },
+   "src": "knowledge"
+  },
+  "南アフリカ": {
+   "formation": "4-3-3",
+   "xi": [
+    {
+     "name": "Ronwen Williams",
+     "pos": "GK"
+    },
+    {
+     "name": "Khuliso Mudau",
+     "pos": "DF"
+    },
+    {
+     "name": "Nkosinathi Sibisi",
+     "pos": "DF"
+    },
+    {
+     "name": "Khulumani Ndamane",
+     "pos": "DF"
+    },
+    {
+     "name": "Aubrey Modiba",
+     "pos": "DF"
+    },
+    {
+     "name": "Teboho Mokoena",
+     "pos": "MF"
+    },
+    {
+     "name": "Sphephelo Sithole",
+     "pos": "MF"
+    },
+    {
+     "name": "Themba Zwane",
+     "pos": "MF"
+    },
+    {
+     "name": "Oswin Appollis",
+     "pos": "FW"
+    },
+    {
+     "name": "Lyle Foster",
+     "pos": "FW"
+    },
+    {
+     "name": "Relebohile Mofokeng",
+     "pos": "FW"
+    }
+   ],
+   "tactic": "高い位置からのプレスとボール保持を志向し、国内クラブで連携を磨いた組織力が武器。中盤モコエナの配球とアポリス、モフォケンの推進力で両翼から仕掛け、フォスターが起点。守備はウィリアムズの好守と統率に支えられる。",
+   "manager": {
+    "name": "Hugo Broos",
+    "nat": "ベルギー"
+   },
+   "src": "knowledge"
+  },
+  "韓国": {
+   "formation": "4-2-3-1",
+   "xi": [
+    {
+     "name": "Jo Hyeon-woo",
+     "pos": "GK"
+    },
+    {
+     "name": "Seol Young-woo",
+     "pos": "DF"
+    },
+    {
+     "name": "Kim Min-jae",
+     "pos": "DF"
+    },
+    {
+     "name": "Kim Tae-hyeon",
+     "pos": "DF"
+    },
+    {
+     "name": "Lee Han-beom",
+     "pos": "DF"
+    },
+    {
+     "name": "Hwang In-beom",
+     "pos": "MF"
+    },
+    {
+     "name": "Paik Seung-ho",
+     "pos": "MF"
+    },
+    {
+     "name": "Lee Kang-in",
+     "pos": "MF"
+    },
+    {
+     "name": "Lee Jae-sung",
+     "pos": "MF"
+    },
+    {
+     "name": "Son Heung-min",
+     "pos": "FW"
+    },
+    {
+     "name": "Oh Hyeon-gyu",
+     "pos": "FW"
+    }
+   ],
+   "tactic": "堅守速攻を軸に、キム・ミンジェ中心の屈強な守備からトランジションで一気に前進。ソン・フンミンとイ・ガンインの個で局面を打開し、ファン・インボムが配球を担う。両翼の推進力と前線への展開速度が生命線。",
+   "manager": {
+    "name": "Hong Myung-bo",
+    "nat": "韓国"
+   },
+   "src": "knowledge"
+  },
+  "ボスニア・ヘルツェゴビナ": {
+   "formation": "4-2-3-1",
+   "xi": [
+    {
+     "name": "Nikola Vasilj",
+     "pos": "GK"
+    },
+    {
+     "name": "Amar Dedić",
+     "pos": "DF"
+    },
+    {
+     "name": "Nikola Katić",
+     "pos": "DF"
+    },
+    {
+     "name": "Tarik Muharemović",
+     "pos": "DF"
+    },
+    {
+     "name": "Sead Kolašinac",
+     "pos": "DF"
+    },
+    {
+     "name": "Amir Hadžiahmetović",
+     "pos": "MF"
+    },
+    {
+     "name": "Benjamin Tahirović",
+     "pos": "MF"
+    },
+    {
+     "name": "Esmir Bajraktarević",
+     "pos": "MF"
+    },
+    {
+     "name": "Kerim Alajbegović",
+     "pos": "MF"
+    },
+    {
+     "name": "Ermedin Demirović",
+     "pos": "FW"
+    },
+    {
+     "name": "Edin Džeko",
+     "pos": "FW"
+    }
+   ],
+   "tactic": "バルバレス体制下で4-2-3-1と4-4-2を併用。攻撃的な守備と直線的な縦への速い攻撃が身上で、ジェコを基準点に若いアラバゴビッチやバイラクタレビッチが躍動。試合が感情的になるほど勢いを増す、相手にとって不気味な伏兵だ。",
+   "manager": {
+    "name": "Sergej Barbarez",
+    "nat": "ボスニア・ヘルツェゴビナ"
+   },
+   "src": "guardian"
+  },
+  "カナダ": {
+   "formation": "4-3-3",
+   "xi": [
+    {
+     "name": "Dayne St. Clair",
+     "pos": "GK"
+    },
+    {
+     "name": "Alistair Johnston",
+     "pos": "DF"
+    },
+    {
+     "name": "Derek Cornelius",
+     "pos": "DF"
+    },
+    {
+     "name": "Moïse Bombito",
+     "pos": "DF"
+    },
+    {
+     "name": "Alphonso Davies",
+     "pos": "DF"
+    },
+    {
+     "name": "Stephen Eustáquio",
+     "pos": "MF"
+    },
+    {
+     "name": "Ismaël Koné",
+     "pos": "MF"
+    },
+    {
+     "name": "Mathieu Choinière",
+     "pos": "MF"
+    },
+    {
+     "name": "Tajon Buchanan",
+     "pos": "FW"
+    },
+    {
+     "name": "Jonathan David",
+     "pos": "FW"
+    },
+    {
+     "name": "Jacob Shaffelburg",
+     "pos": "FW"
+    }
+   ],
+   "tactic": "マーシュ流の積極的なハイプレスとトランジションが軸。デイビスの左サイド突破とジョナサン・デイビッドの決定力を主武器に、エウスタキオが中盤の起点となり縦に速く攻め切る。前線からの連動した奪取と運動量で主導権を握る。",
+   "manager": {
+    "name": "Jesse Marsch",
+    "nat": "アメリカ"
+   },
+   "src": "knowledge"
+  },
+  "カタール": {
+   "formation": "4-2-3-1",
+   "xi": [
+    {
+     "name": "Meshaal Barsham",
+     "pos": "GK"
+    },
+    {
+     "name": "Pedro Miguel",
+     "pos": "DF"
+    },
+    {
+     "name": "Boualem Khoukhi",
+     "pos": "DF"
+    },
+    {
+     "name": "Lucas Mendes",
+     "pos": "DF"
+    },
+    {
+     "name": "Homam Ahmed",
+     "pos": "DF"
+    },
+    {
+     "name": "Assim Madibo",
+     "pos": "MF"
+    },
+    {
+     "name": "Mohamed Manai",
+     "pos": "MF"
+    },
+    {
+     "name": "Akram Afif",
+     "pos": "MF"
+    },
+    {
+     "name": "Hassan Al-Haydos",
+     "pos": "MF"
+    },
+    {
+     "name": "Edmilson Junior",
+     "pos": "MF"
+    },
+    {
+     "name": "Almoez Ali",
+     "pos": "FW"
+    }
+   ],
+   "tactic": "予選で守備が崩れ24失点と脆さを露呈したため、ロペテギは堅守速攻を志向。ブロックを締めてカウンターとセットプレーで刺す現実路線だ。司令塔アフィフの創造性とアリの決定力が生命線で、マディボが中盤の底を支える。",
+   "manager": {
+    "name": "Julen Lopetegui",
+    "nat": "スペイン"
+   },
+   "src": "guardian"
+  },
+  "スイス": {
+   "formation": "4-2-3-1",
+   "xi": [
+    {
+     "name": "Gregor Kobel",
+     "pos": "GK"
+    },
+    {
+     "name": "Silvan Widmer",
+     "pos": "DF"
+    },
+    {
+     "name": "Manuel Akanji",
+     "pos": "DF"
+    },
+    {
+     "name": "Nico Elvedi",
+     "pos": "DF"
+    },
+    {
+     "name": "Ricardo Rodriguez",
+     "pos": "DF"
+    },
+    {
+     "name": "Granit Xhaka",
+     "pos": "MF"
+    },
+    {
+     "name": "Remo Freuler",
+     "pos": "MF"
+    },
+    {
+     "name": "Dan Ndoye",
+     "pos": "MF"
+    },
+    {
+     "name": "Rubén Vargas",
+     "pos": "MF"
+    },
+    {
+     "name": "Michel Aebischer",
+     "pos": "MF"
+    },
+    {
+     "name": "Breel Embolo",
+     "pos": "FW"
+    }
+   ],
+   "tactic": "堅守からの速攻を軸とする組織的な4-2-3-1。アカンジとエルヴェディの安定した最終ラインを背に、司令塔シャカが配球とテンポを統御。両翼ンドイェとバルガスの推進力でエンボロを走らせ、ショートカウンターで仕留める。",
+   "manager": {
+    "name": "Murat Yakin",
+    "nat": "スイス"
+   },
+   "src": "knowledge"
+  },
+  "ブラジル": {
+   "formation": "4-3-3",
+   "xi": [
+    {
+     "name": "Alisson",
+     "pos": "GK"
+    },
+    {
+     "name": "Danilo Luiz",
+     "pos": "DF"
+    },
+    {
+     "name": "Marquinhos",
+     "pos": "DF"
+    },
+    {
+     "name": "Gabriel Magalhães",
+     "pos": "DF"
+    },
+    {
+     "name": "Douglas Santos",
+     "pos": "DF"
+    },
+    {
+     "name": "Casemiro",
+     "pos": "MF"
+    },
+    {
+     "name": "Bruno Guimarães",
+     "pos": "MF"
+    },
+    {
+     "name": "Lucas Paquetá",
+     "pos": "MF"
+    },
+    {
+     "name": "Raphinha",
+     "pos": "FW"
+    },
+    {
+     "name": "Matheus Cunha",
+     "pos": "FW"
+    },
+    {
+     "name": "Vinícius Júnior",
+     "pos": "FW"
+    }
+   ],
+   "tactic": "アンチェロッティはバランス重視。カゼミーロを底にブルーノとパケタが攻守を繋ぎ、両SBの押し上げで主導権を握る。最大の武器は左のヴィニシウスとラフィーニャの個。1対1の突破と決定力で崩し、堅守速攻も併用する。",
+   "manager": {
+    "name": "Carlo Ancelotti",
+    "nat": "イタリア"
+   },
+   "src": "knowledge"
+  },
+  "ハイチ": {
+   "formation": "4-4-2",
+   "xi": [
+    {
+     "name": "Johny Placide",
+     "pos": "GK"
+    },
+    {
+     "name": "Carlens Arcus",
+     "pos": "DF"
+    },
+    {
+     "name": "Ricardo Adé",
+     "pos": "DF"
+    },
+    {
+     "name": "Hannes Delcroix",
+     "pos": "DF"
+    },
+    {
+     "name": "Jean-Kévin Duverne",
+     "pos": "DF"
+    },
+    {
+     "name": "Derrick Etienne Jr.",
+     "pos": "MF"
+    },
+    {
+     "name": "Danley Jean Jacques",
+     "pos": "MF"
+    },
+    {
+     "name": "Jean-Ricner Bellegarde",
+     "pos": "MF"
+    },
+    {
+     "name": "Ruben Providence",
+     "pos": "MF"
+    },
+    {
+     "name": "Duckens Nazon",
+     "pos": "FW"
+    },
+    {
+     "name": "Wilson Isidor",
+     "pos": "FW"
+    }
+   ],
+   "tactic": "フランス人ミニェが規律と強度で鍛えた縦に速いトランジション型。守備時は4-2-3-1で固め、攻撃時はサイドバックが押し上げて幅を作り素早いカウンターを狙う。中盤の心臓ベルガルドと前線で違いを生むイジドール、起点ナゾンが鍵。",
+   "manager": {
+    "name": "Sébastien Migné",
+    "nat": "フランス"
+   },
+   "src": "guardian"
+  },
+  "モロッコ": {
+   "formation": "4-3-3",
+   "xi": [
+    {
+     "name": "Yassine Bounou",
+     "pos": "GK"
+    },
+    {
+     "name": "Achraf Hakimi",
+     "pos": "DF"
+    },
+    {
+     "name": "Nayef Aguerd",
+     "pos": "DF"
+    },
+    {
+     "name": "Chadi Riad",
+     "pos": "DF"
+    },
+    {
+     "name": "Noussair Mazraoui",
+     "pos": "DF"
+    },
+    {
+     "name": "Sofyan Amrabat",
+     "pos": "MF"
+    },
+    {
+     "name": "Bilal El Khannouss",
+     "pos": "MF"
+    },
+    {
+     "name": "Azzedine Ounahi",
+     "pos": "MF"
+    },
+    {
+     "name": "Brahim Díaz",
+     "pos": "FW"
+    },
+    {
+     "name": "Ayoub El Kaabi",
+     "pos": "FW"
+    },
+    {
+     "name": "Abde Ezzalzouli",
+     "pos": "FW"
+    }
+   ],
+   "tactic": "堅守速攻が基本。アムラバトが中盤の底で潰し、両SBハキミとマズラウィが高い位置で幅を作る。ボヌーの守護神とアゲルド中心の組織的守備で耐え、ブラヒムやハキミの推進力からエル・カービへ素早く繋ぐ。セットプレーも武器。",
+   "manager": {
+    "name": "Walid Regragui",
+    "nat": "モロッコ"
+   },
+   "src": "knowledge"
+  },
+  "スコットランド": {
+   "formation": "3-4-2-1",
+   "xi": [
+    {
+     "name": "Angus Gunn",
+     "pos": "GK"
+    },
+    {
+     "name": "Jack Hendry",
+     "pos": "DF"
+    },
+    {
+     "name": "Grant Hanley",
+     "pos": "DF"
+    },
+    {
+     "name": "Kieran Tierney",
+     "pos": "DF"
+    },
+    {
+     "name": "Nathan Patterson",
+     "pos": "DF"
+    },
+    {
+     "name": "Scott McTominay",
+     "pos": "MF"
+    },
+    {
+     "name": "Lewis Ferguson",
+     "pos": "MF"
+    },
+    {
+     "name": "Andy Robertson",
+     "pos": "DF"
+    },
+    {
+     "name": "John McGinn",
+     "pos": "MF"
+    },
+    {
+     "name": "Ryan Christie",
+     "pos": "MF"
+    },
+    {
+     "name": "Ché Adams",
+     "pos": "FW"
+    }
+   ],
+   "tactic": "クラーク監督下で堅守速攻を徹底する規律あるチーム。3バックで守備を固め、ロバートソンが左で押し上げる。McTominayとMcGinnの推進力とゴール関与が生命線で、ガノンドークの突破も脅威。強豪相手には自陣で構え鋭いカウンターを狙う。",
+   "manager": {
+    "name": "Steve Clarke",
+    "nat": "スコットランド"
+   },
+   "src": "guardian"
+  },
+  "オーストラリア": {
+   "formation": "4-2-3-1",
+   "xi": [
+    {
+     "name": "Mathew Ryan",
+     "pos": "GK"
+    },
+    {
+     "name": "Aziz Behich",
+     "pos": "DF"
+    },
+    {
+     "name": "Alessandro Circati",
+     "pos": "DF"
+    },
+    {
+     "name": "Harry Souttar",
+     "pos": "DF"
+    },
+    {
+     "name": "Jordan Bos",
+     "pos": "DF"
+    },
+    {
+     "name": "Aiden O'Neill",
+     "pos": "MF"
+    },
+    {
+     "name": "Jackson Irvine",
+     "pos": "MF"
+    },
+    {
+     "name": "Connor Metcalfe",
+     "pos": "MF"
+    },
+    {
+     "name": "Nestory Irankunda",
+     "pos": "MF"
+    },
+    {
+     "name": "Cristian Volpato",
+     "pos": "MF"
+    },
+    {
+     "name": "Mohamed Touré",
+     "pos": "FW"
+    }
+   ],
+   "tactic": "ポポヴィッチの下で規律ある守備ブロックと球際の強度を土台に、左のボスとイランクンダの推進力でサイドを破る。ソウターとサーカティの高さでセットプレーは強力。アービンが中盤で攻守を牽引し、堅守速攻で勝点を狙う。",
+   "manager": {
+    "name": "Tony Popovic",
+    "nat": "オーストラリア"
+   },
+   "src": "knowledge"
+  },
+  "パラグアイ": {
+   "formation": "4-2-3-1",
+   "xi": [
+    {
+     "name": "Gatito Fernández",
+     "pos": "GK"
+    },
+    {
+     "name": "Juan José Cáceres",
+     "pos": "DF"
+    },
+    {
+     "name": "Gustavo Gómez",
+     "pos": "DF"
+    },
+    {
+     "name": "Omar Alderete",
+     "pos": "DF"
+    },
+    {
+     "name": "Júnior Alonso",
+     "pos": "DF"
+    },
+    {
+     "name": "Andrés Cubas",
+     "pos": "MF"
+    },
+    {
+     "name": "Damián Bobadilla",
+     "pos": "MF"
+    },
+    {
+     "name": "Miguel Almirón",
+     "pos": "MF"
+    },
+    {
+     "name": "Julio Enciso",
+     "pos": "MF"
+    },
+    {
+     "name": "Ramón Sosa",
+     "pos": "MF"
+    },
+    {
+     "name": "Antonio Sanabria",
+     "pos": "FW"
+    }
+   ],
+   "tactic": "アルファロの下で規律ある4-2-3-1を採用。ゴメスを軸にした堅守とキューバ＝ボバディジャのダブルボランチでブロックを固め、奪取後はソサ、アルミロン、エンシソの推進力で素早く前進。サナブリアを起点にカウンターと球際の強度で勝点を狙う現実的なスタイル。",
+   "manager": {
+    "name": "Gustavo Alfaro",
+    "nat": "アルゼンチン"
+   },
+   "src": "knowledge"
+  },
+  "トルコ": {
+   "formation": "4-2-3-1",
+   "xi": [
+    {
+     "name": "Uğurcan Çakır",
+     "pos": "GK"
+    },
+    {
+     "name": "Zeki Çelik",
+     "pos": "DF"
+    },
+    {
+     "name": "Merih Demiral",
+     "pos": "DF"
+    },
+    {
+     "name": "Abdülkerim Bardakcı",
+     "pos": "DF"
+    },
+    {
+     "name": "Ferdi Kadıoğlu",
+     "pos": "DF"
+    },
+    {
+     "name": "Hakan Çalhanoğlu",
+     "pos": "MF"
+    },
+    {
+     "name": "Orkun Kökçü",
+     "pos": "MF"
+    },
+    {
+     "name": "Kerem Aktürkoğlu",
+     "pos": "FW"
+    },
+    {
+     "name": "Arda Güler",
+     "pos": "MF"
+    },
+    {
+     "name": "Kenan Yıldız",
+     "pos": "FW"
+    },
+    {
+     "name": "Can Uzun",
+     "pos": "FW"
+    }
+   ],
+   "tactic": "モンテッラの4-2-3-1。チャルハノールが最終ラインからゲームを構築し、トップ下のギュレルとイルディズの創造性で攻撃を加速。両翼の推進力と素早い縦への展開が強み。確たる9番を欠くのが課題で、若い才能の連係が鍵。",
+   "manager": {
+    "name": "Vincenzo Montella",
+    "nat": "イタリア"
+   },
+   "src": "guardian"
+  },
+  "アメリカ": {
+   "formation": "4-2-3-1",
+   "xi": [
+    {
+     "name": "Matt Turner",
+     "pos": "GK"
+    },
+    {
+     "name": "Sergiño Dest",
+     "pos": "DF"
+    },
+    {
+     "name": "Chris Richards",
+     "pos": "DF"
+    },
+    {
+     "name": "Tim Ream",
+     "pos": "DF"
+    },
+    {
+     "name": "Antonee Robinson",
+     "pos": "DF"
+    },
+    {
+     "name": "Tyler Adams",
+     "pos": "MF"
+    },
+    {
+     "name": "Weston McKennie",
+     "pos": "MF"
+    },
+    {
+     "name": "Timothy Weah",
+     "pos": "MF"
+    },
+    {
+     "name": "Giovanni Reyna",
+     "pos": "MF"
+    },
+    {
+     "name": "Christian Pulisic",
+     "pos": "FW"
+    },
+    {
+     "name": "Folarin Balogun",
+     "pos": "FW"
+    }
+   ],
+   "tactic": "ポチェッティーノは中盤ブロックで相手の最終局面を制限し、アダムスとマケニーのダブルボランチで主導権を握る。攻撃時は3-2-5気味に押し上げ、幅はSBが供給。鍵はプリシッチの打開とバログンの決定力、リチャーズの守備統率。",
+   "manager": {
+    "name": "Mauricio Pochettino",
+    "nat": "アルゼンチン"
+   },
+   "src": "guardian"
+  },
+  "キュラソー": {
+   "formation": "4-3-3",
+   "xi": [
+    {
+     "name": "Eloy Room",
+     "pos": "GK"
+    },
+    {
+     "name": "Shurandy Sambo",
+     "pos": "DF"
+    },
+    {
+     "name": "Armando Obispo",
+     "pos": "DF"
+    },
+    {
+     "name": "Riechedly Bazoer",
+     "pos": "DF"
+    },
+    {
+     "name": "Joshua Brenet",
+     "pos": "DF"
+    },
+    {
+     "name": "Livano Comenencia",
+     "pos": "MF"
+    },
+    {
+     "name": "Leandro Bacuna",
+     "pos": "MF"
+    },
+    {
+     "name": "Juninho Bacuna",
+     "pos": "MF"
+    },
+    {
+     "name": "Tahith Chong",
+     "pos": "FW"
+    },
+    {
+     "name": "Jürgen Locadia",
+     "pos": "FW"
+    },
+    {
+     "name": "Sontje Hansen",
+     "pos": "FW"
+    }
+   ],
+   "tactic": "アドフォカート率いる「青い波」は後方から繋ぐポゼッション志向が信条。だが格上揃いの組では保持率低下を見越し堅守速攻も併用。司令塔は箱型のコメネンシアと主将L.バクーナで、サイドのチョンとハンセンの推進力、ロカディアの収めを活かす。",
+   "manager": {
+    "name": "Dick Advocaat",
+    "nat": "オランダ"
+   },
+   "src": "guardian"
+  },
+  "エクアドル": {
+   "formation": "4-3-3",
+   "xi": [
+    {
+     "name": "Hernán Galíndez",
+     "pos": "GK"
+    },
+    {
+     "name": "Ángelo Preciado",
+     "pos": "DF"
+    },
+    {
+     "name": "Félix Torres",
+     "pos": "DF"
+    },
+    {
+     "name": "Willian Pacho",
+     "pos": "DF"
+    },
+    {
+     "name": "Pervis Estupiñán",
+     "pos": "DF"
+    },
+    {
+     "name": "Moisés Caicedo",
+     "pos": "MF"
+    },
+    {
+     "name": "Alan Franco",
+     "pos": "MF"
+    },
+    {
+     "name": "Kendry Páez",
+     "pos": "MF"
+    },
+    {
+     "name": "Gonzalo Plata",
+     "pos": "FW"
+    },
+    {
+     "name": "Enner Valencia",
+     "pos": "FW"
+    },
+    {
+     "name": "Kevin Rodríguez",
+     "pos": "FW"
+    }
+   ],
+   "tactic": "堅守速攻型の4-3-3。パチョとインカピエ系の若く強固な守備陣で失点を抑え、ハードワークで中盤を制圧する。司令塔モイセス・カイセドが攻守の起点となり、奪取後はプラタとエスツピニャンの両翼から素早く前進。新星パエスの創造性で得点を狙う。",
+   "manager": {
+    "name": "Sebastián Beccacece",
+    "nat": "アルゼンチン"
+   },
+   "src": "knowledge"
+  },
+  "ドイツ": {
+   "formation": "4-2-3-1",
+   "xi": [
+    {
+     "name": "Manuel Neuer",
+     "pos": "GK"
+    },
+    {
+     "name": "Joshua Kimmich",
+     "pos": "DF"
+    },
+    {
+     "name": "Jonathan Tah",
+     "pos": "DF"
+    },
+    {
+     "name": "Antonio Rüdiger",
+     "pos": "DF"
+    },
+    {
+     "name": "David Raum",
+     "pos": "DF"
+    },
+    {
+     "name": "Angelo Stiller",
+     "pos": "MF"
+    },
+    {
+     "name": "Aleksandar Pavlović",
+     "pos": "MF"
+    },
+    {
+     "name": "Florian Wirtz",
+     "pos": "MF"
+    },
+    {
+     "name": "Jamal Musiala",
+     "pos": "MF"
+    },
+    {
+     "name": "Leroy Sané",
+     "pos": "MF"
+    },
+    {
+     "name": "Kai Havertz",
+     "pos": "FW"
+    }
+   ],
+   "tactic": "ボール保持を軸にキミッヒの偽SB化で中盤に厚みを作り、ヴィルツとムシアラがハーフスペースで自在に動いて創造性を発揮。シュティラーとパヴロヴィッチが配球と守備の天秤を担い、ハフェルツの可動性とザネの突破で攻撃に多彩さを加える。",
+   "manager": {
+    "name": "Julian Nagelsmann",
+    "nat": "ドイツ"
+   },
+   "src": "knowledge"
+  },
+  "コートジボワール": {
+   "formation": "4-3-3",
+   "xi": [
+    {
+     "name": "Yahia Fofana",
+     "pos": "GK"
+    },
+    {
+     "name": "Wilfried Singo",
+     "pos": "DF"
+    },
+    {
+     "name": "Odilon Kossounou",
+     "pos": "DF"
+    },
+    {
+     "name": "Evan Ndicka",
+     "pos": "DF"
+    },
+    {
+     "name": "Ghislain Konan",
+     "pos": "DF"
+    },
+    {
+     "name": "Franck Kessié",
+     "pos": "MF"
+    },
+    {
+     "name": "Ibrahim Sangaré",
+     "pos": "MF"
+    },
+    {
+     "name": "Seko Fofana",
+     "pos": "MF"
+    },
+    {
+     "name": "Amad Diallo",
+     "pos": "FW"
+    },
+    {
+     "name": "Simon Adingra",
+     "pos": "FW"
+    },
+    {
+     "name": "Evann Guessand",
+     "pos": "FW"
+    }
+   ],
+   "tactic": "堅守速攻を基盤とするAFCON王者。Ndicka・Kossounou・Singoの屈強な守備陣を土台に、KessiéとSangaréが中盤を支配。両翼Amad DialloとAdingraの突破力で素早く前進し、サイド攻撃と縦への鋭い切り替えで仕留める実利的なスタイルが強み。",
+   "manager": {
+    "name": "Emerse Faé",
+    "nat": "コートジボワール"
+   },
+   "src": "knowledge"
+  },
+  "日本": {
+   "formation": "3-4-2-1",
+   "xi": [
+    {
+     "name": "Zion Suzuki",
+     "pos": "GK"
+    },
+    {
+     "name": "Kō Itakura",
+     "pos": "DF"
+    },
+    {
+     "name": "Tsuyoshi Watanabe",
+     "pos": "DF"
+    },
+    {
+     "name": "Hiroki Itō",
+     "pos": "DF"
+    },
+    {
+     "name": "Yukinari Sugawara",
+     "pos": "MF"
+    },
+    {
+     "name": "Wataru Endo",
+     "pos": "MF"
+    },
+    {
+     "name": "Daichi Kamada",
+     "pos": "MF"
+    },
+    {
+     "name": "Daizen Maeda",
+     "pos": "MF"
+    },
+    {
+     "name": "Takefusa Kubo",
+     "pos": "FW"
+    },
+    {
+     "name": "Ritsu Dōan",
+     "pos": "FW"
+    },
+    {
+     "name": "Ayase Ueda",
+     "pos": "FW"
+    }
+   ],
+   "tactic": "森保体制の3バックを軸に、両ウイングバックが攻守で幅を作る。久保・堂安ら技巧派2シャドーと前田の推進力で素早い切替から仕掛け、遠藤がバランスを取る。組織的な守備とトランジションの速さが最大の強み。",
+   "manager": {
+    "name": "Hajime Moriyasu",
+    "nat": "日本"
+   },
+   "src": "knowledge"
+  },
+  "オランダ": {
+   "formation": "4-3-3",
+   "xi": [
+    {
+     "name": "Bart Verbruggen",
+     "pos": "GK"
+    },
+    {
+     "name": "Denzel Dumfries",
+     "pos": "DF"
+    },
+    {
+     "name": "Virgil van Dijk",
+     "pos": "DF"
+    },
+    {
+     "name": "Micky van de Ven",
+     "pos": "DF"
+    },
+    {
+     "name": "Nathan Aké",
+     "pos": "DF"
+    },
+    {
+     "name": "Frenkie de Jong",
+     "pos": "MF"
+    },
+    {
+     "name": "Tijjani Reijnders",
+     "pos": "MF"
+    },
+    {
+     "name": "Ryan Gravenberch",
+     "pos": "MF"
+    },
+    {
+     "name": "Cody Gakpo",
+     "pos": "FW"
+    },
+    {
+     "name": "Memphis Depay",
+     "pos": "FW"
+    },
+    {
+     "name": "Justin Kluivert",
+     "pos": "FW"
+    }
+   ],
+   "tactic": "ファンダイクを軸にした堅守速攻型。フレンキー・デヨングとレインデルスがビルドアップを主導し、ファンデフェンの快足とドゥムフリースの推進力で両サイドを制圧。前線はハクポとデパイが流動的に動き、決定機を演出する。",
+   "manager": {
+    "name": "Ronald Koeman",
+    "nat": "オランダ"
+   },
+   "src": "knowledge"
+  },
+  "スウェーデン": {
+   "formation": "3-5-2",
+   "xi": [
+    {
+     "name": "Jacob Widell Zetterström",
+     "pos": "GK"
+    },
+    {
+     "name": "Victor Lindelöf",
+     "pos": "DF"
+    },
+    {
+     "name": "Isak Hien",
+     "pos": "DF"
+    },
+    {
+     "name": "Gabriel Gudmundsson",
+     "pos": "DF"
+    },
+    {
+     "name": "Anthony Elanga",
+     "pos": "MF"
+    },
+    {
+     "name": "Lucas Bergvall",
+     "pos": "MF"
+    },
+    {
+     "name": "Mattias Svanberg",
+     "pos": "MF"
+    },
+    {
+     "name": "Yasin Ayari",
+     "pos": "MF"
+    },
+    {
+     "name": "Daniel Svensson",
+     "pos": "MF"
+    },
+    {
+     "name": "Alexander Isak",
+     "pos": "FW"
+    },
+    {
+     "name": "Viktor Gyökeres",
+     "pos": "FW"
+    }
+   ],
+   "tactic": "イサクとヨケレスの強力2トップを軸に、堅守速攻で勝負。3バックで後方を固め、エランガの快足とベリバルの推進力で前線へ素早く展開する。両エースの決定力が最大の武器で、彼らに良質な配球を届けられるかが鍵となる。",
+   "manager": {
+    "name": "Graham Potter",
+    "nat": "イングランド"
+   },
+   "src": "knowledge"
+  },
+  "チュニジア": {
+   "formation": "4-3-3",
+   "xi": [
+    {
+     "name": "Aymen Dahmen",
+     "pos": "GK"
+    },
+    {
+     "name": "Mohamed Amine Ben Hamida",
+     "pos": "DF"
+    },
+    {
+     "name": "Montassar Talbi",
+     "pos": "DF"
+    },
+    {
+     "name": "Dylan Bronn",
+     "pos": "DF"
+    },
+    {
+     "name": "Ali Abdi",
+     "pos": "DF"
+    },
+    {
+     "name": "Ellyes Skhiri",
+     "pos": "MF"
+    },
+    {
+     "name": "Rani Khedira",
+     "pos": "MF"
+    },
+    {
+     "name": "Hannibal Mejbri",
+     "pos": "MF"
+    },
+    {
+     "name": "Elias Achouri",
+     "pos": "FW"
+    },
+    {
+     "name": "Elias Saad",
+     "pos": "FW"
+    },
+    {
+     "name": "Sebastian Tounekti",
+     "pos": "FW"
+    }
+   ],
+   "tactic": "堅守速攻を志向する規律重視の4-3-3。タルビとブロンを軸にブロックを固め、スキリが中盤を制圧。創造性はメジュブリが担い、アシュリやサードの推進力で素早く前進。組織的守備からの縦に速い攻撃が生命線となる。",
+   "manager": {
+    "name": "Sabri Lamouchi",
+    "nat": "フランス"
+   },
+   "src": "knowledge"
+  },
+  "ベルギー": {
+   "formation": "4-3-3",
+   "xi": [
+    {
+     "name": "Thibaut Courtois",
+     "pos": "GK"
+    },
+    {
+     "name": "Timothy Castagne",
+     "pos": "DF"
+    },
+    {
+     "name": "Koni De Winter",
+     "pos": "DF"
+    },
+    {
+     "name": "Zeno Debast",
+     "pos": "DF"
+    },
+    {
+     "name": "Maxim De Cuyper",
+     "pos": "DF"
+    },
+    {
+     "name": "Amadou Onana",
+     "pos": "MF"
+    },
+    {
+     "name": "Youri Tielemans",
+     "pos": "MF"
+    },
+    {
+     "name": "Kevin De Bruyne",
+     "pos": "MF"
+    },
+    {
+     "name": "Jérémy Doku",
+     "pos": "FW"
+    },
+    {
+     "name": "Romelu Lukaku",
+     "pos": "FW"
+    },
+    {
+     "name": "Leandro Trossard",
+     "pos": "FW"
+    }
+   ],
+   "tactic": "世界屈指のクルトワを最後の砦に、デ・ブライネの創造性とドクの突破力を軸とする攻撃的サッカー。オナナが中盤を引き締め、ティーレマンスが配球。ルカクが起点となり、トロサールやドクが裏を狙う。ボール保持と素早い切り替えで主導権を握る。",
+   "manager": {
+    "name": "Rudi Garcia",
+    "nat": "フランス"
+   },
+   "src": "knowledge"
+  },
+  "エジプト": {
+   "formation": "4-2-3-1",
+   "xi": [
+    {
+     "name": "Mohamed El Shenawy",
+     "pos": "GK"
+    },
+    {
+     "name": "Mohamed Hany",
+     "pos": "DF"
+    },
+    {
+     "name": "Mohamed Abdelmonem",
+     "pos": "DF"
+    },
+    {
+     "name": "Yasser Ibrahim",
+     "pos": "DF"
+    },
+    {
+     "name": "Ahmed Fatouh",
+     "pos": "DF"
+    },
+    {
+     "name": "Hamdy Fathy",
+     "pos": "MF"
+    },
+    {
+     "name": "Marwan Attia",
+     "pos": "MF"
+    },
+    {
+     "name": "Mohamed Salah",
+     "pos": "FW"
+    },
+    {
+     "name": "Emam Ashour",
+     "pos": "MF"
+    },
+    {
+     "name": "Trézéguet",
+     "pos": "FW"
+    },
+    {
+     "name": "Omar Marmoush",
+     "pos": "FW"
+    }
+   ],
+   "tactic": "堅守からの速攻が軸。二枚のボランチで中盤を締め、サラーとマルムーシュの個で一気に仕留める。サラーは右に開いてカットインから決定機を演出し、アシュールが攻撃を組み立てる。両SBの攻め上がりとセットプレーも得点源で、強豪相手は守備ブロックを保ちカウンターで勝機を狙う。",
+   "manager": {
+    "name": "Hossam Hassan",
+    "nat": "エジプト"
+   },
+   "src": "knowledge"
+  },
+  "イラン": {
+   "formation": "4-3-3",
+   "xi": [
+    {
+     "name": "Alireza Beiranvand",
+     "pos": "GK"
+    },
+    {
+     "name": "Ramin Rezaeian",
+     "pos": "DF"
+    },
+    {
+     "name": "Shojae Khalilzadeh",
+     "pos": "DF"
+    },
+    {
+     "name": "Hossein Kanaanizadegan",
+     "pos": "DF"
+    },
+    {
+     "name": "Milad Mohammadi",
+     "pos": "DF"
+    },
+    {
+     "name": "Saeid Ezatolahi",
+     "pos": "MF"
+    },
+    {
+     "name": "Saman Ghoddos",
+     "pos": "MF"
+    },
+    {
+     "name": "Mehdi Torabi",
+     "pos": "MF"
+    },
+    {
+     "name": "Alireza Jahanbakhsh",
+     "pos": "FW"
+    },
+    {
+     "name": "Mehdi Taremi",
+     "pos": "FW"
+    },
+    {
+     "name": "Mohammad Mohebi",
+     "pos": "FW"
+    }
+   ],
+   "tactic": "堅守速攻が身上。ベイランバンドと経験豊富な守備陣でブロックを固め、エザトラヒが中盤を制圧。奪取後はタレミを起点に、ジャハンバフシュとモヘビの両翼が一気に縦へ仕掛ける鋭いカウンターが最大の武器。",
+   "manager": {
+    "name": "Amir Ghalenoei",
+    "nat": "イラン"
+   },
+   "src": "knowledge"
+  },
+  "ニュージーランド": {
+   "formation": "4-2-3-1",
+   "xi": [
+    {
+     "name": "Alex Paulsen",
+     "pos": "GK"
+    },
+    {
+     "name": "Tim Payne",
+     "pos": "DF"
+    },
+    {
+     "name": "Tyler Bindon",
+     "pos": "DF"
+    },
+    {
+     "name": "Michael Boxall",
+     "pos": "DF"
+    },
+    {
+     "name": "Liberato Cacace",
+     "pos": "DF"
+    },
+    {
+     "name": "Joe Bell",
+     "pos": "MF"
+    },
+    {
+     "name": "Marko Stamenić",
+     "pos": "MF"
+    },
+    {
+     "name": "Ben Old",
+     "pos": "MF"
+    },
+    {
+     "name": "Sarpreet Singh",
+     "pos": "MF"
+    },
+    {
+     "name": "Elijah Just",
+     "pos": "MF"
+    },
+    {
+     "name": "Chris Wood",
+     "pos": "FW"
+    }
+   ],
+   "tactic": "堅守速攻型。規律あるブロックで失点を抑え、奪えば縦に速く運んでエースのチェイス・ウッドにクロスとセカンドボールを供給する。空中戦の強さとセットプレーが最大の武器で、ベルやスタメニッチが中盤の運動量を支え、カチャーチェの左サイド攻撃が起点となる。",
+   "manager": {
+    "name": "Darren Bazeley",
+    "nat": "イングランド"
+   },
+   "src": "knowledge"
+  },
+  "カーボベルデ": {
+   "formation": "4-3-3",
+   "xi": [
+    {
+     "name": "Vozinha",
+     "pos": "GK"
+    },
+    {
+     "name": "Wagner Pina",
+     "pos": "DF"
+    },
+    {
+     "name": "Roberto Lopes",
+     "pos": "DF"
+    },
+    {
+     "name": "Logan Costa",
+     "pos": "DF"
+    },
+    {
+     "name": "Steven Moreira",
+     "pos": "DF"
+    },
+    {
+     "name": "Kevin Pina",
+     "pos": "MF"
+    },
+    {
+     "name": "Deroy Duarte",
+     "pos": "MF"
+    },
+    {
+     "name": "Jamiro Monteiro",
+     "pos": "MF"
+    },
+    {
+     "name": "Jovane Cabral",
+     "pos": "FW"
+    },
+    {
+     "name": "Dailon Livramento",
+     "pos": "FW"
+    },
+    {
+     "name": "Ryan Mendes",
+     "pos": "FW"
+    }
+   ],
+   "tactic": "堅守を土台に、技巧的なウイング陣で島国らしい攻撃を仕掛ける。中盤ではケビン・ピナとデロイ・ドゥアルテが汗をかき、前線のメンデスやカブラルを輝かせる。決定力の核は中央のリヴラメント。ボールを握り切る意志も持つ。",
+   "manager": {
+    "name": "Pedro Leitão Brito",
+    "nat": "カーボベルデ"
+   },
+   "src": "guardian"
+  },
+  "サウジアラビア": {
+   "formation": "4-2-3-1",
+   "xi": [
+    {
+     "name": "Mohammed Al-Owais",
+     "pos": "GK"
+    },
+    {
+     "name": "Saud Abdulhamid",
+     "pos": "DF"
+    },
+    {
+     "name": "Abdulelah Al-Amri",
+     "pos": "DF"
+    },
+    {
+     "name": "Hassan Al-Tambakti",
+     "pos": "DF"
+    },
+    {
+     "name": "Ali Lajami",
+     "pos": "DF"
+    },
+    {
+     "name": "Nasser Al-Dawsari",
+     "pos": "MF"
+    },
+    {
+     "name": "Mohamed Kanno",
+     "pos": "MF"
+    },
+    {
+     "name": "Musab Al-Juwayr",
+     "pos": "MF"
+    },
+    {
+     "name": "Salem Al-Dawsari",
+     "pos": "MF"
+    },
+    {
+     "name": "Ayman Yahya",
+     "pos": "MF"
+    },
+    {
+     "name": "Firas Al-Buraikan",
+     "pos": "FW"
+    }
+   ],
+   "tactic": "新監督ドニスは守備を固める4-2-3-1を採用し、被失点の多さを克服したい狙い。2列目から鋭く切れ込むサレム・アル・ダウサリが攻撃の核で、創造性に富む若手アル・ジュワイルが起点を作る。前線アル・ブライカンの献身的な走りでカウンターを完結させる。",
+   "manager": {
+    "name": "Georgios Donis",
+    "nat": "ギリシャ"
+   },
+   "src": "guardian"
+  },
+  "スペイン": {
+   "formation": "4-3-3",
+   "xi": [
+    {
+     "name": "Unai Simón",
+     "pos": "GK"
+    },
+    {
+     "name": "Pedro Porro",
+     "pos": "DF"
+    },
+    {
+     "name": "Pau Cubarsí",
+     "pos": "DF"
+    },
+    {
+     "name": "Aymeric Laporte",
+     "pos": "DF"
+    },
+    {
+     "name": "Marc Cucurella",
+     "pos": "DF"
+    },
+    {
+     "name": "Rodri",
+     "pos": "MF"
+    },
+    {
+     "name": "Pedri",
+     "pos": "MF"
+    },
+    {
+     "name": "Fabián Ruiz",
+     "pos": "MF"
+    },
+    {
+     "name": "Lamine Yamal",
+     "pos": "FW"
+    },
+    {
+     "name": "Mikel Oyarzabal",
+     "pos": "FW"
+    },
+    {
+     "name": "Nico Williams",
+     "pos": "FW"
+    }
+   ],
+   "tactic": "高い位置からのプレッシングと精緻なポゼッションが軸。ロドリが攻守の起点となり、ペドリが緩急を操る。両翼のヤマルとN・ウィリアムスが幅を取って1対1で仕掛け、オジャルサバルが中で仕上げる。後方からの丁寧なビルドアップで相手を押し込み、主導権を握る。",
+   "manager": {
+    "name": "Luis de la Fuente",
+    "nat": "スペイン"
+   },
+   "src": "knowledge"
+  },
+  "ウルグアイ": {
+   "formation": "4-3-3",
+   "xi": [
+    {
+     "name": "Sergio Rochet",
+     "pos": "GK"
+    },
+    {
+     "name": "Guillermo Varela",
+     "pos": "DF"
+    },
+    {
+     "name": "Ronald Araújo",
+     "pos": "DF"
+    },
+    {
+     "name": "José Giménez",
+     "pos": "DF"
+    },
+    {
+     "name": "Mathías Olivera",
+     "pos": "DF"
+    },
+    {
+     "name": "Manuel Ugarte",
+     "pos": "MF"
+    },
+    {
+     "name": "Federico Valverde",
+     "pos": "MF"
+    },
+    {
+     "name": "Rodrigo Bentancur",
+     "pos": "MF"
+    },
+    {
+     "name": "Facundo Pellistri",
+     "pos": "FW"
+    },
+    {
+     "name": "Darwin Núñez",
+     "pos": "FW"
+    },
+    {
+     "name": "Nicolás de la Cruz",
+     "pos": "FW"
+    }
+   ],
+   "tactic": "ビエルサ式の積極的なハイプレスと縦に速い攻撃が身上。アラウホとヒメネスの堅守を背景に、バルベルデが攻守両局面で圧倒的な運動量を発揮する。デ・ラ・クルスの創造性とヌニェスの推進力で一気にゴールへ迫る。",
+   "manager": {
+    "name": "Marcelo Bielsa",
+    "nat": "アルゼンチン"
+   },
+   "src": "knowledge"
+  },
+  "フランス": {
+   "formation": "4-3-3",
+   "xi": [
+    {
+     "name": "Mike Maignan",
+     "pos": "GK"
+    },
+    {
+     "name": "Jules Koundé",
+     "pos": "DF"
+    },
+    {
+     "name": "Dayot Upamecano",
+     "pos": "DF"
+    },
+    {
+     "name": "William Saliba",
+     "pos": "DF"
+    },
+    {
+     "name": "Théo Hernandez",
+     "pos": "DF"
+    },
+    {
+     "name": "Aurélien Tchouaméni",
+     "pos": "MF"
+    },
+    {
+     "name": "Manu Koné",
+     "pos": "MF"
+    },
+    {
+     "name": "Adrien Rabiot",
+     "pos": "MF"
+    },
+    {
+     "name": "Ousmane Dembélé",
+     "pos": "FW"
+    },
+    {
+     "name": "Kylian Mbappé",
+     "pos": "FW"
+    },
+    {
+     "name": "Michael Olise",
+     "pos": "FW"
+    }
+   ],
+   "tactic": "デシャン流の堅守を土台に、世界屈指の攻撃陣で勝ち切る現実主義。9番化したエース・エムバペを軸に、デンベレとオリセが両翼から仕掛け、チュアメニが守備のバランスを統率。3月の親善試合では従来の手堅さに加え、より多彩で読まれにくい攻撃の片鱗も見せた。",
+   "manager": {
+    "name": "Didier Deschamps",
+    "nat": "フランス"
+   },
+   "src": "guardian"
+  },
+  "イラク": {
+   "formation": "4-3-3",
+   "xi": [
+    {
+     "name": "Jalal Hassan",
+     "pos": "GK"
+    },
+    {
+     "name": "Merchas Doski",
+     "pos": "DF"
+    },
+    {
+     "name": "Rebin Sulaka",
+     "pos": "DF"
+    },
+    {
+     "name": "Akam Hashim",
+     "pos": "DF"
+    },
+    {
+     "name": "Hussein Ali",
+     "pos": "DF"
+    },
+    {
+     "name": "Amir Al-Ammari",
+     "pos": "MF"
+    },
+    {
+     "name": "Ibrahim Bayesh",
+     "pos": "MF"
+    },
+    {
+     "name": "Zidane Iqbal",
+     "pos": "MF"
+    },
+    {
+     "name": "Ahmed Qasem",
+     "pos": "FW"
+    },
+    {
+     "name": "Aymen Hussein",
+     "pos": "FW"
+    },
+    {
+     "name": "Marko Farji",
+     "pos": "FW"
+    }
+   ],
+   "tactic": "アーノルド就任後に規律と団結を植え付け、基本は4-3-3、時に2トップの4-4-2も併用。死の組では失うものなしと割り切り恐れず戦う。守備で固めつつアル・アンマリが司令塔として配球し、エースのアイメン・フセインの決定力とファルジの突破で一撃を狙う。",
+   "manager": {
+    "name": "Graham Arnold",
+    "nat": "オーストラリア"
+   },
+   "src": "guardian"
+  },
+  "ノルウェー": {
+   "formation": "4-3-3",
+   "xi": [
+    {
+     "name": "Ørjan Nyland",
+     "pos": "GK"
+    },
+    {
+     "name": "Julian Ryerson",
+     "pos": "DF"
+    },
+    {
+     "name": "Kristoffer Ajer",
+     "pos": "DF"
+    },
+    {
+     "name": "Leo Østigård",
+     "pos": "DF"
+    },
+    {
+     "name": "David Møller Wolfe",
+     "pos": "DF"
+    },
+    {
+     "name": "Sander Berge",
+     "pos": "MF"
+    },
+    {
+     "name": "Martin Ødegaard",
+     "pos": "MF"
+    },
+    {
+     "name": "Patrick Berg",
+     "pos": "MF"
+    },
+    {
+     "name": "Antonio Nusa",
+     "pos": "FW"
+    },
+    {
+     "name": "Erling Haaland",
+     "pos": "FW"
+    },
+    {
+     "name": "Alexander Sørloth",
+     "pos": "FW"
+    }
+   ],
+   "tactic": "堅守速攻を軸に、ハーランの強烈な決定力を最大限活かす形。エデゴールが中盤で配球とリズムを司り、両翼ヌーサらの推進力とソルロートの高さで厚みを出す。失った後の素早い前進とセットプレーが大きな武器。",
+   "manager": {
+    "name": "Ståle Solbakken",
+    "nat": "ノルウェー"
+   },
+   "src": "knowledge"
+  },
+  "セネガル": {
+   "formation": "4-3-3",
+   "xi": [
+    {
+     "name": "Édouard Mendy",
+     "pos": "GK"
+    },
+    {
+     "name": "Krépin Diatta",
+     "pos": "DF"
+    },
+    {
+     "name": "Kalidou Koulibaly",
+     "pos": "DF"
+    },
+    {
+     "name": "Moussa Niakhaté",
+     "pos": "DF"
+    },
+    {
+     "name": "Ismail Jakobs",
+     "pos": "DF"
+    },
+    {
+     "name": "Idrissa Gueye",
+     "pos": "MF"
+    },
+    {
+     "name": "Pape Matar Sarr",
+     "pos": "MF"
+    },
+    {
+     "name": "Lamine Camara",
+     "pos": "MF"
+    },
+    {
+     "name": "Ismaïla Sarr",
+     "pos": "FW"
+    },
+    {
+     "name": "Nicolas Jackson",
+     "pos": "FW"
+    },
+    {
+     "name": "Sadio Mané",
+     "pos": "FW"
+    }
+   ],
+   "tactic": "クリバリ統率の堅守を土台に、ゲイェとパペ・マタル・サールの運動量で中盤を支配。両翼イスマイラ・サールとマネの推進力とジャクソンの裏抜けで縦に速く仕掛け、奪ってからの鋭いトランジションで仕留めるアフリカ屈指の総合力が武器。",
+   "manager": {
+    "name": "Pape Thiaw",
+    "nat": "セネガル"
+   },
+   "src": "knowledge"
+  },
+  "アルジェリア": {
+   "formation": "4-3-3",
+   "xi": [
+    {
+     "name": "Luca Zidane",
+     "pos": "GK"
+    },
+    {
+     "name": "Rafik Belghali",
+     "pos": "DF"
+    },
+    {
+     "name": "Aïssa Mandi",
+     "pos": "DF"
+    },
+    {
+     "name": "Mohamed Amine Tougai",
+     "pos": "DF"
+    },
+    {
+     "name": "Rayan Aït-Nouri",
+     "pos": "DF"
+    },
+    {
+     "name": "Ramiz Zerrouki",
+     "pos": "MF"
+    },
+    {
+     "name": "Hicham Boudaoui",
+     "pos": "MF"
+    },
+    {
+     "name": "Ibrahim Maza",
+     "pos": "MF"
+    },
+    {
+     "name": "Riyad Mahrez",
+     "pos": "FW"
+    },
+    {
+     "name": "Mohamed Amoura",
+     "pos": "FW"
+    },
+    {
+     "name": "Amine Gouiri",
+     "pos": "FW"
+    }
+   ],
+   "tactic": "ペトコビッチの下で高い保持率とハイプレスを志向し、GKからのビルドアップで相手のラインを崩す技巧派。主将マハレズが序盤に魔法をかけ、20歳マザがハーフターンで前進、ボダウィが豊富な運動量で中盤を支える。一方で最終ライン裏の隙が弱点。",
+   "manager": {
+    "name": "Vladimir Petković",
+    "nat": "ボスニア・ヘルツェゴビナ"
+   },
+   "src": "guardian"
+  },
+  "アルゼンチン": {
+   "formation": "4-3-3",
+   "xi": [
+    {
+     "name": "Emiliano Martínez",
+     "pos": "GK"
+    },
+    {
+     "name": "Nahuel Molina",
+     "pos": "DF"
+    },
+    {
+     "name": "Cristian Romero",
+     "pos": "DF"
+    },
+    {
+     "name": "Lisandro Martínez",
+     "pos": "DF"
+    },
+    {
+     "name": "Nicolás Tagliafico",
+     "pos": "DF"
+    },
+    {
+     "name": "Rodrigo De Paul",
+     "pos": "MF"
+    },
+    {
+     "name": "Enzo Fernández",
+     "pos": "MF"
+    },
+    {
+     "name": "Alexis Mac Allister",
+     "pos": "MF"
+    },
+    {
+     "name": "Lionel Messi",
+     "pos": "FW"
+    },
+    {
+     "name": "Julián Alvarez",
+     "pos": "FW"
+    },
+    {
+     "name": "Lautaro Martínez",
+     "pos": "FW"
+    }
+   ],
+   "tactic": "堅守速攻と圧倒的な中盤の質が武器。エンソとマクアリスターが攻守の起点となり、デパウルが運動量で補完する。前線はメッシを自由な司令塔に置き、ラウタロとアルバレスの献身的な動きでスペースを創出。守備時はコンパクトに構え、奪取から一気に加速する。",
+   "manager": {
+    "name": "Lionel Scaloni",
+    "nat": "アルゼンチン"
+   },
+   "src": "knowledge"
+  },
+  "オーストリア": {
+   "formation": "4-2-3-1",
+   "xi": [
+    {
+     "name": "Alexander Schlager",
+     "pos": "GK"
+    },
+    {
+     "name": "Konrad Laimer",
+     "pos": "DF"
+    },
+    {
+     "name": "Kevin Danso",
+     "pos": "DF"
+    },
+    {
+     "name": "Philipp Lienhart",
+     "pos": "DF"
+    },
+    {
+     "name": "Stefan Posch",
+     "pos": "DF"
+    },
+    {
+     "name": "Nicolas Seiwald",
+     "pos": "MF"
+    },
+    {
+     "name": "Xaver Schlager",
+     "pos": "MF"
+    },
+    {
+     "name": "Patrick Wimmer",
+     "pos": "MF"
+    },
+    {
+     "name": "Marcel Sabitzer",
+     "pos": "MF"
+    },
+    {
+     "name": "Romano Schmid",
+     "pos": "MF"
+    },
+    {
+     "name": "Michael Gregoritsch",
+     "pos": "FW"
+    }
+   ],
+   "tactic": "ラングニック仕込みのハイプレスとカウンタープレスが生命線。ボール奪取後は素早く前進し、相手のミスを得点に変える。長年不変の骨格による連係と相互理解が最大の強み。中盤のザイヴァルトとX.シュラーガーが構造を支え、サビッツァーが攻撃を牽引する。",
+   "manager": {
+    "name": "Ralf Rangnick",
+    "nat": "ドイツ"
+   },
+   "src": "guardian"
+  },
+  "ヨルダン": {
+   "formation": "3-4-2-1",
+   "xi": [
+    {
+     "name": "Yazeed Abulaila",
+     "pos": "GK"
+    },
+    {
+     "name": "Yazan Al-Arab",
+     "pos": "DF"
+    },
+    {
+     "name": "Abdallah Nasib",
+     "pos": "DF"
+    },
+    {
+     "name": "Ihsan Haddad",
+     "pos": "DF"
+    },
+    {
+     "name": "Mohammad Abu Hashish",
+     "pos": "MF"
+    },
+    {
+     "name": "Noor Al-Rawabdeh",
+     "pos": "MF"
+    },
+    {
+     "name": "Nizar Al-Rashdan",
+     "pos": "MF"
+    },
+    {
+     "name": "Saed Al-Rosan",
+     "pos": "MF"
+    },
+    {
+     "name": "Musa Al-Taamari",
+     "pos": "FW"
+    },
+    {
+     "name": "Mohammad Abu Zrayq",
+     "pos": "FW"
+    },
+    {
+     "name": "Ali Olwan",
+     "pos": "FW"
+    }
+   ],
+   "tactic": "堅守速攻型。3バックで中央を固め、両ウイングバックが攻守に上下動。守備ブロックを低く保ち奪取後は一気に縦へ運ぶ。生命線はエース・アル＝タマリの推進力とドリブル突破で、彼を起点に裏抜けするオルワンへ供給し少ない好機を仕留める。セットプレーも武器。",
+   "manager": {
+    "name": "Jamal Sellami",
+    "nat": "モロッコ"
+   },
+   "src": "knowledge"
+  },
+  "コロンビア": {
+   "formation": "4-2-3-1",
+   "xi": [
+    {
+     "name": "Camilo Vargas",
+     "pos": "GK"
+    },
+    {
+     "name": "Daniel Muñoz",
+     "pos": "DF"
+    },
+    {
+     "name": "Davinson Sánchez",
+     "pos": "DF"
+    },
+    {
+     "name": "Jhon Lucumí",
+     "pos": "DF"
+    },
+    {
+     "name": "Johan Mojica",
+     "pos": "DF"
+    },
+    {
+     "name": "Jefferson Lerma",
+     "pos": "MF"
+    },
+    {
+     "name": "Richard Ríos",
+     "pos": "MF"
+    },
+    {
+     "name": "Jhon Arias",
+     "pos": "MF"
+    },
+    {
+     "name": "James Rodríguez",
+     "pos": "MF"
+    },
+    {
+     "name": "Luis Díaz",
+     "pos": "FW"
+    },
+    {
+     "name": "Jhon Córdoba",
+     "pos": "FW"
+    }
+   ],
+   "tactic": "ロレンソ体制は球際の強さと縦への速さが持ち味。レルマとリオスのダブルボランチが土台を作り、司令塔ハメスが緩急で配球。左のルイス・ディアスの突破とコルドバの強さを軸に、ムニョスの攻め上がりも加えて多彩に崩す。",
+   "manager": {
+    "name": "Néstor Lorenzo",
+    "nat": "アルゼンチン"
+   },
+   "src": "knowledge"
+  },
+  "コンゴ民主共和国": {
+   "formation": "4-2-3-1",
+   "xi": [
+    {
+     "name": "Lionel Mpasi",
+     "pos": "GK"
+    },
+    {
+     "name": "Aaron Wan-Bissaka",
+     "pos": "DF"
+    },
+    {
+     "name": "Chancel Mbemba",
+     "pos": "DF"
+    },
+    {
+     "name": "Axel Tuanzebe",
+     "pos": "DF"
+    },
+    {
+     "name": "Arthur Masuaku",
+     "pos": "DF"
+    },
+    {
+     "name": "Noah Sadiki",
+     "pos": "MF"
+    },
+    {
+     "name": "Ngal'ayel Mukau",
+     "pos": "MF"
+    },
+    {
+     "name": "Théo Bongonda",
+     "pos": "MF"
+    },
+    {
+     "name": "Gaël Kakuta",
+     "pos": "MF"
+    },
+    {
+     "name": "Yoane Wissa",
+     "pos": "FW"
+    },
+    {
+     "name": "Fiston Mayele",
+     "pos": "FW"
+    }
+   ],
+   "tactic": "堅守速攻が身上。ンベンバ中心の規律ある守備からワンビサカらの推進力で奪い、ボンゴンダやカクタの推進と縦への速さで一気に運ぶ。ウィサとマイェレの機動力ある2トップ気味の前線を活かし、サディキら若い中盤が攻守をつなぐ。",
+   "manager": {
+    "name": "Sébastien Desabre",
+    "nat": "フランス"
+   },
+   "src": "knowledge"
+  },
+  "ポルトガル": {
+   "formation": "4-2-3-1",
+   "xi": [
+    {
+     "name": "Diogo Costa",
+     "pos": "GK"
+    },
+    {
+     "name": "Diogo Dalot",
+     "pos": "DF"
+    },
+    {
+     "name": "Rúben Dias",
+     "pos": "DF"
+    },
+    {
+     "name": "Gonçalo Inácio",
+     "pos": "DF"
+    },
+    {
+     "name": "Nuno Mendes",
+     "pos": "DF"
+    },
+    {
+     "name": "Vitinha",
+     "pos": "MF"
+    },
+    {
+     "name": "João Neves",
+     "pos": "MF"
+    },
+    {
+     "name": "Bernardo Silva",
+     "pos": "MF"
+    },
+    {
+     "name": "Bruno Fernandes",
+     "pos": "MF"
+    },
+    {
+     "name": "Rafael Leão",
+     "pos": "FW"
+    },
+    {
+     "name": "Cristiano Ronaldo",
+     "pos": "FW"
+    }
+   ],
+   "tactic": "ネーションズリーグ王者の総合力が武器。ジョアン・ネベスやマテウス・ヌネスら可変性の高い選手を配し、ビティーニャを軸に主導権を握る。ブルーノとベルナルドが流動的に絡み、レオンの推進力とロナウドの決定力を引き出す。守護神ディオゴ・コスタの安定感も強み。",
+   "manager": {
+    "name": "Roberto Martínez",
+    "nat": "スペイン"
+   },
+   "src": "guardian"
+  },
+  "ウズベキスタン": {
+   "formation": "4-2-3-1",
+   "xi": [
+    {
+     "name": "Utkir Yusupov",
+     "pos": "GK"
+    },
+    {
+     "name": "Abdukodir Khusanov",
+     "pos": "DF"
+    },
+    {
+     "name": "Rustam Ashurmatov",
+     "pos": "DF"
+    },
+    {
+     "name": "Khojiakbar Alijonov",
+     "pos": "DF"
+    },
+    {
+     "name": "Farrukh Sayfiev",
+     "pos": "DF"
+    },
+    {
+     "name": "Odiljon Hamrobekov",
+     "pos": "MF"
+    },
+    {
+     "name": "Otabek Shukurov",
+     "pos": "MF"
+    },
+    {
+     "name": "Abbosbek Fayzullaev",
+     "pos": "MF"
+    },
+    {
+     "name": "Jaloliddin Masharipov",
+     "pos": "MF"
+    },
+    {
+     "name": "Oston Urunov",
+     "pos": "MF"
+    },
+    {
+     "name": "Eldor Shomurodov",
+     "pos": "FW"
+    }
+   ],
+   "tactic": "堅守速攻型。規律ある4-2-3-1で中盤2枚が守備の土台を築き、被カウンターを抑える。最終ラインの要フサノフの対人と展開力を起点に、ファイズラエフの創造性とショムロドフの推進力で素早く前線へ繋ぎ、サイドの抜け出しから仕留める。",
+   "manager": {
+    "name": "Fabio Cannavaro",
+    "nat": "イタリア"
+   },
+   "src": "knowledge"
+  },
+  "クロアチア": {
+   "formation": "4-3-3",
+   "xi": [
+    {
+     "name": "Dominik Livaković",
+     "pos": "GK"
+    },
+    {
+     "name": "Josip Stanišić",
+     "pos": "DF"
+    },
+    {
+     "name": "Joško Gvardiol",
+     "pos": "DF"
+    },
+    {
+     "name": "Josip Šutalo",
+     "pos": "DF"
+    },
+    {
+     "name": "Marin Pongračić",
+     "pos": "DF"
+    },
+    {
+     "name": "Luka Modrić",
+     "pos": "MF"
+    },
+    {
+     "name": "Mateo Kovačić",
+     "pos": "MF"
+    },
+    {
+     "name": "Luka Sučić",
+     "pos": "MF"
+    },
+    {
+     "name": "Nikola Vlašić",
+     "pos": "FW"
+    },
+    {
+     "name": "Andrej Kramarić",
+     "pos": "FW"
+    },
+    {
+     "name": "Ivan Perišić",
+     "pos": "FW"
+    }
+   ],
+   "tactic": "モドリッチとコバチッチを軸に高い保持率で試合を支配する遅攻型。中盤の技術と展開力で主導権を握り、左SBグヴァルディオルの攻撃参加とペリシッチの突破で崩す。ベテラン依存と最終局面の決定力が課題。",
+   "manager": {
+    "name": "Zlatko Dalić",
+    "nat": "クロアチア"
+   },
+   "src": "knowledge"
+  },
+  "イングランド": {
+   "formation": "4-2-3-1",
+   "xi": [
+    {
+     "name": "Jordan Pickford",
+     "pos": "GK"
+    },
+    {
+     "name": "Reece James",
+     "pos": "DF"
+    },
+    {
+     "name": "John Stones",
+     "pos": "DF"
+    },
+    {
+     "name": "Marc Guéhi",
+     "pos": "DF"
+    },
+    {
+     "name": "Nico O'Reilly",
+     "pos": "DF"
+    },
+    {
+     "name": "Declan Rice",
+     "pos": "MF"
+    },
+    {
+     "name": "Elliot Anderson",
+     "pos": "MF"
+    },
+    {
+     "name": "Bukayo Saka",
+     "pos": "FW"
+    },
+    {
+     "name": "Jude Bellingham",
+     "pos": "MF"
+    },
+    {
+     "name": "Anthony Gordon",
+     "pos": "FW"
+    },
+    {
+     "name": "Harry Kane",
+     "pos": "FW"
+    }
+   ],
+   "tactic": "トゥヘルは規律ある4-2-3-1で、ライスとアンダーソンの二枚が中盤を締め、サカやゴードンの幅と仕掛けで崩す。ベリンガムを前線に近い位置で自由に動かし、ケインの落としと得点力を最大化。堅守と前線タレントの個を結びつけ、トーナメントで安定した勝負強さを狙う。",
+   "manager": {
+    "name": "Thomas Tuchel",
+    "nat": "ドイツ"
+   },
+   "src": "knowledge"
+  },
+  "ガーナ": {
+   "formation": "4-3-3",
+   "xi": [
+    {
+     "name": "Lawrence Ati-Zigi",
+     "pos": "GK"
+    },
+    {
+     "name": "Alidu Seidu",
+     "pos": "DF"
+    },
+    {
+     "name": "Abdul Mumin",
+     "pos": "DF"
+    },
+    {
+     "name": "Jonas Adjetey",
+     "pos": "DF"
+    },
+    {
+     "name": "Gideon Mensah",
+     "pos": "DF"
+    },
+    {
+     "name": "Thomas Partey",
+     "pos": "MF"
+    },
+    {
+     "name": "Elisha Owusu",
+     "pos": "MF"
+    },
+    {
+     "name": "Caleb Yirenkyi",
+     "pos": "MF"
+    },
+    {
+     "name": "Antoine Semenyo",
+     "pos": "FW"
+    },
+    {
+     "name": "Iñaki Williams",
+     "pos": "FW"
+    },
+    {
+     "name": "Abdul Fatawu",
+     "pos": "FW"
+    }
+   ],
+   "tactic": "クェイロス流の堅守速攻が基本。パーティが中盤の底でボールを刈り取り散らし、組織的なブロックから前線へ素早く展開する。両翼のセメニョやファタウ、快足ウィリアムズの推進力とカウンターが最大の武器となる。",
+   "manager": {
+    "name": "Carlos Queiroz",
+    "nat": "ポルトガル"
+   },
+   "src": "knowledge"
+  },
+  "パナマ": {
+   "formation": "4-3-3",
+   "xi": [
+    {
+     "name": "Orlando Mosquera",
+     "pos": "GK"
+    },
+    {
+     "name": "Michael Amir Murillo",
+     "pos": "DF"
+    },
+    {
+     "name": "José Córdoba",
+     "pos": "DF"
+    },
+    {
+     "name": "Fidel Escobar",
+     "pos": "DF"
+    },
+    {
+     "name": "Eric Davis",
+     "pos": "DF"
+    },
+    {
+     "name": "Adalberto Carrasquilla",
+     "pos": "MF"
+    },
+    {
+     "name": "Aníbal Godoy",
+     "pos": "MF"
+    },
+    {
+     "name": "Cristian Martínez",
+     "pos": "MF"
+    },
+    {
+     "name": "José Luis Rodríguez",
+     "pos": "FW"
+    },
+    {
+     "name": "Ismael Díaz",
+     "pos": "FW"
+    },
+    {
+     "name": "Cecilio Waterman",
+     "pos": "FW"
+    }
+   ],
+   "tactic": "堅守速攻が身上。4-3-3で中盤の運動量と球際の強さを前面に出し、ボール奪取からの素早い切り替えで仕掛ける。司令塔カラスキージャの配球と、サイドを抉るホセ・ルイス・ロドリゲスの推進力が鍵。コルドバを軸にした守備ブロックで耐え、セットプレーも得点源とする。",
+   "manager": {
+    "name": "Thomas Christiansen",
+    "nat": "デンマーク"
+   },
+   "src": "knowledge"
+  }
+ }
+}

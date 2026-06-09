@@ -5,6 +5,10 @@ Thumbs.db
 
 # local syntax-check / scratch
 .__chk.js
+_build/
+_*.mjs
+_*.txt
+wc2026_dashboard_*.html
 
 # local preview config (machine-specific)
 .claude/
