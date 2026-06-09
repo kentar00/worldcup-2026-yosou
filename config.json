@@ -18,66 +18,72 @@
  },
  "lucky": {},
  "bets": [],
- "draftOrder": null,
+ "draftOrder": [
+  "KT",
+  "MM",
+  "NK",
+  "AI",
+  "KO"
+ ],
  "teams": {
   "メキシコ": {
    "group": "A",
    "tier": "B",
-   "owner": null,
+   "owner": "KT",
    "flag": "🇲🇽"
   },
   "南アフリカ": {
    "group": "A",
    "tier": "D",
-   "owner": null,
+   "owner": "NK",
    "flag": "🇿🇦"
   },
   "韓国": {
    "group": "A",
    "tier": "C",
-   "owner": null,
+   "owner": "AI",
    "flag": "🇰🇷"
   },
   "チェコ": {
    "group": "A",
    "tier": "D",
-   "owner": null,
+   "owner": "MM",
    "flag": "🇨🇿"
   },
   "カナダ": {
    "group": "B",
    "tier": "C",
-   "owner": null,
+   "owner": "KO",
    "flag": "🇨🇦"
   },
   "ボスニア・ヘルツェゴビナ": {
    "group": "B",
    "tier": "D",
-   "owner": null,
+   "owner": "KT",
    "flag": "🇧🇦"
   },
   "カタール": {
    "group": "B",
    "tier": "D",
-   "owner": null,
+   "owner": "KO",
    "flag": "🇶🇦"
   },
   "スイス": {
    "group": "B",
    "tier": "C",
-   "owner": null,
+   "owner": "KT",
    "flag": "🇨🇭"
   },
   "ブラジル": {
    "group": "C",
    "tier": "B",
-   "owner": null,
+   "owner": "KO",
    "flag": "🇧🇷"
   },
   "モロッコ": {
    "group": "C",
    "tier": "B",
-   "owner": null,
+   "owner": "KT",
    "flag": "🇲🇦"
   },
   "ハイチ": {
@@ -89,37 +95,37 @@
   "スコットランド": {
    "group": "C",
    "tier": "D",
-   "owner": null,
+   "owner": "MM",
    "flag": "🏴󠁧󠁢󠁳󠁣󠁴󠁿"
   },
   "アメリカ": {
    "group": "D",
    "tier": "B",
-   "owner": null,
+   "owner": "AI",
    "flag": "🇺🇸"
   },
   "パラグアイ": {
    "group": "D",
    "tier": "D",
-   "owner": null,
+   "owner": "NK",
    "flag": "🇵🇾"
   },
   "オーストラリア": {
    "group": "D",
    "tier": "C",
-   "owner": null,
+   "owner": "KO",
    "flag": "🇦🇺"
   },
   "トルコ": {
    "group": "D",
    "tier": "C",
-   "owner": null,
+   "owner": "KT",
    "flag": "🇹🇷"
   },
   "ドイツ": {
    "group": "E",
    "tier": "B",
-   "owner": null,
+   "owner": "AI",
    "flag": "🇩🇪"
   },
   "キュラソー": {
@@ -131,55 +137,55 @@
   "コートジボワール": {
    "group": "E",
    "tier": "C",
-   "owner": null,
+   "owner": "KO",
    "flag": "🇨🇮"
   },
   "エクアドル": {
    "group": "E",
    "tier": "C",
-   "owner": null,
+   "owner": "MM",
    "flag": "🇪🇨"
   },
   "オランダ": {
    "group": "F",
    "tier": "B",
-   "owner": null,
+   "owner": "MM",
    "flag": "🇳🇱"
   },
   "日本": {
    "group": "F",
    "tier": "C",
-   "owner": null,
+   "owner": "AI",
    "flag": "🇯🇵"
   },
   "スウェーデン": {
    "group": "F",
    "tier": "D",
-   "owner": null,
+   "owner": "KT",
    "flag": "🇸🇪"
   },
   "チュニジア": {
    "group": "F",
    "tier": "D",
-   "owner": null,
+   "owner": "KO",
    "flag": "🇹🇳"
   },
   "ベルギー": {
    "group": "G",
    "tier": "B",
-   "owner": null,
+   "owner": "NK",
    "flag": "🇧🇪"
   },
   "エジプト": {
    "group": "G",
    "tier": "C",
-   "owner": null,
+   "owner": "MM",
    "flag": "🇪🇬"
   },
   "イラン": {
    "group": "G",
    "tier": "C",
-   "owner": null,
+   "owner": "NK",
    "flag": "🇮🇷"
   },
   "ニュージーランド": {
@@ -191,121 +197,121 @@
   "スペイン": {
    "group": "H",
    "tier": "A",
-   "owner": null,
+   "owner": "MM",
    "flag": "🇪🇸"
   },
   "カーボベルデ": {
    "group": "H",
    "tier": "D",
-   "owner": null,
+   "owner": "MM",
    "flag": "🇨🇻"
   },
   "サウジアラビア": {
    "group": "H",
    "tier": "D",
-   "owner": null,
+   "owner": "AI",
    "flag": "🇸🇦"
   },
   "ウルグアイ": {
    "group": "H",
    "tier": "C",
-   "owner": null,
+   "owner": "NK",
    "flag": "🇺🇾"
   },
   "フランス": {
    "group": "I",
    "tier": "A",
-   "owner": null,
+   "owner": "KO",
    "flag": "🇫🇷"
   },
   "セネガル": {
    "group": "I",
    "tier": "B",
-   "owner": null,
+   "owner": "KO",
    "flag": "🇸🇳"
   },
   "イラク": {
    "group": "I",
    "tier": "D",
-   "owner": null,
+   "owner": "NK",
    "flag": "🇮🇶"
   },
   "ノルウェー": {
    "group": "I",
    "tier": "C",
-   "owner": null,
+   "owner": "KT",
    "flag": "🇳🇴"
   },
   "アルゼンチン": {
    "group": "J",
    "tier": "A",
-   "owner": null,
+   "owner": "NK",
    "flag": "🇦🇷"
   },
   "アルジェリア": {
    "group": "J",
    "tier": "C",
-   "owner": null,
+   "owner": "MM",
    "flag": "🇩🇿"
   },
   "オーストリア": {
    "group": "J",
    "tier": "C",
-   "owner": null,
+   "owner": "NK",
    "flag": "🇦🇹"
   },
   "ヨルダン": {
    "group": "J",
    "tier": "D",
-   "owner": null,
+   "owner": "AI",
    "flag": "🇯🇴"
   },
   "ポルトガル": {
    "group": "K",
    "tier": "A",
-   "owner": null,
+   "owner": "AI",
    "flag": "🇵🇹"
   },
   "コンゴ民主共和国": {
    "group": "K",
    "tier": "D",
-   "owner": null,
+   "owner": "KT",
    "flag": "🇨🇩"
   },
   "ウズベキスタン": {
    "group": "K",
    "tier": "D",
-   "owner": null,
+   "owner": "AI",
    "flag": "🇺🇿"
   },
   "コロンビア": {
    "group": "K",
    "tier": "B",
-   "owner": null,
+   "owner": "MM",
    "flag": "🇨🇴"
   },
   "イングランド": {
    "group": "L",
    "tier": "A",
-   "owner": null,
+   "owner": "KT",
    "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿"
   },
   "クロアチア": {
    "group": "L",
    "tier": "B",
-   "owner": null,
+   "owner": "NK",
    "flag": "🇭🇷"
   },
   "ガーナ": {
    "group": "L",
    "tier": "D",
-   "owner": null,
+   "owner": "KO",
    "flag": "🇬🇭"
   },
   "パナマ": {
    "group": "L",
    "tier": "C",
-   "owner": null,
+   "owner": "AI",
    "flag": "🇵🇦"
   }
  }
