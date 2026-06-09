@@ -126,6 +126,15 @@
   .tmini{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
   .tmini .c{background:var(--card);border:1px solid var(--line);border-radius:11px;padding:10px;font-size:13px}
   @media(max-width:560px){.tmbody{grid-template-columns:104px 1fr;gap:11px;padding:11px}.tmini{grid-template-columns:1fr 1fr}}
+  /* match odds (1X2) */
+  .odds{display:flex;align-items:center;gap:10px;margin:-2px 0 9px;padding:2px 12px}
+  .oddbar{flex:none;width:62px;height:7px;border-radius:4px;overflow:hidden;display:flex;border:1px solid var(--line)}
+  .oddbar i{display:block;height:100%}
+  .od{display:flex;flex-direction:column;align-items:center;line-height:1.05;min-width:40px}
+  .od b{font-family:"Anton",sans-serif;font-size:13px;color:var(--tx)}
+  .od i{font-style:normal;font-size:9px;color:var(--muted);letter-spacing:.1em;margin-top:1px}
+  .od.win b{color:#9fe0b0}.od.lose b{color:#e0a06a}
+  .odds .olabel{font-size:9px;color:var(--muted);letter-spacing:.1em;margin-left:auto}
   .tchip{display:inline-block;font-family:"Anton",sans-serif;font-size:10px;width:16px;height:16px;line-height:16px;text-align:center;border-radius:4px;margin-left:6px;vertical-align:middle}
   .tchip.tA{background:linear-gradient(180deg,#ead7a6,#cdac68);color:#241c0c}
   .tchip.tB{background:#5ea0ec;color:#08152b}
@@ -562,11 +571,26 @@ function renderGroups(){
   document.getElementById('v-groups').innerHTML=html;
 }
 
+function oddsRow(key){
+  const o=G.odds&&G.odds[key];
+  if(!o||o.h==null)return '';
+  const inv=x=>x>0?1/x:0;const ih=inv(o.h),id=inv(o.d),ia=inv(o.a),s=ih+id+ia||1;
+  const ph=Math.round(ih/s*100),pd=Math.round(id/s*100),pa=Math.max(0,100-ph-pd);
+  const f=x=>x==null?'—':Number(x).toFixed(2);
+  return `<div class="odds">
+    <span class="oddbar"><i style="width:${ph}%;background:#3fc06a"></i><i style="width:${pd}%;background:#7d7568"></i><i style="width:${pa}%;background:#e0883f"></i></span>
+    <span class="od win"><b>${f(o.h)}</b><i>勝</i></span>
+    <span class="od"><b>${f(o.d)}</b><i>分</i></span>
+    <span class="od lose"><b>${f(o.a)}</b><i>負</i></span>
+    <span class="olabel">ODDS</span></div>`;
+}
 function renderScores(){
   // group by date
   const byDate={};G.gsMatches.forEach(m=>{(byDate[m.date]=byDate[m.date]||[]).push(m);});
   const dates=Object.keys(byDate).sort();
-  let gs=`<div class="barh">グループステージ 日程・結果（日本時間）<span class="en">GROUP</span></div>`;
+  const hasOdds=G.odds&&Object.keys(G.odds).length>0;
+  let gs=`<div class="barh">グループステージ 日程・結果（日本時間）<span class="en">GROUP</span></div>`
+    +(hasOdds?`<div class="hint">各試合のオッズ（勝／分／負）は複数ブックメーカーの平均・参考値です（自動更新）。</div>`:'');
   dates.forEach(d=>{
     const ms=byDate[d].sort((a,b)=>a.time.localeCompare(b.time));
     let rows=ms.map(m=>`<div class="m">
@@ -575,7 +599,7 @@ function renderScores(){
       <input type="number" min="0" value="${m.hs==null?'':m.hs}" onchange="setScore('${m.id}','h',this.value)">
       <span class="x">-</span>
       <input type="number" min="0" value="${m.as==null?'':m.as}" onchange="setScore('${m.id}','a',this.value)">
-      <span class="tn aw">${esc(m.away)} ${flag(m.away)}</span></div>`).join('');
+      <span class="tn aw">${esc(m.away)} ${flag(m.away)}</span></div>${oddsRow(m.id)}`).join('');
     gs+=`<div class="day">${dstr(d)}</div>${rows}`;
   });
   const teamOpts=Object.keys(G.teams).sort().map(t=>`<option>${esc(t)}</option>`).join('');
@@ -583,7 +607,7 @@ function renderScores(){
   let kolist=(G.koMatches||[]).map((m,i)=>`<div class="m"><span class="gg">${KO_LABEL[m.round]||m.round}</span>
     <span class="tn">${flag(m.home)} ${esc(m.home)} vs ${esc(m.away)} ${flag(m.away)}</span>
     <span style="color:#9fe0b0;font-size:12px">勝:${esc(m.winner||'未定')}</span>
-    <button class="del" onclick="delKO(${i})">削除</button></div>`).join('')||'<div class="hint">トーナメント開始後に追加します。</div>';
+    <button class="del" onclick="delKO(${i})">削除</button></div>${oddsRow(m.home+'|'+m.away)}`).join('')||'<div class="hint">トーナメント開始後に追加します。</div>';
   const ko=`<div class="barh">決勝トーナメント <span class="en">KNOCKOUT</span></div>
     <div class="card">
       <div class="row"><span class="lbl">ラウンド</span><select id="ko-round">${roundOpts}</select></div>
@@ -663,11 +687,13 @@ document.getElementById('nav').addEventListener('click',e=>{const b=e.target.clo
 
 async function boot(){
   try{
-    const [c,r]=await Promise.all([fetch('config.json',{cache:'no-store'}),fetch('results.json',{cache:'no-store'})]);
+    const [c,r,od]=await Promise.all([fetch('config.json',{cache:'no-store'}),fetch('results.json',{cache:'no-store'}),fetch('odds.json',{cache:'no-store'}).catch(()=>null)]);
     if(c.ok){const cfg=await c.json();if(cfg.players)G.players=cfg.players;if(cfg.colors)G.colors=cfg.colors;if(cfg.config)G.config=cfg.config;if(cfg.lucky)G.lucky=cfg.lucky;if(cfg.bets)G.bets=cfg.bets;if('draftOrder' in cfg)G.draftOrder=cfg.draftOrder;if(cfg.teams)G.teams=cfg.teams;}
     if(r.ok){const res=await r.json();if(res.gsMatches)G.gsMatches=res.gsMatches;if(res.koMatches)G.koMatches=res.koMatches;}
+    if(od&&od.ok){const o=await od.json();G.odds=o.odds||{};G.oddsUpdated=o.updated||null;}
   }catch(e){/* file:// やオフライン時は埋め込みデータで動作 */}
   if(!G.colors)G.colors={};
+  if(!G.odds)G.odds={};
   rlState.remaining=null;
   renderAll();
 }
