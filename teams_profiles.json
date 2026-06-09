@@ -222,7 +222,7 @@
    "src": "knowledge"
   },
   "ボスニア・ヘルツェゴビナ": {
-   "formation": "4-2-3-1",
+   "formation": "4-4-2",
    "xi": [
     {
      "name": "Nikola Vasilj",
@@ -245,15 +245,15 @@
      "pos": "DF"
     },
     {
-     "name": "Amir Hadžiahmetović",
+     "name": "Amar Memić",
+     "pos": "MF"
+    },
+    {
+     "name": "Ivan Šunjić",
      "pos": "MF"
     },
     {
      "name": "Benjamin Tahirović",
-     "pos": "MF"
-    },
-    {
-     "name": "Esmir Bajraktarević",
      "pos": "MF"
     },
     {
@@ -274,7 +274,8 @@
     "name": "Sergej Barbarez",
     "nat": "ボスニア・ヘルツェゴビナ"
    },
-   "src": "guardian"
+   "src": "guardian",
+   "xiSrc": "guardian"
   },
   "カナダ": {
    "formation": "4-3-3",
@@ -339,6 +340,10 @@
      "pos": "GK"
     },
     {
+     "name": "Ayoub Al-Oui",
+     "pos": "DF"
+    },
+    {
      "name": "Pedro Miguel",
      "pos": "DF"
     },
@@ -347,11 +352,7 @@
      "pos": "DF"
     },
     {
-     "name": "Lucas Mendes",
-     "pos": "DF"
-    },
-    {
-     "name": "Homam Ahmed",
+     "name": "Sultan Al-Brake",
      "pos": "DF"
     },
     {
@@ -359,19 +360,19 @@
      "pos": "MF"
     },
     {
-     "name": "Mohamed Manai",
-     "pos": "MF"
-    },
-    {
-     "name": "Akram Afif",
-     "pos": "MF"
-    },
-    {
-     "name": "Hassan Al-Haydos",
+     "name": "Karim Boudiaf",
      "pos": "MF"
     },
     {
      "name": "Edmilson Junior",
+     "pos": "MF"
+    },
+    {
+     "name": "Al-Mannai",
+     "pos": "MF"
+    },
+    {
+     "name": "Al-Mannai",
      "pos": "MF"
     },
     {
@@ -384,7 +385,8 @@
     "name": "Julen Lopetegui",
     "nat": "スペイン"
    },
-   "src": "guardian"
+   "src": "guardian",
+   "xiSrc": "guardian"
   },
   "スイス": {
    "formation": "4-2-3-1",
@@ -516,15 +518,11 @@
      "pos": "DF"
     },
     {
-     "name": "Jean-Kévin Duverne",
+     "name": "Duke Lacroix",
      "pos": "DF"
     },
     {
-     "name": "Derrick Etienne Jr.",
-     "pos": "MF"
-    },
-    {
-     "name": "Danley Jean Jacques",
+     "name": "Louicius Deedson",
      "pos": "MF"
     },
     {
@@ -532,15 +530,19 @@
      "pos": "MF"
     },
     {
+     "name": "Danley Jean Jacques",
+     "pos": "MF"
+    },
+    {
      "name": "Ruben Providence",
      "pos": "MF"
     },
     {
-     "name": "Duckens Nazon",
+     "name": "Wilson Isidor",
      "pos": "FW"
     },
     {
-     "name": "Wilson Isidor",
+     "name": "Duckens Nazon",
      "pos": "FW"
     }
    ],
@@ -549,7 +551,8 @@
     "name": "Sébastien Migné",
     "nat": "フランス"
    },
-   "src": "guardian"
+   "src": "guardian",
+   "xiSrc": "guardian"
   },
   "モロッコ": {
    "formation": "4-3-3",
@@ -607,35 +610,23 @@
    "src": "knowledge"
   },
   "スコットランド": {
-   "formation": "3-4-2-1",
+   "formation": "4-4-2",
    "xi": [
     {
      "name": "Angus Gunn",
      "pos": "GK"
     },
     {
-     "name": "Jack Hendry",
+     "name": "Aaron Hickey",
      "pos": "DF"
     },
     {
-     "name": "Grant Hanley",
+     "name": "John Souttar",
      "pos": "DF"
     },
     {
-     "name": "Kieran Tierney",
+     "name": "Scott McKenna",
      "pos": "DF"
-    },
-    {
-     "name": "Nathan Patterson",
-     "pos": "DF"
-    },
-    {
-     "name": "Scott McTominay",
-     "pos": "MF"
-    },
-    {
-     "name": "Lewis Ferguson",
-     "pos": "MF"
     },
     {
      "name": "Andy Robertson",
@@ -646,11 +637,23 @@
      "pos": "MF"
     },
     {
+     "name": "Scott McTominay",
+     "pos": "MF"
+    },
+    {
      "name": "Ryan Christie",
      "pos": "MF"
     },
     {
+     "name": "Findlay Curtis",
+     "pos": "MF"
+    },
+    {
      "name": "Ché Adams",
+     "pos": "FW"
+    },
+    {
+     "name": "Lawrence Shankland",
      "pos": "FW"
     }
    ],
@@ -659,7 +662,8 @@
     "name": "Steve Clarke",
     "nat": "スコットランド"
    },
-   "src": "guardian"
+   "src": "guardian",
+   "xiSrc": "guardian"
   },
   "オーストラリア": {
    "formation": "4-2-3-1",
@@ -783,11 +787,11 @@
      "pos": "DF"
     },
     {
-     "name": "Merih Demiral",
+     "name": "Abdülkerim Bardakcı",
      "pos": "DF"
     },
     {
-     "name": "Abdülkerim Bardakcı",
+     "name": "Merih Demiral",
      "pos": "DF"
     },
     {
@@ -795,7 +799,15 @@
      "pos": "DF"
     },
     {
+     "name": "İsmail Yüksek",
+     "pos": "MF"
+    },
+    {
      "name": "Hakan Çalhanoğlu",
+     "pos": "MF"
+    },
+    {
+     "name": "Kenan Yıldız",
      "pos": "MF"
     },
     {
@@ -803,19 +815,11 @@
      "pos": "MF"
     },
     {
-     "name": "Kerem Aktürkoğlu",
-     "pos": "FW"
-    },
-    {
      "name": "Arda Güler",
      "pos": "MF"
     },
     {
-     "name": "Kenan Yıldız",
-     "pos": "FW"
-    },
-    {
-     "name": "Can Uzun",
+     "name": "Barış Alper Yılmaz",
      "pos": "FW"
     }
    ],
@@ -824,17 +828,18 @@
     "name": "Vincenzo Montella",
     "nat": "イタリア"
    },
-   "src": "guardian"
+   "src": "guardian",
+   "xiSrc": "guardian"
   },
   "アメリカ": {
-   "formation": "4-2-3-1",
+   "formation": "3-4-2-1",
    "xi": [
     {
-     "name": "Matt Turner",
+     "name": "Matt Freese",
      "pos": "GK"
     },
     {
-     "name": "Sergiño Dest",
+     "name": "Mark McKenzie",
      "pos": "DF"
     },
     {
@@ -846,8 +851,8 @@
      "pos": "DF"
     },
     {
-     "name": "Antonee Robinson",
-     "pos": "DF"
+     "name": "Sergiño Dest",
+     "pos": "MF"
     },
     {
      "name": "Tyler Adams",
@@ -858,16 +863,16 @@
      "pos": "MF"
     },
     {
-     "name": "Timothy Weah",
+     "name": "Antonee Robinson",
      "pos": "MF"
     },
     {
-     "name": "Giovanni Reyna",
+     "name": "Malik Tillman",
      "pos": "MF"
     },
     {
      "name": "Christian Pulisic",
-     "pos": "FW"
+     "pos": "MF"
     },
     {
      "name": "Folarin Balogun",
@@ -879,7 +884,8 @@
     "name": "Mauricio Pochettino",
     "nat": "アルゼンチン"
    },
-   "src": "guardian"
+   "src": "guardian",
+   "xiSrc": "guardian"
   },
   "キュラソー": {
    "formation": "4-3-3",
@@ -893,23 +899,23 @@
      "pos": "DF"
     },
     {
+     "name": "Juriën Gaari",
+     "pos": "DF"
+    },
+    {
      "name": "Armando Obispo",
      "pos": "DF"
     },
     {
-     "name": "Riechedly Bazoer",
+     "name": "Sherel Floranus",
      "pos": "DF"
-    },
-    {
-     "name": "Joshua Brenet",
-     "pos": "DF"
-    },
-    {
-     "name": "Livano Comenencia",
-     "pos": "MF"
     },
     {
      "name": "Leandro Bacuna",
+     "pos": "MF"
+    },
+    {
+     "name": "Livano Comenencia",
      "pos": "MF"
     },
     {
@@ -917,7 +923,7 @@
      "pos": "MF"
     },
     {
-     "name": "Tahith Chong",
+     "name": "Sontje Hansen",
      "pos": "FW"
     },
     {
@@ -925,7 +931,7 @@
      "pos": "FW"
     },
     {
-     "name": "Sontje Hansen",
+     "name": "Tahith Chong",
      "pos": "FW"
     }
    ],
@@ -934,7 +940,8 @@
     "name": "Dick Advocaat",
     "nat": "オランダ"
    },
-   "src": "guardian"
+   "src": "guardian",
+   "xiSrc": "guardian"
   },
   "エクアドル": {
    "formation": "4-3-3",
@@ -1549,11 +1556,7 @@
      "pos": "GK"
     },
     {
-     "name": "Wagner Pina",
-     "pos": "DF"
-    },
-    {
-     "name": "Roberto Lopes",
+     "name": "Steven Moreira",
      "pos": "DF"
     },
     {
@@ -1561,7 +1564,11 @@
      "pos": "DF"
     },
     {
-     "name": "Steven Moreira",
+     "name": "Roberto Lopes",
+     "pos": "DF"
+    },
+    {
+     "name": "Sidny Lopes Cabral",
      "pos": "DF"
     },
     {
@@ -1577,7 +1584,7 @@
      "pos": "MF"
     },
     {
-     "name": "Jovane Cabral",
+     "name": "Ryan Mendes",
      "pos": "FW"
     },
     {
@@ -1585,7 +1592,7 @@
      "pos": "FW"
     },
     {
-     "name": "Ryan Mendes",
+     "name": "Jovane Cabral",
      "pos": "FW"
     }
    ],
@@ -1594,13 +1601,14 @@
     "name": "Pedro Leitão Brito",
     "nat": "カーボベルデ"
    },
-   "src": "guardian"
+   "src": "guardian",
+   "xiSrc": "guardian"
   },
   "サウジアラビア": {
    "formation": "4-2-3-1",
    "xi": [
     {
-     "name": "Mohammed Al-Owais",
+     "name": "Nawaf Al-Aqidi",
      "pos": "GK"
     },
     {
@@ -1608,23 +1616,27 @@
      "pos": "DF"
     },
     {
-     "name": "Abdulelah Al-Amri",
-     "pos": "DF"
-    },
-    {
      "name": "Hassan Al-Tambakti",
      "pos": "DF"
     },
     {
-     "name": "Ali Lajami",
+     "name": "Abdulelah Al-Amri",
      "pos": "DF"
     },
     {
-     "name": "Nasser Al-Dawsari",
-     "pos": "MF"
+     "name": "Moteb Al-Harbi",
+     "pos": "DF"
     },
     {
      "name": "Mohamed Kanno",
+     "pos": "MF"
+    },
+    {
+     "name": "Abdullah Al-Khaibari",
+     "pos": "MF"
+    },
+    {
+     "name": "Sultan Mandash",
      "pos": "MF"
     },
     {
@@ -1632,11 +1644,7 @@
      "pos": "MF"
     },
     {
-     "name": "Salem Al-Dawsari",
-     "pos": "MF"
-    },
-    {
-     "name": "Ayman Yahya",
+     "name": "Nasser Al-Dawsari",
      "pos": "MF"
     },
     {
@@ -1649,7 +1657,8 @@
     "name": "Georgios Donis",
     "nat": "ギリシャ"
    },
-   "src": "guardian"
+   "src": "guardian",
+   "xiSrc": "guardian"
   },
   "スペイン": {
    "formation": "4-3-3",
@@ -1762,7 +1771,7 @@
    "src": "knowledge"
   },
   "フランス": {
-   "formation": "4-3-3",
+   "formation": "4-2-3-1",
    "xi": [
     {
      "name": "Mike Maignan",
@@ -1773,23 +1782,19 @@
      "pos": "DF"
     },
     {
-     "name": "Dayot Upamecano",
-     "pos": "DF"
-    },
-    {
      "name": "William Saliba",
      "pos": "DF"
     },
     {
-     "name": "Théo Hernandez",
+     "name": "Dayot Upamecano",
+     "pos": "DF"
+    },
+    {
+     "name": "Lucas Digne",
      "pos": "DF"
     },
     {
      "name": "Aurélien Tchouaméni",
-     "pos": "MF"
-    },
-    {
-     "name": "Manu Koné",
      "pos": "MF"
     },
     {
@@ -1798,14 +1803,18 @@
     },
     {
      "name": "Ousmane Dembélé",
-     "pos": "FW"
-    },
-    {
-     "name": "Kylian Mbappé",
-     "pos": "FW"
+     "pos": "MF"
     },
     {
      "name": "Michael Olise",
+     "pos": "MF"
+    },
+    {
+     "name": "Marcus Thuram",
+     "pos": "MF"
+    },
+    {
+     "name": "Kylian Mbappé",
      "pos": "FW"
     }
    ],
@@ -1814,21 +1823,22 @@
     "name": "Didier Deschamps",
     "nat": "フランス"
    },
-   "src": "guardian"
+   "src": "guardian",
+   "xiSrc": "guardian"
   },
   "イラク": {
-   "formation": "4-3-3",
+   "formation": "4-4-2",
    "xi": [
     {
      "name": "Jalal Hassan",
      "pos": "GK"
     },
     {
-     "name": "Merchas Doski",
+     "name": "Hussein Ali",
      "pos": "DF"
     },
     {
-     "name": "Rebin Sulaka",
+     "name": "Zaid Tahseen",
      "pos": "DF"
     },
     {
@@ -1836,31 +1846,31 @@
      "pos": "DF"
     },
     {
-     "name": "Hussein Ali",
+     "name": "Merchas Doski",
      "pos": "DF"
+    },
+    {
+     "name": "Youssef Amyn",
+     "pos": "MF"
+    },
+    {
+     "name": "Aimar Sher",
+     "pos": "MF"
     },
     {
      "name": "Amir Al-Ammari",
      "pos": "MF"
     },
     {
-     "name": "Ibrahim Bayesh",
+     "name": "Ali Jasim",
      "pos": "MF"
     },
     {
-     "name": "Zidane Iqbal",
-     "pos": "MF"
-    },
-    {
-     "name": "Ahmed Qasem",
+     "name": "Ali Al-Hamadi",
      "pos": "FW"
     },
     {
      "name": "Aymen Hussein",
-     "pos": "FW"
-    },
-    {
-     "name": "Marko Farji",
      "pos": "FW"
     }
    ],
@@ -1869,7 +1879,8 @@
     "name": "Graham Arnold",
     "nat": "オーストラリア"
    },
-   "src": "guardian"
+   "src": "guardian",
+   "xiSrc": "guardian"
   },
   "ノルウェー": {
    "formation": "4-3-3",
@@ -1997,7 +2008,7 @@
      "pos": "DF"
     },
     {
-     "name": "Mohamed Amine Tougai",
+     "name": "Ramy Bensebaini",
      "pos": "DF"
     },
     {
@@ -2005,11 +2016,11 @@
      "pos": "DF"
     },
     {
-     "name": "Ramiz Zerrouki",
+     "name": "Hicham Boudaoui",
      "pos": "MF"
     },
     {
-     "name": "Hicham Boudaoui",
+     "name": "Nabil Bentaleb",
      "pos": "MF"
     },
     {
@@ -2021,11 +2032,11 @@
      "pos": "FW"
     },
     {
-     "name": "Mohamed Amoura",
+     "name": "Amine Gouiri",
      "pos": "FW"
     },
     {
-     "name": "Amine Gouiri",
+     "name": "Mohamed Amoura",
      "pos": "FW"
     }
    ],
@@ -2034,7 +2045,8 @@
     "name": "Vladimir Petković",
     "nat": "ボスニア・ヘルツェゴビナ"
    },
-   "src": "guardian"
+   "src": "guardian",
+   "xiSrc": "guardian"
   },
   "アルゼンチン": {
    "formation": "4-3-3",
@@ -2099,11 +2111,7 @@
      "pos": "GK"
     },
     {
-     "name": "Konrad Laimer",
-     "pos": "DF"
-    },
-    {
-     "name": "Kevin Danso",
+     "name": "Stefan Posch",
      "pos": "DF"
     },
     {
@@ -2111,23 +2119,19 @@
      "pos": "DF"
     },
     {
-     "name": "Stefan Posch",
+     "name": "David Alaba",
      "pos": "DF"
     },
     {
-     "name": "Nicolas Seiwald",
-     "pos": "MF"
+     "name": "Konrad Laimer",
+     "pos": "DF"
     },
     {
      "name": "Xaver Schlager",
      "pos": "MF"
     },
     {
-     "name": "Patrick Wimmer",
-     "pos": "MF"
-    },
-    {
-     "name": "Marcel Sabitzer",
+     "name": "Nicolas Seiwald",
      "pos": "MF"
     },
     {
@@ -2135,7 +2139,15 @@
      "pos": "MF"
     },
     {
-     "name": "Michael Gregoritsch",
+     "name": "Saša Kalajdžić",
+     "pos": "MF"
+    },
+    {
+     "name": "Marcel Sabitzer",
+     "pos": "MF"
+    },
+    {
+     "name": "Marko Arnautović",
      "pos": "FW"
     }
    ],
@@ -2144,7 +2156,8 @@
     "name": "Ralf Rangnick",
     "nat": "ドイツ"
    },
-   "src": "guardian"
+   "src": "guardian",
+   "xiSrc": "guardian"
   },
   "ヨルダン": {
    "formation": "3-4-2-1",
@@ -2319,7 +2332,7 @@
      "pos": "GK"
     },
     {
-     "name": "Diogo Dalot",
+     "name": "João Cancelo",
      "pos": "DF"
     },
     {
@@ -2351,8 +2364,8 @@
      "pos": "MF"
     },
     {
-     "name": "Rafael Leão",
-     "pos": "FW"
+     "name": "João Félix",
+     "pos": "MF"
     },
     {
      "name": "Cristiano Ronaldo",
@@ -2364,7 +2377,8 @@
     "name": "Roberto Martínez",
     "nat": "スペイン"
    },
-   "src": "guardian"
+   "src": "guardian",
+   "xiSrc": "guardian"
   },
   "ウズベキスタン": {
    "formation": "4-2-3-1",

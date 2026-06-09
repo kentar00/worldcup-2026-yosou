@@ -520,7 +520,7 @@ function teamDetailHTML(n){
   let html='';
   if(pr){
     html+=`<div class="td-top">
-      <div class="td-pitch">${xiPitch(pr.formation,pr.xi)}<div class="td-form">${esc(pr.formation||'')}</div><div class="td-sub2">想定スタメン</div></div>
+      <div class="td-pitch">${xiPitch(pr.formation,pr.xi)}<div class="td-form">${esc(pr.formation||'')}</div><div class="td-sub2">想定スタメン｜${pr.xiSrc==='guardian'?'The Guardian':'予想'}</div></div>
       <div class="td-info">
         ${pr.manager?`<div class="td-mgr"><span class="td-lbl">監督</span>${natFlag(pr.manager.nat)} <b>${esc(pr.manager.name)}</b>${pr.manager.nat?`<span class="td-nat">${esc(pr.manager.nat)}</span>`:''}</div>`:''}
         <div class="td-tac">${esc(pr.tactic||'')}</div>
