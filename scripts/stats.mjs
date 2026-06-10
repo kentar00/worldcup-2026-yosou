@@ -68,10 +68,11 @@ async function main(){
     const fid = findFixture(m.home, m.away);
     if(!fid){ console.error('no fixture for', m.id, m.home, m.away); continue; }
     try {
-      const [statsRes, players, events] = await Promise.all([
+      const [statsRes, players, events, lineupsRes] = await Promise.all([
         af(`/fixtures/statistics?fixture=${fid}`),
         af(`/fixtures/players?fixture=${fid}`),
         af(`/fixtures/events?fixture=${fid}`),
+        af(`/fixtures/lineups?fixture=${fid}`),
       ]);
       const stat = (tname, type) => {
         const e = statsRes.find(x => jp(x.team?.name) === tname);
@@ -84,12 +85,21 @@ async function main(){
       obj.shots = [num(stat(m.home,'Total Shots')), num(stat(m.away,'Total Shots'))];
       obj.shotsOnTarget = [num(stat(m.home,'Shots on Goal')), num(stat(m.away,'Shots on Goal'))];
 
-      const teamPlayers = tname => (players.find(x => jp(x.team?.name)===tname)?.players) || [];
+      // ratings (player-level) by id and by name
       const g0 = p => p.statistics?.[0]?.games || {};
-      const lineup = arr => arr.filter(p => g0(p).substitute === false)
-        .map(p => ({ no: g0(p).number ?? null, name: p.player?.name, rating: g0(p).rating!=null ? Number(g0(p).rating) : null }));
-      obj.lineups = { home: lineup(teamPlayers(m.home)), away: lineup(teamPlayers(m.away)) };
-      const ratOf = name => { for(const e of players){ const p=(e.players||[]).find(x=>x.player?.name===name); if(p) return g0(p).rating!=null?Number(g0(p).rating):null; } return null; };
+      const ratById = new Map(), ratByName = new Map();
+      for(const e of players){ for(const p of (e.players||[])){ const r = g0(p).rating!=null ? Number(g0(p).rating) : null; if(p.player?.id!=null) ratById.set(p.player.id, r); if(p.player?.name) ratByName.set(p.player.name, r); } }
+      // lineups: formation + startXI with grid/pos/number + rating
+      const teamLineup = tname => {
+        const e = lineupsRes.find(x => jp(x.team?.name) === tname);
+        if(!e) return null;
+        return {
+          formation: e.formation || null,
+          players: (e.startXI || []).map(s => { const pl = s.player || {}; return { no: pl.number ?? null, name: pl.name, pos: pl.pos || null, grid: pl.grid || null, rating: ratById.has(pl.id) ? ratById.get(pl.id) : null }; }),
+        };
+      };
+      obj.lineups = { home: teamLineup(m.home), away: teamLineup(m.away) };
+      const ratOf = name => ratByName.has(name) ? ratByName.get(name) : null;
 
       const goals = [], cards = [], subsH = [], subsA = [];
       for(const ev of events){

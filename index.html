@@ -287,6 +287,19 @@
   .st-pn{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .st-rt{font-family:"Anton",sans-serif;font-size:11px;flex:none;border-radius:4px;padding:0 4px;color:#14110a}
   .st-rt.rh{background:#3fc06a}.st-rt.rm{background:#e6c14f}.st-rt.rl{background:#d99}
+  /* lineup pitch (Sofascore-style) */
+  .lp-team{display:flex;align-items:center;gap:6px;font-size:11px;font-weight:700;margin:2px 0 3px}
+  .lp-team .lp-f{color:var(--gold);font-family:"Anton",sans-serif;font-size:11px}
+  .lp-dotk{width:10px;height:10px;border-radius:50%;flex:none}
+  .lp-pitch{position:relative;width:100%;aspect-ratio:16/10;border:1px solid rgba(255,255,255,.22);border-radius:9px;overflow:hidden;
+    background:repeating-linear-gradient(90deg,#2c7a3c 0 11%,#27713a 11% 22%);box-shadow:inset 0 0 26px rgba(0,0,0,.4);margin-bottom:8px}
+  .lp-mid{position:absolute;left:50%;top:5px;bottom:5px;width:1px;background:rgba(255,255,255,.22)}
+  .lp-circle{position:absolute;left:50%;top:50%;width:22%;aspect-ratio:1;transform:translate(-50%,-50%);border:1px solid rgba(255,255,255,.22);border-radius:50%}
+  .lp-p{position:absolute;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:1px;width:46px;pointer-events:none}
+  .lp-dot{width:12px;height:12px;border-radius:50%;box-shadow:0 0 0 2px rgba(0,0,0,.4);background:var(--lpc,#3a7bdc)}
+  .lp-rt{font-family:"Anton",sans-serif;font-size:9px;line-height:1.2;border-radius:3px;padding:0 3px;color:#14110a;margin-top:1px}
+  .lp-rt.rh{background:#3fc06a}.lp-rt.rm{background:#e6c14f}.lp-rt.rl{background:#dd9999}
+  .lp-nm{font-size:8px;line-height:1.05;color:#fff;text-shadow:0 1px 2px #000,0 0 3px #000;white-space:nowrap;max-width:46px;overflow:hidden;text-overflow:ellipsis}
   @media(max-width:560px){
     .bd{font-size:10px}
     .wrap{padding:0 12px 80px}
@@ -867,22 +880,46 @@ function togMatch(key){
   el.innerHTML=matchDetailHTML(key);el.style.display='block';if(bt)bt.textContent='▴';
 }
 function ratC(r){r=Number(r);return r>=7.5?'rh':r>=6.5?'rm':'rl';}
+// スタメンを横長フィールドに配置（Sofascore風：ホーム左/アウェイ右、レーティング付き）
+function lpNorm(lu){if(!lu)return{players:[]};if(Array.isArray(lu))return{players:lu};return{formation:lu.formation,players:lu.players||[]};}
+function lpPlayers(lu){
+  const ps=lpNorm(lu).players;const byRow={};
+  ps.forEach(p=>{let r,c=null;
+    if(p.grid){const g=String(p.grid).split(':');r=+g[0]||1;c=+g[1]||1;}
+    else {const o={GK:1,G:1,DF:2,D:2,MF:3,M:3,FW:4,F:4};r=o[p.pos]||3;}
+    (byRow[r]=byRow[r]||[]).push(Object.assign({},p,{_c:c}));});
+  const rows=Object.keys(byRow).map(Number).sort((a,b)=>a-b);const n=rows.length;let out='';
+  rows.forEach((r,ri)=>{
+    const band=byRow[r].slice().sort((a,b)=>(a._c||0)-(b._c||0));
+    const x=n>1?8+ri/(n-1)*84:50;
+    band.forEach((p,j)=>{const y=(j+1)/(band.length+1)*100;
+      const rt=p.rating?`<span class="lp-rt ${ratC(p.rating)}">${Number(p.rating).toFixed(1)}</span>`:'';
+      const nm=esc(String(p.name||'').split(' ').pop());
+      out+=`<span class="lp-p" style="left:${x}%;top:${y}%"><span class="lp-dot"></span>${rt}<span class="lp-nm">${nm}</span></span>`;});
+  });
+  return out;
+}
+function teamPitch(lu,name,color){
+  const f=lpNorm(lu).formation;
+  return `<div class="lp-team"><span class="lp-dotk" style="background:${color}"></span>${esc(name)}${f?` <span class="lp-f">${esc(f)}</span>`:''}</div>
+    <div class="lp-pitch" style="--lpc:${color}"><span class="lp-mid"></span><span class="lp-circle"></span>${lpPlayers(lu)}</div>`;
+}
+function lineupPitch(home,away,hN,aN){return teamPitch(home,hN,'#3a7bdc')+teamPitch(away,aN,'#e05a48');}
 function statsHTML(key,m){
   const s=G.stats&&G.stats[key];
-  if(!s)return '<div class="mdet-h">スタッツ <span class="src">SOFASCORE</span></div><div class="hint" style="margin:2px 0">スタッツは準備中です。</div>';
-  const H=esc(m.home),A=esc(m.away);
-  let h='<div class="mdet-h">スタッツ <span class="src">SOFASCORE</span></div>';
+  if(!s)return '<div class="mdet-h">スタメン・スタッツ <span class="src">SOFASCORE</span></div><div class="hint" style="margin:2px 0">準備中です（APIキー設定後に表示）。</div>';
+  let h='';
+  if(s.lineups){h+=`<div class="mdet-h">スタメン <span class="src">SOFASCORE</span></div>${lineupPitch(s.lineups.home,s.lineups.away,m.home,m.away)}`;}
+  h+='<div class="mdet-h">スタッツ <span class="src">SOFASCORE</span></div>';
   if(s.possession){const ph=s.possession[0],pa=s.possession[1];
     h+=`<div class="st-poss"><span>${ph}%</span><div class="st-pbar"><i style="width:${ph}%"></i></div><span>${pa}%</span></div><div class="st-lbl2">ボール支配率</div>`;}
   const cmp=(lab,a)=>{if(!a)return'';const x=a[0]||0,y=a[1]||0,t=(x+y)||1;
     return `<div class="st-row"><span class="st-v">${x}</span><span class="st-lab">${lab}</span><span class="st-v">${y}</span></div><div class="st-cbar"><i class="l" style="width:${x/t*100}%"></i><i class="r" style="width:${y/t*100}%"></i></div>`;};
-  h+=cmp('シュート',s.shots)+cmp('枠内シュート',s.shotsOnTarget)+cmp('ビッグチャンス',s.bigChances);
+  h+=cmp('シュート',s.shots)+cmp('枠内シュート',s.shotsOnTarget);
   if(s.goals&&s.goals.length)h+=`<div class="st-sub">⚽ 得点者</div><div class="st-list">${s.goals.map(g=>`<div>${g.minute?`<b>${g.minute}'</b> `:''}${esc(g.player)} <span class="st-tm">${esc(g.team||'')}</span></div>`).join('')}</div>`;
   if(s.cards&&s.cards.length)h+=`<div class="st-sub">🟨 カード</div><div class="st-list">${s.cards.map(c=>`<div><span class="st-card ${c.type==='R'?'r':'y'}"></span>${c.minute?`<b>${c.minute}'</b> `:''}${esc(c.player)} <span class="st-tm">${esc(c.team||'')}</span></div>`).join('')}</div>`;
-  if(s.lineups){const col=(arr,t)=>`<div class="st-xicol"><div class="st-xih">${t}</div>${(arr||[]).map(p=>`<div class="st-pl"><span class="st-no">${p.no??''}</span><span class="st-pn">${esc(p.name)}</span>${p.rating?`<span class="st-rt ${ratC(p.rating)}">${Number(p.rating).toFixed(1)}</span>`:''}</div>`).join('')}</div>`;
-    h+=`<div class="st-sub">スタメン（レーティング）</div><div class="st-xi">${col(s.lineups.home,H)}${col(s.lineups.away,A)}</div>`;}
   if(s.subs){const sl=(arr,t)=>(arr&&arr.length)?`<div class="st-xicol"><div class="st-xih">${t}</div>${arr.map(x=>`<div class="st-pl"><span class="st-no">${x.minute?x.minute+"'":''}</span><span class="st-pn">${x.in?'▲'+esc(x.in):''}${x.out?` <span style="color:var(--muted)">▼${esc(x.out)}</span>`:''}</span>${x.rating?`<span class="st-rt ${ratC(x.rating)}">${Number(x.rating).toFixed(1)}</span>`:''}</div>`).join('')}</div>`:'';
-    const hs=sl(s.subs.home,H),as=sl(s.subs.away,A);if(hs||as)h+=`<div class="st-sub">選手交代</div><div class="st-xi">${hs}${as}</div>`;}
+    const hs=sl(s.subs.home,esc(m.home)),as=sl(s.subs.away,esc(m.away));if(hs||as)h+=`<div class="st-sub">選手交代</div><div class="st-xi">${hs}${as}</div>`;}
   return h;
 }
 function matchDetailHTML(key){
@@ -895,9 +932,11 @@ function matchDetailHTML(key){
     return `<div class="mdet">${od?`<div class="mdet-h">試合前 ・ オッズ <span class="src">勝/分/負</span></div>${od}`:'<div class="hint" style="margin:2px 0">オッズは未取得です（APIキー設定後に表示）。</div>'}</div>`;
   }
   const yid=ytId((G.highlights&&G.highlights[key])||m.highlight||'');
-  let h='<div class="mdet"><div class="mdet-h">ハイライト <span class="src">DAZN</span></div>';
+  let h='<div class="mdet">';
+  h+=statsHTML(key,m);
+  h+='<div class="mdet-h">ハイライト <span class="src">DAZN</span></div>';
   h+= yid?`<button class="hm-hl" onclick="openHL('${yid}')"><img src="https://img.youtube.com/vi/${yid}/hqdefault.jpg" loading="lazy" alt="ハイライト" onerror="this.parentNode.style.display='none'"><span class="hm-play">▶</span><span class="hm-hltxt">DAZN ハイライト</span></button>`:'<div class="hint" style="margin:2px 0">ハイライト未設定です。</div>';
-  h+=statsHTML(key,m)+'</div>';
+  h+='</div>';
   return h;
 }
 function renderScores(){
