@@ -1,0 +1,4 @@
+{
+ "_note": "試合スタッツ（Sofascore相当）。各試合ID(GS1..GS72 や koは home|away)にオブジェクトを割り当てると、日程・結果の詳細に表示。例: {\"GS1\":{\"possession\":[58,42],\"shots\":[14,7],\"shotsOnTarget\":[5,2],\"bigChances\":[3,1],\"goals\":[{\"player\":\"Giménez\",\"team\":\"メキシコ\",\"minute\":23}],\"cards\":[{\"player\":\"Foster\",\"team\":\"南アフリカ\",\"minute\":40,\"type\":\"Y\"}],\"lineups\":{\"home\":[{\"no\":9,\"name\":\"Giménez\",\"rating\":7.8}],\"away\":[]},\"subs\":{\"home\":[{\"minute\":70,\"in\":\"Vega\",\"out\":\"Jiménez\",\"rating\":6.9}],\"away\":[]}}}",
+ "stats": {}
+}
