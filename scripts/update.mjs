@@ -40,6 +40,7 @@ async function fetchMatches(){
   if(!res.ok) throw new Error('API '+res.status+' '+(await res.text()).slice(0,200));
   const data = await res.json();
   return (data.matches||[]).map(m=>({
+    id: m.id,
     home: jp(m.homeTeam?.name, m.homeTeam?.shortName, m.homeTeam?.tla),
     away: jp(m.awayTeam?.name, m.awayTeam?.shortName, m.awayTeam?.tla),
     homeScore: m.score?.fullTime?.home,
@@ -47,6 +48,23 @@ async function fetchMatches(){
     penHome: m.score?.penalties?.home, penAway: m.score?.penalties?.away,
     stage: m.stage, finished: m.status==='FINISHED'
   }));
+}
+
+// 得点者を試合詳細から取得（football-data.org の /v4/matches/{id} は goals を含む）
+async function fetchScorers(id){
+  if(id==null) return null;
+  try{
+    const res = await fetch(`${BASE}/matches/${id}`, {headers:{'X-Auth-Token':API_KEY}});
+    if(!res.ok) return null;
+    const d = await res.json();
+    const goals = d.goals || [];
+    if(!goals.length) return [];
+    return goals.map(g=>({
+      player: g.scorer?.name || '',
+      minute: g.minute!=null ? g.minute : null,
+      team: jp(g.team?.name, g.team?.tla) || g.team?.name || ''
+    })).filter(s=>s.player);
+  }catch{ return null; }
 }
 
 async function main(){
@@ -61,7 +79,11 @@ async function main(){
     if(!m.finished || !m.home || !m.away || m.homeScore==null) continue;
     if(m.stage==='GROUP_STAGE'){
       const f = results.gsMatches.find(x => (x.home===m.home&&x.away===m.away)||(x.home===m.away&&x.away===m.home));
-      if(f){ if(f.home===m.home){f.hs=m.homeScore; f.as=m.awayScore;} else {f.hs=m.awayScore; f.as=m.homeScore;} gs++; }
+      if(f){
+        if(f.home===m.home){f.hs=m.homeScore; f.as=m.awayScore;} else {f.hs=m.awayScore; f.as=m.homeScore;}
+        gs++;
+        if(!f.scorers || !f.scorers.length){ const sc = await fetchScorers(m.id); if(sc && sc.length) f.scorers = sc; }
+      }
     } else if(STAGE[m.stage]){
       const round = STAGE[m.stage];
       let winner=null;
