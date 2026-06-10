@@ -1,0 +1,29 @@
+name: Update WC stats
+on:
+  schedule:
+    # UTC. JST = UTC+9.  07:00→JST16:00 / 19:00→翌JST04:00
+    - cron: '0 7,19 * * *'
+  workflow_dispatch: {}   # 手動実行ボタンも有効
+permissions:
+  contents: write
+jobs:
+  stats:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Fetch & update stats.json
+        env:
+          API_FOOTBALL_KEY: ${{ secrets.API_FOOTBALL_KEY }}
+          AF_LEAGUE: '1'
+          AF_SEASON: '2026'
+        run: node scripts/stats.mjs
+      - name: Commit if changed
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add stats.json
+          git commit -m "auto: update stats $(date -u +%FT%TZ)" || echo "no changes"
+          git push
