@@ -2295,7 +2295,7 @@
    "xiSrc": "guardian"
   },
   "コンゴ民主共和国": {
-   "formation": "4-2-3-1",
+   "formation": "4-3-3",
    "xi": [
     {
      "name": "Lionel Mpasi",
@@ -2318,6 +2318,10 @@
      "pos": "DF"
     },
     {
+     "name": "Samuel Moutoussamy",
+     "pos": "MF"
+    },
+    {
      "name": "Noah Sadiki",
      "pos": "MF"
     },
@@ -2326,19 +2330,15 @@
      "pos": "MF"
     },
     {
-     "name": "Théo Bongonda",
-     "pos": "MF"
-    },
-    {
-     "name": "Gaël Kakuta",
-     "pos": "MF"
-    },
-    {
-     "name": "Yoane Wissa",
+     "name": "Meschak Elia",
      "pos": "FW"
     },
     {
-     "name": "Fiston Mayele",
+     "name": "Cédric Bakambu",
+     "pos": "FW"
+    },
+    {
+     "name": "Yoane Wissa",
      "pos": "FW"
     }
    ],
@@ -2347,7 +2347,8 @@
     "name": "Sébastien Desabre",
     "nat": "フランス"
    },
-   "src": "knowledge"
+   "src": "knowledge",
+   "xiSrc": "guardian"
   },
   "ポルトガル": {
    "formation": "4-2-3-1",
@@ -2406,30 +2407,26 @@
    "xiSrc": "guardian"
   },
   "ウズベキスタン": {
-   "formation": "4-2-3-1",
+   "formation": "3-4-2-1",
    "xi": [
     {
      "name": "Utkir Yusupov",
      "pos": "GK"
     },
     {
-     "name": "Abdukodir Khusanov",
-     "pos": "DF"
-    },
-    {
      "name": "Rustam Ashurmatov",
      "pos": "DF"
     },
     {
-     "name": "Khojiakbar Alijonov",
+     "name": "Abdukodir Khusanov",
+     "pos": "DF"
+    },
+    {
+     "name": "Jakhongir Urozov",
      "pos": "DF"
     },
     {
      "name": "Farrukh Sayfiev",
-     "pos": "DF"
-    },
-    {
-     "name": "Odiljon Hamrobekov",
      "pos": "MF"
     },
     {
@@ -2437,11 +2434,15 @@
      "pos": "MF"
     },
     {
-     "name": "Abbosbek Fayzullaev",
+     "name": "Akmal Mozgovoy",
      "pos": "MF"
     },
     {
-     "name": "Jaloliddin Masharipov",
+     "name": "Sherzod Nasrullaev",
+     "pos": "MF"
+    },
+    {
+     "name": "Abbosbek Fayzullaev",
      "pos": "MF"
     },
     {
@@ -2458,7 +2459,8 @@
     "name": "Fabio Cannavaro",
     "nat": "イタリア"
    },
-   "src": "knowledge"
+   "src": "knowledge",
+   "xiSrc": "guardian"
   },
   "クロアチア": {
    "formation": "4-3-3",
