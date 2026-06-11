@@ -6,24 +6,21 @@
 <title>W杯2026 予想ゲーム ダッシュボード</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
   :root{
-    --tx:#eef1fb;--muted:#9aa4c6;
-    --g-hi:#cbb8ff;--g-mid:#a78bfa;--g-lo:#8b5cf6;
-    --gold:#bda6ff;--gold-soft:#a78bfa;
-    --card:rgba(24,26,48,.58);--line:rgba(150,140,255,.22);--row:rgba(255,255,255,.05);
-    --c1:#ff3d6e;--c2:#ff8a1e;--c3:#ffd60a;--c4:#27e07a;--c5:#16e0d0;--c6:#3d7bff;--c7:#b15cff;--c8:#ff52c0;
+    --tx:#f3f3f8;--muted:#8a8aa0;
+    --bg:#0a0a10;--panel:#14141e;--panel2:#1b1b28;
+    --violet:#7c3aed;--violetL:#a78bfa;--lime:#c6ff00;--pink:#ff3d81;--blue:#00d4ff;--orange:#ff8a00;
+    --g-hi:#d6ff4d;--g-mid:#c6ff00;--g-lo:#a9d900;
+    --gold:#c6ff00;--gold-soft:#a9d900;
+    --card:#14141e;--line:#262636;--row:#1b1b28;
+    --c1:#ff3d81;--c2:#ff8a00;--c3:#ffd60a;--c4:#27e07a;--c5:#00d4ff;--c6:#3d7bff;--c7:#a855f7;--c8:#ff52c0;
   }
   *{box-sizing:border-box;margin:0;padding:0}
-  body{font-family:"Noto Sans JP",sans-serif;color:var(--tx);line-height:1.7;-webkit-font-smoothing:antialiased;min-height:100vh;
-    background:
-      radial-gradient(80% 50% at 12% -8%,rgba(177,92,255,.22),transparent 60%),
-      radial-gradient(75% 50% at 92% 4%,rgba(61,123,255,.20),transparent 60%),
-      radial-gradient(90% 60% at 50% 108%,rgba(255,61,110,.14),transparent 60%),
-      linear-gradient(180deg,#16132e 0%,#0e0c20 45%,#08070f 100%) fixed}
-  ::selection{background:var(--c7);color:#fff}
-  .gold-text{background:linear-gradient(180deg,var(--g-hi),var(--g-mid) 55%,var(--g-lo));-webkit-background-clip:text;background-clip:text;color:transparent}
+  body{font-family:"Space Grotesk","Noto Sans JP",sans-serif;color:var(--tx);line-height:1.7;-webkit-font-smoothing:antialiased;min-height:100vh;background:var(--bg)}
+  ::selection{background:var(--lime);color:#0a0a10}
+  .gold-text{background:linear-gradient(135deg,var(--lime),var(--blue));-webkit-background-clip:text;background-clip:text;color:transparent}
   .wrap{max-width:1000px;margin:0 auto;padding:0 16px 90px}
 
   header{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;padding:22px 0 6px}
@@ -40,25 +37,21 @@
   .stripe i:nth-child(5){background:var(--c5)}.stripe i:nth-child(6){background:var(--c6)}
   .stripe i:nth-child(7){background:var(--c7)}.stripe i:nth-child(8){background:var(--c8)}
 
-  nav{display:flex;gap:6px;flex-wrap:wrap;position:sticky;top:0;z-index:20;padding:10px 0;
-    background:linear-gradient(180deg,#0d0b1e 60%,rgba(13,11,30,0));margin-bottom:6px}
-  nav button{font-family:inherit;font-weight:700;font-size:13px;color:var(--muted);background:rgba(255,255,255,.05);
-    border:1px solid var(--line);border-radius:11px;padding:9px 13px;cursor:pointer;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);transition:color .15s,background .15s}
-  nav button:hover{color:var(--tx);background:rgba(255,255,255,.09)}
-  nav button.on{color:#1a1140;background:linear-gradient(135deg,var(--g-hi),var(--g-lo));border-color:transparent;box-shadow:0 4px 14px rgba(139,92,246,.4)}
+  nav{display:flex;gap:5px;flex-wrap:wrap;position:sticky;top:0;z-index:20;padding:10px 0;
+    background:linear-gradient(180deg,var(--bg) 72%,rgba(10,10,16,0));margin-bottom:6px}
+  nav button{font-family:inherit;font-weight:600;font-size:13px;color:var(--muted);background:var(--panel);
+    border:1px solid var(--line);border-radius:10px;padding:8px 13px;cursor:pointer;transition:color .15s,background .15s}
+  nav button:hover{color:var(--tx);background:var(--panel2)}
+  nav button.on{color:#0a0a10;background:var(--lime);border-color:transparent;font-weight:700}
 
   .view{display:none;animation:fade .25s both}.view.on{display:block}
   @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1}}
 
-  .barh{display:flex;align-items:center;gap:12px;background:linear-gradient(135deg,var(--g-hi),var(--g-mid) 55%,var(--g-lo));
-    color:#1a1140;border-radius:14px;padding:11px 16px;font-weight:900;margin:18px 0 10px;box-shadow:inset 0 1px 0 rgba(255,255,255,.45),0 6px 20px rgba(139,92,246,.28)}
-  .barh .en{margin-left:auto;font-weight:700;letter-spacing:.16em;font-size:11px;opacity:.7}
-  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;margin:12px 0;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
-  /* bento glass tiles */
-  .gcard,.dg,.lb .pl,.pf-item,.pf-summary,.mdet,.hm-rm,.hm-hero,.hm-fm,.rl-stage,.note,.tmcard{backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
-  .gcard,.dg,.lb .pl,.pf-item{border-radius:15px}
-  .lb .pl{box-shadow:0 6px 18px rgba(0,0,0,.25)}
-  .lb .pl.r1{box-shadow:0 6px 22px color-mix(in srgb,var(--pc,#a78bfa) 35%,transparent)}
+  .barh{display:flex;align-items:baseline;gap:12px;color:var(--tx);font-family:"Anton",sans-serif;font-weight:400;
+    font-size:clamp(24px,5vw,34px);line-height:.95;letter-spacing:.01em;margin:26px 0 14px;padding:0}
+  .barh .en{margin-left:auto;font-family:"Space Grotesk",sans-serif;font-weight:700;letter-spacing:.18em;font-size:11px;text-transform:uppercase;color:var(--violetL);align-self:center}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:18px;margin:12px 0}
+  .gcard,.dg,.pf-item{border-radius:18px}
   .hint{color:var(--muted);font-size:12.5px;margin:4px 0 10px}
   h2.sec{font-weight:900;font-size:15px;margin:4px 0}
 
@@ -69,9 +62,9 @@
   tr:last-child td{border-bottom:0}
 
   /* leaderboard */
-  .lb .pl{display:flex;align-items:center;gap:12px;padding:12px;border-radius:12px;margin:8px 0;background:var(--row);
-    border:1px solid var(--line);border-left:5px solid var(--pc,#a78bfa)}
-  .lb .pl.r1{background:rgba(167,139,250,.10)}
+  .lb .pl{display:flex;align-items:center;gap:12px;padding:13px 14px;border-radius:15px;margin:8px 0;background:var(--panel);
+    border:1px solid var(--line);border-left:5px solid var(--pc,var(--lime))}
+  .lb .pl.r1{background:linear-gradient(100deg,rgba(124,58,237,.30),rgba(255,61,129,.14));border-color:transparent}
   .ranknum{font-family:"Anton",sans-serif;font-size:24px;width:30px;text-align:center;color:var(--muted)}
   .r1 .ranknum{color:transparent;background:linear-gradient(180deg,var(--g-hi),var(--g-lo));-webkit-background-clip:text;background-clip:text}
   .pmid{flex:1;min-width:0}
@@ -83,7 +76,7 @@
   /* draft under leaderboard */
   .draftgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px}
   .dg{background:var(--card);border:1px solid var(--line);border-radius:11px;overflow:hidden}
-  .dg .gh{background:linear-gradient(180deg,var(--g-hi),var(--g-lo));color:#241c0c;font-weight:900;padding:7px 11px;font-size:13px}
+  .dg .gh{background:linear-gradient(90deg,var(--violet),var(--pink));color:#fff;font-family:"Anton",sans-serif;font-weight:400;padding:8px 13px;font-size:15px;letter-spacing:.02em}
   .drow{display:flex;align-items:center;gap:8px;padding:6px 10px;border-bottom:1px solid var(--line);font-size:13px}
   .drow:last-child{border-bottom:0}
   .drow .fn{flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -93,7 +86,7 @@
   .groups{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px}
   .gcard{background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden}
   .gcard .tbw{overflow-x:auto}
-  .gcard .gh{background:linear-gradient(180deg,var(--g-hi),var(--g-lo));color:#241c0c;font-weight:900;padding:8px 12px;display:flex;justify-content:space-between;font-size:14px}
+  .gcard .gh{background:linear-gradient(90deg,var(--violet),var(--pink));color:#fff;font-family:"Anton",sans-serif;font-weight:400;padding:9px 13px;display:flex;justify-content:space-between;align-items:center;font-size:16px}
   .gcard table{font-size:12.5px}.gcard th,.gcard td{padding:7px 5px}
   .gcard td.l{text-align:left;font-weight:700}
   .ochip{display:inline-block;font-size:10px;font-weight:900;color:#1a160f;border-radius:5px;padding:1px 6px;margin-left:5px}
@@ -128,18 +121,25 @@
   .star .sn{font-weight:700;font-size:14.5px}
   /* pitch */
   .pitch{position:relative;width:100%;aspect-ratio:7/10;border:1px solid rgba(255,255,255,.22);border-radius:9px;overflow:hidden;
-    background:repeating-linear-gradient(0deg,#2c7a3c 0 11%,#27713a 11% 22%);box-shadow:inset 0 0 26px rgba(0,0,0,.4)}
+    background:repeating-linear-gradient(0deg,#15441f 0 11%,#103418 11% 22%);box-shadow:inset 0 0 26px rgba(0,0,0,.4)}
   .pitch::before{content:"";position:absolute;inset:5px;border:1px solid rgba(255,255,255,.22);border-radius:3px}
   .pmid-line{position:absolute;left:5px;right:5px;top:50%;height:1px;background:rgba(255,255,255,.22)}
   .pcircle{position:absolute;left:50%;top:50%;width:30%;aspect-ratio:1;transform:translate(-50%,-50%);border:1px solid rgba(255,255,255,.22);border-radius:50%}
   .pdot{position:absolute;width:13px;height:13px;border-radius:50%;transform:translate(-50%,-50%);box-shadow:0 0 0 2px rgba(0,0,0,.35),0 1px 3px rgba(0,0,0,.5)}
   /* named XI pitch — landscape (GK left → FW right) */
   .pitch.xi{width:100%;max-width:540px;margin:0 auto;aspect-ratio:16/10;
-    background:repeating-linear-gradient(90deg,#2c7a3c 0 11%,#27713a 11% 22%)}
+    background:repeating-linear-gradient(90deg,#15441f 0 11%,#103418 11% 22%)}
   .pmid-v{position:absolute;top:5px;bottom:5px;left:50%;width:1px;background:rgba(255,255,255,.22)}
   .pp{position:absolute;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:2px;width:60px;pointer-events:none}
   .pp .dot{width:13px;height:13px;border-radius:50%;box-shadow:0 0 0 2px rgba(0,0,0,.4),0 1px 3px rgba(0,0,0,.6)}
   .pp .nm{font-size:9px;line-height:1.05;text-align:center;color:#fff;text-shadow:0 1px 2px #000,0 0 4px #000;max-width:62px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  /* half-court (single team formation, portfolio) */
+  .pitch.half{aspect-ratio:3/4;max-width:300px;margin:0 auto}
+  .pitch.half .pp{width:46px}
+  .pitch.half .nm{max-width:48px;font-size:8.5px}
+  .pitch.half .hpline{position:absolute;left:5px;right:5px;top:5px;height:1.5px;background:rgba(255,255,255,.28)}
+  .pitch.half .hpcirc{position:absolute;left:50%;top:4px;width:32%;aspect-ratio:2/1;transform:translateX(-50%);border:1.5px solid rgba(255,255,255,.26);border-top:0;border-radius:0 0 999px 999px}
+  .pitch.half .hpbox{position:absolute;left:50%;bottom:5px;width:52%;height:14%;transform:translateX(-50%);border:1.5px solid rgba(255,255,255,.2);border-bottom:0;border-radius:3px 3px 0 0}
   /* team detail (in portfolio) */
   .td-top{margin:6px 0 12px}
   .td-pitch{text-align:center}
@@ -170,7 +170,7 @@
   .od{display:flex;flex-direction:column;align-items:center;line-height:1.05;min-width:40px}
   .od b{font-family:"Anton",sans-serif;font-size:13px;color:var(--tx)}
   .od i{font-style:normal;font-size:9px;color:var(--muted);letter-spacing:.1em;margin-top:1px}
-  .od.win b{color:#9fe0b0}.od.lose b{color:#e0a06a}
+  .od.win b{color:var(--lime)}.od.lose b{color:var(--pink)}
   .odds .olabel{font-size:9px;color:var(--muted);letter-spacing:.1em;margin-left:auto}
   /* portfolio */
   .pf-summary{display:flex;align-items:center;gap:14px;background:var(--row);border:1px solid var(--line);border-left:5px solid var(--pc,#a78bfa);border-radius:12px;padding:12px 16px;margin:10px 0}
@@ -195,10 +195,10 @@
   .sqn{font-family:"Anton",sans-serif;color:var(--gold);font-size:13px;width:26px}
   .sqgrp{font-size:10px;font-weight:900;color:var(--gold);letter-spacing:.1em;padding:8px 5px 2px}
   .tchip{display:inline-block;font-family:"Anton",sans-serif;font-size:10px;width:16px;height:16px;line-height:16px;text-align:center;border-radius:4px;margin-left:6px;vertical-align:middle}
-  .tchip.tA{background:linear-gradient(180deg,#ead7a6,#cdac68);color:#241c0c}
-  .tchip.tB{background:#5ea0ec;color:#08152b}
-  .tchip.tC{background:#3fc06a;color:#08240f}
-  .tchip.tD{background:#f0a24a;color:#241404}
+  .tchip.tA{background:var(--lime);color:#0a0a10}
+  .tchip.tB{background:var(--blue);color:#06121a}
+  .tchip.tC{background:var(--violetL);color:#1a0f3a}
+  .tchip.tD{background:var(--orange);color:#241404}
   .tchip.tX{background:rgba(255,255,255,.12);color:var(--muted)}
   .gcard tr.adv td{background:rgba(167,139,250,.10)}
   .gcard tr.adv .pos{color:transparent;background:linear-gradient(180deg,var(--g-hi),var(--g-lo));-webkit-background-clip:text;background-clip:text;font-weight:900}
@@ -218,8 +218,8 @@
   input[type=number]{-moz-appearance:textfield}
   input::-webkit-outer-spin-button,input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
   input[type=color]{padding:2px;width:42px;height:32px;cursor:pointer}
-  .btn{font-family:inherit;font-weight:700;cursor:pointer;border:0;border-radius:9px;padding:9px 15px;font-size:13px;color:#241c0c;background:linear-gradient(180deg,var(--g-hi),var(--g-lo));box-shadow:inset 0 1px 0 rgba(255,255,255,.5)}
-  .btn.ghost{background:transparent;color:var(--gold);border:1px solid var(--gold-soft);box-shadow:none}
+  .btn{font-family:inherit;font-weight:700;cursor:pointer;border:0;border-radius:11px;padding:10px 16px;font-size:13px;color:#0a0a10;background:var(--lime)}
+  .btn.ghost{background:transparent;color:var(--lime);border:1px solid var(--lime)}
   .btn.sm{padding:6px 11px;font-size:12px}
   .del{color:#e08a6a;background:transparent;border:1px solid rgba(224,138,106,.4);border-radius:8px;cursor:pointer;padding:4px 9px;font-size:12px}
   .row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:7px 0}
@@ -240,6 +240,21 @@
   .rl-rank{font-family:"Anton",sans-serif;font-size:22px;width:30px;text-align:center;color:var(--gold)}
   .rl-dot{width:14px;height:14px;border-radius:50%;flex:none}
   .rl-nm{font-weight:900;font-size:17px}
+  /* home bento */
+  .bento{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:2px 0 8px}
+  .bx{border-radius:18px;padding:16px;position:relative;overflow:hidden;min-height:104px;display:flex;flex-direction:column}
+  .bx.dark{background:var(--panel);border:1px solid var(--line)}
+  .bx.hero{grid-column:span 2;grid-row:span 2;background:radial-gradient(120% 120% at 100% 0%,#9333ea,#5b21b6 45%,#3b1473);color:#fff;justify-content:flex-end}
+  .bx.lime{background:var(--lime);color:#0a0a10}.bx.pink{background:var(--pink);color:#fff}.bx.blue{background:var(--blue);color:#06121a}.bx.orange{background:var(--orange);color:#0a0a10}
+  .bx-k{font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;opacity:.85}
+  .bx.hero .bx-k{opacity:.9}
+  .bx-h{font-family:"Anton",sans-serif;font-size:clamp(26px,5.5vw,42px);line-height:.88;margin:auto 0 8px;font-weight:400}
+  .bx-v{font-family:"Anton",sans-serif;font-size:38px;line-height:.95;margin-top:7px;font-weight:400}
+  .bx-v .u{font-size:16px;opacity:.7;margin-left:2px}
+  .bx-s{font-size:11px;opacity:.82;margin-top:5px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .bx-s.muted{color:var(--muted);opacity:1}
+  .bx-lead{font-size:12px;margin-top:2px}.bx-lead b{background:var(--lime);color:#3b1473;padding:2px 9px;border-radius:99px;font-weight:700}
+  @media(max-width:640px){.bento{grid-template-columns:repeat(2,1fr)}.bx.hero{grid-column:span 2;grid-row:span 1;min-height:130px}}
   /* home */
   .hm-hero{display:flex;align-items:center;gap:14px;background:linear-gradient(135deg,rgba(177,92,255,.22),rgba(61,123,255,.14) 60%,rgba(18,16,40,.5));border:1px solid var(--line);border-radius:16px;padding:15px 17px;margin:12px 0}
   .hm-hero .lab{font-size:10px;font-weight:900;letter-spacing:.2em;color:var(--gold)}
@@ -277,14 +292,14 @@
   .mdet-h:first-child{margin-top:0}
   .mdet-h .src{color:var(--muted);font-weight:400;font-size:9px;letter-spacing:.12em;margin-left:4px}
   .st-poss{display:flex;align-items:center;gap:8px;font-family:"Anton",sans-serif;font-size:14px;margin-top:4px}
-  .st-pbar{flex:1;height:8px;border-radius:5px;background:#e0883f;overflow:hidden}
-  .st-pbar i{display:block;height:100%;background:#3fc06a}
+  .st-pbar{flex:1;height:8px;border-radius:5px;background:var(--pink);overflow:hidden}
+  .st-pbar i{display:block;height:100%;background:var(--blue)}
   .st-lbl2{text-align:center;font-size:10px;color:var(--muted);margin:2px 0 6px}
   .st-row{display:flex;align-items:center;justify-content:space-between;font-size:12px;margin-top:7px}
   .st-v{font-family:"Anton",sans-serif;font-size:15px;width:36px;text-align:center}
   .st-lab{color:var(--muted)}
   .st-cbar{display:flex;height:6px;border-radius:4px;overflow:hidden;background:var(--row);margin-top:2px}
-  .st-cbar i.l{background:#3fc06a}.st-cbar i.r{background:#e0883f;margin-left:auto}
+  .st-cbar i.l{background:var(--blue)}.st-cbar i.r{background:var(--pink);margin-left:auto}
   .st-sub{font-weight:700;font-size:11.5px;color:var(--gold);margin:12px 0 4px}
   .st-list{font-size:12.5px;line-height:1.8}
   .st-list .st-tm{color:var(--muted);font-size:11px}
@@ -296,20 +311,20 @@
   .st-no{color:var(--gold);font-size:10px;width:18px;flex:none;text-align:center}
   .st-pn{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .st-rt{font-family:"Anton",sans-serif;font-size:11px;flex:none;border-radius:4px;padding:0 4px;color:#14110a}
-  .st-rt.rh{background:#3fc06a}.st-rt.rm{background:#e6c14f}.st-rt.rl{background:#d99}
+  .st-rt.rh{background:var(--lime);color:#0a0a10}.st-rt.rm{background:#ffd60a;color:#0a0a10}.st-rt.rl{background:#ff8a8a;color:#0a0a10}
   /* lineup pitch (Sofascore-style) */
   .lp-team{display:flex;align-items:center;gap:6px;font-size:11px;font-weight:700;margin:2px 0 3px}
   .lp-team .lp-f{color:var(--gold);font-family:"Anton",sans-serif;font-size:11px}
   .lp-dotk{width:10px;height:10px;border-radius:50%;flex:none}
   .lp-pitch{position:relative;width:100%;aspect-ratio:16/10;border:1px solid rgba(255,255,255,.22);border-radius:9px;overflow:hidden;
-    background:repeating-linear-gradient(90deg,#2c7a3c 0 11%,#27713a 11% 22%);box-shadow:inset 0 0 26px rgba(0,0,0,.4);margin-bottom:8px}
+    background:repeating-linear-gradient(90deg,#15441f 0 11%,#103418 11% 22%);box-shadow:inset 0 0 26px rgba(0,0,0,.4);margin-bottom:8px}
   .lp-pitch.dual{aspect-ratio:7/6}
   .lp-mid{position:absolute;left:50%;top:5px;bottom:5px;width:1px;background:rgba(255,255,255,.22)}
   .lp-circle{position:absolute;left:50%;top:50%;width:24%;aspect-ratio:1;transform:translate(-50%,-50%);border:1px solid rgba(255,255,255,.22);border-radius:50%}
   .lp-p{position:absolute;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:0;width:32px;pointer-events:none}
   .lp-dot{width:10px;height:10px;border-radius:50%;box-shadow:0 0 0 2px rgba(0,0,0,.4);background:var(--lpc,#3a7bdc)}
   .lp-rt{font-family:"Anton",sans-serif;font-size:8.5px;line-height:1.25;border-radius:3px;padding:0 3px;color:#14110a;margin-top:1px}
-  .lp-rt.rh{background:#3fc06a}.lp-rt.rm{background:#e6c14f}.lp-rt.rl{background:#dd9999}
+  .lp-rt.rh{background:var(--lime);color:#0a0a10}.lp-rt.rm{background:#ffd60a;color:#0a0a10}.lp-rt.rl{background:#ff8a8a;color:#0a0a10}
   .lp-nm{font-size:7px;line-height:1.05;color:#fff;text-shadow:0 1px 2px #000,0 0 3px #000;white-space:nowrap;max-width:34px;overflow:hidden;text-overflow:ellipsis}
   @media(max-width:560px){
     .bd{font-size:10px}
@@ -414,14 +429,14 @@ function xiPitch(formation,xi){
   else {bands.push(out.filter(p=>p.pos==='DF'),out.filter(p=>p.pos==='MF'),out.filter(p=>p.pos==='FW'));}
   bands=bands.filter(b=>b.length);
   const n=bands.length;let dots='';
-  // 横向き（GK=左 → FW=右）。各ライン内は縦に均等配置。
-  bands.forEach((band,bi)=>{const x=n>1?8+bi*(84/(n-1)):50;
-    band.forEach((p,j)=>{const y=(j+1)/(band.length+1)*100;
-      const col=p.pos==='GK'?'var(--g-mid)':p.pos==='DF'?'var(--c6)':p.pos==='MF'?'var(--c4)':'var(--c1)';
+  // 縦・ハーフコート（GK=下 → FW=上）。各ライン内は横に均等配置。
+  bands.forEach((band,bi)=>{const y=n>1?88-bi*(76/(n-1)):50;
+    band.forEach((p,j)=>{const x=8+(j+1)/(band.length+1)*84;
+      const col=p.pos==='GK'?'var(--lime)':p.pos==='DF'?'var(--c6)':p.pos==='MF'?'var(--c4)':'var(--c1)';
       const sur=esc(String(p.name||'').split(' ').pop());
       dots+=`<span class="pp" style="left:${x}%;top:${y}%"><span class="dot" style="background:${col}"></span><span class="nm" title="${esc(p.name||'')}">${sur}</span></span>`;});
   });
-  return `<div class="pitch xi"><span class="pmid-v"></span><span class="pcircle"></span>${dots}</div>`;
+  return `<div class="pitch half"><span class="hpline"></span><span class="hpcirc"></span><span class="hpbox"></span>${dots}</div>`;
 }
 let G=JSON.parse(document.getElementById('gamedata').textContent);
 if(!G.colors)G.colors={};
@@ -811,22 +826,26 @@ function renderHome(){
   const onDate=d=>all.filter(m=>m.date===d).sort((a,b)=>a.time.localeCompare(b.time));
   const yRes=onDate(yd).filter(m=>m.hs!=null&&m.as!=null);
   const tToday=onDate(td),tTmr=onDate(tm);
-  const hero=next?`<div class="hm-hero">
-      <div style="flex:1;min-width:0"><div class="lab">NEXT MATCH ・ 次の試合</div>
-        <div class="mt">${flag(next.home)} ${esc(next.home)} <span style="color:var(--muted)">vs</span> ${esc(next.away)} ${flag(next.away)}</div>
-        <div style="font-size:11px;color:var(--muted);margin-top:4px">Group ${next.group}</div></div>
-      <div class="when"><span style="font-size:11px;letter-spacing:.1em">${dstr(next.date)}</span><b>${next.time}</b><span style="font-size:10px;color:var(--muted)">JST</span></div>
-    </div>`:`<div class="hm-hero"><div class="lab">FIFA WORLD CUP 2026</div></div>`;
+  const {P}=compute();
+  const lb=G.players.map(p=>({p,...P[p]})).sort((a,b)=>b.total-a.total);const leader=lb[0]||{p:'—',total:0};
+  const todayN=onDate(td).length;const playedN=all.filter(m=>m.hs!=null).length;const remainN=72-playedN;
+  const bento=`<div class="bento">
+    <div class="bx hero"><div class="bx-k">FIFA WORLD CUP 26</div><div class="bx-h">5人対抗<br>予想ゲーム</div><div class="bx-lead">首位 <b>${esc(leader.p)}</b> ${fmt(leader.total)}pt</div></div>
+    <div class="bx lime"><div class="bx-k">次の試合</div><div class="bx-v">${next?next.time:'—'}</div><div class="bx-s">${next?dstr(next.date)+' '+esc(next.home)+' vs '+esc(next.away):'日程なし'}</div></div>
+    <div class="bx pink"><div class="bx-k">本日の試合</div><div class="bx-v">${todayN}</div><div class="bx-s">${dstr(td)}</div></div>
+    <div class="bx dark span2"><div class="bx-k" style="color:var(--violetL)">出場国 / 全試合</div><div class="bx-v">48<span class="u">国</span> · 72<span class="u">試合</span></div><div class="bx-s muted">残り ${remainN} 試合</div></div>
+    <div class="bx blue"><div class="bx-k">保有</div><div class="bx-v">9<span class="u">国</span></div><div class="bx-s">各メンバー</div></div>
+    <div class="bx orange"><div class="bx-k">ジャイキリ</div><div class="bx-v">×2</div><div class="bx-s">格上撃破ボーナス</div></div>
+  </div>`;
   const sec=(title,en,body)=>`<div class="barh">${title} <span class="en">${en}</span></div>${body}`;
   const resBody=yRes.length?yRes.map(resultCard).join(''):`<div class="hm-empty">前日（${dstr(yd)}）の試合はありません。</div>`;
   const fxBody=d=>{const ms=onDate(d);return ms.length?ms.map(fixtureCard).join(''):`<div class="hm-empty">予定はありません（${dstr(d)}）。</div>`;};
-  const hasOdds=G.odds&&Object.keys(G.odds).length>0;
   document.getElementById('v-home').innerHTML=
-    hero
+    `<div class="barh">ホーム <span class="en">DASHBOARD</span></div>`
+    +bento
     +sec('前日の試合結果','YESTERDAY',resBody)
-    +sec(`本日の試合予定（${dstr(td)}）`,'TODAY',fxBody(td))
-    +sec(`翌日の試合予定（${dstr(tm)}）`,'TOMORROW',fxBody(tm))
-    +`<div class="note">結果・得点者は自動更新（APIキー設定後）。オッズは${hasOdds?'各試合に表示中':'キー設定後に表示'}。ハイライトは設定された試合でサムネイルをタップするとモーダル再生します。</div>`;
+    +sec(`本日（${dstr(td)}）`,'TODAY',fxBody(td))
+    +sec(`翌日（${dstr(tm)}）`,'TOMORROW',fxBody(tm));
 }
 
 function renderLB(){
@@ -838,7 +857,7 @@ function renderLB(){
     <div class="pmid"><div class="pname">${esc(x.p)}</div>
       <div class="pbar" style="width:${Math.max(3,x.total/max*100)}%"></div>
       <div class="bd">GS ${fmt(x.gs)}・1位 ${fmt(x.bonus)}・決勝T ${fmt(x.ko)}・ラッキー ${fmt(x.lucky)}・ベット ${x.bet>0?'+':''}${fmt(x.bet)}</div></div>
-    <div class="ptotal" style="color:${i===0?'#ead7a6':'var(--tx)'}">${fmt(x.total)}</div></div>`).join('');
+    <div class="ptotal" style="color:${i===0?'var(--lime)':'var(--tx)'}">${fmt(x.total)}</div></div>`).join('');
   // draft under leaderboard
   const gr=groupsOf();let draft='';
   for(const grp of Object.keys(gr).sort()){
@@ -878,7 +897,7 @@ function oddsRow(key){
   const ph=Math.round(ih/s*100),pd=Math.round(id/s*100),pa=Math.max(0,100-ph-pd);
   const f=x=>x==null?'—':Number(x).toFixed(2);
   return `<div class="odds">
-    <span class="oddbar"><i style="width:${ph}%;background:#3fc06a"></i><i style="width:${pd}%;background:#7d7568"></i><i style="width:${pa}%;background:#e0883f"></i></span>
+    <span class="oddbar"><i style="width:${ph}%;background:var(--lime)"></i><i style="width:${pd}%;background:#7d7568"></i><i style="width:${pa}%;background:var(--pink)"></i></span>
     <span class="od win"><b>${f(o.h)}</b><i>勝</i></span>
     <span class="od"><b>${f(o.d)}</b><i>分</i></span>
     <span class="od lose"><b>${f(o.a)}</b><i>負</i></span>
