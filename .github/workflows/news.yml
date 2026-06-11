@@ -16,7 +16,7 @@ jobs:
           node-version: '20'
       - name: Fetch & update news.json
         env:
-          NEWS_QUERIES: 'サッカー日本代表,森保ジャパン'
+          NEWS_QUERIES: 'サッカー日本代表 分析,サッカー日本代表 戦術,サッカー日本代表 スタメン予想,サッカー日本代表 プレビュー,森保ジャパン 練習,サッカー日本代表 コラム'
           NEWS_MAX: '20'
         run: node scripts/news.mjs
       - name: Commit if changed
