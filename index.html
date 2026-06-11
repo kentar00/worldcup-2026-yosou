@@ -277,6 +277,15 @@
   .hm-fm .hm-tn{flex:1;min-width:0;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .hm-fm .hm-tn.aw{text-align:right}
   .hm-empty{color:var(--muted);font-size:13px;background:var(--row);border:1px dashed var(--line);border-radius:10px;padding:14px;text-align:center}
+  /* japan news */
+  .nws-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:10px}
+  .nws{display:flex;flex-direction:column;gap:8px;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px 15px;text-decoration:none;color:var(--tx);transition:border-color .15s,background .15s}
+  .nws:hover{border-color:var(--lime);background:#191925}
+  .nws-t{font-weight:600;font-size:14px;line-height:1.5}
+  .nws-m{display:flex;align-items:center;gap:8px;margin-top:auto;font-size:11px}
+  .nws-src{font-weight:700;color:var(--violetL);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:55%}
+  .nws-d{color:var(--muted)}
+  .nws-go{margin-left:auto;color:var(--lime);font-weight:700;white-space:nowrap}
   /* video modal */
   .modal{display:none;position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.82);align-items:center;justify-content:center;padding:16px}
   .modal.on{display:flex}
@@ -351,6 +360,7 @@
     <button data-v="scores">日程・結果</button>
     <button data-v="bracket">決勝T表</button>
     <button data-v="rank">FIFAランク</button>
+    <button data-v="news">日本代表</button>
     <button data-v="roulette">ルーレット</button>
     <button data-v="settings">設定</button>
     <button data-v="rules">ルール</button>
@@ -364,6 +374,7 @@
   <section class="view" id="v-scores"></section>
   <section class="view" id="v-bracket"></section>
   <section class="view" id="v-rank"></section>
+  <section class="view" id="v-news"></section>
   <section class="view" id="v-roulette"></section>
   <section class="view" id="v-settings"></section>
   <section class="view" id="v-rules"></section>
@@ -793,7 +804,21 @@ function compute(){
 }
 
 function syncData(){document.getElementById('gamedata').textContent=JSON.stringify(G);}
-function renderAll(){syncData();renderHome();renderLB();renderPortfolio();renderGroups();renderScores();renderBracket();renderRank();renderRoulette();renderSettings();renderRules();renderData();}
+function renderAll(){syncData();renderHome();renderLB();renderPortfolio();renderGroups();renderScores();renderBracket();renderRank();renderNews();renderRoulette();renderSettings();renderRules();renderData();}
+function timeAgo(d){const t=Date.parse(d);if(!t)return '';const s=(Date.now()-t)/1000;if(s<60)return 'たった今';if(s<3600)return Math.floor(s/60)+'分前';if(s<86400)return Math.floor(s/3600)+'時間前';const days=Math.floor(s/86400);return days<8?days+'日前':new Date(t).toLocaleDateString('ja-JP',{month:'numeric',day:'numeric'});}
+function renderNews(){
+  const N=G.news||{items:[]};const items=N.items||[];
+  const upd=N.updated?`<span style="margin-left:auto;font-size:11px;color:var(--muted)">更新 ${timeAgo(N.updated)}</span>`:'';
+  const list=items.length
+    ? items.map(n=>`<a class="nws" href="${esc(n.url||'#')}" target="_blank" rel="noopener noreferrer">
+        <div class="nws-t">${esc(n.title||'')}</div>
+        <div class="nws-m"><span class="nws-src">${esc(n.source||'')}</span>${n.date?`<span class="nws-d">${timeAgo(n.date)}</span>`:''}<span class="nws-go">記事 ↗</span></div></a>`).join('')
+    : '<div class="hm-empty">ニュースは準備中です（自動更新）。</div>';
+  document.getElementById('v-news').innerHTML=
+    `<div class="barh">日本代表 <span class="en">JAPAN ・ NEWS</span></div>`
+    +`<div class="row"><span class="hint" style="margin:0;flex:1">サッカー日本代表の最新ニュースをGoogleニュース横断で自動収集。タップで元記事へ。</span>${upd}</div>`
+    +`<div class="nws-list">${list}</div>`;
+}
 
 // ---- ホーム ----
 function jstDate(off){const d=new Date(Date.now()+9*3600*1000);d.setUTCDate(d.getUTCDate()+(off||0));return d.toISOString().slice(0,10);}
@@ -1098,9 +1123,10 @@ async function boot(){
     if(sq&&sq.ok){const s=await sq.json();G.squads=s.squads||{};G.squadsUpdated=s.updated||null;}
     if(pf&&pf.ok){const s=await pf.json();G.profiles=s.profiles||{};}
     if(rc&&rc.ok){const s=await rc.json();G.recent=s.recent||{};}
-    const [hl,stt]=await Promise.all([fetch('highlights.json',{cache:'no-store'}).catch(()=>null),fetch('stats.json',{cache:'no-store'}).catch(()=>null)]);
+    const [hl,stt,nw]=await Promise.all([fetch('highlights.json',{cache:'no-store'}).catch(()=>null),fetch('stats.json',{cache:'no-store'}).catch(()=>null),fetch('news.json',{cache:'no-store'}).catch(()=>null)]);
     if(hl&&hl.ok){const s=await hl.json();G.highlights=s.highlights||{};}
     if(stt&&stt.ok){const s=await stt.json();G.stats=s.stats||{};}
+    if(nw&&nw.ok){const s=await nw.json();G.news=s;}
   }catch(e){/* file:// やオフライン時は埋め込みデータで動作 */}
   if(!G.colors)G.colors={};
   if(!G.odds)G.odds={};
@@ -1109,6 +1135,7 @@ async function boot(){
   if(!G.recent)G.recent={};
   if(!G.highlights)G.highlights={};
   if(!G.stats)G.stats={};
+  if(!G.news)G.news={items:[]};
   rlState.remaining=null;
   renderAll();
 }
