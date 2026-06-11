@@ -968,11 +968,24 @@ function matchDetailHTML(key){
   h+='</div>';
   return h;
 }
+let scFilter='all';
+function setScFilter(v){scFilter=v;renderScores();}
+function scMatch(m){
+  if(scFilter==='all')return true;
+  if(scFilter[0]==='g')return m.group===scFilter.slice(2);
+  if(scFilter[0]==='p'){const p=scFilter.slice(2);return owner(m.home)===p||owner(m.away)===p;}
+  return true;
+}
 function renderScores(){
-  const byDate={};G.gsMatches.forEach(m=>{(byDate[m.date]=byDate[m.date]||[]).push(m);});
+  const fms=G.gsMatches.filter(scMatch);
+  const byDate={};fms.forEach(m=>{(byDate[m.date]=byDate[m.date]||[]).push(m);});
   const dates=Object.keys(byDate).sort();
-  let gs=`<div class="barh">グループステージ 日程・結果（日本時間）<span class="en">GROUP</span></div>`
-    +`<div class="hint">各試合の <b>▾</b> をタップで詳細：試合前はオッズ、試合後はDAZNハイライトとスタッツ（Sofascore）。</div>`;
+  const memOpts=G.players.map(p=>`<option value="p:${esc(p)}" ${scFilter==='p:'+p?'selected':''}>${esc(p)} の保有国</option>`).join('');
+  const grpOpts='ABCDEFGHIJKL'.split('').map(g=>`<option value="g:${g}" ${scFilter==='g:'+g?'selected':''}>グループ ${g}</option>`).join('');
+  let gs=`<div class="barh">グループステージ <span class="en">GROUP</span></div>`
+    +`<div class="row"><span class="lbl">フィルタ</span><select id="sc-filter" onchange="setScFilter(this.value)" style="flex:1;min-width:170px;font-weight:600;font-size:14px"><option value="all" ${scFilter==='all'?'selected':''}>全試合（${G.gsMatches.length}）</option><optgroup label="メンバーの保有国">${memOpts}</optgroup><optgroup label="グループ">${grpOpts}</optgroup></select><span class="hint" style="margin:0">${fms.length}試合</span></div>`
+    +`<div class="hint">各試合の <b>▾</b> をタップで詳細：試合前はオッズ、試合後はDAZNハイライトとスタッツ。</div>`;
+  if(!dates.length)gs+='<div class="hm-empty">該当する試合がありません。</div>';
   dates.forEach(d=>{
     const ms=byDate[d].sort((a,b)=>a.time.localeCompare(b.time));
     let rows=ms.map(m=>`<div class="m">
