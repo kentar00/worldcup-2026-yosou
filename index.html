@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>W杯2026 予想ゲーム ダッシュボード</title>
+<title>FIFA World Cup 2026 Prediction Game</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
@@ -29,13 +29,11 @@
   .lock{display:flex;align-items:center;gap:9px}
   .lock .tr{font-size:32px;filter:drop-shadow(0 3px 14px rgba(167,139,250,.5))}
   .lock .yr{font-family:"Anton",sans-serif;font-size:32px;line-height:.8}
-  /* multicolor diversity stripe (from artwork) */
-  .stripe{display:flex;height:6px;border-radius:4px;overflow:hidden;margin:10px 0 4px}
-  .stripe i{flex:1}
-  .stripe i:nth-child(1){background:var(--c1)}.stripe i:nth-child(2){background:var(--c2)}
-  .stripe i:nth-child(3){background:var(--c3)}.stripe i:nth-child(4){background:var(--c4)}
-  .stripe i:nth-child(5){background:var(--c5)}.stripe i:nth-child(6){background:var(--c6)}
-  .stripe i:nth-child(7){background:var(--c7)}.stripe i:nth-child(8){background:var(--c8)}
+  /* accent bar */
+  .stripe{height:4px;border-radius:99px;margin:10px 0 4px;
+    background:linear-gradient(90deg,var(--lime),var(--blue) 36%,var(--violetL) 66%,var(--pink));
+    box-shadow:0 0 16px rgba(167,139,250,.30)}
+  .stripe i{display:none}
 
   nav{display:flex;gap:5px;flex-wrap:wrap;position:sticky;top:0;z-index:20;padding:10px 0;
     background:linear-gradient(180deg,var(--bg) 72%,rgba(10,10,16,0));margin-bottom:6px}
@@ -338,7 +336,7 @@
 <body>
 <div class="wrap">
   <header>
-    <div class="htitle"><small>FIFA WORLD CUP 2026</small>5人対抗 予想ゲーム</div>
+    <div class="htitle"><small>FIFA WORLD CUP 2026</small>Prediction Game</div>
     <div class="lock"><span class="tr">🏆</span><span class="yr gold-text">2026</span></div>
   </header>
   <div class="stripe"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
@@ -830,7 +828,7 @@ function renderHome(){
   const lb=G.players.map(p=>({p,...P[p]})).sort((a,b)=>b.total-a.total);const leader=lb[0]||{p:'—',total:0};
   const todayN=onDate(td).length;const playedN=all.filter(m=>m.hs!=null).length;const remainN=72-playedN;
   const bento=`<div class="bento">
-    <div class="bx hero"><div class="bx-k">FIFA WORLD CUP 26</div><div class="bx-h">5人対抗<br>予想ゲーム</div><div class="bx-lead">首位 <b>${esc(leader.p)}</b> ${fmt(leader.total)}pt</div></div>
+    <div class="bx hero"><div class="bx-k">FIFA WORLD CUP 26</div><div class="bx-h">PREDICTION<br>GAME</div><div class="bx-lead">首位 <b>${esc(leader.p)}</b> ${fmt(leader.total)}pt</div></div>
     <div class="bx lime"><div class="bx-k">次の試合</div><div class="bx-v">${next?next.time:'—'}</div><div class="bx-s">${next?dstr(next.date)+' '+esc(next.home)+' vs '+esc(next.away):'日程なし'}</div></div>
     <div class="bx pink"><div class="bx-k">本日の試合</div><div class="bx-v">${todayN}</div><div class="bx-s">${dstr(td)}</div></div>
     <div class="bx dark span2"><div class="bx-k" style="color:var(--violetL)">出場国 / 全試合</div><div class="bx-v">48<span class="u">国</span> · 72<span class="u">試合</span></div><div class="bx-s muted">残り ${remainN} 試合</div></div>
