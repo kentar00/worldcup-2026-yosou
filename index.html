@@ -184,6 +184,8 @@
   .pf-sub{font-size:11.5px;color:var(--muted);padding:0 13px 4px 13px}
   .pf-next{font-size:12px;color:var(--tx);padding:0 13px 11px 13px;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
   .pf-when{color:var(--gold);font-size:11px}
+  .pf-win{font-size:10.5px;font-weight:700;color:#0a0a10;background:var(--lime);border-radius:6px;padding:1px 8px;white-space:nowrap}
+  .pf-win.gk{background:var(--orange);color:#241404}
   .pf-squad{padding:0 10px 10px}
   table.sqt{width:100%;border-collapse:collapse;font-size:12px}
   table.sqt th{color:var(--gold);font-size:10.5px;font-weight:700;padding:6px 5px;border-bottom:1px solid var(--line)}
@@ -660,8 +662,13 @@ function renderPortfolio(){
     : Object.keys(G.teams).filter(t=>owner(t)===sel).map(n=>({n,t:teamPoints(n,standings).total})).sort((a,b)=>b.t-a.t).map(x=>x.n);
   const rowFor=n=>{
     const tp=teamPoints(n,standings);const nm=nextMatch(n);const o=owner(n);
+    let winTag='';
+    if(nm&&!nm.played){
+      const gk=!!(G.config&&G.config.gk)&&isLow(tier(n))&&isHigh(tier(nm.opp));
+      winTag=`<span class="pf-win${gk?' gk':''}">勝てば +${gk?2:1}pt${gk?' ⚡ジャイキリ×2':''}</span>`;
+    }
     const nmHtml=nm
-      ? `<div class="pf-next">${nm.played?'直近結果':'次戦'}: ${flag(nm.opp)} ${esc(nm.opp)}<span class="pf-when">${dstr(nm.date)} ${nm.time}${nm.played?` ／ ${nm.isHome?nm.hs:nm.as}-${nm.isHome?nm.as:nm.hs}`:''}</span></div>`
+      ? `<div class="pf-next">${nm.played?'直近結果':'次戦'}: ${flag(nm.opp)} ${esc(nm.opp)}<span class="pf-when">${dstr(nm.date)} ${nm.time}${nm.played?` ／ ${nm.isHome?nm.hs:nm.as}-${nm.isHome?nm.as:nm.hs}`:''}</span>${winTag}</div>`
       : '<div class="pf-next" style="color:var(--muted)">日程データなし</div>';
     const sub=[tp.gs?`GS ${fmt(tp.gs)}`:'',tp.bonus?`1位+${fmt(tp.bonus)}`:'',tp.ko?`決勝T ${fmt(tp.ko)}`:''].filter(Boolean).join(' ・ ')||'まだ 0pt';
     const meta=isRank?`<span class="bk-slot">${FIFA_RANK[n]?'世界'+FIFA_RANK[n]+'位':'圏外'}</span>${o?`<span class="ochip" style="background:${pcol(o)}">${esc(o)}</span>`:''}`:'';
