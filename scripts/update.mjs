@@ -68,7 +68,8 @@ async function fetchScorers(id){
 }
 
 async function main(){
-  if(!API_KEY){ console.error('FOOTBALL_API_KEY missing'); process.exit(1); }
+  // キー待ち: 未設定なら成功扱いで終了（他スクリプト odds/stats/news と同じ運用。手動更新を上書きしない）
+  if(!API_KEY){ console.log('FOOTBALL_API_KEY not set — skipping results update (manual data preserved)'); process.exit(0); }
   const results = JSON.parse(fs.readFileSync('results.json','utf8'));
   let matches;
   try{ matches = await fetchMatches(); }
