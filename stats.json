@@ -1,4 +1,203 @@
 {
  "_note": "試合スタッツ（API-Football自動取得 / Sofascore相当）。各試合ID(GS1..GS72 や koは home|away)にオブジェクトを割当。lineupsは {formation, players:[{no,name,pos,grid,rating}]}（gridは 'row:col'）。例: {\"GS1\":{\"possession\":[58,42],\"shots\":[15,8],\"shotsOnTarget\":[6,3],\"goals\":[{\"player\":\"Gimenez\",\"team\":\"メキシコ\",\"minute\":23}],\"cards\":[{\"player\":\"Foster\",\"team\":\"南アフリカ\",\"minute\":40,\"type\":\"Y\"}],\"lineups\":{\"home\":{\"formation\":\"4-3-3\",\"players\":[{\"no\":9,\"name\":\"Gimenez\",\"pos\":\"F\",\"grid\":\"4:2\",\"rating\":7.8}]},\"away\":{\"formation\":\"4-2-3-1\",\"players\":[]}},\"subs\":{\"home\":[{\"minute\":70,\"in\":\"Vega\",\"out\":\"Gimenez\",\"rating\":6.9}],\"away\":[]}}}",
- "stats": {}
+ "stats": {
+  "GS1": {
+   "possession": [
+    60,
+    40
+   ],
+   "shots": [
+    16,
+    5
+   ],
+   "shotsOnTarget": [
+    4,
+    2
+   ],
+   "goals": [
+    {
+     "player": "Quiñones",
+     "team": "メキシコ",
+     "minute": 9
+    },
+    {
+     "player": "Jiménez",
+     "team": "メキシコ",
+     "minute": 67
+    }
+   ],
+   "cards": [
+    {
+     "player": "Sithole",
+     "team": "南アフリカ",
+     "minute": 49,
+     "type": "R"
+    },
+    {
+     "player": "Zwane",
+     "team": "南アフリカ",
+     "minute": 84,
+     "type": "R"
+    },
+    {
+     "player": "Montes",
+     "team": "メキシコ",
+     "minute": 90,
+     "type": "R"
+    }
+   ],
+   "lineups": {
+    "home": {
+     "formation": "4-1-4-1",
+     "players": [
+      {
+       "name": "Rangel",
+       "pos": "G",
+       "grid": "1:1"
+      },
+      {
+       "name": "Vásquez",
+       "pos": "D",
+       "grid": "2:1"
+      },
+      {
+       "name": "Montes",
+       "pos": "D",
+       "grid": "2:2"
+      },
+      {
+       "name": "Reyes",
+       "pos": "D",
+       "grid": "2:3"
+      },
+      {
+       "name": "Gallardo",
+       "pos": "D",
+       "grid": "2:4"
+      },
+      {
+       "name": "Álvarez",
+       "pos": "M",
+       "grid": "3:1"
+      },
+      {
+       "name": "González",
+       "pos": "M",
+       "grid": "4:1"
+      },
+      {
+       "name": "Chávez",
+       "pos": "M",
+       "grid": "4:2"
+      },
+      {
+       "name": "Alvarado",
+       "pos": "M",
+       "grid": "4:3"
+      },
+      {
+       "name": "Mora",
+       "pos": "M",
+       "grid": "4:4"
+      },
+      {
+       "name": "Vega",
+       "pos": "F",
+       "grid": "5:1"
+      }
+     ]
+    },
+    "away": {
+     "formation": "5-3-2",
+     "players": [
+      {
+       "name": "Williams",
+       "pos": "G",
+       "grid": "1:1"
+      },
+      {
+       "name": "Mudau",
+       "pos": "D",
+       "grid": "2:1"
+      },
+      {
+       "name": "Mbokazi",
+       "pos": "D",
+       "grid": "2:2"
+      },
+      {
+       "name": "Sibisi",
+       "pos": "D",
+       "grid": "2:3"
+      },
+      {
+       "name": "Okon",
+       "pos": "D",
+       "grid": "2:4"
+      },
+      {
+       "name": "Mbatha",
+       "pos": "D",
+       "grid": "2:5"
+      },
+      {
+       "name": "Mokoena",
+       "pos": "M",
+       "grid": "3:1"
+      },
+      {
+       "name": "Appollis",
+       "pos": "M",
+       "grid": "3:2"
+      },
+      {
+       "name": "Zwane",
+       "pos": "M",
+       "grid": "3:3"
+      },
+      {
+       "name": "Sithole",
+       "pos": "F",
+       "grid": "4:1"
+      },
+      {
+       "name": "Makgopa",
+       "pos": "F",
+       "grid": "4:2"
+      }
+     ]
+    }
+   },
+   "subs": {
+    "home": [
+     {
+      "in": "Jiménez"
+     },
+     {
+      "in": "Fidalgo"
+     },
+     {
+      "in": "Gutiérrez"
+     },
+     {
+      "in": "Lira"
+     }
+    ],
+    "away": [
+     {
+      "in": "Foster",
+      "out": "Mbatha"
+     },
+     {
+      "in": "Rayners",
+      "out": "Makgopa"
+     },
+     {
+      "in": "Modiba",
+      "out": "Appollis"
+     }
+    ]
+   }
+  }
+ }
 }
