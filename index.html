@@ -943,7 +943,7 @@ function togMatch(key,pfx){pfx=pfx||'';
   const el=document.getElementById('md-'+pfx+key),bt=document.getElementById('mx-'+pfx+key);
   if(!el)return;
   if(el.style.display!=='none'){el.style.display='none';if(bt)bt.textContent='▾';return;}
-  el.innerHTML=matchDetailHTML(key);el.style.display='block';if(bt)bt.textContent='▴';
+  el.innerHTML=matchDetailHTML(key,pfx);el.style.display='block';if(bt)bt.textContent='▴';
 }
 function ratC(r){r=Number(r);return r>=7.5?'rh':r>=6.5?'rm':'rl';}
 // スタメンを横長フィールドに配置（Sofascore風：ホーム左/アウェイ右、レーティング付き）
@@ -988,7 +988,7 @@ function statsHTML(key,m){
     const hs=sl(s.subs.home,esc(m.home)),as=sl(s.subs.away,esc(m.away));if(hs||as)h+=`<div class="st-sub">選手交代</div><div class="st-xi">${hs}${as}</div>`;}
   return h;
 }
-function matchDetailHTML(key){
+function matchDetailHTML(key,pfx){
   let m=G.gsMatches.find(x=>x.id===key);
   if(!m)m=(G.koMatches||[]).find(x=>(x.home+'|'+x.away)===key);
   if(!m)return '';
@@ -1000,8 +1000,10 @@ function matchDetailHTML(key){
   const yid=ytId((G.highlights&&G.highlights[key])||m.highlight||'');
   let h='<div class="mdet">';
   h+=statsHTML(key,m);
-  h+='<div class="mdet-h">ハイライト <span class="src">DAZN</span></div>';
-  h+= yid?`<button class="hm-hl" onclick="openHL('${yid}')"><img src="https://img.youtube.com/vi/${yid}/hqdefault.jpg" loading="lazy" alt="ハイライト" onerror="this.parentNode.style.display='none'"><span class="hm-play">▶</span><span class="hm-hltxt">DAZN ハイライト</span></button>`:'<div class="hint" style="margin:2px 0">ハイライト未設定です。</div>';
+  if(pfx!=='h'){
+    h+='<div class="mdet-h">ハイライト <span class="src">DAZN</span></div>';
+    h+= yid?`<button class="hm-hl" onclick="openHL('${yid}')"><img src="https://img.youtube.com/vi/${yid}/hqdefault.jpg" loading="lazy" alt="ハイライト" onerror="this.parentNode.style.display='none'"><span class="hm-play">▶</span><span class="hm-hltxt">DAZN ハイライト</span></button>`:'<div class="hint" style="margin:2px 0">ハイライト未設定です。</div>';
+  }
   h+='</div>';
   return h;
 }
