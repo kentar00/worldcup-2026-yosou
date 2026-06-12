@@ -291,6 +291,272 @@
      }
     ]
    }
+  },
+  "GS2": {
+   "sofa": "https://www.sofascore.com/football/match/south-korea-czechia/oUbsKUb",
+   "possession": [
+    62,
+    38
+   ],
+   "shots": [
+    9,
+    6
+   ],
+   "shotsOnTarget": [
+    6,
+    4
+   ],
+   "goals": [
+    {
+     "player": "Krejčí",
+     "team": "チェコ",
+     "minute": 59
+    },
+    {
+     "player": "ファン・インボム",
+     "team": "韓国",
+     "minute": 67
+    },
+    {
+     "player": "オ・ヒョンギュ",
+     "team": "韓国",
+     "minute": 80
+    }
+   ],
+   "cards": [
+    {
+     "player": "イ・ギヒョク",
+     "team": "韓国",
+     "minute": 90,
+     "type": "Y"
+    }
+   ],
+   "lineups": {
+    "home": {
+     "formation": "3-4-2-1",
+     "players": [
+      {
+       "no": 1,
+       "name": "Kim Seung-gyu",
+       "pos": "G",
+       "grid": "1:1",
+       "rating": 7.3
+      },
+      {
+       "no": 2,
+       "name": "Lee Han-beom",
+       "pos": "D",
+       "grid": "2:1",
+       "rating": 6.8
+      },
+      {
+       "no": 4,
+       "name": "Kim Min-jae",
+       "pos": "D",
+       "grid": "2:2",
+       "rating": 6.9
+      },
+      {
+       "no": 3,
+       "name": "Lee Gi-hyuk",
+       "pos": "D",
+       "grid": "2:3",
+       "rating": 6.9
+      },
+      {
+       "no": 22,
+       "name": "Seol Young-woo",
+       "pos": "M",
+       "grid": "3:1",
+       "rating": 6.6
+      },
+      {
+       "no": 6,
+       "name": "Hwang In-beom",
+       "pos": "M",
+       "grid": "3:2",
+       "rating": 8.8
+      },
+      {
+       "no": 8,
+       "name": "Paik Seung-ho",
+       "pos": "M",
+       "grid": "3:3",
+       "rating": 7.1
+      },
+      {
+       "no": 13,
+       "name": "Lee Tae-seok",
+       "pos": "M",
+       "grid": "3:4",
+       "rating": 7.2
+      },
+      {
+       "no": 19,
+       "name": "Lee Kang-in",
+       "pos": "M",
+       "grid": "4:1",
+       "rating": 8.2
+      },
+      {
+       "no": 10,
+       "name": "Lee Jae-sung",
+       "pos": "M",
+       "grid": "4:2",
+       "rating": 6.9
+      },
+      {
+       "no": 7,
+       "name": "Son Heung-min",
+       "pos": "F",
+       "grid": "5:1",
+       "rating": 6.8
+      }
+     ]
+    },
+    "away": {
+     "formation": "3-4-2-1",
+     "players": [
+      {
+       "no": 1,
+       "name": "Kovář",
+       "pos": "G",
+       "grid": "1:1",
+       "rating": 7
+      },
+      {
+       "no": 6,
+       "name": "Chaloupek",
+       "pos": "D",
+       "grid": "2:1",
+       "rating": 5.9
+      },
+      {
+       "no": 4,
+       "name": "Hranáč",
+       "pos": "D",
+       "grid": "2:2",
+       "rating": 6.3
+      },
+      {
+       "no": 7,
+       "name": "Krejčí",
+       "pos": "D",
+       "grid": "2:3",
+       "rating": 7.1
+      },
+      {
+       "no": 5,
+       "name": "Coufal",
+       "pos": "M",
+       "grid": "3:1",
+       "rating": 6.4
+      },
+      {
+       "no": 22,
+       "name": "Souček",
+       "pos": "M",
+       "grid": "3:2",
+       "rating": 6.6
+      },
+      {
+       "no": 24,
+       "name": "Sojka",
+       "pos": "M",
+       "grid": "3:3",
+       "rating": 6.7
+      },
+      {
+       "no": 20,
+       "name": "Zelený",
+       "pos": "M",
+       "grid": "3:4",
+       "rating": 6.8
+      },
+      {
+       "no": 17,
+       "name": "Provod",
+       "pos": "M",
+       "grid": "4:1",
+       "rating": 6.9
+      },
+      {
+       "no": 15,
+       "name": "Šulc",
+       "pos": "M",
+       "grid": "4:2",
+       "rating": 6.7
+      },
+      {
+       "no": 10,
+       "name": "Schick",
+       "pos": "F",
+       "grid": "5:1",
+       "rating": 6.4
+      }
+     ]
+    }
+   },
+   "subs": {
+    "home": [
+     {
+      "minute": 62,
+      "in": "Hwang Hee-chan",
+      "out": "Lee Jae-sung",
+      "rating": 6.7
+     },
+     {
+      "minute": 69,
+      "in": "Oh Hyeon-gyu",
+      "out": "Son Heung-min",
+      "rating": 7.5
+     },
+     {
+      "minute": 69,
+      "in": "Eom Ji-sung",
+      "out": "Lee Tae-seok",
+      "rating": 7
+     },
+     {
+      "minute": 84,
+      "in": "Park Jin-seob",
+      "out": "Paik Seung-ho",
+      "rating": 6.7
+     },
+     {
+      "minute": 84,
+      "in": "Kim Jin-gyu",
+      "out": "Hwang In-beom",
+      "rating": 6.7
+     }
+    ],
+    "away": [
+     {
+      "minute": 64,
+      "in": "Sadílek",
+      "out": "Provod",
+      "rating": 6.6
+     },
+     {
+      "minute": 64,
+      "in": "Chorý",
+      "out": "Schick",
+      "rating": 6.5
+     },
+     {
+      "minute": 64,
+      "in": "Hložek",
+      "out": "Šulc",
+      "rating": 7
+     },
+     {
+      "minute": 84,
+      "in": "Chytil",
+      "out": "Sojka",
+      "rating": 6.4
+     }
+    ]
+   }
   }
  }
 }

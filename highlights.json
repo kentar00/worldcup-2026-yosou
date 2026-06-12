@@ -1,6 +1,7 @@
 {
  "_note": "手動データ。各試合ID(GS1..GS72 や koMatchの home|away)に YouTube の動画ID または URL を割り当てるとホームの結果カードにハイライト(サムネ→モーダル)が表示されます。例: \"GS1\": \"dQw4w9WgXcQ\"",
  "highlights": {
-  "GS1": "HxHaup6d_wM"
+  "GS1": "HxHaup6d_wM",
+  "GS2": "NPLKCfPnmzE"
  }
 }
