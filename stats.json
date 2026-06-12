@@ -2,6 +2,7 @@
  "_note": "試合スタッツ（API-Football自動取得 / Sofascore相当）。各試合ID(GS1..GS72 や koは home|away)にオブジェクトを割当。lineupsは {formation, players:[{no,name,pos,grid,rating}]}（gridは 'row:col'）。例: {\"GS1\":{\"possession\":[58,42],\"shots\":[15,8],\"shotsOnTarget\":[6,3],\"goals\":[{\"player\":\"Gimenez\",\"team\":\"メキシコ\",\"minute\":23}],\"cards\":[{\"player\":\"Foster\",\"team\":\"南アフリカ\",\"minute\":40,\"type\":\"Y\"}],\"lineups\":{\"home\":{\"formation\":\"4-3-3\",\"players\":[{\"no\":9,\"name\":\"Gimenez\",\"pos\":\"F\",\"grid\":\"4:2\",\"rating\":7.8}]},\"away\":{\"formation\":\"4-2-3-1\",\"players\":[]}},\"subs\":{\"home\":[{\"minute\":70,\"in\":\"Vega\",\"out\":\"Gimenez\",\"rating\":6.9}],\"away\":[]}}}",
  "stats": {
   "GS1": {
+   "sofa": "https://www.sofascore.com/football/match/mexico-south-africa/LUbsGVb",
    "possession": [
     60,
     40
@@ -28,10 +29,28 @@
    ],
    "cards": [
     {
+     "player": "Mokoena",
+     "team": "南アフリカ",
+     "minute": 9,
+     "type": "Y"
+    },
+    {
+     "player": "Gutiérrez",
+     "team": "メキシコ",
+     "minute": 17,
+     "type": "Y"
+    },
+    {
      "player": "Sithole",
      "team": "南アフリカ",
      "minute": 49,
      "type": "R"
+    },
+    {
+     "player": "Sibisi",
+     "team": "南アフリカ",
+     "minute": 74,
+     "type": "Y"
     },
     {
      "player": "Zwane",
@@ -51,59 +70,81 @@
      "formation": "4-1-4-1",
      "players": [
       {
+       "no": 1,
        "name": "Rangel",
        "pos": "G",
-       "grid": "1:1"
+       "grid": "1:1",
+       "rating": 7.3
       },
       {
-       "name": "Vásquez",
-       "pos": "D",
-       "grid": "2:1"
-      },
-      {
-       "name": "Montes",
-       "pos": "D",
-       "grid": "2:2"
-      },
-      {
-       "name": "Reyes",
-       "pos": "D",
-       "grid": "2:3"
-      },
-      {
+       "no": 23,
        "name": "Gallardo",
        "pos": "D",
-       "grid": "2:4"
+       "grid": "2:1",
+       "rating": 6.9
       },
       {
-       "name": "Álvarez",
+       "no": 3,
+       "name": "Montes",
+       "pos": "D",
+       "grid": "2:2",
+       "rating": 6.8
+      },
+      {
+       "no": 5,
+       "name": "Vásquez",
+       "pos": "D",
+       "grid": "2:3",
+       "rating": 6.9
+      },
+      {
+       "no": 15,
+       "name": "Reyes",
+       "pos": "D",
+       "grid": "2:4",
+       "rating": 7.2
+      },
+      {
+       "no": 6,
+       "name": "Lira",
        "pos": "M",
-       "grid": "3:1"
+       "grid": "3:1",
+       "rating": 7.4
       },
       {
-       "name": "González",
+       "no": 16,
+       "name": "Quiñones",
        "pos": "M",
-       "grid": "4:1"
+       "grid": "4:1",
+       "rating": 8.6
       },
       {
-       "name": "Chávez",
+       "no": 8,
+       "name": "Fidalgo",
        "pos": "M",
-       "grid": "4:2"
+       "grid": "4:2",
+       "rating": 7.1
       },
       {
+       "no": 26,
+       "name": "Gutiérrez",
+       "pos": "M",
+       "grid": "4:3",
+       "rating": 6.9
+      },
+      {
+       "no": 25,
        "name": "Alvarado",
        "pos": "M",
-       "grid": "4:3"
+       "grid": "4:4",
+       "rating": 8.2
       },
       {
-       "name": "Mora",
-       "pos": "M",
-       "grid": "4:4"
-      },
-      {
-       "name": "Vega",
+       "no": 9,
+       "name": "Jiménez",
        "pos": "F",
-       "grid": "5:1"
+       "grid": "5:1",
+       "rating": 7.6
       }
      ]
     },
@@ -111,59 +152,81 @@
      "formation": "5-3-2",
      "players": [
       {
+       "no": 1,
        "name": "Williams",
        "pos": "G",
-       "grid": "1:1"
+       "grid": "1:1",
+       "rating": 6.3
       },
       {
-       "name": "Mudau",
+       "no": 6,
+       "name": "Modiba",
        "pos": "D",
-       "grid": "2:1"
+       "grid": "2:1",
+       "rating": 5.9
       },
       {
+       "no": 14,
        "name": "Mbokazi",
        "pos": "D",
-       "grid": "2:2"
+       "grid": "2:2",
+       "rating": 6.4
       },
       {
+       "no": 19,
        "name": "Sibisi",
        "pos": "D",
-       "grid": "2:3"
+       "grid": "2:3",
+       "rating": 6
       },
       {
+       "no": 21,
        "name": "Okon",
        "pos": "D",
-       "grid": "2:4"
+       "grid": "2:4",
+       "rating": 6.3
       },
       {
-       "name": "Mbatha",
+       "no": 20,
+       "name": "Mudau",
        "pos": "D",
-       "grid": "2:5"
+       "grid": "2:5",
+       "rating": 6.5
       },
       {
+       "no": 13,
+       "name": "Sithole",
+       "pos": "M",
+       "grid": "3:1",
+       "rating": 4.9
+      },
+      {
+       "no": 4,
        "name": "Mokoena",
        "pos": "M",
-       "grid": "3:1"
+       "grid": "3:2",
+       "rating": 6.5
       },
       {
-       "name": "Appollis",
+       "no": 23,
+       "name": "Adams",
        "pos": "M",
-       "grid": "3:2"
+       "grid": "3:3",
+       "rating": 6.6
       },
       {
-       "name": "Zwane",
-       "pos": "M",
-       "grid": "3:3"
-      },
-      {
-       "name": "Sithole",
+       "no": 9,
+       "name": "Foster",
        "pos": "F",
-       "grid": "4:1"
+       "grid": "4:1",
+       "rating": 5.9
       },
       {
-       "name": "Makgopa",
+       "no": 15,
+       "name": "Rayners",
        "pos": "F",
-       "grid": "4:2"
+       "grid": "4:2",
+       "rating": 6.1
       }
      ]
     }
@@ -171,34 +234,63 @@
    "subs": {
     "home": [
      {
-      "in": "Jiménez"
+      "minute": 66,
+      "in": "Mora",
+      "out": "Fidalgo",
+      "rating": 6.6
      },
      {
-      "in": "Fidalgo"
+      "minute": 66,
+      "in": "Chávez",
+      "out": "Gutiérrez",
+      "rating": 6.8
      },
      {
-      "in": "Gutiérrez"
+      "minute": 76,
+      "in": "González",
+      "out": "Jiménez",
+      "rating": 6.2
      },
      {
-      "in": "Lira"
+      "minute": 76,
+      "in": "Álvarez",
+      "out": "Lira",
+      "rating": 7
+     },
+     {
+      "minute": 79,
+      "in": "Vega",
+      "out": "Quiñones",
+      "rating": 6.4
      }
     ],
     "away": [
      {
-      "in": "Foster",
-      "out": "Mbatha"
+      "minute": 56,
+      "in": "Mbatha",
+      "out": "Foster",
+      "rating": 6.5
      },
      {
-      "in": "Rayners",
-      "out": "Makgopa"
+      "minute": 61,
+      "in": "Zwane",
+      "out": "Adams",
+      "rating": 5.3
      },
      {
-      "in": "Modiba",
-      "out": "Appollis"
+      "minute": 76,
+      "in": "Makgopa",
+      "out": "Rayners",
+      "rating": 6.8
+     },
+     {
+      "minute": 77,
+      "in": "Appollis",
+      "out": "Modiba",
+      "rating": 6.6
      }
     ]
-   },
-   "sofa": "https://www.sofascore.com/football/match/mexico-south-africa/LUbsGVb"
+   }
   }
  }
 }

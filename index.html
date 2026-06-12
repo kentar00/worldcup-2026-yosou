@@ -263,6 +263,8 @@
   .hm-hero .when b{display:block;font-size:20px;line-height:1}
   .hm-rm{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin:8px 0}
   .hm-rmtop{display:flex;align-items:center;gap:8px}
+  .hm-rmtop.click{cursor:pointer}
+  .hm-rmtop.click:hover .hm-score{color:var(--lime)}
   .hm-rmtop .hm-tn{flex:1;min-width:0;font-weight:700;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:flex;align-items:center;gap:6px}
   .hm-rmtop .hm-tn.aw{justify-content:flex-end}
   .hm-score{font-family:"Anton",sans-serif;font-size:22px;flex:none;padding:0 8px}
@@ -294,7 +296,7 @@
   .modal-vid{position:relative;width:100%;aspect-ratio:16/9;background:#000;border-radius:10px;overflow:hidden}
   .modal-vid iframe{position:absolute;inset:0;width:100%;height:100%}
   /* match detail (scores tab) */
-  .m-exp{flex:none;width:26px;height:26px;border-radius:7px;border:1px solid var(--line);background:var(--card);color:var(--gold);font-size:12px;cursor:pointer;margin-left:2px}
+  .m-exp{flex:none;width:26px;height:26px;border-radius:7px;border:1px solid var(--line);background:var(--card);color:var(--gold);font-size:12px;cursor:pointer;margin-left:2px;display:inline-grid;place-items:center}
   .mdetail{margin:-2px 0 9px}
   .mdet{background:var(--card);border:1px solid var(--line);border-radius:11px;padding:11px 13px}
   .mdet-h{font-weight:900;font-size:12px;color:var(--gold);margin:11px 0 6px;border-bottom:1px solid var(--line);padding-bottom:3px}
@@ -835,14 +837,16 @@ function scorersHTML(m){
 }
 function resultCard(m){
   const hl=(G.highlights&&G.highlights[m.id])||m.highlight||'';const yid=ytId(hl);
-  const thumb=yid?`<button class="hm-hl" onclick="openHL('${yid}')"><img src="https://img.youtube.com/vi/${yid}/hqdefault.jpg" loading="lazy" alt="ハイライト" onerror="this.parentNode.style.display='none'"><span class="hm-play">▶</span><span class="hm-hltxt">ハイライト</span></button>`:'';
+  const thumb=yid?`<button class="hm-hl" onclick="event.stopPropagation();openHL('${yid}')"><img src="https://img.youtube.com/vi/${yid}/hqdefault.jpg" loading="lazy" alt="ハイライト" onerror="this.parentNode.style.display='none'"><span class="hm-play">▶</span><span class="hm-hltxt">ハイライト</span></button>`:'';
   return `<div class="hm-rm">
-    <div class="hm-rmtop">
+    <div class="hm-rmtop click" onclick="togMatch('${m.id}','h')" title="詳細">
       <span class="hm-tn">${flag(m.home)} ${esc(m.home)}</span>
       <span class="hm-score">${m.hs} - ${m.as}</span>
       <span class="hm-tn aw">${esc(m.away)} ${flag(m.away)}</span>
+      <span class="m-exp" id="mx-h${m.id}">▾</span>
     </div>
     ${scorersHTML(m)}${thumb}
+    <div class="mdetail" id="md-h${m.id}" style="display:none"></div>
   </div>`;
 }
 function fixtureCard(m){
@@ -870,14 +874,14 @@ function renderHome(){
     <div class="bx orange"><div class="bx-k">ジャイキリ</div><div class="bx-v">×2</div><div class="bx-s">格上撃破ボーナス</div></div>
   </div>`;
   const sec=(title,en,body)=>`<div class="barh">${title} <span class="en">${en}</span></div>${body}`;
-  const resBody=yRes.length?yRes.map(resultCard).join(''):`<div class="hm-empty">前日（${dstr(yd)}）の試合はありません。</div>`;
-  const fxBody=d=>{const ms=onDate(d);return ms.length?ms.map(fixtureCard).join(''):`<div class="hm-empty">予定はありません（${dstr(d)}）。</div>`;};
+  const hcard=m=>(m.hs!=null&&m.as!=null)?resultCard(m):fixtureCard(m);
+  const dayBody=(d,empty)=>{const ms=onDate(d);return ms.length?ms.map(hcard).join(''):`<div class="hm-empty">${empty}</div>`;};
   document.getElementById('v-home').innerHTML=
     `<div class="barh">ホーム <span class="en">DASHBOARD</span></div>`
     +bento
-    +sec('前日の試合結果','YESTERDAY',resBody)
-    +sec(`本日（${dstr(td)}）`,'TODAY',fxBody(td))
-    +sec(`翌日（${dstr(tm)}）`,'TOMORROW',fxBody(tm));
+    +sec('前日の試合結果','YESTERDAY',dayBody(yd,`前日（${dstr(yd)}）の試合はありません。`))
+    +sec(`本日（${dstr(td)}）`,'TODAY',dayBody(td,`予定はありません（${dstr(td)}）。`))
+    +sec(`翌日（${dstr(tm)}）`,'TOMORROW',dayBody(tm,`予定はありません（${dstr(tm)}）。`));
 }
 
 function renderLB(){
@@ -935,8 +939,8 @@ function oddsRow(key){
     <span class="od lose"><b>${f(o.a)}</b><i>負</i></span>
     <span class="olabel">ODDS</span></div>`;
 }
-function togMatch(key){
-  const el=document.getElementById('md-'+key),bt=document.getElementById('mx-'+key);
+function togMatch(key,pfx){pfx=pfx||'';
+  const el=document.getElementById('md-'+pfx+key),bt=document.getElementById('mx-'+pfx+key);
   if(!el)return;
   if(el.style.display!=='none'){el.style.display='none';if(bt)bt.textContent='▾';return;}
   el.innerHTML=matchDetailHTML(key);el.style.display='block';if(bt)bt.textContent='▴';
