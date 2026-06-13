@@ -557,6 +557,602 @@
      }
     ]
    }
+  },
+  "GS7": {
+   "sofa": "https://www.sofascore.com/football/match/canada-bosnia-and-herzegovina/EObscVb",
+   "possession": [
+    61,
+    39
+   ],
+   "shots": [
+    10,
+    8
+   ],
+   "shotsOnTarget": [
+    4,
+    3
+   ],
+   "goals": [
+    {
+     "player": "Lukić",
+     "team": "ボスニア",
+     "minute": 21
+    },
+    {
+     "player": "Larin",
+     "team": "カナダ",
+     "minute": 78
+    }
+   ],
+   "cards": [
+    {
+     "player": "Johnston",
+     "team": "カナダ",
+     "minute": 11,
+     "type": "Y"
+    },
+    {
+     "player": "Lukić",
+     "team": "ボスニア",
+     "minute": 45,
+     "type": "Y"
+    },
+    {
+     "player": "Demirović",
+     "team": "ボスニア",
+     "minute": 45,
+     "type": "Y"
+    },
+    {
+     "player": "De Fougerolles",
+     "team": "カナダ",
+     "minute": 53,
+     "type": "Y"
+    },
+    {
+     "player": "Katić",
+     "team": "ボスニア",
+     "minute": 90,
+     "type": "Y"
+    }
+   ],
+   "lineups": {
+    "home": {
+     "formation": "4-4-2",
+     "players": [
+      {
+       "no": 16,
+       "name": "Crépeau",
+       "pos": "G",
+       "grid": "1:1",
+       "rating": 6.8
+      },
+      {
+       "no": 2,
+       "name": "Johnston",
+       "pos": "D",
+       "grid": "2:4",
+       "rating": 6.9
+      },
+      {
+       "no": 13,
+       "name": "Cornelius",
+       "pos": "D",
+       "grid": "2:3",
+       "rating": 6.6
+      },
+      {
+       "no": 4,
+       "name": "De Fougerolles",
+       "pos": "D",
+       "grid": "2:2",
+       "rating": 6.7
+      },
+      {
+       "no": 22,
+       "name": "Laryea",
+       "pos": "D",
+       "grid": "2:1",
+       "rating": 8.1
+      },
+      {
+       "no": 17,
+       "name": "Buchanan",
+       "pos": "M",
+       "grid": "3:4",
+       "rating": 6.2
+      },
+      {
+       "no": 8,
+       "name": "Koné",
+       "pos": "M",
+       "grid": "3:3",
+       "rating": 6.5
+      },
+      {
+       "no": 7,
+       "name": "Eustáquio",
+       "pos": "M",
+       "grid": "3:2",
+       "rating": 7
+      },
+      {
+       "no": 11,
+       "name": "Millar",
+       "pos": "M",
+       "grid": "3:1",
+       "rating": 6.7
+      },
+      {
+       "no": 10,
+       "name": "Jonathan David",
+       "pos": "F",
+       "grid": "4:2",
+       "rating": 6.3
+      },
+      {
+       "no": 12,
+       "name": "Oluwaseyi",
+       "pos": "F",
+       "grid": "4:1",
+       "rating": 6.2
+      }
+     ]
+    },
+    "away": {
+     "formation": "4-4-2",
+     "players": [
+      {
+       "no": 1,
+       "name": "Vasilj",
+       "pos": "G",
+       "grid": "1:1",
+       "rating": 6.3
+      },
+      {
+       "no": 7,
+       "name": "Dedić",
+       "pos": "D",
+       "grid": "2:1",
+       "rating": 6.9
+      },
+      {
+       "no": 18,
+       "name": "Katić",
+       "pos": "D",
+       "grid": "2:2",
+       "rating": 8.1
+      },
+      {
+       "no": 4,
+       "name": "Muharemović",
+       "pos": "D",
+       "grid": "2:3",
+       "rating": 7.8
+      },
+      {
+       "no": 5,
+       "name": "Kolašinac",
+       "pos": "D",
+       "grid": "2:4",
+       "rating": 7.9
+      },
+      {
+       "no": 20,
+       "name": "Bajraktarević",
+       "pos": "M",
+       "grid": "3:1",
+       "rating": 6
+      },
+      {
+       "no": 6,
+       "name": "Tahirović",
+       "pos": "M",
+       "grid": "3:2",
+       "rating": 6.5
+      },
+      {
+       "no": 13,
+       "name": "Bašić",
+       "pos": "M",
+       "grid": "3:3",
+       "rating": 7.4
+      },
+      {
+       "no": 15,
+       "name": "Memić",
+       "pos": "M",
+       "grid": "3:4",
+       "rating": 6.3
+      },
+      {
+       "no": 10,
+       "name": "Demirović",
+       "pos": "F",
+       "grid": "4:1",
+       "rating": 6.8
+      },
+      {
+       "no": 25,
+       "name": "Lukić",
+       "pos": "F",
+       "grid": "4:2",
+       "rating": 7.4
+      }
+     ]
+    }
+   },
+   "subs": {
+    "home": [
+     {
+      "minute": 61,
+      "in": "Ali Ahmed",
+      "out": "Buchanan",
+      "rating": 6.6
+     },
+     {
+      "minute": 61,
+      "in": "Promise David",
+      "out": "Jonathan David",
+      "rating": 6.5
+     },
+     {
+      "minute": 61,
+      "in": "Shaffelburg",
+      "out": "Millar",
+      "rating": 6.7
+     },
+     {
+      "minute": 76,
+      "in": "Larin",
+      "out": "Oluwaseyi",
+      "rating": 7.6
+     },
+     {
+      "minute": 90,
+      "in": "Osorio",
+      "out": "Eustáquio"
+     }
+    ],
+    "away": [
+     {
+      "minute": 62,
+      "in": "Baždar",
+      "out": "Lukić",
+      "rating": 6.2
+     },
+     {
+      "minute": 62,
+      "in": "Gigović",
+      "out": "Bašić",
+      "rating": 6.8
+     },
+     {
+      "minute": 74,
+      "in": "Alajbegović",
+      "out": "Memić",
+      "rating": 6.5
+     },
+     {
+      "minute": 74,
+      "in": "Šunjić",
+      "out": "Bajraktarević",
+      "rating": 6.4
+     },
+     {
+      "minute": 84,
+      "in": "Burnić",
+      "out": "Kolašinac",
+      "rating": 6.7
+     }
+    ]
+   }
+  },
+  "GS19": {
+   "sofa": "https://www.sofascore.com/football/match/paraguay-usa/zUbsOVb",
+   "possession": [
+    65,
+    35
+   ],
+   "shots": [
+    17,
+    5
+   ],
+   "shotsOnTarget": [
+    6,
+    1
+   ],
+   "goals": [
+    {
+     "player": "Bobadilla (OG)",
+     "team": "アメリカ",
+     "minute": 7
+    },
+    {
+     "player": "Balogun",
+     "team": "アメリカ",
+     "minute": 31
+    },
+    {
+     "player": "Balogun",
+     "team": "アメリカ",
+     "minute": 45
+    },
+    {
+     "player": "Mauricio",
+     "team": "パラグアイ",
+     "minute": 73
+    },
+    {
+     "player": "Reyna",
+     "team": "アメリカ",
+     "minute": 90
+    }
+   ],
+   "cards": [
+    {
+     "player": "Cáceres",
+     "team": "パラグアイ",
+     "minute": 10,
+     "type": "Y"
+    },
+    {
+     "player": "Almirón",
+     "team": "パラグアイ",
+     "minute": 53,
+     "type": "Y"
+    },
+    {
+     "player": "Adams",
+     "team": "アメリカ",
+     "minute": 59,
+     "type": "Y"
+    },
+    {
+     "player": "Diego Gómez",
+     "team": "パラグアイ",
+     "minute": 79,
+     "type": "Y"
+    },
+    {
+     "player": "Arce",
+     "team": "パラグアイ",
+     "minute": 88,
+     "type": "Y"
+    },
+    {
+     "player": "Alonso",
+     "team": "パラグアイ",
+     "minute": 90,
+     "type": "Y"
+    }
+   ],
+   "lineups": {
+    "home": {
+     "formation": "4-2-3-1",
+     "players": [
+      {
+       "no": 24,
+       "name": "Freese",
+       "pos": "G",
+       "grid": "1:1",
+       "rating": 6
+      },
+      {
+       "no": 5,
+       "name": "Antonee Robinson",
+       "pos": "D",
+       "grid": "2:1",
+       "rating": 6.8
+      },
+      {
+       "no": 13,
+       "name": "Ream",
+       "pos": "D",
+       "grid": "2:2",
+       "rating": 7.6
+      },
+      {
+       "no": 3,
+       "name": "Richards",
+       "pos": "D",
+       "grid": "2:3",
+       "rating": 6.9
+      },
+      {
+       "no": 16,
+       "name": "Freeman",
+       "pos": "D",
+       "grid": "2:4",
+       "rating": 7.2
+      },
+      {
+       "no": 4,
+       "name": "Adams",
+       "pos": "M",
+       "grid": "3:1",
+       "rating": 7
+      },
+      {
+       "no": 8,
+       "name": "McKennie",
+       "pos": "M",
+       "grid": "3:2",
+       "rating": 7.3
+      },
+      {
+       "no": 10,
+       "name": "Pulisic",
+       "pos": "M",
+       "grid": "4:1",
+       "rating": 7.4
+      },
+      {
+       "no": 17,
+       "name": "Tillman",
+       "pos": "M",
+       "grid": "4:2",
+       "rating": 7.5
+      },
+      {
+       "no": 2,
+       "name": "Dest",
+       "pos": "M",
+       "grid": "4:3",
+       "rating": 6.7
+      },
+      {
+       "no": 20,
+       "name": "Balogun",
+       "pos": "F",
+       "grid": "5:1",
+       "rating": 9.1
+      }
+     ]
+    },
+    "away": {
+     "formation": "4-4-2",
+     "players": [
+      {
+       "no": 12,
+       "name": "Gill",
+       "pos": "G",
+       "grid": "1:1",
+       "rating": 6.1
+      },
+      {
+       "no": 6,
+       "name": "Junior Alonso",
+       "pos": "D",
+       "grid": "2:1",
+       "rating": 5.3
+      },
+      {
+       "no": 3,
+       "name": "Alderete",
+       "pos": "D",
+       "grid": "2:2",
+       "rating": 5.9
+      },
+      {
+       "no": 15,
+       "name": "Gustavo Gómez",
+       "pos": "D",
+       "grid": "2:3",
+       "rating": 5.9
+      },
+      {
+       "no": 4,
+       "name": "Cáceres",
+       "pos": "D",
+       "grid": "2:4",
+       "rating": 6.3
+      },
+      {
+       "no": 8,
+       "name": "Diego Gómez",
+       "pos": "M",
+       "grid": "3:1",
+       "rating": 6.2
+      },
+      {
+       "no": 14,
+       "name": "Cubas",
+       "pos": "M",
+       "grid": "3:2",
+       "rating": 6.9
+      },
+      {
+       "no": 16,
+       "name": "Bobadilla",
+       "pos": "M",
+       "grid": "3:3",
+       "rating": 5.4
+      },
+      {
+       "no": 10,
+       "name": "Almirón",
+       "pos": "M",
+       "grid": "3:4",
+       "rating": 6.5
+      },
+      {
+       "no": 9,
+       "name": "Sanabria",
+       "pos": "F",
+       "grid": "4:1",
+       "rating": 6.4
+      },
+      {
+       "no": 19,
+       "name": "Enciso",
+       "pos": "F",
+       "grid": "4:2",
+       "rating": 7.3
+      }
+     ]
+    }
+   },
+   "subs": {
+    "home": [
+     {
+      "minute": 45,
+      "in": "Berhalter",
+      "out": "Pulisic",
+      "rating": 6.8
+     },
+     {
+      "minute": 72,
+      "in": "Weah",
+      "out": "Dest",
+      "rating": 6.5
+     },
+     {
+      "minute": 72,
+      "in": "Pepi",
+      "out": "Balogun",
+      "rating": 6.4
+     },
+     {
+      "minute": 82,
+      "in": "Reyna",
+      "out": "Tillman",
+      "rating": 7.8
+     }
+    ],
+    "away": [
+     {
+      "minute": 46,
+      "in": "Mauricio",
+      "out": "Bobadilla",
+      "rating": 7.4
+     },
+     {
+      "minute": 62,
+      "in": "Arce",
+      "out": "Sanabria",
+      "rating": 6.1
+     },
+     {
+      "minute": 79,
+      "in": "Sosa",
+      "out": "Almirón",
+      "rating": 6.6
+     },
+     {
+      "minute": 79,
+      "in": "Velázquez",
+      "out": "Cáceres",
+      "rating": 6.3
+     },
+     {
+      "minute": 80,
+      "in": "Kaku",
+      "out": "Diego Gómez",
+      "rating": 6.5
+     }
+    ]
+   }
   }
  }
 }
