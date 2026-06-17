@@ -2240,6 +2240,2726 @@
      }
     ]
    }
+  },
+  "GS25": {
+   "sofa": "https://www.sofascore.com/football/match/curacao-germany/lUbsCqx",
+   "possession": [
+    65,
+    35
+   ],
+   "shots": [
+    26,
+    8
+   ],
+   "shotsOnTarget": [
+    12,
+    2
+   ],
+   "goals": [
+    {
+     "player": "Nmecha",
+     "team": "ドイツ",
+     "minute": 6
+    },
+    {
+     "player": "Comenencia",
+     "team": "キュラソー",
+     "minute": 21
+    },
+    {
+     "player": "Schlotterbeck",
+     "team": "ドイツ",
+     "minute": 38
+    },
+    {
+     "player": "Havertz (pen)",
+     "team": "ドイツ",
+     "minute": 45
+    },
+    {
+     "player": "Musiala",
+     "team": "ドイツ",
+     "minute": 47
+    },
+    {
+     "player": "Brown",
+     "team": "ドイツ",
+     "minute": 68
+    },
+    {
+     "player": "Undav",
+     "team": "ドイツ",
+     "minute": 78
+    },
+    {
+     "player": "Havertz",
+     "team": "ドイツ",
+     "minute": 88
+    }
+   ],
+   "cards": [],
+   "lineups": {
+    "home": {
+     "formation": "4-2-3-1",
+     "players": [
+      {
+       "no": 1,
+       "name": "Neuer",
+       "pos": "G",
+       "grid": "1:1",
+       "rating": 6.6
+      },
+      {
+       "no": 6,
+       "name": "Kimmich",
+       "pos": "D",
+       "grid": "2:1",
+       "rating": 8.1
+      },
+      {
+       "no": 4,
+       "name": "Tah",
+       "pos": "D",
+       "grid": "2:2",
+       "rating": 6.9
+      },
+      {
+       "no": 23,
+       "name": "Schlotterbeck",
+       "pos": "D",
+       "grid": "2:3",
+       "rating": 8.4
+      },
+      {
+       "no": 21,
+       "name": "Brown",
+       "pos": "D",
+       "grid": "2:4",
+       "rating": 8
+      },
+      {
+       "no": 8,
+       "name": "Nmecha",
+       "pos": "M",
+       "grid": "3:1",
+       "rating": 8.5
+      },
+      {
+       "no": 45,
+       "name": "Pavlović",
+       "pos": "M",
+       "grid": "3:2",
+       "rating": 7.6
+      },
+      {
+       "no": 19,
+       "name": "Sané",
+       "pos": "M",
+       "grid": "4:1",
+       "rating": 6.4
+      },
+      {
+       "no": 10,
+       "name": "Musiala",
+       "pos": "M",
+       "grid": "4:2",
+       "rating": 8.1
+      },
+      {
+       "no": 7,
+       "name": "Wirtz",
+       "pos": "M",
+       "grid": "4:3",
+       "rating": 7.6
+      },
+      {
+       "no": 29,
+       "name": "Havertz",
+       "pos": "F",
+       "grid": "5:1",
+       "rating": 8.5
+      }
+     ]
+    },
+    "away": {
+     "formation": "4-3-1-2",
+     "players": [
+      {
+       "no": 1,
+       "name": "Room",
+       "pos": "G",
+       "grid": "1:1",
+       "rating": 5
+      },
+      {
+       "no": 2,
+       "name": "Floranus",
+       "pos": "D",
+       "grid": "2:1",
+       "rating": 5.2
+      },
+      {
+       "no": 20,
+       "name": "Bazoer",
+       "pos": "D",
+       "grid": "2:2",
+       "rating": 5.3
+      },
+      {
+       "no": 4,
+       "name": "Obispo",
+       "pos": "D",
+       "grid": "2:3",
+       "rating": 5.7
+      },
+      {
+       "no": 24,
+       "name": "Fonville",
+       "pos": "D",
+       "grid": "2:4",
+       "rating": 5
+      },
+      {
+       "no": 3,
+       "name": "Comenencia",
+       "pos": "M",
+       "grid": "3:1",
+       "rating": 7.3
+      },
+      {
+       "no": 8,
+       "name": "L. Bacuna",
+       "pos": "M",
+       "grid": "3:2",
+       "rating": 6.4
+      },
+      {
+       "no": 16,
+       "name": "J. Bacuna",
+       "pos": "M",
+       "grid": "3:3",
+       "rating": 6.8
+      },
+      {
+       "no": 24,
+       "name": "Chong",
+       "pos": "M",
+       "grid": "4:1",
+       "rating": 6.5
+      },
+      {
+       "no": 10,
+       "name": "Locadia",
+       "pos": "F",
+       "grid": "5:1",
+       "rating": 6.7
+      },
+      {
+       "no": 27,
+       "name": "Hansen",
+       "pos": "F",
+       "grid": "5:2",
+       "rating": 6.6
+      }
+     ]
+    }
+   },
+   "subs": {
+    "home": [
+     {
+      "minute": 64,
+      "in": "Undav",
+      "out": "Musiala",
+      "rating": 8.5
+     },
+     {
+      "minute": 73,
+      "in": "Raum",
+      "out": "Brown",
+      "rating": 6.8
+     },
+     {
+      "minute": 73,
+      "in": "Goretzka",
+      "out": "Nmecha",
+      "rating": 6.9
+     },
+     {
+      "minute": 73,
+      "in": "Rüdiger",
+      "out": "Tah",
+      "rating": 6.7
+     },
+     {
+      "minute": 83,
+      "in": "Anton",
+      "out": "Kimmich",
+      "rating": 6.8
+     }
+    ],
+    "away": [
+     {
+      "minute": 46,
+      "in": "Antonisse",
+      "out": "Hansen",
+      "rating": 6.8
+     },
+     {
+      "minute": 65,
+      "in": "Margaritha",
+      "out": "Locadia",
+      "rating": 6.4
+     },
+     {
+      "minute": 83,
+      "in": "Kastaneer",
+      "out": "Chong",
+      "rating": 6.3
+     }
+    ]
+   }
+  },
+  "GS31": {
+   "sofa": "https://www.sofascore.com/football/match/japan-netherlands/fUbsvVb",
+   "possession": [
+    60,
+    40
+   ],
+   "shots": [
+    10,
+    10
+   ],
+   "shotsOnTarget": [
+    6,
+    3
+   ],
+   "goals": [
+    {
+     "player": "van Dijk",
+     "team": "オランダ",
+     "minute": 51
+    },
+    {
+     "player": "Nakamura",
+     "team": "日本",
+     "minute": 57
+    },
+    {
+     "player": "Summerville",
+     "team": "オランダ",
+     "minute": 64
+    },
+    {
+     "player": "Kamada",
+     "team": "日本",
+     "minute": 89
+    }
+   ],
+   "cards": [
+    {
+     "player": "Summerville",
+     "team": "オランダ",
+     "minute": 61,
+     "type": "Y"
+    },
+    {
+     "player": "Depay",
+     "team": "オランダ",
+     "minute": 83,
+     "type": "Y"
+    },
+    {
+     "player": "van de Ven",
+     "team": "オランダ",
+     "minute": 90,
+     "type": "Y"
+    }
+   ],
+   "lineups": {
+    "home": {
+     "formation": "4-3-3",
+     "players": [
+      {
+       "no": 1,
+       "name": "Verbruggen",
+       "pos": "G",
+       "grid": "1:1",
+       "rating": 6
+      },
+      {
+       "no": 2,
+       "name": "Dumfries",
+       "pos": "D",
+       "grid": "2:1",
+       "rating": 7
+      },
+      {
+       "no": 6,
+       "name": "van Hecke",
+       "pos": "D",
+       "grid": "2:2",
+       "rating": 7.4
+      },
+      {
+       "no": 4,
+       "name": "van Dijk",
+       "pos": "D",
+       "grid": "2:3",
+       "rating": 7.9
+      },
+      {
+       "no": 37,
+       "name": "van de Ven",
+       "pos": "D",
+       "grid": "2:4",
+       "rating": 6.4
+      },
+      {
+       "no": 38,
+       "name": "Gravenberch",
+       "pos": "M",
+       "grid": "3:1",
+       "rating": 7.3
+      },
+      {
+       "no": 21,
+       "name": "de Jong",
+       "pos": "M",
+       "grid": "3:2",
+       "rating": 7.2
+      },
+      {
+       "no": 14,
+       "name": "Reijnders",
+       "pos": "M",
+       "grid": "3:3",
+       "rating": 6.5
+      },
+      {
+       "no": 7,
+       "name": "Summerville",
+       "pos": "F",
+       "grid": "4:1",
+       "rating": 8.5
+      },
+      {
+       "no": 18,
+       "name": "Malen",
+       "pos": "F",
+       "grid": "4:2",
+       "rating": 6.6
+      },
+      {
+       "no": 11,
+       "name": "Gakpo",
+       "pos": "F",
+       "grid": "4:3",
+       "rating": 7.5
+      }
+     ]
+    },
+    "away": {
+     "formation": "3-4-2-1",
+     "players": [
+      {
+       "no": 31,
+       "name": "Suzuki",
+       "pos": "G",
+       "grid": "1:1",
+       "rating": 7.8
+      },
+      {
+       "no": 4,
+       "name": "Watanabe",
+       "pos": "D",
+       "grid": "2:1",
+       "rating": 6.4
+      },
+      {
+       "no": 5,
+       "name": "Taniguchi",
+       "pos": "D",
+       "grid": "2:2",
+       "rating": 6.6
+      },
+      {
+       "no": 21,
+       "name": "Itō",
+       "pos": "D",
+       "grid": "2:3",
+       "rating": 6.3
+      },
+      {
+       "no": 20,
+       "name": "Doan",
+       "pos": "M",
+       "grid": "3:1",
+       "rating": 6.4
+      },
+      {
+       "no": 6,
+       "name": "Sano",
+       "pos": "M",
+       "grid": "3:2",
+       "rating": 6.2
+      },
+      {
+       "no": 18,
+       "name": "Kamada",
+       "pos": "M",
+       "grid": "3:3",
+       "rating": 7.1
+      },
+      {
+       "no": 17,
+       "name": "Nakamura",
+       "pos": "M",
+       "grid": "3:4",
+       "rating": 7.6
+      },
+      {
+       "no": 14,
+       "name": "Kubo",
+       "pos": "F",
+       "grid": "4:1",
+       "rating": 6.7
+      },
+      {
+       "no": 38,
+       "name": "Maeda",
+       "pos": "F",
+       "grid": "4:2",
+       "rating": 6.3
+      },
+      {
+       "no": 9,
+       "name": "Ueda",
+       "pos": "F",
+       "grid": "5:1",
+       "rating": 6.6
+      }
+     ]
+    }
+   },
+   "subs": {
+    "home": [
+     {
+      "minute": 70,
+      "in": "Depay",
+      "out": "Malen",
+      "rating": 6.5
+     },
+     {
+      "minute": 70,
+      "in": "Koopmeiners",
+      "out": "Summerville",
+      "rating": 6.4
+     },
+     {
+      "minute": 70,
+      "in": "Timber",
+      "out": "Reijnders",
+      "rating": 6.8
+     },
+     {
+      "minute": 81,
+      "in": "Aké",
+      "out": "Gravenberch",
+      "rating": 6.3
+     },
+     {
+      "minute": 85,
+      "in": "Brobbey",
+      "out": "Gakpo",
+      "rating": 6.5
+     }
+    ],
+    "away": [
+     {
+      "minute": 66,
+      "in": "Ito",
+      "out": "Maeda",
+      "rating": 6.5
+     },
+     {
+      "minute": 75,
+      "in": "Ogawa",
+      "out": "Kubo",
+      "rating": 6.6
+     },
+     {
+      "minute": 75,
+      "in": "Tomiyasu",
+      "out": "Watanabe",
+      "rating": 6.8
+     },
+     {
+      "minute": 75,
+      "in": "Sugawara",
+      "out": "Doan",
+      "rating": 7.1
+     },
+     {
+      "minute": 84,
+      "in": "Shiogai",
+      "out": "Ueda",
+      "rating": 6.5
+     }
+    ]
+   }
+  },
+  "GS26": {
+   "sofa": "https://www.sofascore.com/football/match/cote-divoire-ecuador/hVbstVb",
+   "possession": [
+    48,
+    52
+   ],
+   "shots": [
+    15,
+    12
+   ],
+   "shotsOnTarget": [
+    4,
+    1
+   ],
+   "goals": [
+    {
+     "player": "Diallo",
+     "team": "コートジボワール",
+     "minute": 90
+    }
+   ],
+   "cards": [
+    {
+     "player": "Fofana",
+     "team": "コートジボワール",
+     "minute": 28,
+     "type": "Y"
+    },
+    {
+     "player": "Kessié",
+     "team": "コートジボワール",
+     "minute": 38,
+     "type": "Y"
+    },
+    {
+     "player": "Doué",
+     "team": "コートジボワール",
+     "minute": 40,
+     "type": "Y"
+    },
+    {
+     "player": "Porozo",
+     "team": "エクアドル",
+     "minute": 73,
+     "type": "Y"
+    }
+   ],
+   "lineups": {
+    "home": {
+     "formation": "4-4-2",
+     "players": [
+      {
+       "no": 1,
+       "name": "Fofana",
+       "pos": "G",
+       "grid": "1:1",
+       "rating": 6.6
+      },
+      {
+       "no": 17,
+       "name": "Doué",
+       "pos": "D",
+       "grid": "2:1",
+       "rating": 7.4
+      },
+      {
+       "no": 5,
+       "name": "Singo",
+       "pos": "D",
+       "grid": "2:2",
+       "rating": 7.7
+      },
+      {
+       "no": 20,
+       "name": "Agbadou",
+       "pos": "D",
+       "grid": "2:3",
+       "rating": 7.5
+      },
+      {
+       "no": 3,
+       "name": "Konan",
+       "pos": "D",
+       "grid": "2:4",
+       "rating": 7.2
+      },
+      {
+       "no": 11,
+       "name": "Diomande",
+       "pos": "M",
+       "grid": "3:1",
+       "rating": 8.2
+      },
+      {
+       "no": 8,
+       "name": "Kessié",
+       "pos": "M",
+       "grid": "3:2",
+       "rating": 7.1
+      },
+      {
+       "no": 6,
+       "name": "Fofana",
+       "pos": "M",
+       "grid": "3:3",
+       "rating": 6.8
+      },
+      {
+       "no": 24,
+       "name": "Touré",
+       "pos": "M",
+       "grid": "3:4",
+       "rating": 6.4
+      },
+      {
+       "no": 19,
+       "name": "Pépé",
+       "pos": "F",
+       "grid": "4:1",
+       "rating": 6.7
+      },
+      {
+       "no": 12,
+       "name": "Wahi",
+       "pos": "F",
+       "grid": "4:2",
+       "rating": 6.3
+      }
+     ]
+    },
+    "away": {
+     "formation": "4-4-2",
+     "players": [
+      {
+       "no": 1,
+       "name": "Galíndez",
+       "pos": "G",
+       "grid": "1:1",
+       "rating": 7
+      },
+      {
+       "no": 21,
+       "name": "Franco",
+       "pos": "D",
+       "grid": "2:1",
+       "rating": 7.1
+      },
+      {
+       "no": 4,
+       "name": "Ordóñez",
+       "pos": "D",
+       "grid": "2:2",
+       "rating": 6.8
+      },
+      {
+       "no": 6,
+       "name": "Pacho",
+       "pos": "D",
+       "grid": "2:3",
+       "rating": 6.5
+      },
+      {
+       "no": 3,
+       "name": "Hincapié",
+       "pos": "D",
+       "grid": "2:4",
+       "rating": 6.4
+      },
+      {
+       "no": 9,
+       "name": "Yeboah",
+       "pos": "M",
+       "grid": "3:1",
+       "rating": 6.6
+      },
+      {
+       "no": 25,
+       "name": "Caicedo",
+       "pos": "M",
+       "grid": "3:2",
+       "rating": 6.8
+      },
+      {
+       "no": 15,
+       "name": "Vite",
+       "pos": "M",
+       "grid": "3:3",
+       "rating": 7.4
+      },
+      {
+       "no": 14,
+       "name": "Minda",
+       "pos": "M",
+       "grid": "3:4",
+       "rating": 6.2
+      },
+      {
+       "no": 19,
+       "name": "Plata",
+       "pos": "F",
+       "grid": "4:1",
+       "rating": 6.7
+      },
+      {
+       "no": 13,
+       "name": "Valencia",
+       "pos": "F",
+       "grid": "4:2",
+       "rating": 6.7
+      }
+     ]
+    }
+   },
+   "subs": {
+    "home": [
+     {
+      "minute": 56,
+      "in": "Diallo",
+      "out": "Touré",
+      "rating": 8.5
+     },
+     {
+      "minute": 56,
+      "in": "Bonny",
+      "out": "Wahi",
+      "rating": 6.4
+     },
+     {
+      "minute": 77,
+      "in": "Oulaï",
+      "out": "Pépé",
+      "rating": 7.1
+     },
+     {
+      "minute": 77,
+      "in": "Sangaré",
+      "out": "Fofana",
+      "rating": 6.8
+     },
+     {
+      "minute": 89,
+      "in": "Kossounou",
+      "out": "Doué",
+      "rating": 6.7
+     }
+    ],
+    "away": [
+     {
+      "minute": 56,
+      "in": "Angulo",
+      "out": "Minda",
+      "rating": 6.4
+     },
+     {
+      "minute": 62,
+      "in": "Preciado",
+      "out": "Yeboah",
+      "rating": 6.1
+     },
+     {
+      "minute": 62,
+      "in": "Porozo",
+      "out": "Franco",
+      "rating": 6.1
+     },
+     {
+      "minute": 77,
+      "in": "Rodríguez",
+      "out": "Valencia",
+      "rating": 6.1
+     }
+    ]
+   }
+  },
+  "GS32": {
+   "sofa": "https://www.sofascore.com/football/match/tunisia-sweden/NTbsEUb",
+   "possession": [
+    49,
+    51
+   ],
+   "shots": [
+    13,
+    6
+   ],
+   "shotsOnTarget": [
+    7,
+    2
+   ],
+   "goals": [
+    {
+     "player": "Ayari",
+     "team": "スウェーデン",
+     "minute": 7
+    },
+    {
+     "player": "Isak",
+     "team": "スウェーデン",
+     "minute": 30
+    },
+    {
+     "player": "Rekik",
+     "team": "チュニジア",
+     "minute": 43
+    },
+    {
+     "player": "Gyökeres",
+     "team": "スウェーデン",
+     "minute": 59
+    },
+    {
+     "player": "Svanberg",
+     "team": "スウェーデン",
+     "minute": 84
+    },
+    {
+     "player": "Ayari",
+     "team": "スウェーデン",
+     "minute": 90
+    }
+   ],
+   "cards": [
+    {
+     "player": "Khedira",
+     "team": "チュニジア",
+     "minute": 54,
+     "type": "Y"
+    }
+   ],
+   "lineups": {
+    "home": {
+     "formation": "3-1-4-2",
+     "players": [
+      {
+       "no": 23,
+       "name": "Nordfeldt",
+       "pos": "G",
+       "grid": "1:1",
+       "rating": 6.3
+      },
+      {
+       "no": 2,
+       "name": "Lagerbielke",
+       "pos": "D",
+       "grid": "2:1",
+       "rating": 6.8
+      },
+      {
+       "no": 4,
+       "name": "Hien",
+       "pos": "D",
+       "grid": "2:2",
+       "rating": 6.7
+      },
+      {
+       "no": 3,
+       "name": "Lindelöf",
+       "pos": "D",
+       "grid": "2:3",
+       "rating": 6.3
+      },
+      {
+       "no": 16,
+       "name": "Karlström",
+       "pos": "M",
+       "grid": "3:1",
+       "rating": 6.3
+      },
+      {
+       "no": 21,
+       "name": "Bernhardsson",
+       "pos": "M",
+       "grid": "4:1",
+       "rating": 6.7
+      },
+      {
+       "no": 10,
+       "name": "Nygren",
+       "pos": "M",
+       "grid": "4:2",
+       "rating": 7
+      },
+      {
+       "no": 18,
+       "name": "Ayari",
+       "pos": "M",
+       "grid": "4:3",
+       "rating": 8.7
+      },
+      {
+       "no": 5,
+       "name": "Gudmundsson",
+       "pos": "M",
+       "grid": "4:4",
+       "rating": 7.3
+      },
+      {
+       "no": 17,
+       "name": "Gyökeres",
+       "pos": "F",
+       "grid": "5:1",
+       "rating": 8
+      },
+      {
+       "no": 9,
+       "name": "Isak",
+       "pos": "F",
+       "grid": "5:2",
+       "rating": 8.6
+      }
+     ]
+    },
+    "away": {
+     "formation": "5-3-2",
+     "players": [
+      {
+       "no": 1,
+       "name": "Chamakh",
+       "pos": "G",
+       "grid": "1:1",
+       "rating": 3.7
+      },
+      {
+       "no": 20,
+       "name": "Valery",
+       "pos": "D",
+       "grid": "2:1",
+       "rating": 5.5
+      },
+      {
+       "no": 4,
+       "name": "Rekik",
+       "pos": "D",
+       "grid": "2:2",
+       "rating": 6.8
+      },
+      {
+       "no": 3,
+       "name": "Talbi",
+       "pos": "D",
+       "grid": "2:3",
+       "rating": 7
+      },
+      {
+       "no": 21,
+       "name": "Ben Hmida",
+       "pos": "D",
+       "grid": "2:4",
+       "rating": 6.9
+      },
+      {
+       "no": 2,
+       "name": "Abdi",
+       "pos": "D",
+       "grid": "2:5",
+       "rating": 5.2
+      },
+      {
+       "no": 13,
+       "name": "Khedira",
+       "pos": "M",
+       "grid": "3:1",
+       "rating": 6.2
+      },
+      {
+       "no": 17,
+       "name": "Skhiri",
+       "pos": "M",
+       "grid": "3:2",
+       "rating": 6.1
+      },
+      {
+       "no": 10,
+       "name": "Mejbri",
+       "pos": "M",
+       "grid": "3:3",
+       "rating": 7.2
+      },
+      {
+       "no": 8,
+       "name": "Saad",
+       "pos": "F",
+       "grid": "4:1",
+       "rating": 6.5
+      },
+      {
+       "no": 25,
+       "name": "Ben Slimane",
+       "pos": "F",
+       "grid": "4:2",
+       "rating": 6.1
+      }
+     ]
+    }
+   },
+   "subs": {
+    "home": [
+     {
+      "minute": 65,
+      "in": "Bergvall",
+      "out": "Nygren",
+      "rating": 6.9
+     },
+     {
+      "minute": 65,
+      "in": "Stroud",
+      "out": "Gudmundsson",
+      "rating": 6.8
+     },
+     {
+      "minute": 72,
+      "in": "Svanberg",
+      "out": "Karlström",
+      "rating": 7.6
+     },
+     {
+      "minute": 90,
+      "in": "Svensson",
+      "out": "Bernhardsson"
+     },
+     {
+      "minute": 90,
+      "in": "Elanga",
+      "out": "Isak"
+     }
+    ],
+    "away": [
+     {
+      "minute": 72,
+      "in": "Achouri",
+      "out": "Skhiri",
+      "rating": 6.4
+     },
+     {
+      "minute": 72,
+      "in": "Tounekti",
+      "out": "Saad",
+      "rating": 6.3
+     },
+     {
+      "minute": 72,
+      "in": "Belhadj Mahmoud",
+      "out": "Valery",
+      "rating": 6.6
+     },
+     {
+      "minute": 83,
+      "in": "Gharbi",
+      "out": "Khedira",
+      "rating": 6
+     },
+     {
+      "minute": 84,
+      "in": "Chaouat",
+      "out": "Ben Slimane",
+      "rating": 6.5
+     }
+    ]
+   }
+  },
+  "GS43": {
+   "sofa": "https://www.sofascore.com/football/match/cabo-verde-spain/YTbsdVb",
+   "possession": [
+    74,
+    26
+   ],
+   "shots": [
+    27,
+    6
+   ],
+   "shotsOnTarget": [
+    7,
+    1
+   ],
+   "goals": [],
+   "cards": [
+    {
+     "player": "Cabral",
+     "team": "カーボベルデ",
+     "minute": 16,
+     "type": "Y"
+    },
+    {
+     "player": "Pedri",
+     "team": "スペイン",
+     "minute": 93,
+     "type": "Y"
+    }
+   ],
+   "lineups": {
+    "home": {
+     "formation": "4-3-3",
+     "players": [
+      {
+       "no": 23,
+       "name": "Simón",
+       "pos": "G",
+       "grid": "1:1",
+       "rating": 7.1
+      },
+      {
+       "no": 5,
+       "name": "Llorente",
+       "pos": "D",
+       "grid": "2:1",
+       "rating": 7.8
+      },
+      {
+       "no": 22,
+       "name": "Cubarsí",
+       "pos": "D",
+       "grid": "2:2",
+       "rating": 7.8
+      },
+      {
+       "no": 14,
+       "name": "Laporte",
+       "pos": "D",
+       "grid": "2:3",
+       "rating": 8.2
+      },
+      {
+       "no": 24,
+       "name": "Cucurella",
+       "pos": "D",
+       "grid": "2:4",
+       "rating": 7.3
+      },
+      {
+       "no": 8,
+       "name": "Fabián",
+       "pos": "M",
+       "grid": "3:1",
+       "rating": 7.1
+      },
+      {
+       "no": 16,
+       "name": "Rodri",
+       "pos": "M",
+       "grid": "3:2",
+       "rating": 8.6
+      },
+      {
+       "no": 20,
+       "name": "Pedri",
+       "pos": "M",
+       "grid": "3:3",
+       "rating": 9
+      },
+      {
+       "no": 7,
+       "name": "Ferran Torres",
+       "pos": "F",
+       "grid": "4:1",
+       "rating": 5.9
+      },
+      {
+       "no": 21,
+       "name": "Oyarzabal",
+       "pos": "F",
+       "grid": "4:2",
+       "rating": 6
+      },
+      {
+       "no": 9,
+       "name": "Gavi",
+       "pos": "F",
+       "grid": "4:3",
+       "rating": 6.7
+      }
+     ]
+    },
+    "away": {
+     "formation": "4-1-4-1",
+     "players": [
+      {
+       "no": 1,
+       "name": "Vozinha",
+       "pos": "G",
+       "grid": "1:1",
+       "rating": 9.7
+      },
+      {
+       "no": 22,
+       "name": "Moreira",
+       "pos": "D",
+       "grid": "2:1",
+       "rating": 6.5
+      },
+      {
+       "no": 4,
+       "name": "Pico",
+       "pos": "D",
+       "grid": "2:2",
+       "rating": 7.6
+      },
+      {
+       "no": 3,
+       "name": "Borges",
+       "pos": "D",
+       "grid": "2:3",
+       "rating": 8.5
+      },
+      {
+       "no": 13,
+       "name": "R. Cabral",
+       "pos": "D",
+       "grid": "2:4",
+       "rating": 6.9
+      },
+      {
+       "no": 6,
+       "name": "Lenini",
+       "pos": "M",
+       "grid": "3:1",
+       "rating": 6.4
+      },
+      {
+       "no": 20,
+       "name": "Mendes",
+       "pos": "M",
+       "grid": "4:1",
+       "rating": 6.9
+      },
+      {
+       "no": 15,
+       "name": "Duarte",
+       "pos": "M",
+       "grid": "4:2",
+       "rating": 6.4
+      },
+      {
+       "no": 10,
+       "name": "Monteiro",
+       "pos": "M",
+       "grid": "4:3",
+       "rating": 6.7
+      },
+      {
+       "no": 7,
+       "name": "K. Cabral",
+       "pos": "M",
+       "grid": "4:4",
+       "rating": 6.7
+      },
+      {
+       "no": 19,
+       "name": "Livramento",
+       "pos": "F",
+       "grid": "5:1",
+       "rating": 6.5
+      }
+     ]
+    }
+   },
+   "subs": {
+    "home": [
+     {
+      "minute": 71,
+      "in": "Yamal",
+      "out": "Gavi",
+      "rating": 6.8
+     },
+     {
+      "minute": 71,
+      "in": "Merino",
+      "out": "Fabián",
+      "rating": 6.4
+     },
+     {
+      "minute": 81,
+      "in": "Olmo",
+      "out": "Ferran Torres",
+      "rating": 6.8
+     },
+     {
+      "minute": 87,
+      "in": "Williams",
+      "out": "Rodri",
+      "rating": 6.5
+     }
+    ],
+    "away": [
+     {
+      "minute": 61,
+      "in": "Da Costa",
+      "out": "Livramento",
+      "rating": 6.6
+     },
+     {
+      "minute": 61,
+      "in": "Semedo",
+      "out": "K. Cabral",
+      "rating": 6.5
+     },
+     {
+      "minute": 76,
+      "in": "Paulo",
+      "out": "R. Cabral",
+      "rating": 6.8
+     },
+     {
+      "minute": 79,
+      "in": "Arcanjo",
+      "out": "Monteiro",
+      "rating": 6.8
+     }
+    ]
+   }
+  },
+  "GS37": {
+   "sofa": "https://www.sofascore.com/football/match/egypt-belgium/rUbsiVb",
+   "possession": [
+    54,
+    46
+   ],
+   "shots": [
+    15,
+    14
+   ],
+   "shotsOnTarget": [
+    3,
+    3
+   ],
+   "goals": [
+    {
+     "player": "Ashour",
+     "team": "エジプト",
+     "minute": 20
+    },
+    {
+     "player": "Hany (OG)",
+     "team": "ベルギー",
+     "minute": 66
+    }
+   ],
+   "cards": [
+    {
+     "player": "Attia",
+     "team": "エジプト",
+     "minute": 13,
+     "type": "Y"
+    },
+    {
+     "player": "Castagne",
+     "team": "ベルギー",
+     "minute": 14,
+     "type": "Y"
+    },
+    {
+     "player": "Fatouh",
+     "team": "エジプト",
+     "minute": 34,
+     "type": "Y"
+    },
+    {
+     "player": "De Cuyper",
+     "team": "ベルギー",
+     "minute": 75,
+     "type": "Y"
+    }
+   ],
+   "lineups": {
+    "home": {
+     "formation": "4-2-3-1",
+     "players": [
+      {
+       "no": 1,
+       "name": "Courtois",
+       "pos": "G",
+       "grid": "1:1",
+       "rating": 6.9
+      },
+      {
+       "no": 15,
+       "name": "Meunier",
+       "pos": "D",
+       "grid": "2:1",
+       "rating": 6.1
+      },
+      {
+       "no": 25,
+       "name": "Ngoy",
+       "pos": "D",
+       "grid": "2:2",
+       "rating": 7.1
+      },
+      {
+       "no": 4,
+       "name": "Mechele",
+       "pos": "D",
+       "grid": "2:3",
+       "rating": 7.7
+      },
+      {
+       "no": 21,
+       "name": "Castagne",
+       "pos": "D",
+       "grid": "2:4",
+       "rating": 7.8
+      },
+      {
+       "no": 24,
+       "name": "Onana",
+       "pos": "M",
+       "grid": "3:1",
+       "rating": 6.9
+      },
+      {
+       "no": 8,
+       "name": "Tielemans",
+       "pos": "M",
+       "grid": "3:2",
+       "rating": 7.6
+      },
+      {
+       "no": 10,
+       "name": "Trossard",
+       "pos": "M",
+       "grid": "4:1",
+       "rating": 7.1
+      },
+      {
+       "no": 7,
+       "name": "De Bruyne",
+       "pos": "M",
+       "grid": "4:2",
+       "rating": 6.5
+      },
+      {
+       "no": 11,
+       "name": "Doku",
+       "pos": "M",
+       "grid": "4:3",
+       "rating": 6.5
+      },
+      {
+       "no": 17,
+       "name": "De Ketelaere",
+       "pos": "F",
+       "grid": "5:1",
+       "rating": 7.3
+      }
+     ]
+    },
+    "away": {
+     "formation": "4-2-3-1",
+     "players": [
+      {
+       "no": 23,
+       "name": "Shobeir",
+       "pos": "G",
+       "grid": "1:1",
+       "rating": 7.5
+      },
+      {
+       "no": 3,
+       "name": "Hany",
+       "pos": "D",
+       "grid": "2:1",
+       "rating": 6
+      },
+      {
+       "no": 2,
+       "name": "Ibrahim",
+       "pos": "D",
+       "grid": "2:2",
+       "rating": 6.7
+      },
+      {
+       "no": 14,
+       "name": "Fathy",
+       "pos": "D",
+       "grid": "2:3",
+       "rating": 6.8
+      },
+      {
+       "no": 13,
+       "name": "Fatouh",
+       "pos": "D",
+       "grid": "2:4",
+       "rating": 6.8
+      },
+      {
+       "no": 19,
+       "name": "Attia",
+       "pos": "M",
+       "grid": "3:1",
+       "rating": 6.3
+      },
+      {
+       "no": 17,
+       "name": "Lasheen",
+       "pos": "M",
+       "grid": "3:2",
+       "rating": 7
+      },
+      {
+       "no": 11,
+       "name": "Ziko",
+       "pos": "M",
+       "grid": "4:1",
+       "rating": 6.1
+      },
+      {
+       "no": 10,
+       "name": "Salah",
+       "pos": "M",
+       "grid": "4:2",
+       "rating": 6.8
+      },
+      {
+       "no": 8,
+       "name": "Ashour",
+       "pos": "M",
+       "grid": "4:3",
+       "rating": 7.9
+      },
+      {
+       "no": 22,
+       "name": "Marmoush",
+       "pos": "F",
+       "grid": "5:1",
+       "rating": 7
+      }
+     ]
+    }
+   },
+   "subs": {
+    "home": [
+     {
+      "minute": 56,
+      "in": "De Cuyper",
+      "out": "Onana",
+      "rating": 6.8
+     },
+     {
+      "minute": 56,
+      "in": "Raskin",
+      "out": "Castagne",
+      "rating": 7.2
+     },
+     {
+      "minute": 66,
+      "in": "Lukaku",
+      "out": "De Ketelaere",
+      "rating": 6.2
+     },
+     {
+      "minute": 86,
+      "in": "Vanaken",
+      "out": "De Bruyne",
+      "rating": 6.5
+     },
+     {
+      "minute": 86,
+      "in": "Fernández-Pardo",
+      "out": "Doku",
+      "rating": 6.4
+     }
+    ],
+    "away": [
+     {
+      "minute": 71,
+      "in": "Rabia",
+      "out": "Ashour",
+      "rating": 6.8
+     },
+     {
+      "minute": 76,
+      "in": "Abdelkarim",
+      "out": "Salah",
+      "rating": 6.6
+     },
+     {
+      "minute": 76,
+      "in": "Zizo",
+      "out": "Ziko",
+      "rating": 6.4
+     },
+     {
+      "minute": 88,
+      "in": "Adel",
+      "out": "Fathy"
+     },
+     {
+      "minute": 88,
+      "in": "Hafez",
+      "out": "Fatouh"
+     }
+    ]
+   }
+  },
+  "GS44": {
+   "sofa": "https://www.sofascore.com/football/match/saudi-arabia-uruguay/AUbsJWb",
+   "possession": [
+    33,
+    67
+   ],
+   "shots": [
+    7,
+    27
+   ],
+   "shotsOnTarget": [
+    3,
+    10
+   ],
+   "goals": [
+    {
+     "player": "Al-Amri",
+     "team": "サウジアラビア",
+     "minute": 41
+    },
+    {
+     "player": "Araújo",
+     "team": "ウルグアイ",
+     "minute": 80
+    }
+   ],
+   "cards": [
+    {
+     "player": "Al-Amri",
+     "team": "サウジアラビア",
+     "minute": 44,
+     "type": "Y"
+    }
+   ],
+   "lineups": {
+    "home": {
+     "formation": "4-4-2",
+     "players": [
+      {
+       "no": 21,
+       "name": "Al-Owais",
+       "pos": "G",
+       "grid": "1:1",
+       "rating": 7.6
+      },
+      {
+       "no": 12,
+       "name": "Abdulhamid",
+       "pos": "D",
+       "grid": "2:1",
+       "rating": 6.4
+      },
+      {
+       "no": 4,
+       "name": "Al-Amri",
+       "pos": "D",
+       "grid": "2:2",
+       "rating": 7.6
+      },
+      {
+       "no": 5,
+       "name": "Altambakti",
+       "pos": "D",
+       "grid": "2:3",
+       "rating": 6
+      },
+      {
+       "no": 24,
+       "name": "Al-Harbi",
+       "pos": "D",
+       "grid": "2:4",
+       "rating": 6.9
+      },
+      {
+       "no": 26,
+       "name": "Abu Al-Shamat",
+       "pos": "M",
+       "grid": "3:1",
+       "rating": 6.4
+      },
+      {
+       "no": 23,
+       "name": "Kanno",
+       "pos": "M",
+       "grid": "3:2",
+       "rating": 7.2
+      },
+      {
+       "no": 15,
+       "name": "Al-Khaibari",
+       "pos": "M",
+       "grid": "3:3",
+       "rating": 6.6
+      },
+      {
+       "no": 10,
+       "name": "S. Al-Dawsari",
+       "pos": "M",
+       "grid": "3:4",
+       "rating": 6.3
+      },
+      {
+       "no": 9,
+       "name": "Al-Buraikan",
+       "pos": "F",
+       "grid": "4:1",
+       "rating": 6.7
+      },
+      {
+       "no": 7,
+       "name": "Al Juwayr",
+       "pos": "F",
+       "grid": "4:2",
+       "rating": 6.5
+      }
+     ]
+    },
+    "away": {
+     "formation": "4-2-3-1",
+     "players": [
+      {
+       "no": 23,
+       "name": "Muslera",
+       "pos": "G",
+       "grid": "1:1",
+       "rating": 6.4
+      },
+      {
+       "no": 13,
+       "name": "Varela",
+       "pos": "D",
+       "grid": "2:1",
+       "rating": 6.7
+      },
+      {
+       "no": 3,
+       "name": "Cáceres",
+       "pos": "D",
+       "grid": "2:2",
+       "rating": 6.6
+      },
+      {
+       "no": 16,
+       "name": "Olivera",
+       "pos": "D",
+       "grid": "2:3",
+       "rating": 7.4
+      },
+      {
+       "no": 17,
+       "name": "Viña",
+       "pos": "D",
+       "grid": "2:4",
+       "rating": 6.2
+      },
+      {
+       "no": 5,
+       "name": "Ugarte",
+       "pos": "M",
+       "grid": "3:1",
+       "rating": 6.3
+      },
+      {
+       "no": 6,
+       "name": "Bentancur",
+       "pos": "M",
+       "grid": "3:2",
+       "rating": 6.9
+      },
+      {
+       "no": 8,
+       "name": "Valverde",
+       "pos": "M",
+       "grid": "4:1",
+       "rating": 6.4
+      },
+      {
+       "no": 21,
+       "name": "Viñas",
+       "pos": "M",
+       "grid": "4:2",
+       "rating": 6.5
+      },
+      {
+       "no": 20,
+       "name": "Araújo",
+       "pos": "M",
+       "grid": "4:3",
+       "rating": 7.4
+      },
+      {
+       "no": 9,
+       "name": "Núñez",
+       "pos": "F",
+       "grid": "5:1",
+       "rating": 6.4
+      }
+     ]
+    }
+   },
+   "subs": {
+    "home": [
+     {
+      "minute": 63,
+      "in": "N. Al-Dawsari",
+      "out": "Al Juwayr",
+      "rating": 6.7
+     },
+     {
+      "minute": 81,
+      "in": "Boushal",
+      "out": "Abu Al-Shamat",
+      "rating": 6.7
+     },
+     {
+      "minute": 90,
+      "in": "Lajami",
+      "out": "Abdulhamid"
+     },
+     {
+      "minute": 90,
+      "in": "Al-Hejji",
+      "out": "Al-Buraikan"
+     },
+     {
+      "minute": 90,
+      "in": "Al-Hamdan",
+      "out": "Al-Harbi"
+     }
+    ],
+    "away": [
+     {
+      "minute": 46,
+      "in": "Canobbio",
+      "out": "Núñez",
+      "rating": 6.5
+     },
+     {
+      "minute": 46,
+      "in": "Sanabria",
+      "out": "Viña",
+      "rating": 6.9
+     },
+     {
+      "minute": 72,
+      "in": "de la Cruz",
+      "out": "Ugarte",
+      "rating": 6.9
+     },
+     {
+      "minute": 81,
+      "in": "Rodríguez",
+      "out": "Araújo",
+      "rating": 6.6
+     },
+     {
+      "minute": 90,
+      "in": "Aguirre",
+      "out": "Viñas",
+      "rating": 6.3
+     }
+    ]
+   }
+  },
+  "GS38": {
+   "sofa": "https://www.sofascore.com/football/match/new-zealand-iran/qVbsJVb",
+   "possession": [
+    49,
+    51
+   ],
+   "shots": [
+    17,
+    14
+   ],
+   "shotsOnTarget": [
+    4,
+    8
+   ],
+   "goals": [
+    {
+     "player": "Just",
+     "team": "ニュージーランド",
+     "minute": 7
+    },
+    {
+     "player": "Rezaeian",
+     "team": "イラン",
+     "minute": 32
+    },
+    {
+     "player": "Just",
+     "team": "ニュージーランド",
+     "minute": 55
+    },
+    {
+     "player": "Mohebi",
+     "team": "イラン",
+     "minute": 64
+    }
+   ],
+   "cards": [
+    {
+     "player": "Hajsafi",
+     "team": "イラン",
+     "minute": 89,
+     "type": "Y"
+    }
+   ],
+   "lineups": {
+    "home": {
+     "formation": "4-4-2",
+     "players": [
+      {
+       "no": 1,
+       "name": "Beiranvand",
+       "pos": "G",
+       "grid": "1:1",
+       "rating": 6.4
+      },
+      {
+       "no": 23,
+       "name": "Rezaeian",
+       "pos": "D",
+       "grid": "2:1",
+       "rating": 9.2
+      },
+      {
+       "no": 4,
+       "name": "Khalilzadeh",
+       "pos": "D",
+       "grid": "2:2",
+       "rating": 6.2
+      },
+      {
+       "no": 19,
+       "name": "Nemati",
+       "pos": "D",
+       "grid": "2:3",
+       "rating": 6.2
+      },
+      {
+       "no": 5,
+       "name": "Mohammadi",
+       "pos": "D",
+       "grid": "2:4",
+       "rating": 6.1
+      },
+      {
+       "no": 8,
+       "name": "Mohebi",
+       "pos": "M",
+       "grid": "3:1",
+       "rating": 7.6
+      },
+      {
+       "no": 14,
+       "name": "Ghoddos",
+       "pos": "M",
+       "grid": "3:2",
+       "rating": 6.7
+      },
+      {
+       "no": 6,
+       "name": "Ezatolahi",
+       "pos": "M",
+       "grid": "3:3",
+       "rating": 6.7
+      },
+      {
+       "no": 17,
+       "name": "Yousefi",
+       "pos": "M",
+       "grid": "3:4",
+       "rating": 6.8
+      },
+      {
+       "no": 20,
+       "name": "Moghanlou",
+       "pos": "F",
+       "grid": "4:1",
+       "rating": 7.1
+      },
+      {
+       "no": 9,
+       "name": "Taremi",
+       "pos": "F",
+       "grid": "4:2",
+       "rating": 6.8
+      }
+     ]
+    },
+    "away": {
+     "formation": "4-2-3-1",
+     "players": [
+      {
+       "no": 1,
+       "name": "Crocombe",
+       "pos": "G",
+       "grid": "1:1",
+       "rating": 6.7
+      },
+      {
+       "no": 2,
+       "name": "Payne",
+       "pos": "D",
+       "grid": "2:1",
+       "rating": 6.1
+      },
+      {
+       "no": 16,
+       "name": "Surman",
+       "pos": "D",
+       "grid": "2:2",
+       "rating": 7.2
+      },
+      {
+       "no": 5,
+       "name": "Boxall",
+       "pos": "D",
+       "grid": "2:3",
+       "rating": 6.6
+      },
+      {
+       "no": 13,
+       "name": "Cacace",
+       "pos": "D",
+       "grid": "2:4",
+       "rating": 6.1
+      },
+      {
+       "no": 6,
+       "name": "Bell",
+       "pos": "M",
+       "grid": "3:1",
+       "rating": 6.7
+      },
+      {
+       "no": 8,
+       "name": "Stamenić",
+       "pos": "M",
+       "grid": "3:2",
+       "rating": 6.6
+      },
+      {
+       "no": 20,
+       "name": "McCowatt",
+       "pos": "M",
+       "grid": "4:1",
+       "rating": 6.7
+      },
+      {
+       "no": 10,
+       "name": "Singh",
+       "pos": "M",
+       "grid": "4:2",
+       "rating": 5.9
+      },
+      {
+       "no": 11,
+       "name": "Just",
+       "pos": "M",
+       "grid": "4:3",
+       "rating": 9
+      },
+      {
+       "no": 9,
+       "name": "Wood",
+       "pos": "F",
+       "grid": "5:1",
+       "rating": 6.5
+      }
+     ]
+    }
+   },
+   "subs": {
+    "home": [
+     {
+      "minute": 46,
+      "in": "Ghayedi",
+      "out": "Yousefi",
+      "rating": 6.6
+     },
+     {
+      "minute": 53,
+      "in": "Alipour",
+      "out": "Moghanlou",
+      "rating": 6.6
+     },
+     {
+      "minute": 65,
+      "in": "Hajsafi",
+      "out": "Ghoddos",
+      "rating": 6.8
+     },
+     {
+      "minute": 80,
+      "in": "Hosseinzadeh",
+      "out": "Taremi",
+      "rating": 6.6
+     }
+    ],
+    "away": [
+     {
+      "minute": 68,
+      "in": "Old",
+      "out": "Cacace",
+      "rating": 6.4
+     },
+     {
+      "minute": 68,
+      "in": "Thomas",
+      "out": "McCowatt",
+      "rating": 6.3
+     },
+     {
+      "minute": 78,
+      "in": "Elliot",
+      "out": "Payne",
+      "rating": 7
+     },
+     {
+      "minute": 90,
+      "in": "Bindon",
+      "out": "Stamenić"
+     },
+     {
+      "minute": 90,
+      "in": "Randall",
+      "out": "Singh"
+     }
+    ]
+   }
+  },
+  "GS49": {
+   "sofa": "https://www.sofascore.com/football/match/senegal-france/GObsOUb",
+   "possession": [
+    53,
+    47
+   ],
+   "shots": [
+    11,
+    6
+   ],
+   "shotsOnTarget": [
+    8,
+    2
+   ],
+   "goals": [
+    {
+     "player": "Mbappé",
+     "team": "フランス",
+     "minute": 66
+    },
+    {
+     "player": "Barcola",
+     "team": "フランス",
+     "minute": 82
+    },
+    {
+     "player": "Mbappé",
+     "team": "フランス",
+     "minute": 90
+    },
+    {
+     "player": "Mbaye",
+     "team": "セネガル",
+     "minute": 90
+    }
+   ],
+   "cards": [],
+   "lineups": {
+    "home": {
+     "formation": "4-2-3-1",
+     "players": [
+      {
+       "no": 16,
+       "name": "Maignan",
+       "pos": "G",
+       "grid": "1:1",
+       "rating": 6.3
+      },
+      {
+       "no": 5,
+       "name": "Koundé",
+       "pos": "D",
+       "grid": "2:1",
+       "rating": 6.6
+      },
+      {
+       "no": 4,
+       "name": "Upamecano",
+       "pos": "D",
+       "grid": "2:2",
+       "rating": 7.9
+      },
+      {
+       "no": 17,
+       "name": "Saliba",
+       "pos": "D",
+       "grid": "2:3",
+       "rating": 6.5
+      },
+      {
+       "no": 19,
+       "name": "Hernández",
+       "pos": "D",
+       "grid": "2:4",
+       "rating": 6.4
+      },
+      {
+       "no": 8,
+       "name": "Tchouaméni",
+       "pos": "M",
+       "grid": "3:1",
+       "rating": 7.2
+      },
+      {
+       "no": 14,
+       "name": "Rabiot",
+       "pos": "M",
+       "grid": "3:2",
+       "rating": 7.4
+      },
+      {
+       "no": 11,
+       "name": "Olise",
+       "pos": "M",
+       "grid": "4:1",
+       "rating": 7.7
+      },
+      {
+       "no": 20,
+       "name": "Doué",
+       "pos": "F",
+       "grid": "4:2",
+       "rating": 6.7
+      },
+      {
+       "no": 7,
+       "name": "Dembélé",
+       "pos": "F",
+       "grid": "4:3",
+       "rating": 7
+      },
+      {
+       "no": 10,
+       "name": "Mbappé",
+       "pos": "F",
+       "grid": "5:1",
+       "rating": 8.1
+      }
+     ]
+    },
+    "away": {
+     "formation": "4-2-3-1",
+     "players": [
+      {
+       "no": 16,
+       "name": "Mendy",
+       "pos": "G",
+       "grid": "1:1",
+       "rating": 6.8
+      },
+      {
+       "no": 27,
+       "name": "Diatta",
+       "pos": "D",
+       "grid": "2:1",
+       "rating": 6.9
+      },
+      {
+       "no": 3,
+       "name": "Koulibaly",
+       "pos": "D",
+       "grid": "2:2",
+       "rating": 6.3
+      },
+      {
+       "no": 19,
+       "name": "Niakhaté",
+       "pos": "D",
+       "grid": "2:3",
+       "rating": 6.5
+      },
+      {
+       "no": 12,
+       "name": "Diouf",
+       "pos": "D",
+       "grid": "2:4",
+       "rating": 6.1
+      },
+      {
+       "no": 5,
+       "name": "Gana Gueye",
+       "pos": "M",
+       "grid": "3:1",
+       "rating": 6.7
+      },
+      {
+       "no": 26,
+       "name": "Pape Gueye",
+       "pos": "M",
+       "grid": "3:2",
+       "rating": 6.7
+      },
+      {
+       "no": 18,
+       "name": "Sarr",
+       "pos": "M",
+       "grid": "4:1",
+       "rating": 6.2
+      },
+      {
+       "no": 15,
+       "name": "Camara",
+       "pos": "M",
+       "grid": "4:2",
+       "rating": 6.1
+      },
+      {
+       "no": 10,
+       "name": "Mané",
+       "pos": "M",
+       "grid": "4:3",
+       "rating": 6.5
+      },
+      {
+       "no": 11,
+       "name": "Jackson",
+       "pos": "F",
+       "grid": "5:1",
+       "rating": 5.9
+      }
+     ]
+    }
+   },
+   "subs": {
+    "home": [
+     {
+      "minute": 80,
+      "in": "Barcola",
+      "out": "Dembélé",
+      "rating": 7.9
+     },
+     {
+      "minute": 87,
+      "in": "Cherki",
+      "out": "Doué",
+      "rating": 6.5
+     }
+    ],
+    "away": [
+     {
+      "minute": 75,
+      "in": "Mbaye",
+      "out": "Sarr",
+      "rating": 7.4
+     },
+     {
+      "minute": 76,
+      "in": "Diarra",
+      "out": "Camara",
+      "rating": 6.2
+     },
+     {
+      "minute": 83,
+      "in": "Dieng",
+      "out": "Jackson",
+      "rating": 6.4
+     },
+     {
+      "minute": 83,
+      "in": "Ndiaye",
+      "out": "Pape Gueye",
+      "rating": 6.6
+     },
+     {
+      "minute": 88,
+      "in": "Ciss",
+      "out": "Gana Gueye",
+      "rating": 6.6
+     }
+    ]
+   }
+  },
+  "GS50": {
+   "sofa": "https://www.sofascore.com/football/match/iraq-norway/AObsrVb",
+   "possession": [
+    39,
+    61
+   ],
+   "shots": [
+    11,
+    12
+   ],
+   "shotsOnTarget": [
+    1,
+    5
+   ],
+   "goals": [
+    {
+     "player": "Haaland",
+     "team": "ノルウェー",
+     "minute": 29
+    },
+    {
+     "player": "Hussein",
+     "team": "イラク",
+     "minute": 39
+    },
+    {
+     "player": "Haaland",
+     "team": "ノルウェー",
+     "minute": 43
+    },
+    {
+     "player": "Østigård",
+     "team": "ノルウェー",
+     "minute": 76
+    },
+    {
+     "player": "Hussein (OG)",
+     "team": "ノルウェー",
+     "minute": 90
+    }
+   ],
+   "cards": [
+    {
+     "player": "Tahseen",
+     "team": "イラク",
+     "minute": 86,
+     "type": "Y"
+    }
+   ],
+   "lineups": {
+    "home": {
+     "formation": "4-4-2",
+     "players": [
+      {
+       "no": 12,
+       "name": "Hassan",
+       "pos": "G",
+       "grid": "1:1",
+       "rating": 6.1
+      },
+      {
+       "no": 15,
+       "name": "Hussein Ali",
+       "pos": "D",
+       "grid": "2:1",
+       "rating": 6
+      },
+      {
+       "no": 4,
+       "name": "Tahseen",
+       "pos": "D",
+       "grid": "2:2",
+       "rating": 5.3
+      },
+      {
+       "no": 8,
+       "name": "Hashem",
+       "pos": "D",
+       "grid": "2:3",
+       "rating": 6
+      },
+      {
+       "no": 13,
+       "name": "Doski",
+       "pos": "D",
+       "grid": "2:4",
+       "rating": 6.9
+      },
+      {
+       "no": 29,
+       "name": "Bayesh",
+       "pos": "M",
+       "grid": "3:1",
+       "rating": 6.6
+      },
+      {
+       "no": 24,
+       "name": "Ismail",
+       "pos": "M",
+       "grid": "3:2",
+       "rating": 6.7
+      },
+      {
+       "no": 6,
+       "name": "Al-Ammari",
+       "pos": "M",
+       "grid": "3:3",
+       "rating": 6.9
+      },
+      {
+       "no": 14,
+       "name": "Ali Jasim",
+       "pos": "M",
+       "grid": "3:4",
+       "rating": 6.6
+      },
+      {
+       "no": 18,
+       "name": "Aymen Hussein",
+       "pos": "F",
+       "grid": "4:1",
+       "rating": 7.1
+      },
+      {
+       "no": 11,
+       "name": "Al-Hamadi",
+       "pos": "F",
+       "grid": "4:2",
+       "rating": 6.7
+      }
+     ]
+    },
+    "away": {
+     "formation": "4-4-2",
+     "players": [
+      {
+       "no": 13,
+       "name": "Nyland",
+       "pos": "G",
+       "grid": "1:1",
+       "rating": 6.6
+      },
+      {
+       "no": 26,
+       "name": "Ryerson",
+       "pos": "D",
+       "grid": "2:1",
+       "rating": 6.6
+      },
+      {
+       "no": 20,
+       "name": "Ajer",
+       "pos": "D",
+       "grid": "2:2",
+       "rating": 7
+      },
+      {
+       "no": 14,
+       "name": "Heggem",
+       "pos": "D",
+       "grid": "2:3",
+       "rating": 6.8
+      },
+      {
+       "no": 6,
+       "name": "Møller Wolfe",
+       "pos": "D",
+       "grid": "2:4",
+       "rating": 7.6
+      },
+      {
+       "no": 8,
+       "name": "Ødegaard",
+       "pos": "M",
+       "grid": "3:1",
+       "rating": 7.2
+      },
+      {
+       "no": 16,
+       "name": "Berge",
+       "pos": "M",
+       "grid": "3:2",
+       "rating": 7.1
+      },
+      {
+       "no": 15,
+       "name": "Aursnes",
+       "pos": "M",
+       "grid": "3:3",
+       "rating": 6.7
+      },
+      {
+       "no": 7,
+       "name": "Nusa",
+       "pos": "M",
+       "grid": "3:4",
+       "rating": 6.7
+      },
+      {
+       "no": 11,
+       "name": "Sørloth",
+       "pos": "F",
+       "grid": "4:1",
+       "rating": 6.1
+      },
+      {
+       "no": 9,
+       "name": "Haaland",
+       "pos": "F",
+       "grid": "4:2",
+       "rating": 8.1
+      }
+     ]
+    }
+   },
+   "subs": {
+    "home": [
+     {
+      "minute": 59,
+      "in": "Farji",
+      "out": "Al-Hamadi",
+      "rating": 6.3
+     },
+     {
+      "minute": 59,
+      "in": "Iqbal",
+      "out": "Ismail",
+      "rating": 6.5
+     },
+     {
+      "minute": 73,
+      "in": "Qasem",
+      "out": "Ali Jasim",
+      "rating": 6.6
+     },
+     {
+      "minute": 73,
+      "in": "Saadoon",
+      "out": "Hussein Ali",
+      "rating": 6.2
+     }
+    ],
+    "away": [
+     {
+      "minute": 73,
+      "in": "Bobb",
+      "out": "Sørloth",
+      "rating": 6.5
+     },
+     {
+      "minute": 73,
+      "in": "Østigård",
+      "out": "Møller Wolfe",
+      "rating": 7.5
+     },
+     {
+      "minute": 73,
+      "in": "Thorstvedt",
+      "out": "Aursnes",
+      "rating": 6.7
+     },
+     {
+      "minute": 73,
+      "in": "Schjelderup",
+      "out": "Nusa",
+      "rating": 6.5
+     },
+     {
+      "minute": 81,
+      "in": "Berg",
+      "out": "Ødegaard",
+      "rating": 6.6
+     }
+    ]
+   }
   }
  }
 }
