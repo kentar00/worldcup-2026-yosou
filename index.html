@@ -68,6 +68,28 @@
   .pbar{height:7px;border-radius:5px;background:var(--pc,#a78bfa);margin-top:5px;min-width:3px;transition:width .4s}
   .bd{font-size:11px;color:var(--muted);margin-top:3px}
   .ptotal{font-family:"Anton",sans-serif;font-size:26px;flex:none}
+  .lb-item{margin:8px 0}
+  .lb-item .pl{margin:0;width:100%}
+  .pl.click{cursor:pointer}
+  .lb-caret{flex:none;color:var(--gold);font-size:12px;width:14px;text-align:center;align-self:center}
+  .lb-detail{margin-top:3px}
+  .lb-detail-in{background:var(--row);border:1px solid var(--line);border-radius:12px;padding:6px 12px 9px}
+  .lbd-r{display:flex;align-items:center;gap:8px;font-size:12px;padding:5px 1px;border-bottom:1px solid var(--line);flex-wrap:wrap}
+  .lbd-r:last-of-type{border-bottom:0}
+  .lbd-team{font-weight:700;display:flex;align-items:center;gap:5px}
+  .lbd-mid{color:var(--muted);flex:1;min-width:70px}
+  .lbd-tag{font-size:9.5px;font-weight:900;border-radius:5px;padding:1px 6px;flex:none}
+  .lbd-tag.w{background:rgba(198,255,0,.16);color:var(--lime)}
+  .lbd-tag.d{background:rgba(255,255,255,.1);color:var(--muted)}
+  .lbd-tag.gk{background:var(--orange);color:#241404}
+  .lbd-tag.b{background:rgba(167,139,250,.2);color:var(--violetL)}
+  .lbd-tag.k{background:rgba(0,212,255,.16);color:var(--blue)}
+  .lbd-tag.l{background:rgba(255,61,129,.16);color:var(--pink)}
+  .lbd-tag.bet{background:rgba(255,214,10,.16);color:#ffd60a}
+  .lbd-pt{font-family:"Anton",sans-serif;font-size:15px;color:var(--lime);flex:none;width:40px;text-align:right}
+  .lbd-pt.neg{color:var(--pink)}
+  .lbd-tot{text-align:right;font-size:12px;color:var(--muted);margin-top:6px;padding-top:6px;border-top:1px solid var(--line)}
+  .lbd-tot b{font-family:"Anton",sans-serif;font-size:16px;color:var(--tx);margin:0 2px}
 
   /* draft under leaderboard */
   .draftgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px}
@@ -822,16 +844,44 @@ function renderHome(){
     +sec(`翌日（${dstr(tm)}）`,'TOMORROW',dayBody(tm,`予定はありません（${dstr(tm)}）。`));
 }
 
+// 総合順位の獲得ポイント内訳（どの国がどこに勝って/引き分けて何pt、ボーナス・決勝T・ラッキー・ベット）
+function lbBreakdown(p,standings,champion){
+  const it=[];
+  G.gsMatches.forEach(m=>{
+    if(m.hs==null||m.as==null)return;
+    [[m.home,m.away,m.hs,m.as],[m.away,m.home,m.as,m.hs]].forEach(([team,opp,ts,os])=>{
+      if(owner(team)!==p)return;
+      if(ts===os)it.push({team,mid:`${ts}-${os} ${opp}`,tag:'引分',cls:'d',pts:0.5});
+      else if(ts>os){const gk=G.config.gk&&isLow(tier(team))&&isHigh(tier(opp));it.push({team,mid:`${ts}-${os} ${opp}`,tag:gk?'ジャイキリ×2':'勝利',cls:gk?'gk':'w',pts:gk?2:1});}
+    });
+  });
+  for(const grp of Object.keys(standings)){const st=standings[grp];if(st.complete&&st.rows[0]&&owner(st.rows[0].team)===p)it.push({team:st.rows[0].team,mid:`${grp}組 1位通過ボーナス`,tag:'ボーナス',cls:'b',pts:2});}
+  (G.koMatches||[]).forEach(m=>{if(m.winner&&owner(m.winner)===p){const los=m.winner===m.home?m.away:m.home;const gk=G.config.gk&&isLow(tier(m.winner))&&isHigh(tier(los));let pts=KO_PTS[m.round]||0;if(gk)pts*=2;it.push({team:m.winner,mid:`${KO_LABEL[m.round]}突破（vs ${los}）`,tag:gk?'突破×2':'突破',cls:'k',pts});}});
+  (G.koMatches||[]).forEach(m=>{if(!m.winner)return;if((G.lucky||{})[p]===m.winner){const los=m.winner===m.home?m.away:m.home;const gk=G.config.gk&&isLow(tier(m.winner))&&isHigh(tier(los));let pts=KO_PTS[m.round]||0;if(gk)pts*=2;it.push({team:m.winner,mid:`${KO_LABEL[m.round]}突破（相乗り）`,tag:'ラッキー',cls:'l',pts});}});
+  (G.bets||[]).forEach(b=>{if(b.player!==p||!b.amount)return;const amt=Math.abs(b.amount);let pts,tag;if(champion==null){pts=-amt;tag='保留';}else if(b.team===champion){pts=amt;tag='的中';}else{pts=-amt;tag='外れ';}it.push({team:b.team,mid:'ファイナルベット',tag,cls:'bet',pts});});
+  return it;
+}
+function lbDetailHTML(p,standings,champion,total){
+  const it=lbBreakdown(p,standings,champion);
+  if(!it.length)return '<div class="lb-detail-in"><div class="hint" style="margin:4px 2px">まだ獲得ポイントはありません。試合結果が入ると、勝敗ごとの加点がここに表示されます。</div></div>';
+  const rows=it.map(x=>`<div class="lbd-r"><span class="lbd-team">${flag(x.team)} ${esc(x.team)}</span><span class="lbd-mid">${esc(x.mid)}</span><span class="lbd-tag ${x.cls}">${esc(x.tag)}</span><span class="lbd-pt${x.pts<0?' neg':''}">${x.pts<0?'−':'+'}${fmt(Math.abs(x.pts))}</span></div>`).join('');
+  return `<div class="lb-detail-in">${rows}<div class="lbd-tot">合計 <b>${fmt(total)}</b> pt</div></div>`;
+}
+function togLB(p){const el=document.getElementById('lbd-'+p),c=document.getElementById('lbc-'+p);if(!el)return;const open=el.style.display!=='none';el.style.display=open?'none':'block';if(c)c.textContent=open?'▾':'▴';}
 function renderLB(){
-  const {P}=compute();
+  const {P,standings,champion}=compute();
   const arr=G.players.map(p=>({p,...P[p]})).sort((a,b)=>b.total-a.total);
   const max=Math.max(1,...arr.map(x=>x.total));
-  let rows=arr.map((x,i)=>`<div class="pl ${i===0?'r1':''}" style="--pc:${pcol(x.p)}">
+  let rows=arr.map((x,i)=>`<div class="lb-item">
+    <div class="pl ${i===0?'r1':''} click" style="--pc:${pcol(x.p)}" onclick="togLB('${esc(x.p)}')" title="獲得ポイントの内訳">
     <div class="ranknum">${i+1}</div>
     <div class="pmid"><div class="pname">${esc(x.p)}</div>
       <div class="pbar" style="width:${Math.max(3,x.total/max*100)}%"></div>
       <div class="bd">GS ${fmt(x.gs)}・1位 ${fmt(x.bonus)}・決勝T ${fmt(x.ko)}・ラッキー ${fmt(x.lucky)}・ベット ${x.bet>0?'+':''}${fmt(x.bet)}</div></div>
-    <div class="ptotal" style="color:${i===0?'var(--lime)':'var(--tx)'}">${fmt(x.total)}</div></div>`).join('');
+    <div class="ptotal" style="color:${i===0?'var(--lime)':'var(--tx)'}">${fmt(x.total)}</div>
+    <span class="lb-caret" id="lbc-${esc(x.p)}">▾</span></div>
+    <div class="lb-detail" id="lbd-${esc(x.p)}" style="display:none">${lbDetailHTML(x.p,standings,champion,x.total)}</div>
+  </div>`).join('');
   // draft under leaderboard
   const gr=groupsOf();let draft='';
   for(const grp of Object.keys(gr).sort()){
