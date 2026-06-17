@@ -67,6 +67,7 @@
   .pname{font-weight:900;font-size:16px}
   .pbar{height:7px;border-radius:5px;background:var(--pc,#a78bfa);margin-top:5px;min-width:3px;transition:width .4s}
   .bd{font-size:11px;color:var(--muted);margin-top:3px}
+  .bd .lb-played{color:var(--gold);font-weight:700}
   .ptotal{font-family:"Anton",sans-serif;font-size:26px;flex:none}
   .lb-item{margin:8px 0}
   .lb-item .pl{margin:0;width:100%}
@@ -872,16 +873,18 @@ function renderLB(){
   const {P,standings,champion}=compute();
   const arr=G.players.map(p=>({p,...P[p]})).sort((a,b)=>b.total-a.total);
   const max=Math.max(1,...arr.map(x=>x.total));
-  let rows=arr.map((x,i)=>`<div class="lb-item">
+  let rows=arr.map((x,i)=>{
+    let mp=0,mt=0;G.gsMatches.forEach(m=>{if(owner(m.home)===x.p){mt++;if(m.hs!=null)mp++;}if(owner(m.away)===x.p){mt++;if(m.hs!=null)mp++;}});
+    return `<div class="lb-item">
     <div class="pl ${i===0?'r1':''} click" style="--pc:${pcol(x.p)}" onclick="togLB('${esc(x.p)}')" title="獲得ポイントの内訳">
     <div class="ranknum">${i+1}</div>
     <div class="pmid"><div class="pname">${esc(x.p)}</div>
       <div class="pbar" style="width:${Math.max(3,x.total/max*100)}%"></div>
-      <div class="bd">GS ${fmt(x.gs)}・1位 ${fmt(x.bonus)}・決勝T ${fmt(x.ko)}・ラッキー ${fmt(x.lucky)}・ベット ${x.bet>0?'+':''}${fmt(x.bet)}</div></div>
+      <div class="bd"><span class="lb-played">消化 ${mp}/${mt}試合</span>　GS ${fmt(x.gs)}・1位 ${fmt(x.bonus)}・決勝T ${fmt(x.ko)}・ラッキー ${fmt(x.lucky)}・ベット ${x.bet>0?'+':''}${fmt(x.bet)}</div></div>
     <div class="ptotal" style="color:${i===0?'var(--lime)':'var(--tx)'}">${fmt(x.total)}</div>
     <span class="lb-caret" id="lbc-${esc(x.p)}">▾</span></div>
     <div class="lb-detail" id="lbd-${esc(x.p)}" style="display:none">${lbDetailHTML(x.p,standings,champion,x.total)}</div>
-  </div>`).join('');
+  </div>`;}).join('');
   // draft under leaderboard
   const gr=groupsOf();let draft='';
   for(const grp of Object.keys(gr).sort()){
