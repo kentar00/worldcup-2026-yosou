@@ -224,6 +224,40 @@
   .lbl{font-size:12px;color:var(--gold);font-weight:700;min-width:84px}
   textarea{width:100%;min-height:150px;font-family:ui-monospace,monospace;font-size:11px;color:var(--tx);background:#141330;border:1px solid var(--line);border-radius:10px;padding:12px}
   .note{font-size:12.5px;color:var(--muted);background:var(--row);border:1px solid var(--line);border-radius:9px;padding:11px 13px;margin:10px 0}
+  .note b{color:var(--tx)}
+  /* recap (matchday review) */
+  .rc-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:10px 0}
+  .rc-stat{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:10px 6px;text-align:center}
+  .rc-sv{font-family:"Anton",sans-serif;font-size:23px;color:var(--lime);line-height:1}
+  .rc-sl{font-size:10px;color:var(--muted);letter-spacing:.06em;margin-top:4px}
+  .rc-mem{display:flex;align-items:center;gap:9px;padding:7px 2px;border-bottom:1px solid var(--line)}
+  .rc-mem:last-child{border-bottom:0}
+  .rc-mrank{font-family:"Anton",sans-serif;font-size:16px;color:var(--muted);width:16px;text-align:center;flex:none}
+  .rc-mdot{width:11px;height:11px;border-radius:50%;flex:none}
+  .rc-mnm{font-weight:900;font-size:14px;width:40px;flex:none}
+  .rc-mbar{flex:1;height:7px;border-radius:5px;background:var(--row);overflow:hidden;min-width:30px}
+  .rc-mbar i{display:block;height:100%;transition:width .4s}
+  .rc-mpt{font-family:"Anton",sans-serif;font-size:18px;flex:none}
+  .rc-mpt i{font-size:10px;font-style:normal;color:var(--muted);margin-left:2px}
+  .rc-ed{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--lime);border-radius:0 12px 12px 0;padding:11px 14px;margin:9px 0}
+  .rc-edh{display:flex;align-items:center;gap:8px;margin-bottom:5px;flex-wrap:wrap}
+  .rc-edh b{font-size:14.5px}
+  .rc-ed p{font-size:13px;line-height:1.9;color:var(--muted)}
+  .rc-ed p b{color:var(--g-hi);font-weight:700}
+  .rc-tag{font-size:10px;font-weight:900;border-radius:6px;padding:2px 8px;flex:none;color:#0a0a10}
+  .rc-tag.up{background:var(--lime)}.rc-ed.up{border-left-color:var(--lime)}
+  .rc-tag.jp{background:#fff}.rc-ed.jp{border-left-color:#fff}
+  .rc-tag.star{background:var(--orange);color:#241404}.rc-ed.star{border-left-color:var(--orange)}
+  .rc-tag.goal{background:var(--pink);color:#fff}.rc-ed.goal{border-left-color:var(--pink)}
+  .rc-tag.draw{background:var(--violetL);color:#1a0f3a}.rc-ed.draw{border-left-color:var(--violetL)}
+  .rc-tag.drama{background:var(--blue);color:#06121a}.rc-ed.drama{border-left-color:var(--blue)}
+  .rc-grps{display:grid;grid-template-columns:repeat(auto-fill,minmax(238px,1fr));gap:8px}
+  .rc-grp{background:var(--panel);border:1px solid var(--line);border-radius:11px;padding:9px 11px}
+  .rc-gh{font-family:"Anton",sans-serif;color:var(--gold);font-size:14px;display:block;margin-bottom:5px}
+  .rc-gres{display:flex;flex-direction:column;gap:4px;font-size:12px}
+  .rc-gres span{display:flex;align-items:center;gap:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .rc-gres b{color:var(--lime);font-family:"Anton",sans-serif;font-size:13px;margin:0 3px;flex:none}
+  @media(max-width:480px){.rc-stats{grid-template-columns:repeat(2,1fr)}}
   .badge{width:26px;height:20px;border-radius:5px;display:inline-grid;place-items:center;font-family:"Anton",sans-serif;font-size:13px;color:#241c0c;background:linear-gradient(180deg,var(--g-hi),var(--g-lo))}
   .rl-stage{background:linear-gradient(180deg,#191636,#0f0d24);border:2px solid var(--gold-soft);border-radius:16px;height:160px;display:grid;place-items:center;margin:12px 0;overflow:hidden;box-shadow:inset 0 0 40px rgba(0,0,0,.6),0 0 30px rgba(139,92,246,.25)}
   .rl-name{font-family:"Anton",sans-serif;font-size:clamp(40px,13vw,74px);letter-spacing:.04em}
@@ -355,6 +389,7 @@
     <button data-v="lb">順位表</button>
     <button data-v="portfolio">ポートフォリオ</button>
     <button data-v="groups">グループ</button>
+    <button data-v="recap">振り返り</button>
     <button data-v="scores">日程・結果</button>
     <button data-v="bracket">決勝T表</button>
     <button data-v="rank">FIFAランク</button>
@@ -369,6 +404,7 @@
   <section class="view" id="v-lb"></section>
   <section class="view" id="v-portfolio"></section>
   <section class="view" id="v-groups"></section>
+  <section class="view" id="v-recap"></section>
   <section class="view" id="v-scores"></section>
   <section class="view" id="v-bracket"></section>
   <section class="view" id="v-rank"></section>
@@ -771,7 +807,7 @@ function compute(){
 }
 
 function syncData(){document.getElementById('gamedata').textContent=JSON.stringify(G);}
-function renderAll(){syncData();renderHome();renderLB();renderPortfolio();renderGroups();renderScores();renderBracket();renderRank();renderNews();renderRoulette();renderSettings();renderRules();renderData();}
+function renderAll(){syncData();renderHome();renderLB();renderPortfolio();renderGroups();renderRecap();renderScores();renderBracket();renderRank();renderNews();renderRoulette();renderSettings();renderRules();renderData();}
 function timeAgo(d){const t=Date.parse(d);if(!t)return '';const s=(Date.now()-t)/1000;if(s<60)return 'たった今';if(s<3600)return Math.floor(s/60)+'分前';if(s<86400)return Math.floor(s/3600)+'時間前';const days=Math.floor(s/86400);return days<8?days+'日前':new Date(t).toLocaleDateString('ja-JP',{month:'numeric',day:'numeric'});}
 function renderNews(){
   const N=G.news||{items:[]};const items=N.items||[];
@@ -915,6 +951,40 @@ function renderGroups(){
       <div class="tbw"><table><thead><tr><th>#</th><th class="l">国 / 保有者</th><th>試</th><th>勝分敗</th><th>差</th><th>点</th></tr></thead><tbody>${rows}</tbody></table></div></div>`;}
   html+=`</div><div class="note">上位2をハイライト（実際は各組上位2＋3位上位8チームが決勝T進出）。1位通過＝+2pt。</div>`;
   document.getElementById('v-groups').innerHTML=html;
+}
+
+// 第1節（各組の最初の2試合＝24試合）の振り返り
+function renderRecap(){
+  const md1ids=new Set();
+  'ABCDEFGHIJKL'.split('').forEach(g=>{const ms=G.gsMatches.filter(m=>m.group===g).sort((a,b)=>(a.date+a.time).localeCompare(b.date+b.time));ms.slice(0,2).forEach(m=>md1ids.add(m.id));});
+  const md1=G.gsMatches.filter(m=>md1ids.has(m.id));
+  const pl=md1.filter(m=>m.hs!=null&&m.as!=null);
+  const goals=pl.reduce((s,m)=>s+m.hs+m.as,0);
+  const draws=pl.filter(m=>m.hs===m.as).length;
+  const mp={};G.players.forEach(p=>mp[p]=0);
+  pl.forEach(m=>{if(m.hs===m.as){[m.home,m.away].forEach(t=>{const o=owner(t);if(o)mp[o]+=0.5;});}else{const win=m.hs>m.as?m.home:m.away,los=m.hs>m.as?m.away:m.home,o=owner(win);if(o)mp[o]+=(G.config.gk&&isLow(tier(win))&&isHigh(tier(los)))?2:1;}});
+  const lb=G.players.map(p=>({p,t:mp[p]})).sort((a,b)=>b.t-a.t);const max=Math.max(1,lb[0].t);
+  const stat=(v,l)=>`<div class="rc-stat"><div class="rc-sv">${v}</div><div class="rc-sl">${l}</div></div>`;
+  const mem=lb.map((x,i)=>`<div class="rc-mem"><span class="rc-mrank">${i+1}</span><span class="rc-mdot" style="background:${pcol(x.p)}"></span><span class="rc-mnm">${esc(x.p)}</span><span class="rc-mbar"><i style="width:${Math.max(4,x.t/max*100)}%;background:${pcol(x.p)}"></i></span><span class="rc-mpt">${fmt(x.t)}<i>pt</i></span></div>`).join('');
+  const grp='ABCDEFGHIJKL'.split('').map(g=>{const ms=md1.filter(m=>m.group===g&&m.hs!=null).sort((a,b)=>(a.date+a.time).localeCompare(b.date+b.time));return `<div class="rc-grp"><span class="rc-gh">${g}組</span><div class="rc-gres">${ms.map(m=>`<span>${flag(m.home)} ${esc(m.home)} <b>${m.hs}-${m.as}</b> ${esc(m.away)} ${flag(m.away)}</span>`).join('')||'<span class="bk-tbd">未消化</span>'}</div></div>`;}).join('');
+  const ed=(cls,tag,title,body)=>`<div class="rc-ed ${cls}"><div class="rc-edh"><span class="rc-tag ${cls}">${tag}</span><b>${title}</b></div><p>${body}</p></div>`;
+  document.getElementById('v-recap').innerHTML=`
+    <div class="barh">第1節 振り返り <span class="en">MATCHDAY 1 RECAP</span></div>
+    <div class="note">全12グループの<b>初戦${pl.length}試合が出そろった</b>。開催国の明暗、強豪の取りこぼし、新興国の大健闘——波乱と熱狂に満ちた2026年大会の幕開けを振り返る。</div>
+    <div class="rc-stats">${stat(pl.length,'試合')}${stat(goals,'ゴール')}${stat(draws,'引き分け')}${stat((goals/Math.max(1,pl.length)).toFixed(1),'1試合平均')}</div>
+    <div class="barh">メンバー暫定順位 <span class="en">STANDINGS</span></div>
+    <div class="hint">1巡終了時点の獲得ポイント（保有国の勝敗から自動集計）。</div>
+    <div class="card">${mem}</div>
+    <div class="barh">編集部レビュー <span class="en">REVIEW</span></div>
+    ${ed('up','番狂わせ','王者級を倒した新興・伏兵',`今節最大の衝撃は<b>オーストラリアがトルコを2-0で撃破</b>。デビューの守護神ビーチが<b>評価9.1</b>の再三の好セーブで完封し、優勝候補の一角を沈めた。初出場の<b>カーボベルデはスペインと0-0</b>——GKボジーニャが<b>評価9.7</b>、27本のシュートをほぼ独力で跳ね返す圧巻の守備を見せた。さらに<b>カタールは90分のオウンゴールでスイスと1-1</b>、26本を浴びせながら決めきれなかったスイスを尻目に歴史的な初勝点をもぎ取った。`)}
+    ${ed('jp','日本代表','オランダ相手に2度追いつく執念のドロー',`<b>オランダ 2-2 日本</b>。世界7位の強豪に2度リードを許しながらも食らいついた。守護神<b>鈴木彩艶が評価7.8</b>の再三の好守を見せ、終盤89分に<b>鎌田大地が値千金の同点弾</b>。勝点1ながら、世界に実力を示す最高の船出となった。`)}
+    ${ed('star','スター','メッシが満点10.0、エースが躍動',`<b>メッシが自身初のW杯ハットトリック</b>。アルゼンチンはアルジェリアを3-0で一蹴し、メッシは<b>評価10.0（満点）</b>を記録した。フランスの<b>エムバペ</b>（2発）、ノルウェーの<b>ハーランド</b>（2発）、ドイツの<b>ハーフェルツ</b>、アメリカの<b>バログン</b>、イングランドの<b>ケイン</b>も2得点と、各国のエースが軒並み結果を残した。`)}
+    ${ed('goal','撃ち合い','大量点と壮絶な打ち合い',`<b>ドイツが7-1でキュラソーに大勝</b>し今節最多得点。<b>イングランド 4-2 クロアチア</b>はゴラッソが飛び交う撃ち合いに。<b>スウェーデン 5-1 チュニジア</b>（イサク＆ギェケレシュ）、<b>アメリカ 4-1 パラグアイ</b>、<b>ノルウェー 4-1 イラク</b>と、攻撃陣が爆発した試合が相次いだ。`)}
+    ${ed('draw','波乱','優勝候補・強豪がまさかのドロー発進',`<b>ブラジル 1-1 モロッコ</b>、<b>ベルギー 1-1 エジプト</b>、<b>サウジアラビア 1-1 ウルグアイ</b>、<b>イラン 2-2 ニュージーランド</b>——優勝候補や強豪が軒並み勝点を取りこぼした。6大会連続出場のロナウド擁する<b>ポルトガルもコンゴ民主共和国と1-1</b>、支配率75%を奪いながら勝ちきれなかった。`)}
+    ${ed('drama','ドラマ','開幕戦は史上初の3レッド、各地で名場面',`開幕戦は<b>メキシコが南アフリカを2-0</b>で下したが、<b>1試合3枚のレッドカード</b>が乱れ飛ぶ荒れた展開に。<b>韓国は2-1でチェコを逆転</b>、開催国<b>カナダはボスニアと1-1でW杯史上初の勝点</b>、<b>スコットランドは28年ぶりのW杯初戦白星</b>（ハイチに1-0）と、各地でドラマが生まれた。`)}
+    <div class="barh">各グループ 初戦の結果 <span class="en">RESULTS</span></div>
+    <div class="rc-grps">${grp}</div>
+    <div class="note">各試合の詳細（スタメン・スタッツ・DAZNハイライト・Sofascore選手レーティング）は「日程・結果」または「ホーム」タブでスコアをタップ。</div>`;
 }
 
 function oddsRow(key){
@@ -1091,7 +1161,7 @@ function renderData(){
 }
 
 // 派生ビュー（結果・順位に依存）をまとめて再描画。編集中のタブ（設定/日程）は再生成しないので入力状態は保持される。
-function refresh(){syncData();renderHome();renderLB();renderPortfolio();renderGroups();renderBracket();}
+function refresh(){syncData();renderHome();renderLB();renderPortfolio();renderGroups();renderRecap();renderBracket();}
 function setScore(id,s,v){const m=G.gsMatches.find(x=>x.id===id);if(!m)return;const val=v===''?null:Math.max(0,parseInt(v));if(s==='h')m.hs=val;else m.as=val;refresh();}
 function addKO(){const r=ko_round.value,h=ko_home.value,a=ko_away.value,w=ko_win.value;if(!h||!a||h===a){alert('対戦カードを正しく選択してください');return;}G.koMatches.push({round:r,home:h,away:a,winner:w});renderAll();}
 function delKO(i){G.koMatches.splice(i,1);renderAll();}
