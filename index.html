@@ -142,6 +142,15 @@
   .si-sbar i{display:block;height:100%}
   .si-sv{font-family:"Anton",sans-serif;font-size:13px;width:26px;text-align:right;flex:none}
   .si-host{font-size:11px;color:var(--orange);font-weight:700;margin:4px 0 2px}
+  .so-row{display:flex;align-items:center;gap:9px;padding:7px 2px;border-bottom:1px solid var(--line)}
+  .so-row:last-child{border-bottom:0}
+  .so-rank{font-family:"Anton",sans-serif;font-size:15px;color:var(--muted);width:16px;text-align:center;flex:none}
+  .so-dot{width:11px;height:11px;border-radius:50%;flex:none}
+  .so-nm{font-weight:900;font-size:14px;width:38px;flex:none}
+  .so-bar{flex:1 1 40px;height:8px;border-radius:5px;background:var(--row);overflow:hidden;min-width:24px}
+  .so-bar i{display:block;height:100%}
+  .so-sum{font-family:"Anton",sans-serif;font-size:19px;flex:none;width:44px;text-align:right}
+  .so-avg{font-size:10.5px;color:var(--muted);flex:none;width:52px;text-align:right}
   .si-raw{font-size:11px;color:var(--muted);margin-top:6px;line-height:1.7}
   .si-raw b{color:var(--tx);font-weight:700}
   /* pitch */
@@ -831,36 +840,47 @@ function compute(){
 function syncData(){document.getElementById('gamedata').textContent=JSON.stringify(G);}
 function renderAll(){syncData();renderHome();renderLB();renderPortfolio();renderGroups();renderRecap();renderScores();renderBracket();renderRank();renderStrength();renderNews();renderRoulette();renderSettings();renderRules();renderData();}
 function togStr(n){const el=document.getElementById('sd-'+n),c=document.getElementById('sc-'+n);if(!el)return;const open=el.style.display!=='none';el.style.display=open?'none':'block';if(c)c.textContent=open?'▾':'▴';}
+const siBW=d=>Math.max(4,Math.min(100,Math.round((d-25)/50*100))); // 偏差値→バー幅(偏差25→0%,75→100%)
 function strDetail(x){
-  const bar=(lab,v,col)=>`<div class="si-sub"><span class="si-sl">${lab}</span><span class="si-sbar"><i style="width:${Math.max(2,v)}%;background:${col}"></i></span><span class="si-sv">${v}</span></div>`;
+  const bar=(lab,v,col)=>`<div class="si-sub"><span class="si-sl">${lab}</span><span class="si-sbar"><i style="width:${siBW(v)}%;background:${col}"></i></span><span class="si-sv">${v}</span></div>`;
   return `<div class="si-detin">
-    ${bar('実績 (Elo)',x.rec,'var(--lime)')}
-    ${bar('タレント (市場価値)',x.tal,'var(--blue)')}
+    ${bar('実績 (Elo)',x.recDev,'var(--lime)')}
+    ${bar('タレント (市場価値)',x.talDev,'var(--blue)')}
     ${x.host?'<div class="si-host">＋ 開催国補正あり</div>':''}
-    <div class="si-raw">Elo <b>${x.elo}</b>・FIFA <b>${Math.round(x.fifa)}</b>・スカッド市場価値 <b>€${x.valueM}m</b>・平均年齢 <b>${x.age}</b>・優勝オッズ <b>${x.odds}</b></div>
+    <div class="si-raw">偏差値 <b>${x.dev}</b>（実績${x.recDev}／タレント${x.talDev}）｜Elo <b>${x.elo}</b>・FIFA <b>${Math.round(x.fifa)}</b>・市場価値 <b>€${x.valueM}m</b>・平均年齢 <b>${x.age}</b>・優勝オッズ <b>${x.odds}</b></div>
   </div>`;
 }
 function renderStrength(){
   const S=G.strength||{teams:{},meta:{}};const teams=S.teams||{};const m=S.meta||{};const w=m.weights||{};
-  const arr=Object.keys(teams).map(n=>({n,...teams[n]})).sort((a,b)=>b.score-a.score);
+  const arr=Object.keys(teams).map(n=>({n,...teams[n]})).sort((a,b)=>b.dev-a.dev);
   if(!arr.length){document.getElementById('v-strength').innerHTML='<div class="barh">戦力指数 <span class="en">STRENGTH INDEX</span></div><div class="hm-empty">データ準備中です（strength.json）。</div>';return;}
+  // 保有者別 合計戦力値（保有国の偏差値合計）
+  const tot={};G.players.forEach(p=>tot[p]={sum:0,n:0});
+  arr.forEach(x=>{const o=owner(x.n);if(o&&tot[o]){tot[o].sum+=x.dev;tot[o].n++;}});
+  const totArr=G.players.map(p=>({p,sum:tot[p].sum,n:tot[p].n,avg:tot[p].n?tot[p].sum/tot[p].n:0})).sort((a,b)=>b.sum-a.sum);
+  const maxSum=Math.max(1,...totArr.map(t=>t.sum));
+  const owners=totArr.map((t,i)=>`<div class="so-row"><span class="so-rank">${i+1}</span><span class="so-dot" style="background:${pcol(t.p)}"></span><span class="so-nm">${esc(t.p)}</span><span class="so-bar"><i style="width:${Math.max(4,Math.round(t.sum/maxSum*100))}%;background:${pcol(t.p)}"></i></span><span class="so-sum">${t.sum}</span><span class="so-avg">平均${t.avg.toFixed(1)}</span></div>`).join('');
   const rows=arr.map((x,i)=>{const o=owner(x.n);const ob=o?`<span class="ochip" style="background:${pcol(o)}">${esc(o)}</span>`:'';
     return `<div class="si-item">
       <div class="si-row click" onclick="togStr('${esc(x.n)}')" title="内訳">
         <span class="si-rank">${i+1}</span>${flag(x.n)}<span class="si-nm">${esc(x.n)}</span>${tchip(x.n)}${ob}
-        <span class="si-barwrap"><i class="si-bar" style="width:${Math.max(2,x.score)}%"></i></span>
-        <span class="si-score">${x.score}</span><span class="si-caret" id="sc-${esc(x.n)}">▾</span>
+        <span class="si-barwrap"><i class="si-bar" style="width:${siBW(x.dev)}%"></i></span>
+        <span class="si-score">${x.dev}</span><span class="si-caret" id="sc-${esc(x.n)}">▾</span>
       </div>
       <div class="si-det" id="sd-${esc(x.n)}" style="display:none">${strDetail(x)}</div>
     </div>`;}).join('');
   document.getElementById('v-strength').innerHTML=`
     <div class="barh">戦力指数 <span class="en">STRENGTH INDEX</span></div>
-    <div class="note"><b>評価方法</b>　各国の強さを100点満点で<b>客観評価</b>した指標です。次の3要素を各国データから算出します。<br>
+    <div class="note"><b>評価方法</b>　各国の強さを<b>偏差値（平均50・標準偏差10）</b>で<b>客観評価</b>した指標です。次の3要素を各国データから算出します。<br>
       <b>① 実績</b>＝<b>World Football Elo</b>（対戦相手の強さ・得失点・ホームを織り込んだ“結果ベース”のチーム力）。<br>
-      <b>② タレント</b>＝<b>スカッド市場価値</b>（Transfermarker、対数化）。市場価値は若手中心チームを過大評価しがちなため、<b>結果ベースのEloと併用して補正</b>（個ではなくチーム力を重視）。<br>
+      <b>② タレント</b>＝<b>スカッド市場価値</b>（Transfermarkt、対数化）。市場価値は若手中心チームを過大評価しがちなため、<b>結果ベースのEloと併用して補正</b>（個ではなくチーム力を重視）。<br>
       <b>③ 開催国補正</b>＝米・加・墨にわずかな加点。<br>
-      重みは恣意性を排すため、<b>ブックメーカーの優勝オッズ（市場の総意）へ回帰でフィット</b>。決定係数 <b>R²≈${m.r2??'-'}</b>、配分は <b>実績${w.rec??'-'}% ／ タレント${w.tal??'-'}% ／ 開催国${w.host??'-'}%</b> に決定（48カ国で安定）。すべて公開・定量データのみで、計算式は再現可能（<code>scripts/strength.mjs</code>）。<br>
-      <span style="color:var(--muted)">※ これは「戦力」の客観指標であり、トーナメントの組み合わせ・当日のコンディション・大会中の上振れは含みません。国名をタップで内訳。</span></div>
+      重みは恣意性を排すため、<b>ブックメーカーの優勝オッズ（市場の総意）へ回帰でフィット</b>。決定係数 <b>R²≈${m.r2??'-'}</b>、配分は <b>実績${w.rec??'-'}% ／ タレント${w.tal??'-'}% ／ 開催国${w.host??'-'}%</b>（48カ国で安定）。すべて公開・定量データのみで再現可能（<code>scripts/strength.mjs</code>）。<br>
+      <span style="color:var(--muted)">※ 戦力の客観指標であり、組み合わせ・当日のコンディション・大会中の上振れは含みません。国名をタップで内訳。</span></div>
+    <div class="barh" style="margin-top:14px">保有者別 合計戦力値 <span class="en">OWNER TOTAL</span></div>
+    <div class="hint">各メンバーの保有9カ国の戦力偏差値の合計（と平均）。ドラフトの引きの強さの目安。</div>
+    <div class="card">${owners}</div>
+    <div class="barh">国別ランキング <span class="en">BY TEAM</span></div>
     <div class="si-list">${rows}</div>
     <div class="note" style="font-size:11.5px">出典：${esc(m.sources||'')}（${esc(S.updated||'')}時点）</div>`;
 }

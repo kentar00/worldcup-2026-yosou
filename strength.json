@@ -1,6 +1,7 @@
 {
  "updated": "2026-06-21",
  "meta": {
+  "scale": "偏差値（平均50・標準偏差10）",
   "weights": {
    "rec": 52,
    "tal": 42,
@@ -11,9 +12,9 @@
  },
  "teams": {
   "メキシコ": {
-   "score": 68,
-   "rec": 66,
-   "tal": 52,
+   "dev": 56,
+   "recDev": 57,
+   "talDev": 50,
    "elo": 1896,
    "fifa": 1687.48,
    "valueM": 192,
@@ -22,9 +23,9 @@
    "host": 1
   },
   "南アフリカ": {
-   "score": 17,
-   "rec": 13,
-   "tal": 21,
+   "dev": 36,
+   "recDev": 35,
+   "talDev": 39,
    "elo": 1527,
    "fifa": 1428.38,
    "valueM": 49,
@@ -33,9 +34,9 @@
    "host": 0
   },
   "韓国": {
-   "score": 48,
-   "rec": 48,
-   "tal": 45,
+   "dev": 48,
+   "recDev": 49,
+   "talDev": 47,
    "elo": 1771,
    "fifa": 1591.63,
    "valueM": 139,
@@ -44,9 +45,9 @@
    "host": 0
   },
   "チェコ": {
-   "score": 44,
-   "rec": 37,
-   "tal": 52,
+   "dev": 47,
+   "recDev": 45,
+   "talDev": 50,
    "elo": 1696,
    "fifa": 1505.74,
    "valueM": 188,
@@ -55,9 +56,9 @@
    "host": 0
   },
   "カナダ": {
-   "score": 58,
-   "rec": 49,
-   "tal": 53,
+   "dev": 52,
+   "recDev": 50,
+   "talDev": 50,
    "elo": 1777,
    "fifa": 1559.48,
    "valueM": 199,
@@ -66,9 +67,9 @@
    "host": 1
   },
   "ボスニア・ヘルツェゴビナ": {
-   "score": 33,
-   "rec": 23,
-   "tal": 46,
+   "dev": 42,
+   "recDev": 39,
+   "talDev": 48,
    "elo": 1596,
    "fifa": 1387.22,
    "valueM": 146,
@@ -77,9 +78,9 @@
    "host": 0
   },
   "カタール": {
-   "score": 0,
-   "rec": 0,
-   "tal": 0,
+   "dev": 30,
+   "recDev": 30,
+   "talDev": 31,
    "elo": 1437,
    "fifa": 1450.31,
    "valueM": 20,
@@ -88,9 +89,9 @@
    "host": 0
   },
   "スイス": {
-   "score": 66,
-   "rec": 65,
-   "tal": 65,
+   "dev": 55,
+   "recDev": 56,
+   "talDev": 54,
    "elo": 1885,
    "fifa": 1650.06,
    "valueM": 333,
@@ -99,9 +100,9 @@
    "host": 0
   },
   "ブラジル": {
-   "score": 85,
-   "rec": 79,
-   "tal": 89,
+   "dev": 63,
+   "recDev": 62,
+   "talDev": 63,
    "elo": 1986,
    "fifa": 1765.86,
    "valueM": 928,
@@ -110,9 +111,9 @@
    "host": 0
   },
   "モロッコ": {
-   "score": 68,
-   "rec": 62,
-   "tal": 72,
+   "dev": 56,
+   "recDev": 55,
+   "talDev": 57,
    "elo": 1866,
    "fifa": 1755.1,
    "valueM": 448,
@@ -121,9 +122,9 @@
    "host": 0
   },
   "ハイチ": {
-   "score": 18,
-   "rec": 13,
-   "tal": 24,
+   "dev": 37,
+   "recDev": 35,
+   "talDev": 40,
    "elo": 1528,
    "fifa": 1293.1,
    "valueM": 56,
@@ -132,9 +133,9 @@
    "host": 0
   },
   "スコットランド": {
-   "score": 50,
-   "rec": 48,
-   "tal": 49,
+   "dev": 49,
+   "recDev": 49,
+   "talDev": 49,
    "elo": 1768,
    "fifa": 1503.34,
    "valueM": 170,
@@ -143,9 +144,9 @@
    "host": 0
   },
   "アメリカ": {
-   "score": 68,
-   "rec": 55,
-   "tal": 68,
+   "dev": 56,
+   "recDev": 52,
+   "talDev": 56,
    "elo": 1820,
    "fifa": 1671.23,
    "valueM": 386,
@@ -154,9 +155,9 @@
    "host": 1
   },
   "パラグアイ": {
-   "score": 53,
-   "rec": 55,
-   "tal": 47,
+   "dev": 50,
+   "recDev": 52,
+   "talDev": 48,
    "elo": 1816,
    "fifa": 1505.35,
    "valueM": 154,
@@ -165,9 +166,9 @@
    "host": 0
   },
   "オーストラリア": {
-   "score": 44,
-   "rec": 52,
-   "tal": 31,
+   "dev": 47,
+   "recDev": 51,
+   "talDev": 42,
    "elo": 1799,
    "fifa": 1579.34,
    "valueM": 77,
@@ -176,9 +177,9 @@
    "host": 0
   },
   "トルコ": {
-   "score": 64,
-   "rec": 54,
-   "tal": 73,
+   "dev": 54,
+   "recDev": 52,
+   "talDev": 57,
    "elo": 1813,
    "fifa": 1605.73,
    "valueM": 474,
@@ -187,9 +188,9 @@
    "host": 0
   },
   "ドイツ": {
-   "score": 82,
-   "rec": 75,
-   "tal": 89,
+   "dev": 62,
+   "recDev": 60,
+   "talDev": 63,
    "elo": 1954,
    "fifa": 1735.77,
    "valueM": 947,
@@ -198,9 +199,9 @@
    "host": 0
   },
   "キュラソー": {
-   "score": 4,
-   "rec": 2,
-   "tal": 6,
+   "dev": 31,
+   "recDev": 31,
+   "talDev": 33,
    "elo": 1453,
    "fifa": 1294.77,
    "valueM": 26,
@@ -209,9 +210,9 @@
    "host": 0
   },
   "コートジボワール": {
-   "score": 57,
-   "rec": 42,
-   "tal": 75,
+   "dev": 52,
+   "recDev": 47,
+   "talDev": 58,
    "elo": 1728,
    "fifa": 1540.87,
    "valueM": 522,
@@ -220,9 +221,9 @@
    "host": 0
   },
   "エクアドル": {
-   "score": 65,
-   "rec": 62,
-   "tal": 67,
+   "dev": 55,
+   "recDev": 55,
+   "talDev": 55,
    "elo": 1864,
    "fifa": 1598.52,
    "valueM": 369,
@@ -231,9 +232,9 @@
    "host": 0
   },
   "オランダ": {
-   "score": 82,
-   "rec": 77,
-   "tal": 84,
+   "dev": 61,
+   "recDev": 61,
+   "talDev": 61,
    "elo": 1972,
    "fifa": 1753.57,
    "valueM": 754,
@@ -242,9 +243,9 @@
    "host": 0
   },
   "日本": {
-   "score": 68,
-   "rec": 71,
-   "tal": 60,
+   "dev": 56,
+   "recDev": 58,
+   "talDev": 53,
    "elo": 1925,
    "fifa": 1661.58,
    "valueM": 271,
@@ -253,9 +254,9 @@
    "host": 0
   },
   "スウェーデン": {
-   "score": 55,
-   "rec": 42,
-   "tal": 70,
+   "dev": 51,
+   "recDev": 47,
+   "talDev": 56,
    "elo": 1727,
    "fifa": 1509.79,
    "valueM": 406,
@@ -264,9 +265,9 @@
    "host": 0
   },
   "チュニジア": {
-   "score": 24,
-   "rec": 19,
-   "tal": 29,
+   "dev": 39,
+   "recDev": 37,
+   "talDev": 42,
    "elo": 1570,
    "fifa": 1476.41,
    "valueM": 70,
@@ -275,9 +276,9 @@
    "host": 0
   },
   "ベルギー": {
-   "score": 71,
-   "rec": 64,
-   "tal": 76,
+   "dev": 57,
+   "recDev": 56,
+   "talDev": 58,
    "elo": 1879,
    "fifa": 1742.24,
    "valueM": 548,
@@ -286,9 +287,9 @@
    "host": 0
   },
   "エジプト": {
-   "score": 41,
-   "rec": 40,
-   "tal": 41,
+   "dev": 45,
+   "recDev": 46,
+   "talDev": 46,
    "elo": 1711,
    "fifa": 1562.37,
    "valueM": 116,
@@ -297,9 +298,9 @@
    "host": 0
   },
   "イラン": {
-   "score": 32,
-   "rec": 46,
-   "tal": 11,
+   "dev": 42,
+   "recDev": 48,
+   "talDev": 35,
    "elo": 1756,
    "fifa": 1619.58,
    "valueM": 32,
@@ -308,9 +309,9 @@
    "host": 0
   },
   "ニュージーランド": {
-   "score": 17,
-   "rec": 20,
-   "tal": 12,
+   "dev": 36,
+   "recDev": 38,
+   "talDev": 36,
    "elo": 1578,
    "fifa": 1275.58,
    "valueM": 34,
@@ -319,9 +320,9 @@
    "host": 0
   },
   "スペイン": {
-   "score": 100,
-   "rec": 100,
-   "tal": 95,
+   "dev": 68,
+   "recDev": 70,
+   "talDev": 65,
    "elo": 2129,
    "fifa": 1874.71,
    "valueM": 1220,
@@ -330,9 +331,9 @@
    "host": 0
   },
   "カーボベルデ": {
-   "score": 23,
-   "rec": 24,
-   "tal": 21,
+   "dev": 39,
+   "recDev": 40,
+   "talDev": 39,
    "elo": 1606,
    "fifa": 1371.11,
    "valueM": 49,
@@ -341,9 +342,9 @@
    "host": 0
   },
   "サウジアラビア": {
-   "score": 21,
-   "rec": 23,
-   "tal": 17,
+   "dev": 38,
+   "recDev": 39,
+   "talDev": 37,
    "elo": 1598,
    "fifa": 1423.88,
    "valueM": 41,
@@ -352,9 +353,9 @@
    "host": 0
   },
   "ウルグアイ": {
-   "score": 66,
-   "rec": 63,
-   "tal": 67,
+   "dev": 55,
+   "recDev": 55,
+   "talDev": 55,
    "elo": 1870,
    "fifa": 1673.07,
    "valueM": 359,
@@ -363,9 +364,9 @@
    "host": 0
   },
   "フランス": {
-   "score": 98,
-   "rec": 93,
-   "tal": 100,
+   "dev": 68,
+   "recDev": 67,
+   "talDev": 67,
    "elo": 2084,
    "fifa": 1870.7,
    "valueM": 1520,
@@ -374,9 +375,9 @@
    "host": 0
   },
   "セネガル": {
-   "score": 66,
-   "rec": 58,
-   "tal": 73,
+   "dev": 55,
+   "recDev": 53,
+   "talDev": 57,
    "elo": 1839,
    "fifa": 1684.07,
    "valueM": 478,
@@ -385,9 +386,9 @@
    "host": 0
   },
   "イラク": {
-   "score": 14,
-   "rec": 22,
-   "tal": 1,
+   "dev": 35,
+   "recDev": 39,
+   "talDev": 32,
    "elo": 1592,
    "fifa": 1446.28,
    "valueM": 21,
@@ -396,9 +397,9 @@
    "host": 0
   },
   "ノルウェー": {
-   "score": 76,
-   "rec": 71,
-   "tal": 78,
+   "dev": 59,
+   "recDev": 58,
+   "talDev": 59,
    "elo": 1929,
    "fifa": 1557.44,
    "valueM": 590,
@@ -407,9 +408,9 @@
    "host": 0
   },
   "アルゼンチン": {
-   "score": 96,
-   "rec": 100,
-   "tal": 85,
+   "dev": 67,
+   "recDev": 70,
+   "talDev": 62,
    "elo": 2128,
    "fifa": 1877.27,
    "valueM": 808,
@@ -418,9 +419,9 @@
    "host": 0
   },
   "アルジェリア": {
-   "score": 53,
-   "rec": 47,
-   "tal": 59,
+   "dev": 50,
+   "recDev": 49,
+   "talDev": 52,
    "elo": 1759,
    "fifa": 1571.03,
    "valueM": 257,
@@ -429,9 +430,9 @@
    "host": 0
   },
   "オーストリア": {
-   "score": 61,
-   "rec": 61,
-   "tal": 58,
+   "dev": 53,
+   "recDev": 54,
+   "talDev": 52,
    "elo": 1857,
    "fifa": 1597.4,
    "valueM": 245,
@@ -440,9 +441,9 @@
    "host": 0
   },
   "ヨルダン": {
-   "score": 19,
-   "rec": 31,
-   "tal": 0,
+   "dev": 37,
+   "recDev": 42,
+   "talDev": 31,
    "elo": 1653,
    "fifa": 1387.74,
    "valueM": 20,
@@ -451,9 +452,9 @@
    "host": 0
   },
   "ポルトガル": {
-   "score": 84,
-   "rec": 77,
-   "tal": 91,
+   "dev": 62,
+   "recDev": 61,
+   "talDev": 63,
    "elo": 1967,
    "fifa": 1767.85,
    "valueM": 1010,
@@ -462,9 +463,9 @@
    "host": 0
   },
   "コンゴ民主共和国": {
-   "score": 40,
-   "rec": 34,
-   "tal": 46,
+   "dev": 45,
+   "recDev": 44,
+   "talDev": 47,
    "elo": 1674,
    "fifa": 1474.43,
    "valueM": 144,
@@ -473,9 +474,9 @@
    "host": 0
   },
   "ウズベキスタン": {
-   "score": 37,
-   "rec": 38,
-   "tal": 33,
+   "dev": 44,
+   "recDev": 45,
+   "talDev": 43,
    "elo": 1698,
    "fifa": 1458.73,
    "valueM": 85,
@@ -484,9 +485,9 @@
    "host": 0
   },
   "コロンビア": {
-   "score": 75,
-   "rec": 81,
-   "tal": 63,
+   "dev": 59,
+   "recDev": 62,
+   "talDev": 54,
    "elo": 1998,
    "fifa": 1698.35,
    "valueM": 302,
@@ -495,9 +496,9 @@
    "host": 0
   },
   "イングランド": {
-   "score": 95,
-   "rec": 89,
-   "tal": 97,
+   "dev": 66,
+   "recDev": 66,
+   "talDev": 66,
    "elo": 2055,
    "fifa": 1828.02,
    "valueM": 1360,
@@ -506,9 +507,9 @@
    "host": 0
   },
   "クロアチア": {
-   "score": 67,
-   "rec": 64,
-   "tal": 68,
+   "dev": 56,
+   "recDev": 56,
+   "talDev": 56,
    "elo": 1881,
    "fifa": 1714.87,
    "valueM": 387,
@@ -517,9 +518,9 @@
    "host": 0
   },
   "ガーナ": {
-   "score": 35,
-   "rec": 17,
-   "tal": 57,
+   "dev": 43,
+   "recDev": 37,
+   "talDev": 51,
    "elo": 1557,
    "fifa": 1346.88,
    "valueM": 235,
@@ -528,9 +529,9 @@
    "host": 0
   },
   "パナマ": {
-   "score": 27,
-   "rec": 36,
-   "tal": 13,
+   "dev": 40,
+   "recDev": 44,
+   "talDev": 36,
    "elo": 1683,
    "fifa": 1539.16,
    "valueM": 35,

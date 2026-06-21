@@ -32,23 +32,25 @@ function ols(y,X){const n=X.length,p=X[0].length;const A=Array.from({length:p},(
  return {b,yh,r2};}
 const y=R.map(r=>r.smkt);
 const fit=ols(y,R.map(r=>[1,r.elo,r.lnval,r.host]));
-const yh=fit.yh, mn=Math.min(...yh),mx=Math.max(...yh);
+const yh=fit.yh;
 const eloA=R.map(r=>r.elo),lvA=R.map(r=>r.lnval);
-const nm=(v,a)=>Math.round((v-Math.min(...a))/(Math.max(...a)-Math.min(...a))*100);
+// 偏差値 = 50 + 10 * z (平均50・標準偏差10)
+const zdev=(v,a)=>{const mm=mean(a),ss=sd(a);return Math.round(50+10*(v-mm)/ss);};
 const preds=["elo","lnval","host"];const beta=preds.map((p,i)=>fit.b[i+1]*sd(R.map(r=>r[p]))/sd(y));
 const wsum=beta.reduce((s,x)=>s+Math.abs(x),0);
 const w=beta.map(x=>Math.round(100*Math.abs(x)/wsum));
 
 const teams={};
 R.forEach((r,i)=>{teams[r.jp]={
-  score:Math.round((yh[i]-mn)/(mx-mn)*100),
-  rec:nm(r.elo,eloA),            // 実績(Elo)サブスコア 0-100
-  tal:nm(r.lnval,lvA),           // タレント(市場価値log)サブスコア 0-100
+  dev:zdev(yh[i],yh),            // 総合戦力偏差値
+  recDev:zdev(r.elo,eloA),       // 実績(Elo) 偏差値
+  talDev:zdev(r.lnval,lvA),      // タレント(市場価値log) 偏差値
   elo:r.elo, fifa:r.fifa, valueM:r.val, age:r.age, odds:r.odds, host:r.host
 };});
 const out={
   updated:"2026-06-21",
   meta:{
+    scale:"偏差値（平均50・標準偏差10）",
     weights:{rec:w[0],tal:w[1],host:w[2]},
     r2:Math.round(fit.r2*1000)/1000,
     sources:"Elo: eloratings.net (6/16) / FIFA: 6/11ランキング / 市場価値・年齢: Transfermarkt / 優勝オッズ: BetMGM全48チーム盤 (6/15)"
