@@ -142,15 +142,23 @@
   .si-sbar i{display:block;height:100%}
   .si-sv{font-family:"Anton",sans-serif;font-size:13px;width:26px;text-align:right;flex:none}
   .si-host{font-size:11px;color:var(--orange);font-weight:700;margin:4px 0 2px}
-  .so-row{display:flex;align-items:center;gap:9px;padding:7px 2px;border-bottom:1px solid var(--line)}
-  .so-row:last-child{border-bottom:0}
+  .so-item{border-bottom:1px solid var(--line)}
+  .so-item:last-child{border-bottom:0}
+  .so-row{display:flex;align-items:center;gap:8px;padding:7px 2px}
+  .so-row.click{cursor:pointer}
   .so-rank{font-family:"Anton",sans-serif;font-size:15px;color:var(--muted);width:16px;text-align:center;flex:none}
   .so-dot{width:11px;height:11px;border-radius:50%;flex:none}
-  .so-nm{font-weight:900;font-size:14px;width:38px;flex:none}
-  .so-bar{flex:1 1 40px;height:8px;border-radius:5px;background:var(--row);overflow:hidden;min-width:24px}
+  .so-nm{font-weight:900;font-size:14px;width:36px;flex:none}
+  .so-bar{flex:1 1 30px;height:8px;border-radius:5px;background:var(--row);overflow:hidden;min-width:20px}
   .so-bar i{display:block;height:100%}
-  .so-sum{font-family:"Anton",sans-serif;font-size:19px;flex:none;width:44px;text-align:right}
-  .so-avg{font-size:10.5px;color:var(--muted);flex:none;width:52px;text-align:right}
+  .so-sum{font-family:"Anton",sans-serif;font-size:19px;flex:none;width:42px;text-align:right}
+  .so-avg{font-size:10.5px;color:var(--muted);flex:none;width:48px;text-align:right}
+  .so-caret{flex:none;color:var(--gold);font-size:12px;width:13px;text-align:center}
+  .so-det{padding:2px 0 8px}
+  .so-cty{display:flex;align-items:center;gap:6px;font-size:12.5px;padding:4px 8px;border-bottom:1px solid var(--line)}
+  .so-cty:last-child{border-bottom:0}
+  .so-cf{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:flex;align-items:center;gap:5px}
+  .so-cd{font-family:"Anton",sans-serif;font-size:15px;color:var(--lime);flex:none;width:28px;text-align:right}
   .si-raw{font-size:11px;color:var(--muted);margin-top:6px;line-height:1.7}
   .si-raw b{color:var(--tx);font-weight:700}
   /* pitch */
@@ -840,6 +848,7 @@ function compute(){
 function syncData(){document.getElementById('gamedata').textContent=JSON.stringify(G);}
 function renderAll(){syncData();renderHome();renderLB();renderPortfolio();renderGroups();renderRecap();renderScores();renderBracket();renderRank();renderStrength();renderNews();renderRoulette();renderSettings();renderRules();renderData();}
 function togStr(n){const el=document.getElementById('sd-'+n),c=document.getElementById('sc-'+n);if(!el)return;const open=el.style.display!=='none';el.style.display=open?'none':'block';if(c)c.textContent=open?'▾':'▴';}
+function togOwner(p){const el=document.getElementById('od-'+p),c=document.getElementById('oc-'+p);if(!el)return;const open=el.style.display!=='none';el.style.display=open?'none':'block';if(c)c.textContent=open?'▾':'▴';}
 const siBW=d=>Math.max(4,Math.min(100,Math.round((d-25)/50*100))); // 偏差値→バー幅(偏差25→0%,75→100%)
 function strDetail(x){
   const bar=(lab,v,col)=>`<div class="si-sub"><span class="si-sl">${lab}</span><span class="si-sbar"><i style="width:${siBW(v)}%;background:${col}"></i></span><span class="si-sv">${v}</span></div>`;
@@ -855,11 +864,20 @@ function renderStrength(){
   const arr=Object.keys(teams).map(n=>({n,...teams[n]})).sort((a,b)=>b.dev-a.dev);
   if(!arr.length){document.getElementById('v-strength').innerHTML='<div class="barh">戦力指数 <span class="en">STRENGTH INDEX</span></div><div class="hm-empty">データ準備中です（strength.json）。</div>';return;}
   // 保有者別 合計戦力値（保有国の偏差値合計）
-  const tot={};G.players.forEach(p=>tot[p]={sum:0,n:0});
-  arr.forEach(x=>{const o=owner(x.n);if(o&&tot[o]){tot[o].sum+=x.dev;tot[o].n++;}});
+  const tot={},ownedBy={};G.players.forEach(p=>{tot[p]={sum:0,n:0};ownedBy[p]=[];});
+  arr.forEach(x=>{const o=owner(x.n);if(o&&tot[o]){tot[o].sum+=x.dev;tot[o].n++;ownedBy[o].push(x);}});
   const totArr=G.players.map(p=>({p,sum:tot[p].sum,n:tot[p].n,avg:tot[p].n?tot[p].sum/tot[p].n:0})).sort((a,b)=>b.sum-a.sum);
   const maxSum=Math.max(1,...totArr.map(t=>t.sum));
-  const owners=totArr.map((t,i)=>`<div class="so-row"><span class="so-rank">${i+1}</span><span class="so-dot" style="background:${pcol(t.p)}"></span><span class="so-nm">${esc(t.p)}</span><span class="so-bar"><i style="width:${Math.max(4,Math.round(t.sum/maxSum*100))}%;background:${pcol(t.p)}"></i></span><span class="so-sum">${t.sum}</span><span class="so-avg">平均${t.avg.toFixed(1)}</span></div>`).join('');
+  const owners=totArr.map((t,i)=>{
+    const list=ownedBy[t.p].map(x=>`<div class="so-cty"><span class="so-cf">${flag(x.n)} ${esc(x.n)}</span>${tchip(x.n)}<span class="so-cd">${x.dev}</span></div>`).join('')||'<div class="hint" style="margin:4px 6px">保有国なし</div>';
+    return `<div class="so-item">
+      <div class="so-row click" onclick="togOwner('${esc(t.p)}')" title="保有国の戦力値">
+        <span class="so-rank">${i+1}</span><span class="so-dot" style="background:${pcol(t.p)}"></span><span class="so-nm">${esc(t.p)}</span>
+        <span class="so-bar"><i style="width:${Math.max(4,Math.round(t.sum/maxSum*100))}%;background:${pcol(t.p)}"></i></span>
+        <span class="so-sum">${t.sum}</span><span class="so-avg">平均${t.avg.toFixed(1)}</span><span class="so-caret" id="oc-${esc(t.p)}">▾</span>
+      </div>
+      <div class="so-det" id="od-${esc(t.p)}" style="display:none">${list}</div>
+    </div>`;}).join('');
   const rows=arr.map((x,i)=>{const o=owner(x.n);const ob=o?`<span class="ochip" style="background:${pcol(o)}">${esc(o)}</span>`:'';
     return `<div class="si-item">
       <div class="si-row click" onclick="togStr('${esc(x.n)}')" title="内訳">
