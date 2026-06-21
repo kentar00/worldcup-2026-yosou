@@ -124,6 +124,26 @@
   .bk-feed em{color:var(--muted);font-weight:400;font-style:normal;margin:0 5px}
   /* fifa ranking */
   .rk{font-family:"Anton",sans-serif;font-size:16px;color:var(--gold);width:56px}
+  /* strength index */
+  .si-item{margin:6px 0}
+  .si-row{display:flex;align-items:center;gap:7px;background:var(--panel);border:1px solid var(--line);border-radius:11px;padding:8px 10px}
+  .si-row.click{cursor:pointer}
+  .si-rank{font-family:"Anton",sans-serif;font-size:15px;color:var(--muted);width:20px;text-align:center;flex:none}
+  .si-nm{font-weight:700;font-size:13.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex:0 1 auto;min-width:0}
+  .si-barwrap{flex:1 1 40px;height:9px;border-radius:6px;background:var(--row);overflow:hidden;min-width:24px;margin-left:2px}
+  .si-bar{display:block;height:100%;border-radius:6px;background:linear-gradient(90deg,var(--blue),var(--lime))}
+  .si-score{font-family:"Anton",sans-serif;font-size:19px;flex:none;width:30px;text-align:right}
+  .si-caret{flex:none;color:var(--gold);font-size:12px;width:14px;text-align:center}
+  .si-det{margin:3px 0 0}
+  .si-detin{background:var(--row);border:1px solid var(--line);border-radius:11px;padding:9px 12px}
+  .si-sub{display:flex;align-items:center;gap:8px;font-size:11.5px;margin:3px 0}
+  .si-sl{color:var(--muted);width:118px;flex:none}
+  .si-sbar{flex:1;height:7px;border-radius:5px;background:var(--card);overflow:hidden}
+  .si-sbar i{display:block;height:100%}
+  .si-sv{font-family:"Anton",sans-serif;font-size:13px;width:26px;text-align:right;flex:none}
+  .si-host{font-size:11px;color:var(--orange);font-weight:700;margin:4px 0 2px}
+  .si-raw{font-size:11px;color:var(--muted);margin-top:6px;line-height:1.7}
+  .si-raw b{color:var(--tx);font-weight:700}
   /* pitch */
   .pitch{position:relative;width:100%;aspect-ratio:7/10;border:1px solid rgba(255,255,255,.22);border-radius:9px;overflow:hidden;
     background:repeating-linear-gradient(0deg,#15441f 0 11%,#103418 11% 22%);box-shadow:inset 0 0 26px rgba(0,0,0,.4)}
@@ -393,6 +413,7 @@
     <button data-v="scores">日程・結果</button>
     <button data-v="bracket">決勝T表</button>
     <button data-v="rank">FIFAランク</button>
+    <button data-v="strength">戦力指数</button>
     <button data-v="news">日本代表</button>
     <button data-v="roulette">ルーレット</button>
     <button data-v="settings">設定</button>
@@ -408,6 +429,7 @@
   <section class="view" id="v-scores"></section>
   <section class="view" id="v-bracket"></section>
   <section class="view" id="v-rank"></section>
+  <section class="view" id="v-strength"></section>
   <section class="view" id="v-news"></section>
   <section class="view" id="v-roulette"></section>
   <section class="view" id="v-settings"></section>
@@ -807,7 +829,41 @@ function compute(){
 }
 
 function syncData(){document.getElementById('gamedata').textContent=JSON.stringify(G);}
-function renderAll(){syncData();renderHome();renderLB();renderPortfolio();renderGroups();renderRecap();renderScores();renderBracket();renderRank();renderNews();renderRoulette();renderSettings();renderRules();renderData();}
+function renderAll(){syncData();renderHome();renderLB();renderPortfolio();renderGroups();renderRecap();renderScores();renderBracket();renderRank();renderStrength();renderNews();renderRoulette();renderSettings();renderRules();renderData();}
+function togStr(n){const el=document.getElementById('sd-'+n),c=document.getElementById('sc-'+n);if(!el)return;const open=el.style.display!=='none';el.style.display=open?'none':'block';if(c)c.textContent=open?'▾':'▴';}
+function strDetail(x){
+  const bar=(lab,v,col)=>`<div class="si-sub"><span class="si-sl">${lab}</span><span class="si-sbar"><i style="width:${Math.max(2,v)}%;background:${col}"></i></span><span class="si-sv">${v}</span></div>`;
+  return `<div class="si-detin">
+    ${bar('実績 (Elo)',x.rec,'var(--lime)')}
+    ${bar('タレント (市場価値)',x.tal,'var(--blue)')}
+    ${x.host?'<div class="si-host">＋ 開催国補正あり</div>':''}
+    <div class="si-raw">Elo <b>${x.elo}</b>・FIFA <b>${Math.round(x.fifa)}</b>・スカッド市場価値 <b>€${x.valueM}m</b>・平均年齢 <b>${x.age}</b>・優勝オッズ <b>${x.odds}</b></div>
+  </div>`;
+}
+function renderStrength(){
+  const S=G.strength||{teams:{},meta:{}};const teams=S.teams||{};const m=S.meta||{};const w=m.weights||{};
+  const arr=Object.keys(teams).map(n=>({n,...teams[n]})).sort((a,b)=>b.score-a.score);
+  if(!arr.length){document.getElementById('v-strength').innerHTML='<div class="barh">戦力指数 <span class="en">STRENGTH INDEX</span></div><div class="hm-empty">データ準備中です（strength.json）。</div>';return;}
+  const rows=arr.map((x,i)=>{const o=owner(x.n);const ob=o?`<span class="ochip" style="background:${pcol(o)}">${esc(o)}</span>`:'';
+    return `<div class="si-item">
+      <div class="si-row click" onclick="togStr('${esc(x.n)}')" title="内訳">
+        <span class="si-rank">${i+1}</span>${flag(x.n)}<span class="si-nm">${esc(x.n)}</span>${tchip(x.n)}${ob}
+        <span class="si-barwrap"><i class="si-bar" style="width:${Math.max(2,x.score)}%"></i></span>
+        <span class="si-score">${x.score}</span><span class="si-caret" id="sc-${esc(x.n)}">▾</span>
+      </div>
+      <div class="si-det" id="sd-${esc(x.n)}" style="display:none">${strDetail(x)}</div>
+    </div>`;}).join('');
+  document.getElementById('v-strength').innerHTML=`
+    <div class="barh">戦力指数 <span class="en">STRENGTH INDEX</span></div>
+    <div class="note"><b>評価方法</b>　各国の強さを100点満点で<b>客観評価</b>した指標です。次の3要素を各国データから算出します。<br>
+      <b>① 実績</b>＝<b>World Football Elo</b>（対戦相手の強さ・得失点・ホームを織り込んだ“結果ベース”のチーム力）。<br>
+      <b>② タレント</b>＝<b>スカッド市場価値</b>（Transfermarker、対数化）。市場価値は若手中心チームを過大評価しがちなため、<b>結果ベースのEloと併用して補正</b>（個ではなくチーム力を重視）。<br>
+      <b>③ 開催国補正</b>＝米・加・墨にわずかな加点。<br>
+      重みは恣意性を排すため、<b>ブックメーカーの優勝オッズ（市場の総意）へ回帰でフィット</b>。決定係数 <b>R²≈${m.r2??'-'}</b>、配分は <b>実績${w.rec??'-'}% ／ タレント${w.tal??'-'}% ／ 開催国${w.host??'-'}%</b> に決定（48カ国で安定）。すべて公開・定量データのみで、計算式は再現可能（<code>scripts/strength.mjs</code>）。<br>
+      <span style="color:var(--muted)">※ これは「戦力」の客観指標であり、トーナメントの組み合わせ・当日のコンディション・大会中の上振れは含みません。国名をタップで内訳。</span></div>
+    <div class="si-list">${rows}</div>
+    <div class="note" style="font-size:11.5px">出典：${esc(m.sources||'')}（${esc(S.updated||'')}時点）</div>`;
+}
 function timeAgo(d){const t=Date.parse(d);if(!t)return '';const s=(Date.now()-t)/1000;if(s<60)return 'たった今';if(s<3600)return Math.floor(s/60)+'分前';if(s<86400)return Math.floor(s/3600)+'時間前';const days=Math.floor(s/86400);return days<8?days+'日前':new Date(t).toLocaleDateString('ja-JP',{month:'numeric',day:'numeric'});}
 function renderNews(){
   const N=G.news||{items:[]};const items=N.items||[];
@@ -1195,10 +1251,11 @@ async function boot(){
     if(sq&&sq.ok){const s=await sq.json();G.squads=s.squads||{};G.squadsUpdated=s.updated||null;}
     if(pf&&pf.ok){const s=await pf.json();G.profiles=s.profiles||{};}
     if(rc&&rc.ok){const s=await rc.json();G.recent=s.recent||{};}
-    const [hl,stt,nw]=await Promise.all([fetch('highlights.json',{cache:'no-store'}).catch(()=>null),fetch('stats.json',{cache:'no-store'}).catch(()=>null),fetch('news.json',{cache:'no-store'}).catch(()=>null)]);
+    const [hl,stt,nw,strg]=await Promise.all([fetch('highlights.json',{cache:'no-store'}).catch(()=>null),fetch('stats.json',{cache:'no-store'}).catch(()=>null),fetch('news.json',{cache:'no-store'}).catch(()=>null),fetch('strength.json',{cache:'no-store'}).catch(()=>null)]);
     if(hl&&hl.ok){const s=await hl.json();G.highlights=s.highlights||{};}
     if(stt&&stt.ok){const s=await stt.json();G.stats=s.stats||{};}
     if(nw&&nw.ok){const s=await nw.json();G.news=s;}
+    if(strg&&strg.ok){G.strength=await strg.json();}
   }catch(e){/* file:// やオフライン時は埋め込みデータで動作 */}
   if(!G.colors)G.colors={};
   if(!G.odds)G.odds={};
@@ -1208,6 +1265,7 @@ async function boot(){
   if(!G.highlights)G.highlights={};
   if(!G.stats)G.stats={};
   if(!G.news)G.news={items:[]};
+  if(!G.strength)G.strength={teams:{},meta:{}};
   rlState.remaining=null;
   renderAll();
 }
