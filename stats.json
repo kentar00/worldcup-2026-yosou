@@ -12727,6 +12727,505 @@
      }
     ]
    }
+  },
+  "GS70": {
+   "sofa": "https://www.sofascore.com/football/match/panama-croatia/pUbsodc",
+   "possession": [
+    42,
+    58
+   ],
+   "shots": [
+    8,
+    6
+   ],
+   "shotsOnTarget": [
+    1,
+    2
+   ],
+   "goals": [
+    {
+     "player": "Budimir",
+     "team": "クロアチア",
+     "minute": 54
+    }
+   ],
+   "cards": [
+    {
+     "player": "Bárcenas",
+     "team": "パナマ",
+     "minute": 61,
+     "type": "Y"
+    },
+    {
+     "player": "Sučić",
+     "team": "クロアチア",
+     "minute": 90,
+     "type": "Y"
+    }
+   ],
+   "lineups": {
+    "home": {
+     "formation": "5-4-1",
+     "players": [
+      {
+       "no": 22,
+       "name": "Mosquera",
+       "pos": "G",
+       "grid": "1:1",
+       "rating": 6.8
+      },
+      {
+       "no": 23,
+       "name": "Murillo",
+       "pos": "D",
+       "grid": "2:1",
+       "rating": 6.9
+      },
+      {
+       "no": 13,
+       "name": "Ramos",
+       "pos": "D",
+       "grid": "2:2",
+       "rating": 6.5
+      },
+      {
+       "no": 3,
+       "name": "Córdoba",
+       "pos": "D",
+       "grid": "2:3",
+       "rating": 6.4
+      },
+      {
+       "no": 16,
+       "name": "Andrade",
+       "pos": "D",
+       "grid": "2:4",
+       "rating": 6.9
+      },
+      {
+       "no": 2,
+       "name": "Blackman",
+       "pos": "D",
+       "grid": "2:5",
+       "rating": 6.7
+      },
+      {
+       "no": 6,
+       "name": "Martínez",
+       "pos": "M",
+       "grid": "3:1",
+       "rating": 6.5
+      },
+      {
+       "no": 14,
+       "name": "Harvey",
+       "pos": "M",
+       "grid": "3:2",
+       "rating": 6.3
+      },
+      {
+       "no": 11,
+       "name": "Bárcenas",
+       "pos": "M",
+       "grid": "3:3",
+       "rating": 7.4
+      },
+      {
+       "no": 7,
+       "name": "Rodríguez",
+       "pos": "M",
+       "grid": "3:4",
+       "rating": 6
+      },
+      {
+       "no": 17,
+       "name": "Fajardo",
+       "pos": "F",
+       "grid": "4:1",
+       "rating": 6.8
+      }
+     ]
+    },
+    "away": {
+     "formation": "4-2-3-1",
+     "players": [
+      {
+       "no": 1,
+       "name": "Livaković",
+       "pos": "G",
+       "grid": "1:1",
+       "rating": 6.9
+      },
+      {
+       "no": 2,
+       "name": "Stanišić",
+       "pos": "D",
+       "grid": "2:1",
+       "rating": 7.7
+      },
+      {
+       "no": 6,
+       "name": "Šutalo",
+       "pos": "D",
+       "grid": "2:2",
+       "rating": 7.3
+      },
+      {
+       "no": 3,
+       "name": "Pongračić",
+       "pos": "D",
+       "grid": "2:3",
+       "rating": 6.9
+      },
+      {
+       "no": 4,
+       "name": "Gvardiol",
+       "pos": "D",
+       "grid": "2:4",
+       "rating": 6.9
+      },
+      {
+       "no": 10,
+       "name": "Modrić",
+       "pos": "M",
+       "grid": "3:1",
+       "rating": 7.4
+      },
+      {
+       "no": 8,
+       "name": "Kovačić",
+       "pos": "M",
+       "grid": "3:2",
+       "rating": 6.4
+      },
+      {
+       "no": 24,
+       "name": "Pašalić",
+       "pos": "M",
+       "grid": "4:1",
+       "rating": 6.8
+      },
+      {
+       "no": 16,
+       "name": "Baturina",
+       "pos": "M",
+       "grid": "4:2",
+       "rating": 7.5
+      },
+      {
+       "no": 14,
+       "name": "Perišić",
+       "pos": "M",
+       "grid": "4:3",
+       "rating": 6.9
+      },
+      {
+       "no": 26,
+       "name": "Musa",
+       "pos": "F",
+       "grid": "5:1",
+       "rating": 6.6
+      }
+     ]
+    }
+   },
+   "subs": {
+    "home": [
+     {
+      "minute": 77,
+      "in": "Waterman",
+      "out": "Ramos",
+      "rating": 6.6
+     },
+     {
+      "minute": 83,
+      "in": "Londoño",
+      "out": "Fajardo",
+      "rating": 6.6
+     },
+     {
+      "minute": 90,
+      "in": "Davis",
+      "out": "Blackman"
+     }
+    ],
+    "away": [
+     {
+      "minute": 46,
+      "in": "Kramarić",
+      "out": "Gvardiol",
+      "rating": 6.6
+     },
+     {
+      "minute": 46,
+      "in": "Budimir",
+      "out": "Musa",
+      "rating": 7.7
+     },
+     {
+      "minute": 72,
+      "in": "Sučić",
+      "out": "Kovačić",
+      "rating": 6.2
+     }
+    ]
+   }
+  },
+  "GS64": {
+   "sofa": "https://www.sofascore.com/football/match/dr-congo-colombia/vWbsyWb",
+   "possession": [
+    64,
+    36
+   ],
+   "shots": [
+    20,
+    7
+   ],
+   "shotsOnTarget": [
+    9,
+    1
+   ],
+   "goals": [
+    {
+     "player": "Muñoz",
+     "team": "コロンビア",
+     "minute": 76
+    }
+   ],
+   "cards": [
+    {
+     "player": "Lucumí",
+     "team": "コロンビア",
+     "minute": 56,
+     "type": "Y"
+    },
+    {
+     "player": "Pickel",
+     "team": "コンゴ民主共和国",
+     "minute": 90,
+     "type": "Y"
+    },
+    {
+     "player": "Lerma",
+     "team": "コロンビア",
+     "minute": 90,
+     "type": "Y"
+    }
+   ],
+   "lineups": {
+    "home": {
+     "formation": "4-3-3",
+     "players": [
+      {
+       "no": 12,
+       "name": "Vargas",
+       "pos": "G",
+       "grid": "1:1",
+       "rating": 7
+      },
+      {
+       "no": 2,
+       "name": "Muñoz",
+       "pos": "D",
+       "grid": "2:1",
+       "rating": 7.9
+      },
+      {
+       "no": 6,
+       "name": "Sánchez",
+       "pos": "D",
+       "grid": "2:2",
+       "rating": 7.7
+      },
+      {
+       "no": 26,
+       "name": "Lucumí",
+       "pos": "D",
+       "grid": "2:3",
+       "rating": 7.5
+      },
+      {
+       "no": 22,
+       "name": "Mojica",
+       "pos": "D",
+       "grid": "2:4",
+       "rating": 7.5
+      },
+      {
+       "no": 19,
+       "name": "Puerta",
+       "pos": "M",
+       "grid": "3:1",
+       "rating": 6.9
+      },
+      {
+       "no": 8,
+       "name": "Lerma",
+       "pos": "M",
+       "grid": "3:2",
+       "rating": 7.1
+      },
+      {
+       "no": 11,
+       "name": "Arias",
+       "pos": "M",
+       "grid": "3:3",
+       "rating": 7.2
+      },
+      {
+       "no": 10,
+       "name": "Rodríguez",
+       "pos": "F",
+       "grid": "4:1",
+       "rating": 7
+      },
+      {
+       "no": 97,
+       "name": "Suárez",
+       "pos": "F",
+       "grid": "4:2",
+       "rating": 6.6
+      },
+      {
+       "no": 14,
+       "name": "Díaz",
+       "pos": "F",
+       "grid": "4:3",
+       "rating": 6.7
+      }
+     ]
+    },
+    "away": {
+     "formation": "5-3-2",
+     "players": [
+      {
+       "no": 1,
+       "name": "Mpasi",
+       "pos": "G",
+       "grid": "1:1",
+       "rating": 7.5
+      },
+      {
+       "no": 2,
+       "name": "Wan-Bissaka",
+       "pos": "D",
+       "grid": "2:1",
+       "rating": 6.5
+      },
+      {
+       "no": 22,
+       "name": "Mbemba",
+       "pos": "D",
+       "grid": "2:2",
+       "rating": 6.5
+      },
+      {
+       "no": 4,
+       "name": "Tuanzebe",
+       "pos": "D",
+       "grid": "2:3",
+       "rating": 6.5
+      },
+      {
+       "no": 3,
+       "name": "Kapuadi",
+       "pos": "D",
+       "grid": "2:4",
+       "rating": 6.2
+      },
+      {
+       "no": 26,
+       "name": "Masuaku",
+       "pos": "D",
+       "grid": "2:5",
+       "rating": 7.1
+      },
+      {
+       "no": 6,
+       "name": "Mukau",
+       "pos": "M",
+       "grid": "3:1",
+       "rating": 6.6
+      },
+      {
+       "no": 8,
+       "name": "Moutoussamy",
+       "pos": "M",
+       "grid": "3:2",
+       "rating": 6.5
+      },
+      {
+       "no": 39,
+       "name": "Kayembe",
+       "pos": "M",
+       "grid": "3:3",
+       "rating": 6.1
+      },
+      {
+       "no": 11,
+       "name": "Bakambu",
+       "pos": "F",
+       "grid": "4:1",
+       "rating": 6.3
+      },
+      {
+       "no": 9,
+       "name": "Wissa",
+       "pos": "F",
+       "grid": "4:2",
+       "rating": 6.7
+      }
+     ]
+    }
+   },
+   "subs": {
+    "home": [
+     {
+      "minute": 58,
+      "in": "Córdoba",
+      "out": "Suárez",
+      "rating": 6.5
+     },
+     {
+      "minute": 58,
+      "in": "Quintero",
+      "out": "Rodríguez",
+      "rating": 7.4
+     },
+     {
+      "minute": 77,
+      "in": "Ríos",
+      "out": "Arias",
+      "rating": 6.7
+     }
+    ],
+    "away": [
+     {
+      "minute": 46,
+      "in": "Sadiki",
+      "out": "Mukau",
+      "rating": 6.6
+     },
+     {
+      "minute": 57,
+      "in": "Banza",
+      "out": "Bakambu",
+      "rating": 6.5
+     },
+     {
+      "minute": 72,
+      "in": "Pickel",
+      "out": "Masuaku",
+      "rating": 6.4
+     },
+     {
+      "minute": 82,
+      "in": "Mbuku",
+      "out": "Moutoussamy",
+      "rating": 6.6
+     }
+    ]
+   }
   }
  }
 }

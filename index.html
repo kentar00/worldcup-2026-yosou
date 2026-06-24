@@ -294,6 +294,11 @@
   .rc-gres{display:flex;flex-direction:column;gap:4px;font-size:12px}
   .rc-gres span{display:flex;align-items:center;gap:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .rc-gres b{color:var(--lime);font-family:"Anton",sans-serif;font-size:13px;margin:0 3px;flex:none}
+  .rc-tabs{display:flex;gap:6px;margin:4px 0 2px}
+  .rc-tabs button{flex:1;background:var(--panel);border:1px solid var(--line);color:var(--muted);font-weight:800;font-size:13.5px;padding:9px 6px;border-radius:10px;cursor:pointer;font-family:inherit;letter-spacing:.02em}
+  .rc-tabs button .en{font-size:9.5px;color:var(--muted);display:block;font-weight:700;letter-spacing:.08em;margin-top:1px}
+  .rc-tabs button.on{background:linear-gradient(180deg,var(--g-mid),var(--g-lo));border-color:var(--g-hi);color:#15110a}
+  .rc-tabs button.on .en{color:#3a2f12}
   @media(max-width:480px){.rc-stats{grid-template-columns:repeat(2,1fr)}}
   .badge{width:26px;height:20px;border-radius:5px;display:inline-grid;place-items:center;font-family:"Anton",sans-serif;font-size:13px;color:#241c0c;background:linear-gradient(180deg,var(--g-hi),var(--g-lo))}
   .rl-stage{background:linear-gradient(180deg,#191636,#0f0d24);border:2px solid var(--gold-soft);border-radius:16px;height:160px;display:grid;place-items:center;margin:12px 0;overflow:hidden;box-shadow:inset 0 0 40px rgba(0,0,0,.6),0 0 30px rgba(139,92,246,.25)}
@@ -1048,35 +1053,61 @@ function renderGroups(){
 }
 
 // 第1節（各組の最初の2試合＝24試合）の振り返り
+let recapMD=null; // 表示中の節（null=最新の集計済み節）
+function setRecapMD(n){recapMD=n;renderRecap();}
+function mdIds(md){const s=new Set();'ABCDEFGHIJKL'.split('').forEach(g=>{const ms=G.gsMatches.filter(m=>m.group===g).sort((a,b)=>(a.date+a.time).localeCompare(b.date+b.time));ms.slice((md-1)*2,md*2).forEach(m=>s.add(m.id));});return s;}
+// 編集部レビュー（節ごとの文章。実際の試合結果に基づく独自の講評）
+function recapEditorial(md){
+  const ed=(cls,tag,title,body)=>`<div class="rc-ed ${cls}"><div class="rc-edh"><span class="rc-tag ${cls}">${tag}</span><b>${title}</b></div><p>${body}</p></div>`;
+  if(md===1)return [
+    ed('up','番狂わせ','王者級を倒した新興・伏兵',`今節最大の衝撃は<b>オーストラリアがトルコを2-0で撃破</b>。デビューの守護神ビーチが<b>評価9.1</b>の再三の好セーブで完封し、優勝候補の一角を沈めた。初出場の<b>カーボベルデはスペインと0-0</b>——GKボジーニャが<b>評価9.7</b>、27本のシュートをほぼ独力で跳ね返す圧巻の守備を見せた。さらに<b>カタールは90分のオウンゴールでスイスと1-1</b>、26本を浴びせながら決めきれなかったスイスを尻目に歴史的な初勝点をもぎ取った。`),
+    ed('jp','日本代表','オランダ相手に2度追いつく執念のドロー',`<b>オランダ 2-2 日本</b>。世界7位の強豪に2度リードを許しながらも食らいついた。守護神<b>鈴木彩艶が評価7.8</b>の再三の好守を見せ、終盤89分に<b>鎌田大地が値千金の同点弾</b>。勝点1ながら、世界に実力を示す最高の船出となった。`),
+    ed('star','スター','メッシが満点10.0、エースが躍動',`<b>メッシが自身初のW杯ハットトリック</b>。アルゼンチンはアルジェリアを3-0で一蹴し、メッシは<b>評価10.0（満点）</b>を記録した。フランスの<b>エムバペ</b>（2発）、ノルウェーの<b>ハーランド</b>（2発）、ドイツの<b>ハーフェルツ</b>、アメリカの<b>バログン</b>、イングランドの<b>ケイン</b>も2得点と、各国のエースが軒並み結果を残した。`),
+    ed('goal','撃ち合い','大量点と壮絶な打ち合い',`<b>ドイツが7-1でキュラソーに大勝</b>し今節最多得点。<b>イングランド 4-2 クロアチア</b>はゴラッソが飛び交う撃ち合いに。<b>スウェーデン 5-1 チュニジア</b>（イサク＆ギェケレシュ）、<b>アメリカ 4-1 パラグアイ</b>、<b>ノルウェー 4-1 イラク</b>と、攻撃陣が爆発した試合が相次いだ。`),
+    ed('draw','波乱','優勝候補・強豪がまさかのドロー発進',`<b>ブラジル 1-1 モロッコ</b>、<b>ベルギー 1-1 エジプト</b>、<b>サウジアラビア 1-1 ウルグアイ</b>、<b>イラン 2-2 ニュージーランド</b>——優勝候補や強豪が軒並み勝点を取りこぼした。6大会連続出場のロナウド擁する<b>ポルトガルもコンゴ民主共和国と1-1</b>、支配率75%を奪いながら勝ちきれなかった。`),
+    ed('drama','ドラマ','開幕戦は史上初の3レッド、各地で名場面',`開幕戦は<b>メキシコが南アフリカを2-0</b>で下したが、<b>1試合3枚のレッドカード</b>が乱れ飛ぶ荒れた展開に。<b>韓国は2-1でチェコを逆転</b>、開催国<b>カナダはボスニアと1-1でW杯史上初の勝点</b>、<b>スコットランドは28年ぶりのW杯初戦白星</b>（ハイチに1-0）と、各地でドラマが生まれた。`)
+  ].join('');
+  return [
+    ed('star','スター','レジェンドが刻んだ歴史的記録',`<b>ロナウドがW杯史上初の6大会連続ゴール</b>を達成。ポルトガルはウズベキスタンを<b>5-0</b>で圧倒し、ロナウドは2発でこの偉業を打ち立てた。<b>メッシは2試合連続のマルチゴール</b>（オーストリア戦で2発、2節合計5得点）でアルゼンチンを2連勝に導き<b>評価9.2</b>。フランスの<b>エムバペ</b>（イラク戦2発）、ノルウェーの<b>ハーランド</b>（セネガル戦2発）もエースの務めを果たした。`),
+    ed('jp','日本代表','チュニジアに完勝、首位浮上の快進撃',`<b>チュニジア 0-4 日本</b>。アウェー支配率38%ながら効率よく沈めた快勝劇。開始4分に<b>鎌田大地</b>が先制すると、<b>上田綺世が2得点</b>（31分・83分）、<b>伊藤洋輝</b>も加えて4-0。初戦のオランダ戦ドローに続く大勝で<b>勝点4・グループF首位タイ</b>に浮上。最終節スウェーデン戦で突破を懸けた大一番を迎える。`),
+    ed('up','番狂わせ','優勝候補が連続スコアレス、混戦に',`優勝候補<b>ベルギーがイランと0-0</b>。支配率70%・好機を量産しながら2試合連続ドローで<b>勝点2に足踏み</b>し、グループGは大混戦に。<b>イングランドもガーナと0-0</b>、19本のシュートを放ちながら新興ガーナの堅守を破れず。<b>エクアドル0-0キュラソー</b>含め、地力で勝るはずの強国が軒並み取りこぼした一日となった。`),
+    ed('goal','撃ち合い','エース対決と大量得点が連発',`<b>ノルウェー 3-2 セネガル</b>はハーランドの2発を軸にした壮絶な点の取り合い。<b>オランダ 5-1 スウェーデン</b>（ブロブレイ＆ハフポ 各2発級の攻撃）、<b>カナダ 6-0 カタール</b>、<b>スペイン 4-0 サウジアラビア</b>、そして<b>日本 4-0 チュニジア</b>と、攻撃力に勝るチームがスコアを伸ばした。`),
+    ed('draw','突破争い','7チームが2連勝で16強へ前進',`<b>メキシコ・アメリカ・ドイツ・フランス・ノルウェー・アルゼンチン・コロンビア</b>の7チームが<b>2連勝（勝点6）</b>で突破に大きく前進。とりわけ<b>グループIはフランス・ノルウェーが揃って6pt</b>、最終節の直接対決が首位決定戦となる。一方<b>ウルグアイ・ベルギー</b>ら優勝候補は勝点2で足踏みし、最終節へ崖っぷちに追い込まれた。`),
+    ed('drama','ドラマ','名手の節目と、早すぎる崖っぷち',`<b>モドリッチが国際Aマッチ通算200試合出場</b>を花道に、クロアチアがパナマを1-0で下した。コロンビアの<b>ムニョスは2戦連発</b>でコンゴ撃破の決勝点。明暗の影では<b>チュニジア（得失点-8）・ウズベキスタン（-7）</b>をはじめ、トルコ・カタール・ヨルダン・イラク・パナマらが2連敗で早くも背水の陣に立たされた。`)
+  ].join('');
+}
 function renderRecap(){
-  const md1ids=new Set();
-  'ABCDEFGHIJKL'.split('').forEach(g=>{const ms=G.gsMatches.filter(m=>m.group===g).sort((a,b)=>(a.date+a.time).localeCompare(b.date+b.time));ms.slice(0,2).forEach(m=>md1ids.add(m.id));});
-  const md1=G.gsMatches.filter(m=>md1ids.has(m.id));
-  const pl=md1.filter(m=>m.hs!=null&&m.as!=null);
+  // 集計済み（=その節の試合がすべて入力済み）の最大節を判定。既定は最新の集計済み節
+  const ready=[1,2,3].filter(md=>{const ids=mdIds(md);if(![...ids].length)return false;return G.gsMatches.filter(m=>ids.has(m.id)).every(m=>m.hs!=null);});
+  const maxReady=ready.length?Math.max(...ready):1;
+  let md=recapMD||maxReady;if(!ready.includes(md))md=maxReady;
+  const ids=mdIds(md);
+  const rd=G.gsMatches.filter(m=>ids.has(m.id));
+  const pl=rd.filter(m=>m.hs!=null&&m.as!=null);
   const goals=pl.reduce((s,m)=>s+m.hs+m.as,0);
   const draws=pl.filter(m=>m.hs===m.as).length;
+  // メンバー暫定順位＝その節終了時点までの累計（1..md 節の全試合）
+  const cum=new Set();for(let k=1;k<=md;k++)mdIds(k).forEach(x=>cum.add(x));
   const mp={};G.players.forEach(p=>mp[p]=0);
-  pl.forEach(m=>{if(m.hs===m.as){[m.home,m.away].forEach(t=>{const o=owner(t);if(o)mp[o]+=0.5;});}else{const win=m.hs>m.as?m.home:m.away,los=m.hs>m.as?m.away:m.home,o=owner(win);if(o)mp[o]+=(G.config.gk&&isLow(tier(win))&&isHigh(tier(los)))?2:1;}});
+  G.gsMatches.filter(m=>cum.has(m.id)&&m.hs!=null).forEach(m=>{if(m.hs===m.as){[m.home,m.away].forEach(t=>{const o=owner(t);if(o)mp[o]+=0.5;});}else{const win=m.hs>m.as?m.home:m.away,los=m.hs>m.as?m.away:m.home,o=owner(win);if(o)mp[o]+=(G.config.gk&&isLow(tier(win))&&isHigh(tier(los)))?2:1;}});
   const lb=G.players.map(p=>({p,t:mp[p]})).sort((a,b)=>b.t-a.t);const max=Math.max(1,lb[0].t);
   const stat=(v,l)=>`<div class="rc-stat"><div class="rc-sv">${v}</div><div class="rc-sl">${l}</div></div>`;
   const mem=lb.map((x,i)=>`<div class="rc-mem"><span class="rc-mrank">${i+1}</span><span class="rc-mdot" style="background:${pcol(x.p)}"></span><span class="rc-mnm">${esc(x.p)}</span><span class="rc-mbar"><i style="width:${Math.max(4,x.t/max*100)}%;background:${pcol(x.p)}"></i></span><span class="rc-mpt">${fmt(x.t)}<i>pt</i></span></div>`).join('');
-  const grp='ABCDEFGHIJKL'.split('').map(g=>{const ms=md1.filter(m=>m.group===g&&m.hs!=null).sort((a,b)=>(a.date+a.time).localeCompare(b.date+b.time));return `<div class="rc-grp"><span class="rc-gh">${g}組</span><div class="rc-gres">${ms.map(m=>`<span>${flag(m.home)} ${esc(m.home)} <b>${m.hs}-${m.as}</b> ${esc(m.away)} ${flag(m.away)}</span>`).join('')||'<span class="bk-tbd">未消化</span>'}</div></div>`;}).join('');
-  const ed=(cls,tag,title,body)=>`<div class="rc-ed ${cls}"><div class="rc-edh"><span class="rc-tag ${cls}">${tag}</span><b>${title}</b></div><p>${body}</p></div>`;
+  const grp='ABCDEFGHIJKL'.split('').map(g=>{const ms=rd.filter(m=>m.group===g&&m.hs!=null).sort((a,b)=>(a.date+a.time).localeCompare(b.date+b.time));return `<div class="rc-grp"><span class="rc-gh">${g}組</span><div class="rc-gres">${ms.map(m=>`<span>${flag(m.home)} ${esc(m.home)} <b>${m.hs}-${m.as}</b> ${esc(m.away)} ${flag(m.away)}</span>`).join('')||'<span class="bk-tbd">未消化</span>'}</div></div>`;}).join('');
+  const intro={1:`全12グループの<b>初戦${pl.length}試合が出そろった</b>。開催国の明暗、強豪の取りこぼし、新興国の大健闘——波乱と熱狂に満ちた2026年大会の幕開けを振り返る。`,
+    2:`<b>第2節${pl.length}試合が終了</b>。レジェンドの歴史的記録、優勝候補の足踏み、そして7チームの突破前進——勢力図が一気に鮮明になった2巡目を振り返る。`}[md]||'';
+  const tabs=[1,2,3].filter(n=>ready.includes(n)).map(n=>`<button class="${n===md?'on':''}" onclick="setRecapMD(${n})">第${n}節<span class="en">MATCHDAY ${n}</span></button>`).join('');
   document.getElementById('v-recap').innerHTML=`
-    <div class="barh">第1節 振り返り <span class="en">MATCHDAY 1 RECAP</span></div>
-    <div class="note">全12グループの<b>初戦${pl.length}試合が出そろった</b>。開催国の明暗、強豪の取りこぼし、新興国の大健闘——波乱と熱狂に満ちた2026年大会の幕開けを振り返る。</div>
+    ${ready.length>1?`<div class="rc-tabs">${tabs}</div>`:''}
+    <div class="barh">第${md}節 振り返り <span class="en">MATCHDAY ${md} RECAP</span></div>
+    <div class="note">${intro}</div>
     <div class="rc-stats">${stat(pl.length,'試合')}${stat(goals,'ゴール')}${stat(draws,'引き分け')}${stat((goals/Math.max(1,pl.length)).toFixed(1),'1試合平均')}</div>
     <div class="barh">メンバー暫定順位 <span class="en">STANDINGS</span></div>
-    <div class="hint">1巡終了時点の獲得ポイント（保有国の勝敗から自動集計）。</div>
+    <div class="hint">${md}巡終了時点の累計ポイント（保有国の勝敗から自動集計）。</div>
     <div class="card">${mem}</div>
     <div class="barh">編集部レビュー <span class="en">REVIEW</span></div>
-    ${ed('up','番狂わせ','王者級を倒した新興・伏兵',`今節最大の衝撃は<b>オーストラリアがトルコを2-0で撃破</b>。デビューの守護神ビーチが<b>評価9.1</b>の再三の好セーブで完封し、優勝候補の一角を沈めた。初出場の<b>カーボベルデはスペインと0-0</b>——GKボジーニャが<b>評価9.7</b>、27本のシュートをほぼ独力で跳ね返す圧巻の守備を見せた。さらに<b>カタールは90分のオウンゴールでスイスと1-1</b>、26本を浴びせながら決めきれなかったスイスを尻目に歴史的な初勝点をもぎ取った。`)}
-    ${ed('jp','日本代表','オランダ相手に2度追いつく執念のドロー',`<b>オランダ 2-2 日本</b>。世界7位の強豪に2度リードを許しながらも食らいついた。守護神<b>鈴木彩艶が評価7.8</b>の再三の好守を見せ、終盤89分に<b>鎌田大地が値千金の同点弾</b>。勝点1ながら、世界に実力を示す最高の船出となった。`)}
-    ${ed('star','スター','メッシが満点10.0、エースが躍動',`<b>メッシが自身初のW杯ハットトリック</b>。アルゼンチンはアルジェリアを3-0で一蹴し、メッシは<b>評価10.0（満点）</b>を記録した。フランスの<b>エムバペ</b>（2発）、ノルウェーの<b>ハーランド</b>（2発）、ドイツの<b>ハーフェルツ</b>、アメリカの<b>バログン</b>、イングランドの<b>ケイン</b>も2得点と、各国のエースが軒並み結果を残した。`)}
-    ${ed('goal','撃ち合い','大量点と壮絶な打ち合い',`<b>ドイツが7-1でキュラソーに大勝</b>し今節最多得点。<b>イングランド 4-2 クロアチア</b>はゴラッソが飛び交う撃ち合いに。<b>スウェーデン 5-1 チュニジア</b>（イサク＆ギェケレシュ）、<b>アメリカ 4-1 パラグアイ</b>、<b>ノルウェー 4-1 イラク</b>と、攻撃陣が爆発した試合が相次いだ。`)}
-    ${ed('draw','波乱','優勝候補・強豪がまさかのドロー発進',`<b>ブラジル 1-1 モロッコ</b>、<b>ベルギー 1-1 エジプト</b>、<b>サウジアラビア 1-1 ウルグアイ</b>、<b>イラン 2-2 ニュージーランド</b>——優勝候補や強豪が軒並み勝点を取りこぼした。6大会連続出場のロナウド擁する<b>ポルトガルもコンゴ民主共和国と1-1</b>、支配率75%を奪いながら勝ちきれなかった。`)}
-    ${ed('drama','ドラマ','開幕戦は史上初の3レッド、各地で名場面',`開幕戦は<b>メキシコが南アフリカを2-0</b>で下したが、<b>1試合3枚のレッドカード</b>が乱れ飛ぶ荒れた展開に。<b>韓国は2-1でチェコを逆転</b>、開催国<b>カナダはボスニアと1-1でW杯史上初の勝点</b>、<b>スコットランドは28年ぶりのW杯初戦白星</b>（ハイチに1-0）と、各地でドラマが生まれた。`)}
-    <div class="barh">各グループ 初戦の結果 <span class="en">RESULTS</span></div>
+    ${recapEditorial(md)}
+    <div class="barh">各グループ 第${md}節の結果 <span class="en">RESULTS</span></div>
     <div class="rc-grps">${grp}</div>
     <div class="note">各試合の詳細（スタメン・スタッツ・DAZNハイライト・Sofascore選手レーティング）は「日程・結果」または「ホーム」タブでスコアをタップ。</div>`;
 }
