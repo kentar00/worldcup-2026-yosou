@@ -122,6 +122,36 @@
   .bk-flow:last-child{border-bottom:0}
   .bk-feed{font-size:13.5px;font-weight:700}
   .bk-feed em{color:var(--muted);font-weight:400;font-style:normal;margin:0 5px}
+  /* トーナメント・ブラケット（横スクロール／接続線つき） */
+  .tb-legend{display:flex;flex-wrap:wrap;gap:6px 13px;margin:8px 0 4px;font-size:11px;color:var(--muted)}
+  .tb-key{display:inline-flex;align-items:center;gap:5px}
+  .tb-dotk{width:10px;height:10px;border-radius:3px;display:inline-block;flex:none}
+  .tb-champ{display:flex;align-items:center;gap:10px;margin:8px 0;padding:11px 14px;border-radius:13px;background:linear-gradient(110deg,rgba(212,175,124,.16),rgba(167,139,250,.08));border:1px solid var(--g-mid)}
+  .tb-champ .ttl{font-size:10px;font-weight:800;letter-spacing:.1em;color:var(--gold);text-transform:uppercase}
+  .tb-champ .nm{font-family:"Anton",sans-serif;font-size:21px;letter-spacing:.01em}
+  .tb-champ .flag{width:30px;height:21px}
+  .tb-scrollhint{font-size:10.5px;color:var(--muted);text-align:right;margin:2px 2px 0}
+  .tb-wrap{overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;border:1px solid var(--line);border-radius:14px;background:linear-gradient(180deg,rgba(255,255,255,.018),transparent)}
+  .tb-canvas{position:relative}
+  .tb-links{position:absolute;left:0;top:0;pointer-events:none}
+  .tb-hd{position:absolute;top:7px;font-family:"Anton",sans-serif;font-size:12.5px;letter-spacing:.05em;color:var(--gold);text-align:center}
+  .tb-hd em{display:block;font-family:inherit;font-style:normal;font-size:8px;color:var(--muted);letter-spacing:.13em;margin-top:1px}
+  .tb-box{position:absolute;background:var(--row);border:1px solid var(--line);border-radius:9px;overflow:hidden;box-shadow:0 1px 5px rgba(0,0,0,.28)}
+  .tb-box.win{border-color:var(--g-mid)}
+  .tb-slot{display:flex;align-items:center;gap:5px;padding:5px 7px;font-size:12.5px;white-space:nowrap;overflow:hidden;border-bottom:1px solid var(--line);min-height:27px}
+  .tb-slot:last-of-type{border-bottom:0}
+  .tb-slot .flag{flex:none;width:20px;height:14px}
+  .tb-tag{flex:none;font-size:8.5px;font-weight:800;color:var(--gold);background:rgba(212,175,124,.12);border-radius:4px;padding:1px 4px;min-width:20px;text-align:center}
+  .tb-nm{overflow:hidden;text-overflow:ellipsis;font-weight:600}
+  .tb-slot.adv .tb-nm{color:var(--g-hi);font-weight:800}
+  .tb-slot.muted .tb-nm{color:var(--muted);font-weight:600}
+  .tb-slot.tbd .tb-nm{color:var(--muted);opacity:.55}
+  .tb-bdg{margin-left:auto;flex:none;font-size:8px;font-weight:800;border-radius:4px;padding:1px 4px;letter-spacing:.02em}
+  .tb-bdg.proj{background:rgba(167,139,250,.16);color:#cbbcff;border:1px solid rgba(167,139,250,.32)}
+  .tb-slot.adv .tb-av{margin-left:auto;color:var(--gold);font-size:9px;flex:none}
+  .tb-slot.adv .tb-bdg{margin-left:6px}
+  .tb-meta{padding:3px 7px;font-size:8.5px;color:var(--muted);background:rgba(0,0,0,.2);border-top:1px solid var(--line);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .tb-meta b{color:var(--gold);font-weight:700}
   /* fifa ranking */
   .rk{font-family:"Anton",sans-serif;font-size:16px;color:var(--gold);width:56px}
   /* strength index */
@@ -499,6 +529,10 @@ const FLOW=[
   {label:"ベスト4（準決勝）",en:"SEMI-FINALS",ms:[[101,97,98],[102,99,100]]},
   {label:"決勝",en:"FINAL",ms:[[104,101,102]]},
 ];
+// 開催都市 → スタジアム名（R32の各会場＋準決勝・決勝）
+const STAD={"イングルウッド":"SoFiスタジアム","フォックスボロ":"ジレット・スタジアム","グアダラハラ":"エスタディオ・アクロン","ヒューストン":"NRGスタジアム","イーストラザフォード":"メットライフ・スタジアム","アーリントン":"AT&Tスタジアム","メキシコシティ":"エスタディオ・アステカ","アトランタ":"メルセデス・ベンツ・スタジアム","サンタクララ":"リーバイス・スタジアム","シアトル":"ルーメン・フィールド","トロント":"BMOフィールド","バンクーバー":"BCプレイス","マイアミ":"ハードロック・スタジアム","カンザスシティ":"アローヘッド・スタジアム"};
+// 公式日程に基づく主要ノックアウトの会場（準決勝＝ダラス/アトランタ、決勝＝ニューヨーク/ニュージャージー）
+const VENUE_KO={101:{city:"アーリントン",d:"7/14"},102:{city:"アトランタ",d:"7/15"},104:{city:"イーストラザフォード",d:"7/19"}};
 // FIFAランキング(2026/4/1) ＝ 各国の世界順位。本ゲームのティア配分の根拠。
 const FIFA_RANK={"フランス":1,"スペイン":2,"アルゼンチン":3,"イングランド":4,"ポルトガル":5,"ブラジル":6,"オランダ":7,"モロッコ":8,"ベルギー":9,"ドイツ":10,"クロアチア":11,"コロンビア":13,"セネガル":14,"メキシコ":15,"アメリカ":16,"ウルグアイ":17,"日本":18,"スイス":19,"イラン":21,"トルコ":22,"エクアドル":23,"オーストリア":24,"韓国":25,"オーストラリア":27,"アルジェリア":28,"エジプト":29,"カナダ":30,"ノルウェー":31,"パナマ":33,"コートジボワール":34,"スウェーデン":38,"パラグアイ":40,"チェコ":41,"スコットランド":43,"チュニジア":44,"コンゴ民主共和国":46,"ウズベキスタン":50,"カタール":55,"イラク":57,"南アフリカ":60,"サウジアラビア":61,"ヨルダン":63,"ボスニア・ヘルツェゴビナ":65,"カーボベルデ":69,"ガーナ":74,"キュラソー":82,"ハイチ":83,"ニュージーランド":85};
 // 監督国籍など、出場48カ国以外も含む 国名(日本語)→ISO の補助マップ。
@@ -592,38 +626,103 @@ function renderRules(){
   <div class="note">運（ルーレット）× 戦略（ドラフト）× 大逆転（後半配点）。最後まで全員に優勝のチャンスが残ります。</div>`;
 }
 
+// 戦力偏差値（無ければFIFAランクで代替）。グループ予測・KO勝ち上がり予測の基準。
+function tbDev(n){const s=G.strength&&G.strength.teams&&G.strength.teams[n];return (s&&s.dev)||(100-(FIFA_RANK[n]||90));}
+// 各グループの最終順位を予測（消化済みは実結果、未消化は偏差値で勝敗を補完）＋3位枠の割当。
+function tbProject(){
+  const groups={};
+  'ABCDEFGHIJKL'.split('').forEach(g=>{
+    const ms=G.gsMatches.filter(m=>m.group===g);
+    const t={};const add=n=>{t[n]=t[n]||{team:n,pts:0,gd:0,gf:0};return t[n];};
+    let complete=true;
+    ms.forEach(m=>{const H=add(m.home),A=add(m.away);let hs=m.hs,as=m.as;
+      if(hs==null||as==null){complete=false;const d=tbDev(m.home)-tbDev(m.away);
+        if(Math.abs(d)<3){hs=1;as=1;}else{const mg=Math.min(3,1+Math.floor(Math.abs(d)/4));if(d>0){hs=mg;as=0;}else{hs=0;as=mg;}}}
+      H.gf+=hs;A.gf+=as;H.gd+=hs-as;A.gd+=as-hs;
+      if(hs>as)H.pts+=3;else if(as>hs)A.pts+=3;else{H.pts++;A.pts++;}});
+    groups[g]={rows:Object.values(t).sort((a,b)=>b.pts-a.pts||b.gd-a.gd||b.gf-a.gf),complete};
+  });
+  // 3位の上位8グループが突破 → R32の「3:◯/◯…」枠へ割当（許容組の集合に対し完全マッチング）
+  const thirds=Object.keys(groups).map(g=>Object.assign({g},groups[g].rows[2])).sort((a,b)=>b.pts-a.pts||b.gd-a.gd||b.gf-a.gf);
+  const Q=thirds.slice(0,8).map(x=>x.g);
+  const slots=[];R32.forEach(m=>['a','b'].forEach(k=>{if(m[k][0]==='3')slots.push({key:m.no+k,allowed:m[k].slice(2).split('/')});}));
+  const assign={};
+  (function bt(i,used){if(i===slots.length)return true;for(const g of slots[i].allowed){if(Q.includes(g)&&!used[g]){used[g]=1;assign[slots[i].key]=g;if(bt(i+1,used))return true;used[g]=0;delete assign[slots[i].key];}}return false;})(0,{});
+  return {groups,Q,assign,done:Object.values(groups).every(x=>x.complete)};
+}
 function renderBracket(){
-  const {standings}=compute();
-  const slotLabel=s=>{
-    if(s[0]==='3')return `3位 (${s.slice(2)}組)`;
-    return `${s[1]}組 ${s[0]==='1'?'1位':'2位'}`;
+  const P=tbProject();
+  // 試合ツリー構築
+  const byNo={};
+  R32.forEach(m=>byNo[m.no]={no:m.no,round:'R32',a:m.a,b:m.b,city:m.city,d:m.d});
+  const rk=['R16','QF','SF','F'];
+  FLOW.forEach((r,ri)=>r.ms.forEach(x=>byNo[x[0]]={no:x[0],round:rk[ri],c1:x[1],c2:x[2]}));
+  // R32スロット → 想定国
+  const posJa={'1':'1位','2':'2位','3':'3位'};
+  const slotInfo=(slot,no,k)=>{
+    if(slot[0]==='3'){const g=P.assign[no+k];const r=g&&P.groups[g].rows[2];
+      return {team:r&&r.team,tag:'3位',label:'3位通過',status:P.done?'done':'proj'};}
+    const g=slot[1],r=P.groups[g]&&P.groups[g].rows[slot[0]==='1'?0:1];
+    return {team:r&&r.team,tag:g+(slot[0]==='1'?'①':'②'),label:`${g}組${posJa[slot[0]]}`,status:P.groups[g]&&P.groups[g].complete?'done':'proj'};
   };
-  const slotTeam=s=>{
-    if(s[0]==='3')return null;
-    const st=standings[s[1]];
-    if(!st||!st.complete)return null;
-    const r=st.rows[s[0]==='1'?0:1];
-    return r?r.team:null;
-  };
-  const side=s=>{const t=slotTeam(s);
-    return `<div class="bk-side"><span class="bk-slot">${esc(slotLabel(s))}</span>${t?`${flag(t)} <b>${esc(t)}</b>`:'<span class="bk-tbd">未定</span>'}</div>`;};
-  const r32=R32.map(m=>`<div class="bk-row">
-      <span class="bk-mno">#${m.no}</span>
-      <div class="bk-sides">${side(m.a)}${side(m.b)}</div>
-      <span class="bk-when">${m.d}<br>${esc(m.city)}</span>
-    </div>`).join('');
-  const flow=FLOW.map(r=>`<div class="card" style="margin:10px 0">
-      <h2 class="sec">${r.label} <span style="color:var(--muted);font-weight:700;font-size:10px;letter-spacing:.14em">${r.en}</span></h2>
-      ${r.ms.map(x=>`<div class="bk-flow"><span class="bk-mno">#${x[0]}</span><span class="bk-feed">勝者 #${x[1]}<em>×</em>勝者 #${x[2]}</span></div>`).join('')}
-    </div>`).join('');
+  // KO勝ち上がり予測（偏差値の高い方が勝つ）。memo化。
+  const memo={};
+  const pickWin=(a,b)=>!a.team?b:!b.team?a:tbDev(a.team)>=tbDev(b.team)?a:b;
+  function nodeInfo(no){if(memo[no])return memo[no];const m=byNo[no];let ents;
+    if(m.round==='R32')ents=[slotInfo(m.a,no,'a'),slotInfo(m.b,no,'b')];
+    else ents=[nodeInfo(m.c1).winner,nodeInfo(m.c2).winner];
+    const w=pickWin(ents[0],ents[1]);
+    return memo[no]={entrants:ents,winner:{team:w.team,status:'pred'}};}
+  // 幾何配置
+  const order=[];(function leaves(no){const m=byNo[no];if(m.round==='R32'){order.push(no);return;}leaves(m.c1);leaves(m.c2);})(104);
+  const idx={};order.forEach((no,i)=>idx[no]=i);
+  const ROW=78,H0=44,BW=152,GAP=40,PITCH=BW+GAP;
+  const col={R32:0,R16:1,QF:2,SF:3,F:4};
+  const colX=c=>c*PITCH;
+  const cyMemo={};
+  function cy(no){if(cyMemo[no]!=null)return cyMemo[no];const m=byNo[no];
+    return cyMemo[no]=m.round==='R32'?H0+idx[no]*ROW+ROW/2:(cy(m.c1)+cy(m.c2))/2;}
+  const W=colX(4)+BW+12,Hc=H0+16*ROW+22;
+  // 接続線（各親→2子）
+  let links='';
+  Object.values(byNo).forEach(m=>{if(m.round==='R32')return;const px=colX(col[m.round]),py=cy(m.no);
+    [m.c1,m.c2].forEach(cn=>{const cc=byNo[cn],cx=colX(col[cc.round])+BW,ccy=cy(cn),mx=(cx+px)/2;
+      links+=`<polyline points="${cx},${ccy} ${mx},${ccy} ${mx},${py} ${px},${py}" fill="none" stroke="var(--line)" stroke-width="1.4"/>`;});});
+  // 会場
+  const venue=m=>{const v=m.round==='R32'?{city:m.city,d:m.d}:VENUE_KO[m.no];if(!v)return '';
+    return `<div class="tb-meta">#${m.no} <b>${v.d}</b> ${esc(v.city)}${STAD[v.city]?'／'+esc(STAD[v.city]):''}</div>`;};
+  // ボックス描画
+  const slotRow=(info,isAdv)=>{
+    const t=info.team,cls=isAdv?'adv':(info.status==='proj'||info.status==='pred')?'muted':'';
+    const bdg=info.status==='proj'?'<span class="tb-bdg proj">想定</span>':'';
+    return `<div class="tb-slot ${cls} ${t?'':'tbd'}">${info.tag?`<span class="tb-tag">${esc(info.tag)}</span>`:''}${t?flag(t):''}<span class="tb-nm">${t?esc(t):(info.label||'未定')}</span>${isAdv?'<span class="tb-av">▶</span>':''}${bdg}</div>`;};
+  let boxes='';
+  Object.values(byNo).forEach(m=>{const ni=nodeInfo(m.no),x=colX(col[m.round]),hasMeta=!!(m.round==='R32'||VENUE_KO[m.no]);
+    const bh=(hasMeta?70:54),top=cy(m.no)-bh/2,advT=ni.winner.team;
+    boxes+=`<div class="tb-box ${m.round==='F'?'win':''}" style="left:${x}px;top:${top}px;width:${BW}px">
+      ${slotRow(ni.entrants[0],ni.entrants[0].team&&ni.entrants[0].team===advT)}
+      ${slotRow(ni.entrants[1],ni.entrants[1].team&&ni.entrants[1].team===advT)}
+      ${venue(m)}</div>`;});
+  // ヘッダ
+  const cols=[['ラウンド32','ROUND OF 32'],['ベスト16','ROUND OF 16'],['準々決勝','QUARTER-FINALS'],['準決勝','SEMI-FINALS'],['決勝','FINAL']];
+  const hd=cols.map((c,i)=>`<div class="tb-hd" style="left:${colX(i)}px;width:${BW}px">${c[0]}<em>${c[1]}</em></div>`).join('');
+  const champ=nodeInfo(104).winner.team;
+  const doneCount=Object.values(P.groups).filter(g=>g.complete).length;
   document.getElementById('v-bracket').innerHTML=`
-    <div class="barh">決勝トーナメント表 <span class="en">KNOCKOUT BRACKET</span></div>
-    <p class="hint">2026年大会の公式フォーマット。各組1位は3位通過チームと、2位同士が対戦（同じ組は準々決勝まで当たりません）。グループ全6試合のスコアが揃うと、1位・2位の通過国が自動でここに入ります。日付は現地。</p>
-    <div class="barh" style="margin-top:6px">ラウンド32 <span class="en">ROUND OF 32</span></div>
-    ${r32}
-    <div class="barh">勝ち上がり <span class="en">BRACKET FLOW</span></div>
-    ${flow}
-    <div class="note">3位通過の8枠は、12組のうちどの組の3位が突破したかで割り当てが決まります（FIFA規定の組合せ表）。実際のR32対戦カードは「日程・結果」タブで管理します。</div>`;
+    <div class="barh">決勝トーナメント予想 <span class="en">KNOCKOUT BRACKET</span></div>
+    <p class="hint">公式フォーマット（各組1位×3位、2位×2位）。GS全6試合が揃った組は<b>確定</b>国、未確定の組は現在順位＋第3節の戦力予測から<b>想定</b>国を配置。ノックアウトの勝ち上がりは戦力偏差値による<b>予測</b>です。<b>${doneCount}/12組</b>が確定。</p>
+    <div class="tb-legend">
+      <span class="tb-key"><span class="tb-dotk" style="background:#9fe0b0"></span>確定（GS通過）</span>
+      <span class="tb-key"><span class="tb-dotk" style="background:#a78bfa"></span>想定（GS予測）</span>
+      <span class="tb-key"><span class="tb-dotk" style="background:var(--gold)"></span>▶ 勝ち上がり予測</span>
+    </div>
+    ${champ?`<div class="tb-champ"><span class="flag-wrap">${flag(champ)}</span><div><div class="ttl">予想優勝 🏆 CHAMPION</div><div class="nm">${esc(champ)}</div></div></div>`:''}
+    <div class="tb-scrollhint">← 横スクロールで決勝まで →</div>
+    <div class="tb-wrap"><div class="tb-canvas" style="width:${W}px;height:${Hc}px">
+      <svg class="tb-links" width="${W}" height="${Hc}">${links}</svg>
+      ${hd}${boxes}
+    </div></div>
+    <div class="note">想定国・勝ち上がりは戦力偏差値（「戦力指数」タブ）に基づく自動予測で、試合結果が入るたびに更新されます。3位通過8枠はFIFA規定の組合せ表に沿って割り当てています。実際のR32対戦カードは「日程・結果」タブで管理します。</div>`;
 }
 
 function renderRank(){
