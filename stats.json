@@ -15445,16 +15445,16 @@
   "GS23": {
    "sofa": "https://www.sofascore.com/football/match/usa-turkiye/aUbszUb",
    "possession": [
-    59,
-    41
+    48,
+    52
    ],
    "shots": [
-    15,
-    5
+    9,
+    18
    ],
    "shotsOnTarget": [
-    7,
-    2
+    3,
+    7
    ],
    "goals": [
     {
@@ -15468,7 +15468,7 @@
      "minute": 10
     },
     {
-     "player": "Kökçü",
+     "player": "Yılmaz",
      "team": "トルコ",
      "minute": 31
     },
@@ -15476,6 +15476,11 @@
      "player": "Berhalter",
      "team": "アメリカ",
      "minute": 49
+    },
+    {
+     "player": "Ayhan",
+     "team": "トルコ",
+     "minute": 90
     }
    ],
    "cards": [
@@ -15495,77 +15500,77 @@
        "name": "Çakır",
        "pos": "G",
        "grid": "1:1",
-       "rating": 7.3
+       "rating": 7.1
       },
       {
        "no": 2,
        "name": "Çelik",
        "pos": "D",
        "grid": "2:1",
-       "rating": 7.4
+       "rating": 7.7
       },
       {
        "no": 15,
        "name": "Kabak",
        "pos": "D",
        "grid": "2:2",
-       "rating": 6.8
+       "rating": 7.2
       },
       {
        "no": 14,
-       "name": "Bardakcı",
+       "name": "Bardakçı",
        "pos": "D",
        "grid": "2:3",
-       "rating": 6.6
+       "rating": 6.9
       },
       {
        "no": 24,
        "name": "Aydın",
        "pos": "M",
        "grid": "3:1",
-       "rating": 6.8
+       "rating": 7.1
       },
       {
        "no": 5,
        "name": "Özcan",
        "pos": "M",
        "grid": "3:2",
-       "rating": 7.2
+       "rating": 7.1
       },
       {
        "no": 6,
        "name": "Kökçü",
        "pos": "M",
        "grid": "3:3",
-       "rating": 7.2
+       "rating": 5.9
       },
       {
        "no": 13,
        "name": "Elmalı",
        "pos": "M",
        "grid": "3:4",
-       "rating": 7.7
+       "rating": 7.6
       },
       {
        "no": 8,
        "name": "Güler",
        "pos": "F",
        "grid": "4:1",
-       "rating": 8
+       "rating": 8.6
       },
       {
        "no": 11,
        "name": "Yıldız",
        "pos": "F",
        "grid": "4:2",
-       "rating": 7
+       "rating": 6.9
       },
       {
        "no": 21,
        "name": "Yılmaz",
        "pos": "F",
        "grid": "5:1",
-       "rating": 6.6
+       "rating": 7.4
       }
      ]
     },
@@ -15598,28 +15603,28 @@
        "name": "McKenzie",
        "pos": "D",
        "grid": "2:3",
-       "rating": 6.4
+       "rating": 6.1
       },
       {
        "no": 6,
        "name": "Trusty",
        "pos": "D",
        "grid": "2:4",
-       "rating": 7.5
+       "rating": 7.3
       },
       {
        "no": 8,
        "name": "McKennie",
        "pos": "M",
        "grid": "3:1",
-       "rating": 6.9
+       "rating": 7.1
       },
       {
        "no": 14,
        "name": "Berhalter",
        "pos": "M",
        "grid": "3:2",
-       "rating": 8.4
+       "rating": 8.2
       },
       {
        "no": 7,
@@ -15633,14 +15638,14 @@
        "name": "Aaronson",
        "pos": "F",
        "grid": "4:1",
-       "rating": 6.2
+       "rating": 6.3
       },
       {
        "no": 9,
        "name": "Pepi",
        "pos": "F",
        "grid": "4:2",
-       "rating": 6.2
+       "rating": 5.9
       },
       {
        "no": 21,
@@ -15653,13 +15658,66 @@
     }
    },
    "subs": {
-    "home": [],
+    "home": [
+     {
+      "minute": 84,
+      "in": "Söyüncü",
+      "out": "Çelik",
+      "rating": 6.9
+     },
+     {
+      "minute": 84,
+      "in": "Uzun",
+      "out": "Yıldız",
+      "rating": 6.7
+     },
+     {
+      "minute": 88,
+      "in": "Ayhan",
+      "out": "Kökçü",
+      "rating": 7.6
+     },
+     {
+      "minute": 90,
+      "in": "Kahveci",
+      "out": "Yılmaz"
+     },
+     {
+      "minute": 90,
+      "in": "Müldür",
+      "out": "Aydın"
+     }
+    ],
     "away": [
      {
       "minute": 58,
       "in": "Pulisic",
       "out": "Weah",
-      "rating": 6.9
+      "rating": 7.1
+     },
+     {
+      "minute": 76,
+      "in": "Dest",
+      "out": "Reyna",
+      "rating": 6.3
+     },
+     {
+      "minute": 77,
+      "in": "Zendejas",
+      "out": "Aaronson",
+      "rating": 6.5
+     },
+     {
+      "minute": 77,
+      "in": "Freeman",
+      "out": "Scally",
+      "rating": 6.5
+     },
+     {
+      "minute": 86,
+      "in": "Tillman",
+      "out": "McKennie",
+      "rating": 6.3
      }
     ]
    }
@@ -16166,6 +16224,249 @@
       "minute": 77,
       "in": "Seri",
       "out": "Kessié"
+     }
+    ]
+   }
+  },
+  "GS24": {
+   "sofa": "https://www.sofascore.com/football/match/paraguay-australia/QUbsOVb",
+   "possession": [
+    44,
+    56
+   ],
+   "shots": [
+    7,
+    12
+   ],
+   "shotsOnTarget": [
+    2,
+    5
+   ],
+   "goals": [],
+   "cards": [
+    {
+     "player": "Irvine",
+     "team": "オーストラリア",
+     "minute": 46,
+     "type": "Y"
+    },
+    {
+     "player": "Gómez",
+     "team": "パラグアイ",
+     "minute": 77,
+     "type": "Y"
+    }
+   ],
+   "lineups": {
+    "home": {
+     "formation": "5-3-2",
+     "players": [
+      {
+       "no": 12,
+       "name": "Gill",
+       "pos": "G",
+       "grid": "1:1",
+       "rating": 7.8
+      },
+      {
+       "no": 4,
+       "name": "Cáceres",
+       "pos": "D",
+       "grid": "2:1",
+       "rating": 6.7
+      },
+      {
+       "no": 23,
+       "name": "Velázquez",
+       "pos": "D",
+       "grid": "2:2",
+       "rating": 7.2
+      },
+      {
+       "no": 15,
+       "name": "Gómez",
+       "pos": "D",
+       "grid": "2:3",
+       "rating": 7.1
+      },
+      {
+       "no": 3,
+       "name": "Alderete",
+       "pos": "D",
+       "grid": "2:4",
+       "rating": 6.8
+      },
+      {
+       "no": 13,
+       "name": "Maidana",
+       "pos": "D",
+       "grid": "2:5",
+       "rating": 6.6
+      },
+      {
+       "no": 25,
+       "name": "Bobadilla",
+       "pos": "M",
+       "grid": "3:1",
+       "rating": 6.4
+      },
+      {
+       "no": 20,
+       "name": "Cubas",
+       "pos": "M",
+       "grid": "3:2",
+       "rating": 7.3
+      },
+      {
+       "no": 88,
+       "name": "Galarza",
+       "pos": "M",
+       "grid": "3:3",
+       "rating": 7.4
+      },
+      {
+       "no": 9,
+       "name": "Ávalos",
+       "pos": "F",
+       "grid": "4:1",
+       "rating": 6.5
+      },
+      {
+       "no": 19,
+       "name": "Enciso",
+       "pos": "F",
+       "grid": "4:2",
+       "rating": 5.8
+      }
+     ]
+    },
+    "away": {
+     "formation": "3-4-2-1",
+     "players": [
+      {
+       "no": 1,
+       "name": "Beach",
+       "pos": "G",
+       "grid": "1:1",
+       "rating": 7.4
+      },
+      {
+       "no": 39,
+       "name": "Circati",
+       "pos": "D",
+       "grid": "2:1",
+       "rating": 7.5
+      },
+      {
+       "no": 15,
+       "name": "Souttar",
+       "pos": "D",
+       "grid": "2:2",
+       "rating": 7.3
+      },
+      {
+       "no": 22,
+       "name": "Herrington",
+       "pos": "D",
+       "grid": "2:3",
+       "rating": 7
+      },
+      {
+       "no": 12,
+       "name": "Bos",
+       "pos": "M",
+       "grid": "3:1",
+       "rating": 7.3
+      },
+      {
+       "no": 21,
+       "name": "O'Neill",
+       "pos": "M",
+       "grid": "3:2",
+       "rating": 6.9
+      },
+      {
+       "no": 7,
+       "name": "Irvine",
+       "pos": "M",
+       "grid": "3:3",
+       "rating": 6.8
+      },
+      {
+       "no": 16,
+       "name": "Behich",
+       "pos": "M",
+       "grid": "3:4",
+       "rating": 6.7
+      },
+      {
+       "no": 10,
+       "name": "Volpato",
+       "pos": "F",
+       "grid": "4:1",
+       "rating": 5.9
+      },
+      {
+       "no": 24,
+       "name": "Metcalfe",
+       "pos": "F",
+       "grid": "4:2",
+       "rating": 6.7
+      },
+      {
+       "no": 66,
+       "name": "Irankunda",
+       "pos": "F",
+       "grid": "5:1",
+       "rating": 6.4
+      }
+     ]
+    }
+   },
+   "subs": {
+    "home": [
+     {
+      "minute": 46,
+      "in": "Mauricio",
+      "out": "Maidana",
+      "rating": 6.7
+     },
+     {
+      "minute": 67,
+      "in": "Arce",
+      "out": "Ávalos",
+      "rating": 6.5
+     },
+     {
+      "minute": 84,
+      "in": "Canale",
+      "out": "Alderete",
+      "rating": 6.6
+     },
+     {
+      "minute": 90,
+      "in": "Alonso",
+      "out": "Galarza"
+     }
+    ],
+    "away": [
+     {
+      "minute": 58,
+      "in": "Hrustic",
+      "out": "Volpato",
+      "rating": 6.6
+     },
+     {
+      "minute": 84,
+      "in": "Yengi",
+      "out": "Irankunda",
+      "rating": 6.3
+     },
+     {
+      "minute": 84,
+      "in": "Okon-Engstler",
+      "out": "Irvine",
+      "rating": 6.5
      }
     ]
    }
