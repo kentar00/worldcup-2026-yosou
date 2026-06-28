@@ -109,7 +109,7 @@
   .gcard table{font-size:12.5px}.gcard th,.gcard td{padding:7px 5px}
   .gcard td.l{text-align:left;font-weight:700}
   .ochip{display:inline-block;font-size:10px;font-weight:900;color:#1a160f;border-radius:5px;padding:1px 6px;margin-left:5px}
-  .flag{width:22px;height:16px;border-radius:2px;object-fit:cover;vertical-align:-3px;box-shadow:0 0 0 1px rgba(0,0,0,.25);flex:none;background:rgba(255,255,255,.06)}
+  .flag{width:22px;height:15px;border-radius:2px;object-fit:contain;vertical-align:-3px;box-shadow:0 0 0 1px rgba(0,0,0,.25);flex:none;background:rgba(255,255,255,.06)}
   /* knockout bracket */
   .bk-row{display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:11px;background:var(--row);border:1px solid var(--line);margin:7px 0}
   .bk-mno{font-family:"Anton",sans-serif;font-size:13px;color:var(--gold);min-width:36px;flex:none;text-align:center}
@@ -160,6 +160,8 @@
   .tb-meta .tb-d i{font-style:normal;opacity:.55;margin-left:4px;font-size:9px}
   .tb-meta .tb-v{display:block;font-size:9.5px;color:var(--tx);white-space:normal;word-break:break-word;margin-top:1px}
   .tb-meta .tb-v.dim{color:var(--muted)}
+  .tb-meta .tb-jst{font-size:7.5px;font-weight:800;color:#0a0a10;background:var(--g-mid);border-radius:3px;padding:0 3px;margin-left:4px;vertical-align:1px}
+  .tb-meta .tb-loc{font-size:7.5px;color:var(--muted);margin-left:4px}
   /* 決勝T日程（日程タブ） */
   .ko-m{display:flex;align-items:center;gap:9px;padding:8px 8px;border-bottom:1px solid var(--line)}
   .ko-no{font-family:"Anton",sans-serif;font-size:13px;color:var(--gold);min-width:34px;flex:none}
@@ -530,24 +532,27 @@ const KO_PTS=Object.fromEntries(KO_ROUNDS.map(r=>[r[0],r[2]]));
 const KO_LABEL=Object.fromEntries(KO_ROUNDS.map(r=>[r[0],r[1]]));
 const WD=["日","月","火","水","木","金","土"];
 // 決勝トーナメント（R32）公式ブラケット・テンプレート。a/b はグループ順位スロット（現地日付）。
+// d/t は日本時間（JST）。a/b はスロット（1X=組1位, 2X=2位, 3:…=該当組の3位）。
 const R32=[
-  {no:73,d:"6/28",city:"イングルウッド",a:"2A",b:"2B"},
-  {no:74,d:"6/29",city:"フォックスボロ",a:"1E",b:"3:A/B/C/D/F"},
-  {no:75,d:"6/29",city:"グアダラハラ",a:"1F",b:"2C"},
-  {no:76,d:"6/29",city:"ヒューストン",a:"1C",b:"2F"},
-  {no:77,d:"6/30",city:"イーストラザフォード",a:"1I",b:"3:C/D/F/G/H"},
-  {no:78,d:"6/30",city:"アーリントン",a:"2E",b:"2I"},
-  {no:79,d:"6/30",city:"メキシコシティ",a:"1A",b:"3:C/E/F/H/I"},
-  {no:80,d:"7/1",city:"アトランタ",a:"1L",b:"3:E/H/I/J/K"},
-  {no:81,d:"7/1",city:"サンタクララ",a:"1D",b:"3:B/E/F/I/J"},
-  {no:82,d:"7/1",city:"シアトル",a:"1G",b:"3:A/E/H/I/J"},
-  {no:83,d:"7/2",city:"トロント",a:"2K",b:"2L"},
-  {no:84,d:"7/2",city:"イングルウッド",a:"1H",b:"2J"},
-  {no:85,d:"7/2",city:"バンクーバー",a:"1B",b:"3:E/F/G/I/J"},
-  {no:86,d:"7/3",city:"マイアミ",a:"1J",b:"2H"},
-  {no:87,d:"7/3",city:"カンザスシティ",a:"1K",b:"3:D/E/I/J/L"},
-  {no:88,d:"7/3",city:"アーリントン",a:"2D",b:"2G"},
+  {no:73,d:"6/29",t:"04:00",city:"イングルウッド",a:"2A",b:"2B"},
+  {no:74,d:"6/30",t:"05:30",city:"フォックスボロ",a:"1E",b:"3:A/B/C/D/F"},
+  {no:75,d:"6/30",t:"10:00",city:"モンテレイ",a:"1F",b:"2C"},
+  {no:76,d:"6/30",t:"02:00",city:"ヒューストン",a:"1C",b:"2F"},
+  {no:77,d:"7/1",t:"06:00",city:"イーストラザフォード",a:"1I",b:"3:C/D/F/G/H"},
+  {no:78,d:"7/1",t:"02:00",city:"アーリントン",a:"2E",b:"2I"},
+  {no:79,d:"7/1",t:"10:00",city:"メキシコシティ",a:"1A",b:"3:C/E/F/H/I"},
+  {no:80,d:"7/2",t:"01:00",city:"アトランタ",a:"1L",b:"3:E/H/I/J/K"},
+  {no:81,d:"7/2",t:"09:00",city:"サンタクララ",a:"1D",b:"3:B/E/F/I/J"},
+  {no:82,d:"7/2",t:"05:00",city:"シアトル",a:"1G",b:"3:A/E/H/I/J"},
+  {no:83,d:"7/3",t:"08:00",city:"トロント",a:"2K",b:"2L"},
+  {no:84,d:"7/3",t:"04:00",city:"イングルウッド",a:"1H",b:"2J"},
+  {no:85,d:"7/3",t:"12:00",city:"バンクーバー",a:"1B",b:"3:E/F/G/I/J"},
+  {no:86,d:"7/4",t:"07:00",city:"マイアミ",a:"1J",b:"2H"},
+  {no:87,d:"7/4",t:"10:30",city:"カンザスシティ",a:"1K",b:"3:D/E/I/J/L"},
+  {no:88,d:"7/4",t:"03:00",city:"アーリントン",a:"2D",b:"2G"},
 ];
+// 公式の3位通過の割り当て（試合番号→3位の組）。GS確定後に適用（greedyではなく公式表）。
+const KO_THIRD={74:"D",77:"F",79:"E",80:"K",81:"B",82:"I",85:"J",87:"L"};
 // R16以降の勝ち上がり接続: [試合番号, 上側の供給試合, 下側の供給試合]
 const FLOW=[
   {label:"ベスト16",en:"ROUND OF 16",ms:[[90,73,75],[89,74,77],[91,76,78],[92,79,80],[93,83,84],[94,81,82],[95,86,88],[96,85,87]]},
@@ -556,7 +561,7 @@ const FLOW=[
   {label:"決勝",en:"FINAL",ms:[[104,101,102]]},
 ];
 // 開催都市 → スタジアム名（R32の各会場＋準決勝・決勝）
-const STAD={"イングルウッド":"SoFiスタジアム","フォックスボロ":"ジレット・スタジアム","グアダラハラ":"エスタディオ・アクロン","ヒューストン":"NRGスタジアム","イーストラザフォード":"メットライフ・スタジアム","アーリントン":"AT&Tスタジアム","メキシコシティ":"エスタディオ・アステカ","アトランタ":"メルセデス・ベンツ・スタジアム","サンタクララ":"リーバイス・スタジアム","シアトル":"ルーメン・フィールド","トロント":"BMOフィールド","バンクーバー":"BCプレイス","マイアミ":"ハードロック・スタジアム","カンザスシティ":"アローヘッド・スタジアム"};
+const STAD={"イングルウッド":"SoFiスタジアム","フォックスボロ":"ジレット・スタジアム","モンテレイ":"エスタディオBBVA","グアダラハラ":"エスタディオ・アクロン","ヒューストン":"NRGスタジアム","イーストラザフォード":"メットライフ・スタジアム","アーリントン":"AT&Tスタジアム","メキシコシティ":"エスタディオ・アステカ","アトランタ":"メルセデス・ベンツ・スタジアム","サンタクララ":"リーバイス・スタジアム","シアトル":"ルーメン・フィールド","トロント":"BMOフィールド","バンクーバー":"BCプレイス","マイアミ":"ハードロック・スタジアム","カンザスシティ":"アローヘッド・スタジアム"};
 // 公式日程に基づくノックアウト各試合の日付・会場（R16=7/4-7、QF=7/9-11、SF=7/14-15、決勝=7/19）。
 // R16は会場未確定のため日付のみ。QF/SF/決勝は公式の開催都市。
 const VENUE_KO={
@@ -676,16 +681,20 @@ function tbProject(){
   // 3位の上位8グループが突破 → R32の「3:◯/◯…」枠へ割当（許容組の集合に対し完全マッチング）
   const thirds=Object.keys(groups).map(g=>Object.assign({g},groups[g].rows[2])).sort((a,b)=>b.pts-a.pts||b.gd-a.gd||b.gf-a.gf);
   const Q=thirds.slice(0,8).map(x=>x.g);
+  const done=Object.values(groups).every(x=>x.complete);
   const slots=[];R32.forEach(m=>['a','b'].forEach(k=>{if(m[k][0]==='3')slots.push({key:m.no+k,allowed:m[k].slice(2).split('/')});}));
   const assign={};
-  (function bt(i,used){if(i===slots.length)return true;for(const g of slots[i].allowed){if(Q.includes(g)&&!used[g]){used[g]=1;assign[slots[i].key]=g;if(bt(i+1,used))return true;used[g]=0;delete assign[slots[i].key];}}return false;})(0,{});
-  return {groups,Q,assign,done:Object.values(groups).every(x=>x.complete)};
+  // GS確定後は公式の割り当て表（KO_THIRD）を使用。未確定時のみ偏差値予測用に許容集合で総当たり割り当て。
+  const officialOk=done&&slots.every(s=>{const g=KO_THIRD[parseInt(s.key,10)];return g&&Q.includes(g)&&s.allowed.includes(g);});
+  if(officialOk){slots.forEach(s=>{assign[s.key]=KO_THIRD[parseInt(s.key,10)];});}
+  else{(function bt(i,used){if(i===slots.length)return true;for(const g of slots[i].allowed){if(Q.includes(g)&&!used[g]){used[g]=1;assign[slots[i].key]=g;if(bt(i+1,used))return true;used[g]=0;delete assign[slots[i].key];}}return false;})(0,{});}
+  return {groups,Q,assign,done};
 }
 function renderBracket(){
   const P=tbProject();
   // 試合ツリー構築
   const byNo={};
-  R32.forEach(m=>byNo[m.no]={no:m.no,round:'R32',a:m.a,b:m.b,city:m.city,d:m.d});
+  R32.forEach(m=>byNo[m.no]={no:m.no,round:'R32',a:m.a,b:m.b,city:m.city,d:m.d,t:m.t});
   const rk=['R16','QF','SF','F'];
   FLOW.forEach((r,ri)=>r.ms.forEach(x=>byNo[x[0]]={no:x[0],round:rk[ri],c1:x[1],c2:x[2]}));
   // R32スロット → 想定国
@@ -727,9 +736,10 @@ function renderBracket(){
     [m.c1,m.c2].forEach(cn=>{const cc=byNo[cn],cx=colX(col[cc.round])+BW,ccy=cy(cn),mx=(cx+px)/2;
       links+=`<polyline points="${cx},${ccy} ${mx},${ccy} ${mx},${py} ${px},${py}" fill="none" stroke="var(--line)" stroke-width="1.4"/>`;});});
   // 会場
-  const venue=m=>{const v=m.round==='R32'?{city:m.city,d:m.d}:VENUE_KO[m.no];if(!v)return '';
+  const venue=m=>{const v=m.round==='R32'?{city:m.city,d:m.d,t:m.t}:VENUE_KO[m.no];if(!v)return '';
     const stad=v.city?(STAD[v.city]||''):'';
-    return `<div class="tb-meta"><span class="tb-d"><b>${v.d||'日程調整中'}</b><i>#${m.no}</i></span>${v.city?`<span class="tb-v">${esc(v.city)}${stad?'・'+esc(stad):''}</span>`:'<span class="tb-v dim">会場調整中</span>'}</div>`;};
+    const dt=v.t?`<b>${v.d} ${v.t}</b><span class="tb-jst">JST</span>`:`<b>${v.d||'日程調整中'}</b><span class="tb-loc">現地</span>`;
+    return `<div class="tb-meta"><span class="tb-d">${dt}<i>#${m.no}</i></span>${v.city?`<span class="tb-v">${esc(v.city)}${stad?'・'+esc(stad):''}</span>`:'<span class="tb-v dim">会場調整中</span>'}</div>`;};
   // ボックス描画
   const slotRow=(info,isAdv,advAct)=>{
     const t=info.team,act=info.status==='actual';
@@ -764,7 +774,7 @@ function renderBracket(){
       <svg class="tb-links" width="${W}" height="${Hc}">${links}</svg>
       ${hd}${boxes}
     </div></div>
-    <div class="note">日程は現地時間（R32=6/28〜7/3、ベスト16=7/4〜7、準々決勝=7/9〜11、準決勝=7/14・15、決勝=7/19）。会場は公式日程に準拠（ベスト16の会場は調整中表示）。想定国・勝ち上がりは戦力偏差値（「戦力指数」タブ）に基づく自動予測で、結果が入るたびに更新されます。</div>`;
+    <div class="note">R32の日付・時刻は<b>日本時間（JST）</b>。ベスト16以降は現地日付（ベスト16=7/4〜7、準々=7/9〜11、準決=7/14・15、決勝=7/19、いずれも現地。時刻は確定後に反映）。会場は公式日程に準拠。勝ち上がりは実結果が入れば反映、未消化分は戦力偏差値で予測します。</div>`;
 }
 
 // 決勝トーナメント日程（日程タブ）。R32は確定通過国を表示（未確定枠は「想定」）。
@@ -777,15 +787,16 @@ function koScheduleHTML(){
   const side=(s,no,k)=>{const x=slot(s,no,k);return x.t?`${flag(x.t)} ${esc(x.t)}${x.proj?'<span class="ko-proj">想定</span>':''}`:`<span class="bk-tbd">${x.lab}</span>`;};
   const byDate={};R32.forEach(m=>{(byDate[m.d]=byDate[m.d]||[]).push(m);});
   let rows='';
-  Object.keys(byDate).forEach(d=>{rows+=`<div class="day">${d}（現地）</div>`;
+  Object.keys(byDate).forEach(d=>{rows+=`<div class="day">${d}（日本時間）</div>`;
     byDate[d].forEach(m=>{const stad=STAD[m.city]||'';
-      rows+=`<div class="ko-m"><span class="ko-no">#${m.no}</span><span class="ko-tm">${side(m.a,m.no,'a')}<i>vs</i>${side(m.b,m.no,'b')}</span><span class="ko-ven">${esc(m.city)}${stad?'<br><em>'+esc(stad)+'</em>':''}</span></div>`;});});
+      rows+=`<div class="ko-m"><span class="ko-no"><b>${m.t}</b><br>#${m.no}</span><span class="ko-tm">${side(m.a,m.no,'a')}<i>vs</i>${side(m.b,m.no,'b')}</span><span class="ko-ven">${esc(m.city)}${stad?'<br><em>'+esc(stad)+'</em>':''}</span></div>`;});});
   const later=[['ベスト16','7/4〜7/7'],['準々決勝','7/9〜7/11'],['準決勝','7/14・7/15'],['決勝','7/19・メットライフ']];
   const lat=later.map(x=>`<div class="ko-round"><b>${x[0]}</b><span>${x[1]}</span></div>`).join('');
   return `<div class="barh" style="margin-top:18px">決勝トーナメント 日程 <span class="en">KNOCKOUT SCHEDULE</span></div>
-    <p class="hint">ラウンド32（現地時間）。グループ確定済みの通過国を表示（未確定枠は<span class="ko-proj">想定</span>）。組合せ・勝ち上がり予想は「決勝T表」タブ。</p>
+    <p class="hint">ラウンド32の<b>日本時間（JST）キックオフ</b>。グループ確定済みの通過国を表示（未確定枠は<span class="ko-proj">想定</span>）。組合せ・勝ち上がり予想は「決勝T表」タブ。</p>
     ${rows}
-    <div class="ko-rounds">${lat}</div>`;
+    <div class="ko-rounds">${lat}</div>
+    <div class="hint" style="margin-top:8px">ベスト16以降は現地日付。日本時間は概ね翌日になります（時刻は確定後に反映）。</div>`;
 }
 function renderRank(){
   const arr=Object.keys(G.teams).map(n=>({n,r:FIFA_RANK[n]??999})).sort((a,b)=>a.r-b.r);
