@@ -150,6 +150,10 @@
   .tb-bdg.proj{background:rgba(167,139,250,.16);color:#cbbcff;border:1px solid rgba(167,139,250,.32)}
   .tb-slot.adv .tb-av{margin-left:auto;color:var(--gold);font-size:9px;flex:none}
   .tb-slot.adv .tb-bdg{margin-left:6px}
+  .tb-slot.act .tb-nm{color:#9fe0b0;font-weight:800}
+  .tb-slot .tb-av.act{color:#9fe0b0;font-size:11px}
+  .tb-box.act{border-color:#3a7d52}
+  .tb-champ.act{background:linear-gradient(110deg,rgba(120,200,140,.2),rgba(212,175,124,.1));border-color:#5fae7a}
   .tb-meta{padding:4px 8px;background:rgba(0,0,0,.24);border-top:1px solid var(--line);line-height:1.3}
   .tb-meta .tb-d{display:block;font-size:10.5px;color:var(--muted)}
   .tb-meta .tb-d b{color:var(--gold);font-weight:800}
@@ -692,14 +696,21 @@ function renderBracket(){
     const g=slot[1],r=P.groups[g]&&P.groups[g].rows[slot[0]==='1'?0:1];
     return {team:r&&r.team,tag:g+(slot[0]==='1'?'①':'②'),label:`${g}組${posJa[slot[0]]}`,status:P.groups[g]&&P.groups[g].complete?'done':'proj'};
   };
-  // KO勝ち上がり予測（偏差値の高い方が勝つ）。memo化。
+  // 実際のKO結果（koMatches）を対戦カードで照合
+  const koLookup=(round,ta,tb)=>{if(!ta||!tb||!G.koMatches)return null;
+    for(const m of G.koMatches){if(m.round!==round)continue;
+      if((m.home===ta&&m.away===tb)||(m.home===tb&&m.away===ta))return m;}return null;};
+  // 勝ち上がり：実結果(koMatches)があれば優先、無ければ偏差値で予測。memo化。
   const memo={};
   const pickWin=(a,b)=>!a.team?b:!b.team?a:tbDev(a.team)>=tbDev(b.team)?a:b;
   function nodeInfo(no){if(memo[no])return memo[no];const m=byNo[no];let ents;
     if(m.round==='R32')ents=[slotInfo(m.a,no,'a'),slotInfo(m.b,no,'b')];
     else ents=[nodeInfo(m.c1).winner,nodeInfo(m.c2).winner];
-    const w=pickWin(ents[0],ents[1]);
-    return memo[no]={entrants:ents,winner:{team:w.team,status:'pred'}};}
+    const ko=koLookup(m.round,ents[0].team,ents[1].team);
+    let winner,actual=false;
+    if(ko&&ko.winner){winner={team:ko.winner,status:'actual'};actual=true;}
+    else{const w=pickWin(ents[0],ents[1]);winner={team:w.team,status:'pred'};}
+    return memo[no]={entrants:ents,winner,actual};}
   // 幾何配置
   const order=[];(function leaves(no){const m=byNo[no];if(m.round==='R32'){order.push(no);return;}leaves(m.c1);leaves(m.c2);})(104);
   const idx={};order.forEach((no,i)=>idx[no]=i);
@@ -720,31 +731,34 @@ function renderBracket(){
     const stad=v.city?(STAD[v.city]||''):'';
     return `<div class="tb-meta"><span class="tb-d"><b>${v.d||'日程調整中'}</b><i>#${m.no}</i></span>${v.city?`<span class="tb-v">${esc(v.city)}${stad?'・'+esc(stad):''}</span>`:'<span class="tb-v dim">会場調整中</span>'}</div>`;};
   // ボックス描画
-  const slotRow=(info,isAdv)=>{
-    const t=info.team,cls=isAdv?'adv':(info.status==='proj'||info.status==='pred')?'muted':'';
+  const slotRow=(info,isAdv,advAct)=>{
+    const t=info.team,act=info.status==='actual';
+    const cls=isAdv?(advAct?'adv act':'adv'):(info.status==='proj'||info.status==='pred')?'muted':(act?'act':'');
     const bdg=info.status==='proj'?'<span class="tb-bdg proj">想定</span>':'';
-    return `<div class="tb-slot ${cls} ${t?'':'tbd'}">${info.tag?`<span class="tb-tag">${esc(info.tag)}</span>`:''}${t?flag(t):''}<span class="tb-nm">${t?esc(t):(info.label||'未定')}</span>${isAdv?'<span class="tb-av">▶</span>':''}${bdg}</div>`;};
+    const arrow=isAdv?(advAct?'<span class="tb-av act">✔</span>':'<span class="tb-av">▶</span>'):'';
+    return `<div class="tb-slot ${cls} ${t?'':'tbd'}">${info.tag?`<span class="tb-tag">${esc(info.tag)}</span>`:''}${t?flag(t):''}<span class="tb-nm">${t?esc(t):(info.label||'未定')}</span>${arrow}${bdg}</div>`;};
   let boxes='';
   Object.values(byNo).forEach(m=>{const ni=nodeInfo(m.no),x=colX(col[m.round]);
-    const bh=88,top=cy(m.no)-bh/2,advT=ni.winner.team;
-    boxes+=`<div class="tb-box ${m.round==='F'?'win':''}" style="left:${x}px;top:${top}px;width:${BW}px">
-      ${slotRow(ni.entrants[0],ni.entrants[0].team&&ni.entrants[0].team===advT)}
-      ${slotRow(ni.entrants[1],ni.entrants[1].team&&ni.entrants[1].team===advT)}
+    const bh=88,top=cy(m.no)-bh/2,advT=ni.winner.team,advAct=ni.winner.status==='actual';
+    boxes+=`<div class="tb-box ${ni.actual?'act':(m.round==='F'?'win':'')}" style="left:${x}px;top:${top}px;width:${BW}px">
+      ${slotRow(ni.entrants[0],ni.entrants[0].team&&ni.entrants[0].team===advT,advAct)}
+      ${slotRow(ni.entrants[1],ni.entrants[1].team&&ni.entrants[1].team===advT,advAct)}
       ${venue(m)}</div>`;});
   // ヘッダ
   const cols=[['ラウンド32','ROUND OF 32'],['ベスト16','ROUND OF 16'],['準々決勝','QUARTER-FINALS'],['準決勝','SEMI-FINALS'],['決勝','FINAL']];
   const hd=cols.map((c,i)=>`<div class="tb-hd" style="left:${colX(i)}px;width:${BW}px">${c[0]}<em>${c[1]}</em></div>`).join('');
-  const champ=nodeInfo(104).winner.team;
+  const champNode=nodeInfo(104),champ=champNode.winner.team,champAct=champNode.winner.status==='actual';
   const doneCount=Object.values(P.groups).filter(g=>g.complete).length;
+  const koDone=(G.koMatches||[]).filter(m=>m.winner).length;
   document.getElementById('v-bracket').innerHTML=`
-    <div class="barh">決勝トーナメント予想 <span class="en">KNOCKOUT BRACKET</span></div>
-    <p class="hint">公式フォーマット（各組1位×3位、2位×2位）。GS全6試合が揃った組は<b>確定</b>国、未確定の組は現在順位＋第3節の戦力予測から<b>想定</b>国を配置。ノックアウトの勝ち上がりは戦力偏差値による<b>予測</b>です。<b>${doneCount}/12組</b>が確定。</p>
+    <div class="barh">決勝トーナメント表 <span class="en">KNOCKOUT BRACKET</span></div>
+    <p class="hint">公式フォーマット（各組1位×3位、2位×2位）。GS通過国は<b>確定</b>。ノックアウトは<b>実際の試合結果</b>が入れば反映し、未消化分は戦力偏差値で<b>予測</b>します。${koDone?`決勝T <b>${koDone}試合</b>が確定済み。`:'<b>R32は現地6/28開幕</b>——結果が入り次第ここに反映されます。'}</p>
     <div class="tb-legend">
-      <span class="tb-key"><span class="tb-dotk" style="background:#9fe0b0"></span>確定（GS通過）</span>
-      <span class="tb-key"><span class="tb-dotk" style="background:#a78bfa"></span>想定（GS予測）</span>
+      <span class="tb-key"><span class="tb-dotk" style="background:#9fe0b0"></span>✔ 実結果（勝ち上がり確定）</span>
       <span class="tb-key"><span class="tb-dotk" style="background:var(--gold)"></span>▶ 勝ち上がり予測</span>
+      <span class="tb-key"><span class="tb-dotk" style="background:#a78bfa"></span>想定（GS予測の枠）</span>
     </div>
-    ${champ?`<div class="tb-champ"><span class="flag-wrap">${flag(champ)}</span><div><div class="ttl">予想優勝 🏆 CHAMPION</div><div class="nm">${esc(champ)}</div></div></div>`:''}
+    ${champ?`<div class="tb-champ${champAct?' act':''}"><span class="flag-wrap">${flag(champ)}</span><div><div class="ttl">${champAct?'🏆 優勝 CHAMPION':'予想優勝 🏆 PREDICTED'}</div><div class="nm">${esc(champ)}</div></div></div>`:''}
     <div class="tb-scrollhint">← 横スクロールで決勝まで（各試合に日付・会場を表示）→</div>
     <div class="tb-wrap"><div class="tb-canvas" style="width:${W}px;height:${Hc}px">
       <svg class="tb-links" width="${W}" height="${Hc}">${links}</svg>
