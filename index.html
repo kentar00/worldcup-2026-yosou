@@ -896,14 +896,16 @@ function tbSurvivors(){const P=tbProject();const s=[];
   Object.keys(P.groups).sort().forEach(g=>{const r=P.groups[g].rows;if(r[0])s.push(r[0].team);if(r[1])s.push(r[1].team);});
   P.Q.forEach(g=>{const r=P.groups[g].rows;if(r[2])s.push(r[2].team);});
   return s;}
+// グループリーグ1位通過の12カ国（ラッキー国の対象）
+function tbWinners(){const P=tbProject();return 'ABCDEFGHIJKL'.split('').map(g=>P.groups[g]&&P.groups[g].rows[0]&&P.groups[g].rows[0].team).filter(Boolean);}
 let rlLk={order:null,picks:{},spinning:false,timer:null};
 function luckyInit(){const c=compute();rlLk.order=[...G.players].sort((a,b)=>(c.P[a].total)-(c.P[b].total));rlLk.picks={};
   G.players.forEach(p=>{if(G.lucky&&G.lucky[p])rlLk.picks[p]=G.lucky[p];});}
-function luckyEligible(p){const taken=new Set(Object.values(rlLk.picks));return tbSurvivors().filter(c=>owner(c)!==p&&!taken.has(c));}
+function luckyEligible(p){const taken=new Set(Object.values(rlLk.picks));return tbWinners().filter(c=>owner(c)!==p&&!taken.has(c));}
 function renderLuckyRoulette(){
   const gsDone=G.gsMatches.every(m=>m.hs!=null);
   if(!gsDone)return `<div class="barh">救済ルーレット <span class="en">LUCKY NATION</span></div>
-    <div class="note">グループステージ全72試合が終了してから回せます（生き残り国＝決勝トーナメント進出32カ国の中から選びます）。現在は未完了です。</div>`;
+    <div class="note">グループステージ全72試合が終了してから回せます（対象＝グループリーグ1位通過の12カ国の中から選びます）。現在は未完了です。</div>`;
   if(rlLk.order===null)luckyInit();
   const c=compute();
   const order=rlLk.order,idx=Object.keys(rlLk.picks).length,done=idx>=order.length;
@@ -914,7 +916,7 @@ function renderLuckyRoulette(){
     return `<div class="rl-item${cur?' cur':''}"><span class="rl-rank">${i+1}</span><span class="rl-dot" style="background:${pcol(p)}"></span><span class="rl-nm">${esc(p)}</span><span class="rl-pts">${fmt(c.P[p].total)}pt</span>${lk?`<span class="rl-lk">${flag(lk)} ${esc(lk)}</span>`:`<span class="rl-lk tbd">${cur?'抽選中…':'—'}</span>`}</div>`;}).join('');
   const elig=picker?luckyEligible(picker):[];
   return `<div class="barh">救済ルーレット（ラッキー国）<span class="en">LUCKY NATION</span></div>
-    <p class="hint">グループステージ終了時、<b>暫定下位の人から順に</b>ルーレットを回し、自分が持っていない<b>生き残り国（決勝T進出32カ国）</b>を1つ「ラッキー国」として獲得。その国の決勝T突破ポイントが自分にも加算されます（元の保有者にも入る“相乗り”方式・チームは奪いません）。下位ほど先に強い国を狙える救済措置。</p>
+    <p class="hint">グループステージ終了時、<b>暫定下位の人から順に</b>ルーレットを回し、自分が持っていない<b>グループリーグ1位通過の12カ国</b>から1つ「ラッキー国」として獲得。その国の決勝T突破ポイントが自分にも加算されます（元の保有者にも入る“相乗り”方式・チームは奪いません）。下位ほど先に強い国を狙える救済措置。</p>
     <div class="stripe"></div>
     <div class="rl-stage"><div class="rl-name" id="lk-name" style="color:${col}">${done?'🏆 完了':(picker?`<span style="font-size:13px;color:var(--muted);display:block">${esc(picker)} の抽選</span>`+'スタート':'READY')}</div></div>
     <div class="rl-btns">
