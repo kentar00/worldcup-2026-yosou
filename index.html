@@ -344,6 +344,11 @@
   .rl-rank{font-family:"Anton",sans-serif;font-size:22px;width:30px;text-align:center;color:var(--gold)}
   .rl-dot{width:14px;height:14px;border-radius:50%;flex:none}
   .rl-nm{font-weight:900;font-size:17px}
+  .rl-item.cur{background:rgba(167,139,250,.08);border-radius:8px}
+  .rl-pts{margin-left:auto;font-size:12px;color:var(--muted);font-weight:700;flex:none}
+  .rl-lk{flex:none;display:inline-flex;align-items:center;gap:5px;font-size:13px;font-weight:700;color:var(--g-hi);min-width:96px;justify-content:flex-end}
+  .rl-lk.tbd{color:var(--muted);font-weight:600}
+  .rl-lk .flag{width:20px;height:14px}
   /* home bento */
   .bento{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:2px 0 8px}
   .bx{border-radius:18px;padding:16px;position:relative;overflow:hidden;min-height:104px;display:flex;flex-direction:column}
@@ -858,7 +863,13 @@ function renderPortfolio(){
     <div class="note">国名をタップ → 想定スタメン（布陣図）・戦術サマリ・招集選手（背番号/位置/年齢/所属クラブ＋クラブ国旗）・監督（国籍）・直近の試合を表示。ポイントは本予想の保有者加算分（GS＋1位ボーナス＋決勝T突破、ジャイキリ×2込み）。</div>`;
 }
 
+let rlMode='draft';
+function setRlMode(m){if(rlState.spinning||rlLk.spinning)return;rlMode=m;renderRoulette();}
 function renderRoulette(){
+  const tabs=`<div class="rc-tabs">
+    <button class="${rlMode==='draft'?'on':''}" onclick="setRlMode('draft')">ドラフト順<span class="en">DRAFT ORDER</span></button>
+    <button class="${rlMode==='lucky'?'on':''}" onclick="setRlMode('lucky')">ラッキー国<span class="en">LUCKY NATION</span></button></div>`;
+  if(rlMode==='lucky'){document.getElementById('v-roulette').innerHTML=tabs+renderLuckyRoulette();return;}
   if(rlState.remaining===null){rlState.order=[];rlState.remaining=[...G.players];}
   const done=rlState.remaining.length===0;
   const last=rlState.order[rlState.order.length-1];
@@ -867,7 +878,7 @@ function renderRoulette(){
   const nameCol=last?pcol(last):'#a78bfa';
   const ol=rlState.order.map((p,i)=>`<div class="rl-item"><span class="rl-rank">${i+1}</span><span class="rl-dot" style="background:${pcol(p)}"></span><span class="rl-nm">${esc(p)}</span></div>`).join('');
   const rem=rlState.remaining.map(p=>`<span class="rl-pill" style="border-color:${pcol(p)};color:${pcol(p)}">${esc(p)}</span>`).join('');
-  document.getElementById('v-roulette').innerHTML=`
+  document.getElementById('v-roulette').innerHTML=tabs+`
     <div class="barh">ドラフト順ルーレット <span class="en">DRAFT ORDER</span></div>
     <div class="stripe"></div>
     <div class="rl-stage"><div class="rl-name" id="rl-name" style="color:${nameCol}">${esc(nameTxt)}</div></div>
@@ -879,6 +890,75 @@ function renderRoulette(){
     <div class="hint">スタート→ストップで1人ずつ確定（${pos}/${G.players.length}人）。${done?'全員の順番が決定しました！':'残り：'+(rem||'なし')}</div>
     <div class="barh">確定した順番 <span class="en">RESULT</span></div>
     <div class="card">${ol||'<div class="hint">まだ確定していません。</div>'}</div>`;
+}
+// 決勝トーナメント進出（生き残り）32カ国＝各組1・2位＋3位上位8
+function tbSurvivors(){const P=tbProject();const s=[];
+  Object.keys(P.groups).sort().forEach(g=>{const r=P.groups[g].rows;if(r[0])s.push(r[0].team);if(r[1])s.push(r[1].team);});
+  P.Q.forEach(g=>{const r=P.groups[g].rows;if(r[2])s.push(r[2].team);});
+  return s;}
+let rlLk={order:null,picks:{},spinning:false,timer:null};
+function luckyInit(){const c=compute();rlLk.order=[...G.players].sort((a,b)=>(c.P[a].total)-(c.P[b].total));rlLk.picks={};
+  G.players.forEach(p=>{if(G.lucky&&G.lucky[p])rlLk.picks[p]=G.lucky[p];});}
+function luckyEligible(p){const taken=new Set(Object.values(rlLk.picks));return tbSurvivors().filter(c=>owner(c)!==p&&!taken.has(c));}
+function renderLuckyRoulette(){
+  const gsDone=G.gsMatches.every(m=>m.hs!=null);
+  if(!gsDone)return `<div class="barh">救済ルーレット <span class="en">LUCKY NATION</span></div>
+    <div class="note">グループステージ全72試合が終了してから回せます（生き残り国＝決勝トーナメント進出32カ国の中から選びます）。現在は未完了です。</div>`;
+  if(rlLk.order===null)luckyInit();
+  const c=compute();
+  const order=rlLk.order,idx=Object.keys(rlLk.picks).length,done=idx>=order.length;
+  const picker=done?null:order[idx];
+  const nm=done?'🏆 完了':(picker||'READY');
+  const col=picker?pcol(picker):'#a78bfa';
+  const rows=order.map((p,i)=>{const lk=rlLk.picks[p];const cur=(!done&&p===picker);
+    return `<div class="rl-item${cur?' cur':''}"><span class="rl-rank">${i+1}</span><span class="rl-dot" style="background:${pcol(p)}"></span><span class="rl-nm">${esc(p)}</span><span class="rl-pts">${fmt(c.P[p].total)}pt</span>${lk?`<span class="rl-lk">${flag(lk)} ${esc(lk)}</span>`:`<span class="rl-lk tbd">${cur?'抽選中…':'—'}</span>`}</div>`;}).join('');
+  const elig=picker?luckyEligible(picker):[];
+  return `<div class="barh">救済ルーレット（ラッキー国）<span class="en">LUCKY NATION</span></div>
+    <p class="hint">グループステージ終了時、<b>暫定下位の人から順に</b>ルーレットを回し、自分が持っていない<b>生き残り国（決勝T進出32カ国）</b>を1つ「ラッキー国」として獲得。その国の決勝T突破ポイントが自分にも加算されます（元の保有者にも入る“相乗り”方式・チームは奪いません）。下位ほど先に強い国を狙える救済措置。</p>
+    <div class="stripe"></div>
+    <div class="rl-stage"><div class="rl-name" id="lk-name" style="color:${col}">${done?'🏆 完了':(picker?`<span style="font-size:13px;color:var(--muted);display:block">${esc(picker)} の抽選</span>`+'スタート':'READY')}</div></div>
+    <div class="rl-btns">
+      <button id="lk-start" class="btn" onclick="rlLkStart()" ${done?'disabled':''}>${done?'完了':(idx===0?'🎲 スタート':'🎲 次を回す（'+esc(picker)+'）')}</button>
+      <button id="lk-stop" class="btn ghost" onclick="rlLkStop()" disabled>■ ストップ</button>
+      <button id="lk-reset" class="del" onclick="rlLkReset()">リセット</button>
+    </div>
+    <div class="hint">${done?'全員のラッキー国が決定しました！（設定タブでも個別変更できます）':`下位から順に抽選（${idx}/${order.length}人）。次は<b style="color:${col}">${esc(picker)}</b>（候補 ${elig.length}カ国）。`}</div>
+    <div class="barh">抽選順とラッキー国 <span class="en">RESULT</span></div>
+    <div class="card">${rows}</div>`;
+}
+function rlLkStart(){
+  if(rlLk.spinning)return;const order=rlLk.order;const idx=Object.keys(rlLk.picks).length;if(idx>=order.length)return;
+  const picker=order[idx];const elig=luckyEligible(picker);if(!elig.length)return;
+  rlLk.spinning=true;
+  const sb=document.getElementById('lk-start'),tb=document.getElementById('lk-stop'),rb=document.getElementById('lk-reset');
+  if(sb)sb.disabled=true;if(tb)tb.disabled=false;if(rb)rb.disabled=true;
+  const el=document.getElementById('lk-name');let i=Math.floor(Math.random()*elig.length);
+  rlLk.timer=setInterval(()=>{const n=elig[i%elig.length];i++;if(el)el.innerHTML=`${flag(n)} ${esc(n)}`;},75);
+}
+function rlLkStop(){
+  if(!rlLk.spinning)return;clearInterval(rlLk.timer);
+  const tb=document.getElementById('lk-stop');if(tb)tb.disabled=true;
+  const idx=Object.keys(rlLk.picks).length,picker=rlLk.order[idx];
+  const elig=luckyEligible(picker);const winner=elig[Math.floor(Math.random()*elig.length)];
+  const el=document.getElementById('lk-name');let k=0;const steps=16;let delay=70;
+  const seq=()=>{const n=(k>=steps-1)?winner:elig[Math.floor(Math.random()*elig.length)];
+    if(el)el.innerHTML=`${flag(n)} ${esc(n)}`;k++;
+    if(k>=steps){rlLkFinalize(picker,winner);return;}
+    delay*=1.14;setTimeout(seq,delay);};
+  seq();
+}
+function rlLkFinalize(picker,winner){
+  rlLk.picks[picker]=winner;rlLk.spinning=false;
+  G.lucky[picker]=winner;syncData();
+  if(Object.keys(rlLk.picks).length>=rlLk.order.length)refresh();
+  renderRoulette();
+  const el=document.getElementById('lk-name');if(el){el.classList.add('pop');setTimeout(()=>el.classList.remove('pop'),450);}
+}
+function rlLkReset(){
+  if(rlLk.spinning){clearInterval(rlLk.timer);rlLk.spinning=false;}
+  rlLk={order:null,picks:{},spinning:false,timer:null};
+  G.players.forEach(p=>{if(G.lucky)delete G.lucky[p];});
+  syncData();refresh();renderRoulette();
 }
 function rlStart(){
   if(rlState.spinning||rlState.remaining.length===0)return;
@@ -1158,6 +1238,14 @@ function mdIds(md){const s=new Set();'ABCDEFGHIJKL'.split('').forEach(g=>{const 
 // 編集部レビュー（節ごとの文章。実際の試合結果に基づく独自の講評）
 function recapEditorial(md){
   const ed=(cls,tag,title,body)=>`<div class="rc-ed ${cls}"><div class="rc-edh"><span class="rc-tag ${cls}">${tag}</span><b>${title}</b></div><p>${body}</p></div>`;
+  if(md===3)return [
+    ed('star','スター','レジェンドと新星が刻んだ最終節',`<b>デンベレがノルウェー戦で評価10.0（満点）</b>。フランスは4-1で完勝し首位通過、デンベレは前半だけでハットトリックを達成した。<b>メッシは途中出場から得点</b>しアルゼンチンを3連勝（勝点9）に。ベルギーは<b>デ・ブライネ（評価9.0）とトロサール2発</b>で5発大勝。そして<b>ハリー・ケインがW杯通算11得点でイングランド人最多記録</b>を樹立した。`),
+    ed('jp','日本代表','堂々のグループ2位で決勝トーナメントへ',`<b>日本 1-1 スウェーデン</b>。<b>前田大然</b>のゴールで追いつき、グループF2位で<b>2大会連続の決勝トーナメント進出</b>を確定させた。首位オランダに次ぐ堂々の通過。初戦オランダ撃破未遂のドロー、第2節チュニジア4-0と、攻守に充実した3試合だった。`),
+    ed('up','番狂わせ','歓喜の初突破と、まさかの強豪敗退',`初出場の<b>カーボベルデが歴史的なGS突破</b>！ スペインに次ぐH組2位で、人口約50万の島国が世界を驚かせた。一方<b>ウルグアイはまさかの3位敗退</b>、<b>ドイツもエクアドルに1-2と敗れた</b>（2位通過は死守）。カタール・ウズベキスタン・イラクら大量失点組も姿を消した。`),
+    ed('goal','撃ち合い','最終節も大量点ラッシュ',`<b>セネガル 5-0 イラク</b>（イラクは前半13分に退場者）、<b>ベルギー 5-1 ニュージーランド</b>、<b>フランス 4-1 ノルウェー</b>と強豪が爆発。<b>アルジェリア 3-3 オーストリア</b>はマフレズ2発を含む6ゴールの死闘ドローに終わった。`),
+    ed('draw','突破','32カ国が出そろう——3位突破の8枠',`強豪は順当に勝ち上がり、<b>フランス・アルゼンチンが勝点9で完勝</b>、スペインは無敗の首位通過、イングランドもL組首位。3位ながら勝ち上がった8カ国は<b>コンゴ民主共和国・スウェーデン・エクアドル・ガーナ・ボスニア・アルジェリア・パラグアイ・セネガル</b>。僅差でイラン・韓国・スコットランド・ウルグアイが涙を呑んだ。`),
+    ed('drama','ドラマ','記録と貫禄、そして惜別',`<b>ロナウドのポルトガルはコロンビアと0-0</b>でK組2位通過、両者譲らぬ好ゲーム。<b>ケインのW杯通算11ゴール</b>、デンベレの満点、メッシの復調と、スターが最終節を彩った。3大会ぶり初出場のカーボベルデが躍進する裏で、優勝候補の一角ウルグアイがグループ敗退という明暗も生まれた。`)
+  ].join('');
   if(md===1)return [
     ed('up','番狂わせ','王者級を倒した新興・伏兵',`今節最大の衝撃は<b>オーストラリアがトルコを2-0で撃破</b>。デビューの守護神ビーチが<b>評価9.1</b>の再三の好セーブで完封し、優勝候補の一角を沈めた。初出場の<b>カーボベルデはスペインと0-0</b>——GKボジーニャが<b>評価9.7</b>、27本のシュートをほぼ独力で跳ね返す圧巻の守備を見せた。さらに<b>カタールは90分のオウンゴールでスイスと1-1</b>、26本を浴びせながら決めきれなかったスイスを尻目に歴史的な初勝点をもぎ取った。`),
     ed('jp','日本代表','オランダ相手に2度追いつく執念のドロー',`<b>オランダ 2-2 日本</b>。世界7位の強豪に2度リードを許しながらも食らいついた。守護神<b>鈴木彩艶が評価7.8</b>の再三の好守を見せ、終盤89分に<b>鎌田大地が値千金の同点弾</b>。勝点1ながら、世界に実力を示す最高の船出となった。`),
@@ -1194,7 +1282,8 @@ function renderRecap(){
   const mem=lb.map((x,i)=>`<div class="rc-mem"><span class="rc-mrank">${i+1}</span><span class="rc-mdot" style="background:${pcol(x.p)}"></span><span class="rc-mnm">${esc(x.p)}</span><span class="rc-mbar"><i style="width:${Math.max(4,x.t/max*100)}%;background:${pcol(x.p)}"></i></span><span class="rc-mpt">${fmt(x.t)}<i>pt</i></span></div>`).join('');
   const grp='ABCDEFGHIJKL'.split('').map(g=>{const ms=rd.filter(m=>m.group===g&&m.hs!=null).sort((a,b)=>(a.date+a.time).localeCompare(b.date+b.time));return `<div class="rc-grp"><span class="rc-gh">${g}組</span><div class="rc-gres">${ms.map(m=>`<span>${flag(m.home)} ${esc(m.home)} <b>${m.hs}-${m.as}</b> ${esc(m.away)} ${flag(m.away)}</span>`).join('')||'<span class="bk-tbd">未消化</span>'}</div></div>`;}).join('');
   const intro={1:`全12グループの<b>初戦${pl.length}試合が出そろった</b>。開催国の明暗、強豪の取りこぼし、新興国の大健闘——波乱と熱狂に満ちた2026年大会の幕開けを振り返る。`,
-    2:`<b>第2節${pl.length}試合が終了</b>。レジェンドの歴史的記録、優勝候補の足踏み、そして7チームの突破前進——勢力図が一気に鮮明になった2巡目を振り返る。`}[md]||'';
+    2:`<b>第2節${pl.length}試合が終了</b>。レジェンドの歴史的記録、優勝候補の足踏み、そして7チームの突破前進——勢力図が一気に鮮明になった2巡目を振り返る。`,
+    3:`<b>グループステージ全72試合が完了し、決勝トーナメント進出32カ国が確定</b>。新興国の歴史的快挙、強豪の貫禄、そして惜別の波乱——グループリーグ最終節のすべてを振り返る。`}[md]||'';
   const tabs=[1,2,3].filter(n=>ready.includes(n)).map(n=>`<button class="${n===md?'on':''}" onclick="setRecapMD(${n})">第${n}節<span class="en">MATCHDAY ${n}</span></button>`).join('');
   document.getElementById('v-recap').innerHTML=`
     ${ready.length>1?`<div class="rc-tabs">${tabs}</div>`:''}
