@@ -16,7 +16,13 @@
  "config": {
   "gk": true
  },
- "lucky": {},
+ "lucky": {
+  "AI": "フランス",
+  "KO": "メキシコ",
+  "NK": "コロンビア",
+  "MM": "アルゼンチン",
+  "KT": "ブラジル"
+ },
  "bets": [],
  "draftOrder": [
   "KT",
