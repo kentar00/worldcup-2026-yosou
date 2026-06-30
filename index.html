@@ -396,6 +396,7 @@
   .hm-rmtop .hm-tn{flex:1;min-width:0;font-weight:700;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:flex;align-items:center;gap:6px}
   .hm-rmtop .hm-tn.aw{justify-content:flex-end}
   .hm-score{font-family:"Anton",sans-serif;font-size:22px;flex:none;padding:0 8px}
+  .hm-pk{font-family:"Noto Sans JP",sans-serif;font-size:10px;font-weight:800;color:var(--g-hi);vertical-align:4px}
   .hm-sc{font-size:12px;color:var(--muted);margin-top:7px;line-height:1.6}
   .hm-sc b{color:var(--tx)}
   .hm-hl{display:flex;align-items:center;gap:0;width:100%;margin-top:10px;padding:0;border:1px solid var(--line);border-radius:10px;overflow:hidden;cursor:pointer;background:#000;position:relative}
@@ -1183,26 +1184,41 @@ function scorersHTML(m){
   return `<div class="hm-sc"><b>⚽ 得点</b>　${s.map(fmtS).join('　')}</div>`;
 }
 function resultCard(m){
-  const hl=(G.highlights&&G.highlights[m.id])||m.highlight||'';const yid=ytId(hl);
+  const key=m.id||m.koKey;
+  const hl=(G.highlights&&G.highlights[key])||m.highlight||'';const yid=ytId(hl);
   const thumb=yid?`<button class="hm-hl" onclick="event.stopPropagation();openHL('${yid}')"><img src="https://img.youtube.com/vi/${yid}/hqdefault.jpg" loading="lazy" alt="ハイライト" onerror="this.parentNode.style.display='none'"><span class="hm-play">▶</span><span class="hm-hltxt">ハイライト</span></button>`:'';
+  const pk=m.pens?` <span class="hm-pk">PK ${m.pens[0]}-${m.pens[1]}</span>`:'';
   return `<div class="hm-rm">
-    <div class="hm-rmtop click" onclick="togMatch('${m.id}','h')" title="詳細">
+    <div class="hm-rmtop click" onclick="togMatch('${esc(key)}','h')" title="詳細">
       <span class="hm-tn">${flag(m.home)} ${esc(m.home)}</span>
-      <span class="hm-score">${m.hs} - ${m.as}</span>
+      <span class="hm-score">${m.hs} - ${m.as}${pk}</span>
       <span class="hm-tn aw">${esc(m.away)} ${flag(m.away)}</span>
-      <span class="m-exp" id="mx-h${m.id}">▾</span>
+      <span class="m-exp" id="mx-h${esc(key)}">▾</span>
     </div>
     ${scorersHTML(m)}${thumb}
-    <div class="mdetail" id="md-h${m.id}" style="display:none"></div>
+    <div class="mdetail" id="md-h${esc(key)}" style="display:none"></div>
   </div>`;
 }
 function fixtureCard(m){
-  return `<div class="hm-fm"><span class="hm-tm">${m.time}</span><span class="gg">${m.group}</span>
+  return `<div class="hm-fm"><span class="hm-tm">${m.time}</span><span class="gg">${esc(m.group)}</span>
     <span class="hm-tn">${flag(m.home)} ${esc(m.home)}</span><span class="x">vs</span>
-    <span class="hm-tn aw">${esc(m.away)} ${flag(m.away)}</span></div>${oddsRow(m.id)}`;
+    <span class="hm-tn aw">${esc(m.away)} ${flag(m.away)}</span></div>${m.id?oddsRow(m.id):''}`;
+}
+// ホームに決勝トーナメント（R32）を含める（GS完了後・確定の対戦カードを日付つきで）
+function koHomeMatches(){
+  if(typeof R32==='undefined'||!G.gsMatches.length||!G.gsMatches.every(m=>m.hs!=null))return [];
+  const P=tbProject();
+  const rsv=(slot,no,k)=>{if(slot[0]==='3'){const g=P.assign[no+k];const r=g&&P.groups[g].rows[2];return r&&r.team;}const g=slot[1],r=P.groups[g]&&P.groups[g].rows[slot[0]==='1'?0:1];return r&&r.team;};
+  const pad=s=>{const a=String(s).split('/');return '2026-'+String(a[0]).padStart(2,'0')+'-'+String(a[1]).padStart(2,'0');};
+  return R32.map(m=>{const home=rsv(m.a,m.no,'a'),away=rsv(m.b,m.no,'b');if(!home||!away)return null;
+    const key=home+'|'+away;const ko=(G.koMatches||[]).find(x=>x.round==='R32'&&((x.home===home&&x.away===away)||(x.home===away&&x.away===home)));
+    const s=G.stats&&G.stats[key];let hs=null,as=null,pens=null,scorers=[];
+    if(ko&&ko.winner&&s){hs=0;as=0;(s.goals||[]).forEach(g=>{if(g.team===home)hs++;else if(g.team===away)as++;});pens=s.pens||null;scorers=(s.goals||[]).map(g=>({player:g.player,minute:g.minute,team:g.team}));}
+    return {koKey:key,home,away,hs,as,pens,scorers,winner:(ko&&ko.winner)||null,date:pad(m.d),time:m.t,group:'R32',round:'R32'};
+  }).filter(Boolean);
 }
 function renderHome(){
-  const all=[...G.gsMatches].sort((a,b)=>mDT(a)-mDT(b));
+  const all=[...G.gsMatches,...koHomeMatches()].sort((a,b)=>mDT(a)-mDT(b));
   const now=Date.now();
   const next=all.find(m=>mDT(m)>=now&&m.hs==null);
   const yd=jstDate(-1),td=jstDate(0),tm=jstDate(1);
