@@ -721,5 +721,30 @@
    "as": 1
   }
  ],
- "koMatches": []
+ "koMatches": [
+  {
+   "round": "R32",
+   "home": "南アフリカ",
+   "away": "カナダ",
+   "winner": "カナダ"
+  },
+  {
+   "round": "R32",
+   "home": "ドイツ",
+   "away": "パラグアイ",
+   "winner": "パラグアイ"
+  },
+  {
+   "round": "R32",
+   "home": "オランダ",
+   "away": "モロッコ",
+   "winner": "モロッコ"
+  },
+  {
+   "round": "R32",
+   "home": "ブラジル",
+   "away": "日本",
+   "winner": "ブラジル"
+  }
+ ]
 }
