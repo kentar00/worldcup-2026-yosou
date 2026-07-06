@@ -1240,9 +1240,22 @@ function renderHome(){
   document.getElementById('v-home').innerHTML=
     `<div class="barh">ホーム <span class="en">DASHBOARD</span></div>`
     +bento
+    +koResultsHTML()
     +sec('前日の試合結果','YESTERDAY',dayBody(yd,`前日（${dstr(yd)}）の試合はありません。`))
     +sec(`本日（${dstr(td)}）`,'TODAY',dayBody(td,`予定はありません（${dstr(td)}）。`))
     +sec(`翌日（${dstr(tm)}）`,'TOMORROW',dayBody(tm,`予定はありません（${dstr(tm)}）。`));
+}
+// 決勝トーナメントの結果（ベスト16以降）をラウンド別に表示。R32は上の前日/本日/翌日で日付順に出る。
+function koResultsHTML(){
+  const RL={R16:'ベスト16',QF:'準々決勝',SF:'準決勝','3rd':'3位決定戦',F:'決勝'};
+  const ord={F:6,SF:5,'3rd':4,QF:3,R16:2};
+  const played=(G.koMatches||[]).filter(m=>m.winner&&m.round!=='R32'&&ord[m.round]);
+  if(!played.length)return '';
+  const cards=m=>{const key=m.home+'|'+m.away,s=G.stats&&G.stats[key];let hs=null,as=null,pens=null,scorers=[];
+    if(s){hs=0;as=0;(s.goals||[]).forEach(g=>{if(g.team===m.home)hs++;else if(g.team===m.away)as++;});pens=s.pens||null;scorers=(s.goals||[]).map(g=>({player:g.player,minute:g.minute,team:g.team}));}
+    return resultCard({koKey:key,home:m.home,away:m.away,hs,as,pens,scorers,winner:m.winner});};
+  const byR={};played.forEach(m=>{(byR[m.round]=byR[m.round]||[]).push(m);});
+  return Object.keys(byR).sort((a,b)=>ord[b]-ord[a]).map(r=>`<div class="barh">${RL[r]} 結果 <span class="en">${r}</span></div>${byR[r].map(cards).join('')}`).join('');
 }
 
 // 総合順位の獲得ポイント内訳（どの国がどこに勝って/引き分けて何pt、ボーナス・決勝T・ラッキー・ベット）
