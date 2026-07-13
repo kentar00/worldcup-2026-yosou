@@ -23,7 +23,38 @@
   "MM": "アルゼンチン",
   "KT": "ブラジル"
  },
- "bets": [],
+ "bets": [
+  {
+   "player": "KT",
+   "team": "フランス",
+   "amount": 5
+  },
+  {
+   "player": "KT",
+   "team": "アルゼンチン",
+   "amount": 5
+  },
+  {
+   "player": "MM",
+   "team": "フランス",
+   "amount": 5
+  },
+  {
+   "player": "NK",
+   "team": "アルゼンチン",
+   "amount": 10
+  },
+  {
+   "player": "KO",
+   "team": "フランス",
+   "amount": 10
+  },
+  {
+   "player": "AI",
+   "team": "フランス",
+   "amount": 10
+  }
+ ],
  "draftOrder": [
   "KT",
   "MM",
