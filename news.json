@@ -1,19 +1,7 @@
 {
- "updated": "2026-08-03T07:36:02.862Z",
+ "updated": "2026-08-03T13:14:27.223Z",
  "source": "Google ニュース",
  "items": [
-  {
-   "title": "恩師が明かす久保建英の「バルセロナ加入初日」。10歳の少年が見せた驚きの能力、その姿はまるで…【コラム／東京五輪男子サッカー】",
-   "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE1NZlBOWElSbXEtXzk3QV9qYkZyZ0VfNWRZUF9yV2hWaEFuT2lFRHJPQkFiWjh2TXE2QkxOOGZvSUxleFJvVWFpR20zZnBVM0MyTU9EaFpITUJDZHlWTVgtVmZlYw?oc=5",
-   "source": "フットボールチャンネル",
-   "date": "Mon, 03 Aug 2026 05:50:49 GMT"
-  },
-  {
-   "title": "イ・ガンインは久保建英より良かったのか？ マジョルカは泥沼6連敗、再考すべき日韓MFの起用【分析コラム】",
-   "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTFBuQ0xVcGFaSXNxVXJoVVd4di1SQkZpZDdfQV83a3kwNUNIYmI2cG9ETlE4TlFUV05La1R1a081c25JRE5TUlhPek8zWEVfb2FzT1hOWEpjVDFrSlBka0IyV1hTTQ?oc=5",
-   "source": "フットボールチャンネル",
-   "date": "Mon, 03 Aug 2026 05:45:42 GMT"
-  },
   {
    "title": "ガンバ、鹿島、柏が新シーズンの序盤を制す!? W杯から見えてくるJリーグで有利な戦術 : 西部謙司 フットボール・ラボ",
    "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE9MeUNSTzlQdWF5VEYxTVRIeF9NNndQak9XWFUwc0N1VTEtY1ZDazQwaTdyeDhtQ1V1ZU4zVFNOa2duLVNPejgzMElFdWJWcnFKVUxqeVpOMGdUaF9aUThBWTNESE1QZw?oc=5",
@@ -23,20 +11,20 @@
   {
    "title": "日本代表次期指揮官の大岩剛監督が示すべき戦術上の課題とは？",
    "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE5xem0ySTQ3SExwT0xTTGd1ek5HaU5RRFZhMHRVRjNjZk5NTktXNWNiX0JfY0phX29DZ3dTdXRweUxPdmhUOEpCekRSQVVWWk1ibWtxc1pFNU5pM1ZmNHBBeA?oc=5",
-   "source": "Football Tribe",
+   "source": "football-tribe.com",
    "date": "Wed, 29 Jul 2026 09:21:00 GMT"
+  },
+  {
+   "title": "【日本代表】森保監督〝短期続投〟から大岩ジャパンへ「鹿島の鬼木監督も候補に…」 武田修宏氏が分析",
+   "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTFBiaFQzMUd6Yl9Zb1lkNkNmR2ttaXgwTkVQRmdYcXFweHE5T0RycFJaVkdreTVpa1lEU3NTVHRRR0tnTjM4QW1TQWNJQ3R3NzlOWDhrYUdwWEtrdE1HX0dmbTRvWkNoeWN1TVdEc09OTGRWSUZ1VHFnVDVvVEVSdw?oc=5",
+   "source": "au Webポータル",
+   "date": "Fri, 24 Jul 2026 07:00:00 GMT"
   },
   {
    "title": "「戦術をそのまま…」山本昌邦技術委員長が新体制について言及。「継承したいのは組織・文化・強化」",
    "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE1IWmtnTmlrQmd0Z3NoVU9vV2NmSHRDSHF0NWFkRUdsSzVrRXhhbVVzWVRnVU5oNHVpbHpFcThpUmthb181dy1LOXZBR1BvVEloTmpHOGd1NWlmdzF2Qy16ZlRZYw?oc=5",
    "source": "フットボールチャンネル",
    "date": "Fri, 24 Jul 2026 07:00:00 GMT"
-  },
-  {
-   "title": "【日本代表】森保監督〝短期続投〟から大岩ジャパンへ「鹿島の鬼木監督も候補に…」 武田修宏氏が分析",
-   "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTFBiaFQzMUd6Yl9Zb1lkNkNmR2ttaXgwTkVQRmdYcXFweHE5T0RycFJaVkdreTVpa1lEU3NTVHRRR0tnTjM4QW1TQWNJQ3R3NzlOWDhrYUdwWEtrdE1HX0dmbTRvWkNoeWN1TVdEc09OTGRWSUZ1VHFnVDVvVEVSdw?oc=5",
-   "source": "au Webポータル",
-   "date": "Thu, 23 Jul 2026 20:02:00 GMT"
   },
   {
    "title": "「“韓国を崩壊させた”名将だ」森保監督が続投→アジア杯後に大岩新監督。日本代表の決定に韓国メディアが熱視線！「W杯優勝のためにどうすべきか分析した」",
@@ -47,7 +35,7 @@
   {
    "title": "FIFAは言った「ブラジルがやるから日本は午後だ」 40度のなか練習する羽目に…森保ジャパンに選択権はなかった",
    "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTFBBVndCRzd2Q1lUV2w2ZVdHUlJGSUVkQlFNVzQxRjl5aVlIT2YwczJqYnk2d2RicV9CNUgzSXdIVEttME1wTnVBMS1VbTgzcUNaRWp2SF8wck1CMUxPeGZpUmRIVzFmZmt0UzQ1UElHUFZvbXpfT0xSTmRZYkVCZ3M?oc=5",
-   "source": "news.yahoo.co.jp",
+   "source": "Yahoo!ニュース",
    "date": "Thu, 23 Jul 2026 07:00:00 GMT"
   },
   {
@@ -77,7 +65,7 @@
   {
    "title": "どこよりも早い！？ 日本代表、アジアカップ2027の予想スタメン【FW】W杯では不完全燃焼…大舞台で結果を残したい至宝",
    "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE5rNkQ0Nzk3V19iSEJvX0lLcnVBWm1udEN4TU1URG1ZMU1UczF5OVQzOTFXTTJoZ0pqTmQydzJFVDZTMm5ERk41Z1FyS2JFa3k0Z2FuTzJnOFpxZnI0OHZ6b0QwU3ZOcW9ETm1sSVpaY3lYRnNwazhjRWplZGZEa3c?oc=5",
-   "source": "news.yahoo.co.jp",
+   "source": "Yahoo!ニュース",
    "date": "Thu, 16 Jul 2026 07:00:00 GMT"
   },
   {
@@ -87,14 +75,14 @@
    "date": "Tue, 14 Jul 2026 07:00:00 GMT"
   },
   {
-   "title": "【画像・写真】サッカー日本代表2030年Ｗ杯のメンバー予想",
-   "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTFBicnNjMHBwTnd3YW5EQXpRZ1lwd1BQZTg3Z0cwQXRWSlJick5MVGhsWFBKTERvSUM0anFsS3RHMFpyWHlNS2JGSFF4YXdtQW85Tld5blFZbmdPYlFDZ1prVHBRZlVmNkYtY0t6MWZ4NVA?oc=5",
+   "title": "サッカー日本代表2030年ワールドカップのメンバーを予想 主力は変わるか？",
+   "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTFA3Y2xRUmxQd01IZGNNblFidEFTSXA0bFNoT09GY0NQRjJXUjFMOEtnWk00M0lQSk1nOVZVd3hpd1V3Y3lMSGYyWThFNWY0RDVaQVZkc0ZpRHE4aVNKckNDSE5XNURjT2xvMGxCOGI0MzAzNTlWU1FpdDNEUQ?oc=5",
    "source": "webスポルティーバ",
    "date": "Tue, 14 Jul 2026 07:00:00 GMT"
   },
   {
-   "title": "サッカー日本代表2030年ワールドカップのメンバーを予想 主力は変わるか？",
-   "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTFA3Y2xRUmxQd01IZGNNblFidEFTSXA0bFNoT09GY0NQRjJXUjFMOEtnWk00M0lQSk1nOVZVd3hpd1V3Y3lMSGYyWThFNWY0RDVaQVZkc0ZpRHE4aVNKckNDSE5XNURjT2xvMGxCOGI0MzAzNTlWU1FpdDNEUQ?oc=5",
+   "title": "【画像・写真】サッカー日本代表2030年Ｗ杯のメンバー予想 (3ページ目)",
+   "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE9VTklTV2htOUxZUThfQUhVb1pxZXRuM2pxeUNWb1c1Wm9Ub180QW5oNmZQaGZKZXZKUHNlQk8zdVkwNlllbHpYWjR6YTk4Zzhhc211MlVrd2R1N2RKU1RUR01jZmU4a3R2QjNUWDlfamU4NGo3R1RoN3pR?oc=5",
    "source": "webスポルティーバ",
    "date": "Tue, 14 Jul 2026 07:00:00 GMT"
   },
@@ -113,14 +101,26 @@
   {
    "title": "日本サッカーを変えた戦術「本当に斬新」 森保Jとの共通点…トルシエ氏が驚いた「最後のピース」（FOOTBALL ZONE）",
    "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE9fN0hCN01nY0gwMy0tVWVIcXhLRTdQNWlqN3FhRlBLd2dkMVRMcW1aY3BIdzREbHE5VXFCak03cWNTdVdfX2M4S2pySUpUaEtLbEJucFY3ZF9jNDlsY2JVNTVSVFRZSTFySU9UNThpNWk0dm1YRUVGa083bUt5QVE?oc=5",
-   "source": "news.yahoo.co.jp",
+   "source": "Yahoo!ニュース",
    "date": "Sun, 12 Jul 2026 07:00:00 GMT"
   },
   {
    "title": "ブラジル戦敗戦の2日前、森保ジャパンに“異変”「申し訳ありません、冒頭を非公開にさせてください」記者が見た「練習開始数分前のプラン変更」（Number Web）",
    "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTFBfUmdBY1BSU2pHTkY2OEdQSFhnLUVSaW1Lam9yRlJ0eFhoTTNzZElYcVgzOHZreWR6R0lOaGdwdEdNdmN6V0tWTGtSaF83UVh0bWJoNGdDVWNPWU5jT29WbVhSZ3A1RG8ycG5kS2RVcDM3QnlGWUhtek5CdjBDMkE?oc=5",
-   "source": "news.yahoo.co.jp",
+   "source": "Yahoo!ニュース",
    "date": "Sun, 12 Jul 2026 07:00:00 GMT"
+  },
+  {
+   "title": "【ボートレース】サッカー日本代表も刺激に、再び最高の景色を目指す／毒島誠コラム",
+   "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxOWWdFcEdNVk1xTHVpVlpDZloxZWVJZHhFLXdHMnlyNmlkZ0ZDRmI0WWRNMDlTV21fTlFLb0hEN2NKRWFlNjNQRnFtM3pVRnIyQjR3REwyc2U2bUFUMXJWQUNfQW1uTTRaZHhCWS1UT3V6cnVfbEd4Ykx2cWdkeEUwQjdRbVQ2VEU?oc=5",
+   "source": "日刊スポーツ",
+   "date": "Fri, 10 Jul 2026 07:00:00 GMT"
+  },
+  {
+   "title": "次は誰になる？ 日本代表、新監督候補（2）戦術の鬼！ 記録だらけの歴史的な名将（フットボールチャンネル）",
+   "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE1YNkRmOTgzOHl4REE3aFlaTVpzTUwtVEdUd2VaZk15SlRveWw1Xzhfb2pWWHlhYzl2VkVqTkNxdno3ZERjNHY0bENVWmExd2xhUW1KUXdRRElyS09LdEdBSTAwQmoxUkdFSjZKYTF2UFM1WUc0d0pkSkVFcVBhNFE?oc=5",
+   "source": "Yahoo!ニュース",
+   "date": "Thu, 09 Jul 2026 07:00:00 GMT"
   }
  ]
 }
