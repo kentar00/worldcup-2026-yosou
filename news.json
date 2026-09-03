@@ -1,7 +1,13 @@
 {
- "updated": "2026-09-03T08:50:06.512Z",
+ "updated": "2026-09-03T14:20:04.116Z",
  "source": "Google ニュース",
  "items": [
+  {
+   "title": "本田圭佑 “何でもパワハラ”風潮に疑問「正しく怒っていた人も山ほどいる」「分析が足りないな」（スポニチアネックス）",
+   "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE1fWXJRckh1djJ3aF9ycC0tWV9ERDNQakJmMVluaGtXajV1RzBBZDV2cXBVOWU1QS1OeDh6ektYdzJ6NFFmazhjOTFMcVJZRDNRT0R6WW8wa1NCdTZ3Qk00V0hZZmY5NUEwZlYtcEpaLXcxbGNudXdtZlZ3N1hmaTg?oc=5",
+   "source": "Yahoo!ニュース",
+   "date": "Thu, 03 Sep 2026 08:36:53 GMT"
+  },
   {
    "title": "人数が足りているのになぜ失点？窮地を救った西川周作の｢左足｣と歓喜の逆転劇の裏に潜む｢個の戦術｣の綻び【初勝利の浦和、さらなる浮上のための修正点】(2)",
    "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTFBEeTJETXAzVVc4NUJzZDhnZi1QaHBHUUJEeWlQVXRkVnBUTUktSXBZMkh3LUNncXctWUdTY2ZLWFExMUkxRDNuSWdrN0VFdDZtMmtyLVhzVUpWQk5PNnh3?oc=5",
@@ -15,12 +21,6 @@
    "date": "Mon, 31 Aug 2026 06:21:42 GMT"
   },
   {
-   "title": "オランダ戦は生活始動型、ブラジル戦はリカバリー型、サッカー日本代表戦の生活者行動を電通が分析",
-   "url": "https://news.google.com/rss/articles/CBMiREFVX3lxTE82dHhEVVljZjN1TFpjckRrZURQM3hhVXVEUWlVZkQ1bFgzTmRCdmJ1Si1PMUJkV1g2VnMwMEZVakk5OW9F?oc=5",
-   "source": "dime.jp",
-   "date": "Mon, 24 Aug 2026 04:05:23 GMT"
-  },
-  {
    "title": "サッカーコラム 日本代表戦士のW杯後の「ステップアップ」と「出場機会」の狭間で悩まれる移籍 森保監督、宮本会長の思いは…",
    "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE9QX0dSZ3RId3RiLXphUDVQN1pkb3VJUDZSdlJ2LUZSZUF6UERvNUNmVlpkZGtvdjQtWmk2eFowQVk5YmdjaDNERFdsMHJYb214ZTB0eEZuNzNDUDkxdkY4ckNPbzZkQmtkMGNtMXA4UVBLeEdaczJrUzF1WWEyaDg?oc=5",
    "source": "Yahoo!ニュース",
@@ -28,8 +28,8 @@
   },
   {
    "title": "電通、FIFAワールドカップ2026 日本代表戦の生活者行動を統合分析",
-   "url": "https://news.google.com/rss/articles/CBMiQ0FVX3lxTFBsbWszMURJdXZnMnhLUEp3V19iOEhnSmowVVE4RVMyMkR2U05rU1I4SVhpd1VQMi1XUXYxYXZzeldORjTSAUhBVV95cUxPZzhrUlZCcXZIOHlGZlBlTlFmcEFfZl85WWhBMG95cGJPQnNCZl9iMFVLdndzMVVTb3lxRnFiQVFTZ0dUdVFJYlI?oc=5",
-   "source": "エンタメラッシュ",
+   "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE1xZHdiVk5fS210YkNFZFBaUVk1ZEJXeHFTalJCUlJPWG5CUGF3amJQMGpCT2J2cGRleVRKclZJRXRQU0JfaFhUSVA2Z3BlWEVzRlhWWFJ2ZXY1cUE?oc=5",
+   "source": "共同通信PRワイヤー",
    "date": "Thu, 13 Aug 2026 07:00:00 GMT"
   },
   {
@@ -47,7 +47,7 @@
   {
    "title": "【W杯徹底分析】勝ちにいく準備ができていなかった！？ ベスト32敗退で見えたサッカー日本代表の課題とは？",
    "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE5ucF9wWkxQZEFSSGhjSWE2el9xUlJyZk1aSVY1WUY0Z3BxaXlVaXVFT3UyNTU5VU9UdEFzM3RpQlN3a0dXN2lrTkFtOVY0QmdRclNGN0VjbmUwel9uUTNkMkpxYldhZEZYVGlkY1RKNEs?oc=5",
-   "source": "sportiva.shueisha.co.jp",
+   "source": "webスポルティーバ",
    "date": "Mon, 10 Aug 2026 07:00:00 GMT"
   },
   {
@@ -57,28 +57,10 @@
    "date": "Fri, 24 Jul 2026 07:00:00 GMT"
   },
   {
-   "title": "データで楽しむワールドカップ2026 得点傾向と代表通算記録を分析：時事ドットコム",
-   "url": "https://news.google.com/rss/articles/CBMickFVX3lxTFBsN1NFUWs5R0REOGk4X0NyOTlCYXBBVDNIbElVS29YM0pLOHl6SGtVeGJOeW1xVFc5ZzhveDczaG5vZm9xZ3kzc3VHcFUwb1B2eEo2eTRSekluYWl4eW1mVjVDd250Y1lUTjljQTVoaVpOUQ?oc=5",
-   "source": "時事ドットコム",
-   "date": "Thu, 23 Jul 2026 07:00:00 GMT"
-  },
-  {
-   "title": "FIFAは言った「ブラジルがやるから日本は午後だ」 40度のなか練習する羽目に…森保ジャパンに選択権はなかった",
-   "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTFBBVndCRzd2Q1lUV2w2ZVdHUlJGSUVkQlFNVzQxRjl5aVlIT2YwczJqYnk2d2RicV9CNUgzSXdIVEttME1wTnVBMS1VbTgzcUNaRWp2SF8wck1CMUxPeGZpUmRIVzFmZmt0UzQ1UElHUFZvbXpfT0xSTmRZYkVCZ3M?oc=5",
-   "source": "Yahoo!ニュース",
-   "date": "Thu, 23 Jul 2026 07:00:00 GMT"
-  },
-  {
    "title": "【コラム】Jリーグを観戦しない人々が、日本サッカーの強化を声高に叫びながら日本代表を批判する滑稽さ",
    "url": "https://news.google.com/rss/articles/CBMiQEFVX3lxTE9fRW1jM1Z0UnRzMzJ3VFM3VDFQNVl2VjhoTVFrQy1MNWdYU1BLdWdoUnF5alN6Vk5rWGNYMGNzeTI?oc=5",
    "source": "Qoly",
    "date": "Thu, 23 Jul 2026 07:00:00 GMT"
-  },
-  {
-   "title": "【対談】高橋秀人×山口遼（後編）：日本代表に足りないのは戦術か、勇気か。文化から考える「世界との差」の本質",
-   "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE0tNkVfR2xZaWJLa2lpdEhydXc2aVFSUll6dVRGT0JFOFJJYmJweUluMzE5M25mdU02V29MYmhlRWtVZlp0QmV0Uk9RRUdjVFFIYS1aQw?oc=5",
-   "source": "footballista",
-   "date": "Wed, 22 Jul 2026 07:00:00 GMT"
   },
   {
    "title": "どこよりも早い！？ 日本代表、2027年アジアカップ予想スタメン。森保一監督は続投？ W杯からの変化は？",
@@ -93,12 +75,6 @@
    "date": "Tue, 21 Jul 2026 07:00:00 GMT"
   },
   {
-   "title": "【コラム】日本代表が優勝を掲げ、達成できなかったことを批判する人々",
-   "url": "https://news.google.com/rss/articles/CBMiQEFVX3lxTFBwVEFuOW9mVDQxQy1wU1pUSGRGVGlBTGVHMGdFZHhqRTljNENoNHFJb1ZwcWpDcnZydjhaR0dkWTc?oc=5",
-   "source": "Qoly",
-   "date": "Tue, 21 Jul 2026 07:00:00 GMT"
-  },
-  {
    "title": "football life：新戦術発案に采配も？ データ活用の現在地 サッカーW杯とAI",
    "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE90bDF4NXl4Q2t4S0xHcW85dml3b1V5MnV4YWZISUZIR2UzX3JzSlRnQmVXckV0Q3g1aDlEQjNHa2VHVW84T0VfakVKQ2szWUtQaE10TFpMa3hDTGltSVJJNzBMR3R4Tzlj?oc=5",
    "source": "毎日新聞",
@@ -107,7 +83,7 @@
   {
    "title": "サッカー日本代表の戦術をプレイバック！2010年代は日本人の弱点に向き合った「1対1」の追求",
    "url": "https://news.google.com/rss/articles/CBMiREFVX3lxTE1uWnNZZ0RSbW9XRVNWQ3JlUjNhX3k4YnFDdGd1Nk9raG5TeTQtOUFFalpUeEQ4ZGVpS0M1SlhqbnE3SGd6?oc=5",
-   "source": "dime.jp",
+   "source": "@DIME アットダイム",
    "date": "Sat, 18 Jul 2026 07:00:00 GMT"
   },
   {
@@ -121,6 +97,30 @@
    "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE1GOGJiVjR5WXJWcHBaYnFUX3E1QVhyYTRRU3c3VlBWR0VXOVhMb1ZQYzJ2UTNBdTBYRlpkejVTblE0N0lTcVV5N2x4NFppUVFnRWZ6LTRQVjY5SUh5ZWUteTBvQQ?oc=5",
    "source": "フットボールチャンネル",
    "date": "Sat, 11 Jul 2026 07:00:00 GMT"
+  },
+  {
+   "title": "欧州から見た日本代表は「全員が平均的」。上田綺世も久保建英もまだまだ…。良いチームだが強くはない現実的評価【北中米W杯コラム】",
+   "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE4yMmM3VURKR2xnMkh4aDdhNDVrbkUtSlh0Q0lQdU1JNFgyWUpSNGt5b21LeGtKVmZGUXM5bkdibll2VFVLT0VkZm5iNDZmcGM0NEVtdTFJa3pFakRTZXRkRng0NA?oc=5",
+   "source": "フットボールチャンネル",
+   "date": "Fri, 10 Jul 2026 07:00:00 GMT"
+  },
+  {
+   "title": "【コラム】日本代表の敗戦理由を怪我人「だけ」にする間違った風潮",
+   "url": "https://news.google.com/rss/articles/CBMiQEFVX3lxTE1VWDZFdkItX2F3RkxSYmJNU0hiaUdLa0ZLU3I5cjE3Q1hiX1dzTUJubGFCbkRvUXNzOVpuT0FCbXY?oc=5",
+   "source": "Qoly",
+   "date": "Thu, 09 Jul 2026 07:00:00 GMT"
+  },
+  {
+   "title": "2030年日本代表スタメン予想",
+   "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTFB5YWswSFE3dGdxTzVhNUxyZ0ZuaUR2MnFMeHZHVUpVVklnVEZiejhRY293VEVCWVhWVzhDcXI2b3Bid2VvOGtnUTRyaGZFLXBrMlZIcjR0ckZqWk9WYzdkbmwyejdDQjJlaGlpNkRoc0syekhCcjc5NA?oc=5",
+   "source": "NEWSポストセブン",
+   "date": "Wed, 08 Jul 2026 07:00:00 GMT"
+  },
+  {
+   "title": "《2030年W杯サッカー日本代表を予測》次期監督は誰？ 森保監督には「優勝経験がない」と辛口評価 U-21大岩監督、名波コーチ、長谷部コーチの中から“後継者”が指名される可能性も",
+   "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxNN1BOenlWWG1CcmRGNjUzbkVFUzdtVUpHcFpqby1zU2RxRTdidk8xR3JxNGhTdGYtTHRBVnA0Z2d2UmV5ODNqdlNXYWJJMXhBOHExZDRpN0FBTURNVmtqS0JPRUpSUnZKNm1PMFZLMWg0ZjE1Z21mLVRaaWtpTmhmNTY0VVFWZw?oc=5",
+   "source": "NEWSポストセブン",
+   "date": "Wed, 08 Jul 2026 07:00:00 GMT"
   }
  ]
 }
