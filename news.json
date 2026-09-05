@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-05T00:48:10.609Z",
+ "updated": "2026-09-05T08:15:55.195Z",
  "source": "Google ニュース",
  "items": [
   {
@@ -9,21 +9,15 @@
    "date": "Fri, 04 Sep 2026 09:00:37 GMT"
   },
   {
-   "title": "本田圭佑 “何でもパワハラ”風潮に疑問「正しく怒っていた人も山ほどいる」「分析が足りないな」（スポニチアネックス）",
-   "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE1fWXJRckh1djJ3aF9ycC0tWV9ERDNQakJmMVluaGtXajV1RzBBZDV2cXBVOWU1QS1OeDh6ektYdzJ6NFFmazhjOTFMcVJZRDNRT0R6WW8wa1NCdTZ3Qk00V0hZZmY5NUEwZlYtcEpaLXcxbGNudXdtZlZ3N1hmaTg?oc=5",
-   "source": "Yahoo!ニュース",
-   "date": "Thu, 03 Sep 2026 08:36:53 GMT"
-  },
-  {
    "title": "【サッカー日本代表】中山雄太の戦術的なプレーを解説【GOAT切り抜き】 Carter Hart (w1uTh9n64j)",
    "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE1ZX2NGbFc2Qk4zaEhPRUZPVXZuMmNwWGZ2NkM5RDFhMXVvVldQQWVWTWVvODd2M2NlUmxzbnhKZnZiWlJ6c1NPVnJsdDNENXZ5MktzRXVDVjM3R1E?oc=5",
-   "source": "Mshale",
+   "source": "mshale.com",
    "date": "Wed, 02 Sep 2026 13:17:34 GMT"
   },
   {
    "title": "【サッカー日本代表】大岩ジャパン、どこよりも早い「スタメン予想」／森保監督とのチームづくりの違い／日本でサッカーファンを増やすためにできること／竹内達也／THINKpod Cecilia Sala (Lzva1H8DcH)",
    "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE05eDM2SHRhQnRHQ0l4bHhRZTlBVUNVSjB3THRwUllKOEpFcVpzVmIxT1V0bmp2dTdIeERObXNpMW9jNlAzM3NIU1IyYUJ4Y2ZscmYtbXpoU2p1V2M?oc=5",
-   "source": "Mshale",
+   "source": "mshale.com",
    "date": "Mon, 31 Aug 2026 06:21:42 GMT"
   },
   {
@@ -37,6 +31,12 @@
    "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE0tdndEQ1hCNjd0Ui1jbUdCVGNpU0VUeHdPM2NsTlNJNVVFbzctWHItLVBpaFg4X0VVVkl0YTVvOHljN3pXRUViMkRHMnNFUzFKM2M1T3ZpNU9MdzdqZ0xVbUxOZTBtNW9OTkg0cEtnenBoYkFYVnfSAYoBQVVfeXFMUHltYlh4YmF3b0V2UlVybXNqb2pEbFNUemhudmtoWXhKbmVoUDJ5QkwxTnRRM3VPUEFvQ09fVDhNMnBvOWUyN3IyWXJtMWs1a0dhNHU0c2pNOGJPMHlnMnBJZFRvWndGOW5sSW4xLW41NjAzMHNYNWs3RjlhQU9EVmg3VTIzRVJ0czFB?oc=5",
    "source": "サンスポ",
    "date": "Tue, 18 Aug 2026 07:00:00 GMT"
+  },
+  {
+   "title": "鹿島アントラーズの戦力分析2026｜予想フォーメーション・戦術・注目選手",
+   "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE9yV2ZPbXFKbGkxT2pNZUZoSWJyMUxWZHNUMlVYUjUtWG93WVY3cFJtalJYNU96czNSS1VKR3NHOS1TaHlWbERuaC1ad3VrQnRfN29INGRiMG5IRUVG?oc=5",
+   "source": "超ワールドサッカー！",
+   "date": "Fri, 14 Aug 2026 07:00:00 GMT"
   },
   {
    "title": "【比較検証】森保ジャパン vs 大岩ジャパン――戦術・選考・監督のタイプはどう変わる？決定的な3つの違い",
@@ -89,7 +89,7 @@
   {
    "title": "【対談】高橋秀人×山口遼（後編）：日本代表に足りないのは戦術か、勇気か。文化から考える「世界との差」の本質",
    "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE0tNkVfR2xZaWJLa2lpdEhydXc2aVFSUll6dVRGT0JFOFJJYmJweUluMzE5M25mdU02V29MYmhlRWtVZlp0QmV0Uk9RRUdjVFFIYS1aQw?oc=5",
-   "source": "footballista.jp",
+   "source": "footballista",
    "date": "Wed, 22 Jul 2026 07:00:00 GMT"
   },
   {
@@ -119,7 +119,7 @@
   {
    "title": "football life：新戦術発案に采配も？ データ活用の現在地 サッカーW杯とAI",
    "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE90bDF4NXl4Q2t4S0xHcW85dml3b1V5MnV4YWZISUZIR2UzX3JzSlRnQmVXckV0Q3g1aDlEQjNHa2VHVW84T0VfakVKQ2szWUtQaE10TFpMa3hDTGltSVJJNzBMR3R4Tzlj?oc=5",
-   "source": "毎日新聞",
+   "source": "mainichi.jp",
    "date": "Sun, 19 Jul 2026 07:00:00 GMT"
   }
  ]
