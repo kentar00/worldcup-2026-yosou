@@ -1,7 +1,13 @@
 {
- "updated": "2026-11-27T04:53:56.992Z",
+ "updated": "2026-11-27T19:24:33.405Z",
  "source": "Google ニュース",
  "items": [
+  {
+   "title": "【コラム】金子達仁",
+   "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTFA2TEk0T0lsajEyQldYOU12bmdqN3huWnl5amhpMGs0RHA3X3lGaDJiZXRxcWh1Ynk5VkFyM0FiWHJTTmh1bVBienZKeDFrTUtGNDNTWVVGUlFodUlWdGhNRU96NEpLM3RM?oc=5",
+   "source": "スポニチ Sponichi Annex",
+   "date": "Thu, 26 Nov 2026 13:00:00 GMT"
+  },
   {
    "title": "相手の守備戦術の骨格を殴る「稲村ハンマー」。2位・広島も封じられなかった首位・FC東京の攻撃を担うセンターバックのスイッチパス",
    "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxNZG1XLTVXcEhWcVgyX213U04wSDdOQkNHckRVdzVvWTlpanpRY044eUpnd1JMTFBUbHZseW1HWVB3VkNsLXBFLUpGRzVHTUE1REpHUmFFZjNpU09vbTR2aldBbVlKSlVleFdjSXdRMTQwVzdPZ0MxSWxVZmg2R084YzBjU2RneVdlV2YxNmNiY9IBlAFBVV95cUxPMllvNWhPVEhIUUFJaXBVc2xYZWRab2xEc2JwY2dUc0dRNXd3b2twNlEyV1lWaUdoUk1XVF9UYkxEbkxBLTVOWElROTNjS1VGNlBUN043dk5Mc2ptMGp4Y1VOUzFHeVZfcnF6Wm1PSmFYTDIxNXZsNGZiQVdtQTZocUZhRmNfQ0JHWHMweE90d0dLZGNG?oc=5",
@@ -13,12 +19,6 @@
    "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE9ua25ZbXRoUFBxUF9wUnRFQVcwSmVsNFFrX1p1Ynowbng0SXVEZjZvTVR1TzUxS1Itc3lSVkNMbWpJUTN4eFpsV2R6X09Qc2hDUF83T2FWR25uakpTZnJrRDNIMF8?oc=5",
    "source": "フットボールチャンネル",
    "date": "Wed, 25 Nov 2026 09:49:03 GMT"
-  },
-  {
-   "title": "【プロ野球】高木豊が今季ブレイクした打者を分析 侍ジャパンでも存在感を示した強打者は何が変わった？",
-   "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE5KaHJNR0gtMXdRSjZxSzJQd1MwVEtaSjV1eTN0MHU1WWZCVnk0XzBKRXlkOGNnYlBWQlRDSTQta1E0Q0R4bmVaU25PX241bXJzbjFmTVN6N011amhRVGVHaW5hdUxiZWlYWXV5TURZMmpVbzZnMVp5RQ?oc=5",
-   "source": "webスポルティーバ",
-   "date": "Tue, 24 Nov 2026 21:50:00 GMT"
   },
   {
    "title": "日本代表MF田中碧、リーズで最も過小評価されている選手と現地！「驚異的データ…監督と戦術面における重要性を証明」",
@@ -39,46 +39,10 @@
    "date": "Fri, 20 Nov 2026 07:53:30 GMT"
   },
   {
-   "title": "【サッカー日本代表】大岩ジャパンの初期メンバー予想＆W杯までの展望",
-   "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTFB0RTNvWTVyemxReFJGX19UUjZGSkRFVUJHTHI4UVRmZ25RTjEyNUVXTWlOS0syRURYaDFQY3JzanAwazRVdllpdUhFMVJub2ZyT2lua01pbzJKYTFTbFc4aGpzZ0Q4WU1FZmFKN1AxcmlWdEE?oc=5",
-   "source": "スポーツナビ",
-   "date": "Fri, 20 Nov 2026 06:00:00 GMT"
-  },
-  {
-   "title": "サッカー日本代表・森保一監督「戦術がない」の批判を浴びるも、歴代最長8年間の長期政権で残した功績と見据える次の“ステップ”",
-   "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTFBlY1RYWjVpSU9IdVdkRWdvOU80cWxYYU1BQ0plLXRURTlfZ1hHcDU0Yk1jbDdRTGZIY0ZNY0c0T3p3Z0dJM2RjaG00azZuckN1eTNKaXRwMUUyeWJp?oc=5",
-   "source": "週刊女性PRIME",
-   "date": "Thu, 19 Nov 2026 10:00:00 GMT"
-  },
-  {
-   "title": "森保ジャパンの戦術はどう変わったのか――4-2-3-1から可変3-4-2-1へ、8年間の「形」の進化を追う",
-   "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE1PM0FOQkNHNi1nRTV1TnVqRWZ5N1RXUXRNX0FHU1I1QkZnSVZEN0tzRi1xOThUUFdPZnVUR29BaTFJaHh5NlZtYnZ6U3NZZllrcE1fakdRUUFkbktiQmVMZ2R6bHhrZS00cjd6bk9IN3h2Tm8?oc=5",
-   "source": "スポーツナビ",
-   "date": "Thu, 19 Nov 2026 09:00:00 GMT"
-  },
-  {
-   "title": "森保一監督の後任、大岩剛監督とは？ 一貫した「４―３―３」の戦術 組織の成長を重視（スポーツ報知）",
-   "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTFBvS29USVVEOVZubFNFUnpOc2ZEZS00c2lGRjAxYjlRQ1ZYSVIyS2IybU1NeHJpTjBYV29mRGRhRGV0N2VNSXloMGRMY05SV2FNM2tTRXoxS2tPTWtGb3JOVE1CZVk3MTNmV1EtTFhGdWV5X3RCQ0NpYk5mRTlkSUk?oc=5",
-   "source": "Yahoo!ニュース",
-   "date": "Wed, 18 Nov 2026 08:00:00 GMT"
-  },
-  {
-   "title": "森保ジャパンを象徴するパラグアイ戦の失点シーン 指揮官が固執した人海戦術の限界",
-   "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxPRGtBRHhRQmlMYjdkcFpoQTdNbFZOdUJ0RFpETk1ZWjlKcE5TN2ZwcEtvZXJpZGhzd056ZUwzakwzMUdWeFUzOVFyOWoxS3UzYTFwR2FHR3FWX2Z3NlVjd0hFbTJtcDZ3TnFldlltVExUYy11Q1ZXR0NnX3BDMmVSVw?oc=5",
-   "source": "webスポルティーバ",
-   "date": "Wed, 18 Nov 2026 08:00:00 GMT"
-  },
-  {
    "title": "森保ジャパン、ＣＫでの痛恨２失点は雷雨による前日練習中止余波？ サインプレー＆力技に屈して１―２で敗戦（スポーツ報知）",
    "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTFA1QWJSc1FxZnVrZENWZGFrQVMyVVFnd0VOVUZoSlQtOFBPeS1SbThod01oYXpHV3NGcTk5RkVxRGNTUjkzQ3FrQnk2RGhUaUhLMld1d3U3dTVVd1pUenRuZzgyaHplU3VsRU5Vd0s0NTdxcW1zdVotR05sQXgwUkE?oc=5",
    "source": "Yahoo!ニュース",
    "date": "Wed, 18 Nov 2026 08:00:00 GMT"
-  },
-  {
-   "title": "パラグアイ代表、サッカー日本代表戦の予想スタメン＆フォーメーション（6ページ目）",
-   "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE1RM3N4SlVyU3VBYVR2ZmtjLUNCVExVWXpyRGdKOXJVLTh3ai1PcUNBWEdVZUFERWRfUkRNQTQ1YzVwTFNTTkZYa2pFRVplQW1JNnpCa25ieERpMzRMMVc2bEZVTXIxX3c?oc=5",
-   "source": "フットボールチャンネル",
-   "date": "Tue, 17 Nov 2026 08:00:00 GMT"
   },
   {
    "title": "サッカー日本代表、パラグアイ戦の予想スタメン＆フォーメーション",
@@ -99,28 +63,64 @@
    "date": "Tue, 17 Nov 2026 08:00:00 GMT"
   },
   {
-   "title": "「自分が何もできなかった悔しさ」日本代表・後藤啓介がW杯で味わった現実。次世代を引っ張る覚悟を胸に、森保ジャパン最終戦へ【コラム】",
-   "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTFBfNFJYVlp6WVBjYi1ycHBIOFc4OUYtVy1FMFJlYWRjNkN6TDZsLTV4cmlZTm02SDNuX01YNEhfN182SzI3elB2aFNJRlFwZ21FSXZXSVpnb05OZm1Delh3RmtDYzE?oc=5",
-   "source": "フットボールチャンネル",
-   "date": "Tue, 17 Nov 2026 08:00:00 GMT"
-  },
-  {
    "title": "森保ジャパン最後の練習は雷雨で中止 東京五輪やアジア杯の延期を経験した森保一監督「私らしいな」「現状の中で何がベストか」 (サンケイスポーツ)",
    "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxQdHdQTnJoMDBwYzdYd2FaYXNGR2xYbHN3QmEwVkZ2M2M0TUo3ZmI0VG4xR3FGaGZMNVBSTVlZblY2YUpPa21wNmlBXzZheWU1Sks0WjdHN2JGWHJkSGgwdEEwNHNyWk1oUnJZTWdVLTl4Zi1ad0cxMUJxdG9ramh6eXlMdXUzTXdkNnk2Zkln?oc=5",
    "source": "Yahoo!ニュース",
    "date": "Mon, 16 Nov 2026 09:57:57 GMT"
   },
   {
-   "title": "森保ジャパン〝最後の練習〟は突然の雷雨で開始遅れる シンガポールでのパラグアイ戦に向けた最後の調整",
-   "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTFBIYVNMQkxZWlpiUFdwRmhXeTkySi0zbVRqNFNJS2Y2ZEZpY1ZyaXhwcTJ0RTNJUXgxQ2NLNzBDSVIwam5EaTdHUjdMTlViQVFMVmRmNF8yOGU2NUx3bTc1OHVDaTJ5eUp0ZElkRXhXdzJ1TjJWN0htQmxfNVM5cHM?oc=5",
-   "source": "Yahoo!ニュース",
-   "date": "Mon, 16 Nov 2026 09:16:07 GMT"
-  },
-  {
    "title": "「言い方悪く聞こえますけど」サッカー日本代表・堂安律がパラグアイ代表の特徴を分析 南米選手の「ダーティーさ」警戒",
    "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTE5WRFN3MzRxSjBUekJYN1RXT1JpLWtCQk1EZHk0MmxuOFl3ZWs1Wk1lT2VVeEN2VGg2MDk0ZVlOTVVWRlJoYWk5aXM2R0xXcUY2amRzaml5U3dhQ3YwelNmOENSRDJHazFyM2hrX3FnNml3bG1NQkRaNzVCOA?oc=5",
    "source": "日テレNEWS NNN",
    "date": "Mon, 16 Nov 2026 08:00:00 GMT"
+  },
+  {
+   "title": "【日本代表スタメン予想】パラグアイ戦は大胆な選手入れ替えか 森保監督ラストマッチで若手抜擢に期待",
+   "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTFBFSjBoMm1iYXhxNUNWa3ZCQUlRRFVhcEZSeHQ5THFETUkzRGQ4MFJsamFCMnZGRGRDNkxuV0t3dk5fTGZVeDVsRXBzY1JEZ2JsQTBDaWcyc0k5WGJNRlBhREJocFlQUGxIRFBRRmpFUFk3RXFUNkNPTFRPU0NZaTg?oc=5",
+   "source": "Yahoo!ニュース",
+   "date": "Mon, 16 Nov 2026 08:00:00 GMT"
+  },
+  {
+   "title": "森保ジャパン、最後の練習はまさかの中止…断続的な雷雨で断念「ケガのリスク等々を考えてもやらない方がいい」「今までやってきたこともある」",
+   "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE12cS1uV2hFdlZhOTVHa3BDZ0paNkZaMDhmRHZuZ2lJaWN5T3V5ZWxLUFZkWE5kRWdyWkJfWWxCVmthdXJDMnBkdGNXTE1uWVlET0hpNzRHRWRPMGVBSjR0VF9tMC16c2haUHBnY1BBNUdfZ1RkYUNR?oc=5",
+   "source": "サッカーキング",
+   "date": "Mon, 16 Nov 2026 08:00:00 GMT"
+  },
+  {
+   "title": "「最後の練習だからもうちょっと待ってやろうよ…」森保ジャパン最後の練習が中止、選手から監督にお願いも",
+   "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTFB3TWFpT2sxX2RtVmJvQmVjMkZGUmktT1I4Y0ltUEZob3Q3Sm5pdjYtOGxxcUZXenJNRmpuTDVsaVY4eW9YMEMwVVJnMFltQjZpRDZxVXVOTmVWNHlzZ29DR3JPWTJWY3lsQnBTVmlyWEFUMWdlYkNpRktCU3piV0U?oc=5",
+   "source": "Yahoo!ニュース",
+   "date": "Mon, 16 Nov 2026 08:00:00 GMT"
+  },
+  {
+   "title": "「私らしいな、と」森保ジャパン“最後の練習”は雷雨に見舞われ、まさかの中止 (フットボールチャンネル)",
+   "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxPWnpyN3pjRnFkc19OdEJ6VnJ6bE9MUTNhUTZqMXpubnRJdUYxcm94UzBpUV9TSGVRNGV2X1VqS2NmbVJjMGJoOFJVYXBSdVZIZHlPTHFTV2ZkV1g5QjMzeFg3X2dNMjZkSnl2U3lXcm1lNVp3b2FMT1ZXWWtoVUxOSUpKSTBKdlBfYVhUSnBR?oc=5",
+   "source": "Yahoo!ニュース",
+   "date": "Mon, 16 Nov 2026 08:00:00 GMT"
+  },
+  {
+   "title": "【日本代表】森保ジャパン最後の練習はまさかの中止 初陣中止、アジア杯延期…指揮官「わたくしらしい」（スポニチアネックス）",
+   "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE9XZExzVFZmZG5hMGMxRzZ0X3JRRWRORG5XckVEMWZNYTNmeGJES19UcF84dVZfLWtWM0xWbUZUMHlVUURmN1YtWEVCTDBobVhsWk1LSldUX2hmNFN2XzN1NU82d3RreTc1UzlENmt0dDdCSUxrOGV1ckp4QmxWVVk?oc=5",
+   "source": "Yahoo!ニュース",
+   "date": "Mon, 16 Nov 2026 08:00:00 GMT"
+  },
+  {
+   "title": "サッカー日本代表はブラジル戦でストロングポイントを証明した サイドアタッカーの３ゴールを分析",
+   "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxOWE81Z0w2UkIwR3JzRmd1WHpPdlpxcjY4TGVCSFUwVEhsQU83N1huQnNMS2x5bHlCSHFtTzFfR1M0ZHpTbUtBTEJaYkowMzNGZ19lRFJlbWNKeTNDWmplRE43WjZGd2VkTUduZXRlZVJVcTkyT2RPZGhPdTR0R0dRRQ?oc=5",
+   "source": "webスポルティーバ",
+   "date": "Sun, 15 Nov 2026 08:00:00 GMT"
+  },
+  {
+   "title": "森保ジャパン ブラジル撃破から一夜明けパラグアイ戦へ練習再開 中村敬斗はベンチで見守る（スポニチアネックス）",
+   "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE5vMldLSWlGTkgza1FQY29IUlM2dkxTSGJ1V05fanQzYXdFcmt5UUFvblRNX1VmYXA3VERXV1Y4dlIybHpyZ2h2bDVVMDN6bTRuOEFBb3VHQWVkOEVUV2ZFRHpZZEpDWGxHaUZ5dDFYaGVETjctRFE1THNwTGYzRnM?oc=5",
+   "source": "Yahoo!ニュース",
+   "date": "Sun, 15 Nov 2026 08:00:00 GMT"
+  },
+  {
+   "title": "「結果で恩返しするのが一番」サッカー日本代表・久保建英がブラジル戦で先制弾。森保ジャパン8年間で味わった苦悩と成長【コラム】",
+   "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTFB5cmdKRGJ5dmZOWkxBNEFCQnZVbXJtamliLXRSTFZCOWM1am9oRDc3T1djMFVWeVUtaThtaHdqaVdNVVMzZE5wUmJhdmNWVDhPQWVDUWRnVEZnbFhJSnQzYlhGRm4?oc=5",
+   "source": "フットボールチャンネル",
+   "date": "Sun, 15 Nov 2026 08:00:00 GMT"
   }
  ]
 }
